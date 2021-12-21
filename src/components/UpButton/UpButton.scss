@@ -1,0 +1,59 @@
+.btn__subir {
+    width: 35px;
+    height: 35px;
+    display: block;
+    position: fixed;
+    z-index: 20;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 13px;
+    margin: 30px 25px;
+    right: 0;
+    bottom: 0;
+    margin-bottom: 5%;
+    font-size: 180%;
+    font-weight: 600;
+    color: black;
+    transition: 0.5s;
+  
+    & img {
+      width: 40px;
+      height: 40px;
+      position: absolute;
+      bottom: 1.5vh;
+      right: 0.7vw;
+    }
+  
+    &:before {
+      position: absolute;
+      content: "";
+      border-top: 5px solid lighten(red, 5%);
+      border-left: 5px solid lighten(red, 5%);
+      border-right: 5px solid darken(red, 5%);
+      border-bottom: 5px solid darken(red, 5%);
+  
+      top: 0px;
+      right: 0px;
+      bottom: 0px;
+      left: 0px;
+      transition: 0.5s;
+    }
+    &:hover {
+      box-shadow: 7px 7px darken(red, 20%), -7px -7px lighten(red, 20%);
+      cursor: pointer;
+      transform: rotateZ(360deg);
+      &::before {
+        border: 0px;
+      }
+    }
+  }
+  
+  @media (max-width:900px) {
+    .btn__subir{
+      & img {
+        bottom: 1.5vh;
+        right: 1.35vw;
+      }
+    }
+  }
+  
