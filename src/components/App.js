@@ -8,7 +8,6 @@ function App() {
 
   return (
     <div>
-      <Header />
       
       <nav
         style={{
@@ -17,7 +16,7 @@ function App() {
         }}
       >
         <Link to="/invoices">Invoices</Link> |{" "}
-        <Link to="/expenses">Expenses</Link>
+        <Link to="/ocio">Ocio</Link>
       </nav>
       <UpButton />
       <Footer />
