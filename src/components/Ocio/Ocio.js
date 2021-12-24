@@ -1,7 +1,14 @@
+import HeaderOcio from "./HeaderOcio/HeaderOcio";
+import Menu from "../Menu/Menu";
+import "./Ocio.scss";
+import FirstSection from "./FirstSection/FirstSection";
+
 export default function Ocio() {
     return (
-        <main style={{ padding: "1rem 0" }}>
-            <h2>Ocio</h2>
-        </main>
-    );
+        <div>
+        <HeaderOcio/>
+        <Menu/>
+        <FirstSection/>
+        </div>
+    )
 }
