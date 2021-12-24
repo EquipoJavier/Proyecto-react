@@ -7,14 +7,16 @@ import {
 import ReactDOM from 'react-dom';
 import App from './components/App';
 import Ocio from "./components/Ocio/Ocio";
-import Invoices from "./components/Invoices";
+import Index from './components/Index/Index';
+
 
 ReactDOM.render(
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={<App />} />
+      <Route path="/" element={<App />} >
+      <Route path="" element={<Index />} />
       <Route path="ocio" element={<Ocio />} />
-      <Route path="invoices" element={<Invoices />} />
+      </Route>
     </Routes>
   </BrowserRouter>
   ,
