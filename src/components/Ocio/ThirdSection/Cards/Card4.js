@@ -1,3 +1,4 @@
+import "./Card.scss";
 import card4Front from "../../../Recursos/img/fondo_second_section_4.gif";
 import iconParq4 from "../../../Recursos/img/icono faunia.png";
 

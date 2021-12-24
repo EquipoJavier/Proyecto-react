@@ -1,9 +1,10 @@
+import "./FourthSection.scss";
 import landscape1 from "../../Recursos/img/casa-campo.jpeg";
 import landscape2 from "../../Recursos/img/silla-felipe.jpg";
 import landscape3 from "../../Recursos/img/hayedo-de-montejo.jpg";
 import landscape4 from "../../Recursos/img/Palacio_Real_de_Aranjuez_0.webp";
 
-export default function FourSection() {
+export default function FourthSection() {
     return (
         <>
             <section class="fourth__section" id="fourth__section">

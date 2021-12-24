@@ -1,3 +1,4 @@
+import "./Card.scss";
 import card2Front from "../../../Recursos/img/fondo_second_section_2.gif";
 import iconParq2 from "../../../Recursos/img/icono warner.png";
 

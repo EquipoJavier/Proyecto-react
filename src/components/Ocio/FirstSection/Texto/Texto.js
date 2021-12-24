@@ -1,3 +1,4 @@
+import "./Texto.scss";
 export default function Texto() {
   return (
     <div className="col-1-of-2">

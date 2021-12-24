@@ -1,7 +1,8 @@
-import Card1 from "./Card1/Card1";
-import Card2 from "./Card2/Card2";
-import Card3 from "./Card3/Card3";
-import Card4 from "./Card4/Card4";
+import Card1 from "./Cards/Card1";
+import Card2 from "./Cards/Card2";
+import Card3 from "./Cards/Card3";
+import Card4 from "./Cards/Card4";
+import "./ThirdSection.scss";
 
 export default function ThirdSection() {
   return (

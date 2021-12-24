@@ -1,3 +1,4 @@
+import "./Card.scss";
 import card3Front from "../../../Recursos/img/fondo_second_section_3.gif";
 import iconParq3 from "../../../Recursos/img/icono zoo.png";
 

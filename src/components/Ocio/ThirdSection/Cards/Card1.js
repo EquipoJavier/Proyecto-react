@@ -1,3 +1,4 @@
+import "./Card.scss";
 import card1Front from  "../../../Recursos/img/fondo_second_section_1.gif";
 import iconParq1 from "../../../Recursos/img/icono parque atracciones.png";
 

@@ -1,3 +1,4 @@
+import "./Slider.scss";
 import slider1 from "../../../Recursos/img/carrousel1.jpg";
 import slider2 from "../../../Recursos/img/carrousel2.jpg";
 import slider3 from "../../../Recursos/img/carrousel3.png";
