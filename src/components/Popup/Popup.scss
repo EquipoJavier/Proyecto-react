@@ -1,0 +1,12 @@
+.popup {
+    background-color: green;
+    display: flex;
+    margin: 5rem;
+    justify-content: space-around;
+
+    &__elem {
+        width: 20rem;
+        height: 20rem;
+        border: 2px solid black;
+    }
+}
