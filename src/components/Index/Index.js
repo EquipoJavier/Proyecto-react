@@ -1,4 +1,3 @@
-import Header from "./Header/Header";
 import gastronomia from "../Recursos/img/index-gastronomía.jpg";
 import cultura from "../Recursos/img/index-cultura.png";
 import ocio from "../Recursos/img/index-ocio.jfif";
@@ -9,7 +8,6 @@ import "./Index.scss";
 export default function Index(){
     return(
         <>
-        <Header />
         <section className="section__index">
         <h2>¿Qué quieres buscar?</h2>
         <div className="row--transporte">
