@@ -11,7 +11,7 @@ export default function HiddenBox(props) {
             <div className="popup__background" id={dish.name}>
                 <div className="popup__box">
                     <div className="popup__box--left">
-                    <img className="popup__box--img" src={`imagenesTest/${dish.img}`} alt={dish.name} />
+                    <img className="popup__box--img" src={dish.img} alt={dish.name} />
                     </div>
                     <div className="popup__box--right">
                         <h1 className="popup__box--heading">{dish.name}</h1>
