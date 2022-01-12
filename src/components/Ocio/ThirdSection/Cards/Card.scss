@@ -1,0 +1,167 @@
+.card--ocio {
+    perspective: 150rem; // perspective works on child elements
+    -moz-perspective: 150rem;
+    position: relative;
+    height: 24rem;
+    width: 72%;
+  
+    &__side {
+      height: 30rem;
+      transition: all 0.8s ease;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      backface-visibility: hidden; // It hides the back side of the component
+      border-radius: 3px;
+      overflow: hidden; // image was overflowing the parent, so the corners were no rounder. This is a fix.
+      box-shadow: 0 1.5rem 4rem rgba(black, 0.15);
+      border: 1px solid #000000;
+  
+      &--back {
+        transform: rotateY(180deg);
+        &-1 {
+          background-image: linear-gradient(
+            to right bottom,
+            #c78ba7,
+            #ca6069
+          );
+        }
+        &-2 {
+          background-image: linear-gradient(
+            to right bottom,
+            #85745b,
+            #9b9678
+          );
+        }
+        &-3 {
+          background-image: linear-gradient(
+            to right bottom,
+            #8eaac5,
+            #605b96
+          );
+        }
+        &-4 {
+          background-image: linear-gradient(
+            to right bottom,
+            #3bad9a,
+            #8ec5bc
+          );
+        }
+      }
+    }
+  
+    &:hover &__side--front {
+      transform: rotateY(-180deg);
+    }
+    &:hover &__side--back {
+      transform: rotateY(0);
+    }
+    &__cta {
+      margin-top: 2rem;
+  
+      & img {
+        width: 17rem;
+        height: 12rem;
+        display: block;
+        margin: 0 auto;
+      }
+      & p {
+        text-align: center;
+        color: rgb(252, 246, 246);
+        margin-left: 4rem;
+        margin-right: 4rem;
+      }
+  
+      & a {
+        text-align: center;
+        color: rgb(252, 246, 246);
+        margin-top: 2rem;
+        margin-left: 15rem;
+      }
+    }
+  
+    @media (max-width:900px){
+      .card--ocio {
+        margin-bottom: 10vh;
+  
+        &__side {
+          backface-visibility: visible;
+  
+          &__side--front {
+            transform: unset;
+            visibility: hidden;
+          }
+          &--back {
+            transform: unset;
+          }
+        }
+  
+        &__cta {
+          margin-top: 2rem;
+  
+          & img {
+            width: 17rem;
+            height: 12rem;
+            display: block;
+            margin: 0 auto;
+          }
+          & p {
+            text-align: center;
+            color: rgb(252, 246, 246);
+            margin-left: 4rem;
+            margin-right: 4rem;
+          }
+  
+          & a {
+            text-align: center;
+            color: rgb(252, 246, 246);
+            margin-top: 2rem;
+            margin-left: 15rem;
+          }
+        }
+      }
+    }
+  }
+  
+  @media (max-width:600px) {
+    .card--ocio {
+      margin-bottom: 10vh;
+  
+      &__side {
+        backface-visibility: visible;
+  
+        &__side--front {
+          transform: unset;
+          visibility: hidden;
+        }
+        &--back {
+          transform: unset;
+        }
+      }
+  
+      &__cta {
+        margin-top: 2rem;
+  
+        & img {
+          width: 17rem;
+          height: 12rem;
+          display: block;
+          margin: 0 auto;
+        }
+        & p {
+          text-align: center;
+          color: rgb(252, 246, 246);
+          margin-left: 4rem;
+          margin-right: 4rem;
+        }
+  
+        & a {
+          text-align: center;
+          color: rgb(252, 246, 246);
+          margin-top: 2rem;
+          margin-left: 15rem;
+        }
+      }
+    }
+  }

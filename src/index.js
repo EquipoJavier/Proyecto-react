@@ -5,17 +5,20 @@ import {
   Route
 } from "react-router-dom";
 import ReactDOM from 'react-dom';
-import Gastronomia from "./components/pages/Gastronomia";
-// import App from './components/App';
-// import Expenses from "./components/Expenses";
-// import Invoices from "./components/Invoices";
+import App from './components/App';
+import Index from './components/Index/Index';
+import Ocio from "./components/Ocio/Ocio";
+import Transportes from "./components/Transportes/Transportes";
+import Gastronomia from "./components/Gastronomia/Gastronomia";
 
 ReactDOM.render(
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={<Gastronomia />} >
-        {/* <Route path="expenses" element={<Expenses />} />
-        <Route path="invoices" element={<Invoices />} /> */}
+      <Route path="/" element={<App />}>
+        <Route path="" element={<Index />} />
+        <Route path="transportes" element={<Transportes />} />
+        <Route path="ocio" element={<Ocio />} />
+        <Route path="gastronomia" element={<Gastronomia />} />
       </Route>
     </Routes>
   </BrowserRouter>

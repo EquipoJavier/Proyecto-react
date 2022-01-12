@@ -20,7 +20,7 @@ export default function PopupElem(props) {
     const [buttonPopup, setButtonPopup] = useState(false); // *1
     return (
         <>
-        <img className="popup__img--thumbnail" src={`imagenesTest/${dish.img}`} alt={dish.name} />
+        <img className="popup__img--thumbnail" src={dish.img} alt={dish.name} />
         <span className="popup__img--name" onClick={function() { // *2
             setButtonPopup(true)
         }}>{dish.name}</span>
