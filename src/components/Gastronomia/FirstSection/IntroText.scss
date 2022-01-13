@@ -1,3 +1,18 @@
-.intro__box {
-    background-color: red;
+.intro {
+    &__box {
+        background-color: red;
+        color: #fff;
+        margin: 5rem;
+        line-height: 4rem;
+        display: flex;
+    }
+
+    &__img {
+        height: 100%;
+        flex-shrink: 2;
+    }
+
+    &__text {
+        flex-shrink: 1
+    }
 }
