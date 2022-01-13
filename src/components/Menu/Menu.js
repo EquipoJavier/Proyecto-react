@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 export default function Menu(props) {
   const getHeading = props.getHeading;
+  
   return (
     <div className="navigation">
       <input
@@ -41,7 +42,7 @@ export default function Menu(props) {
           <li className="navigation__item">
             <nav>
               <Link to="/gastronomia" onClick={function() {
-                getHeading("Gastronomia", "")
+                getHeading("Gastronomia", "Un sabor inigualable")
               }}>Gastronomia</Link>
             </nav>
           </li>
