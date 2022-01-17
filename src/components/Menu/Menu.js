@@ -10,7 +10,7 @@ export default function Menu(props) {
           <li className="menu__item">
             <nav className="menu__item--text">
               <Link to="/" onClick={function() {
-                getHeading("Madrid", "Descubre todos sus secretos")
+                getHeading("Madrid", "Descubre todos sus secretos");
               }}>Index</Link>
             </nav>
           </li>
