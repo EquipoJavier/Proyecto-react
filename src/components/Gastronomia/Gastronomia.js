@@ -1,11 +1,15 @@
 import React from 'react';
-import Popup from "../Popup/Popup";
+import IntrodGastro from './FirstSection/IntrodGastro';
+import Platos from './SecondSection/Platos';
 import './Gastronomia.scss';
+import Restaurantes from './ThirdSection/Restaurantes';
 
 export default function Gastronomia() {
     return (
         <>  
-            <Popup />
+            <IntrodGastro />
+            <Platos title="Platos con historia"/>
+            <Restaurantes title="Ven a probar la mejor gastronomía"/>
         </>
     )
 }
