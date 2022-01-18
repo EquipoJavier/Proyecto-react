@@ -5,15 +5,13 @@ import Footer from "./Footer/Footer";
 import Header from "./Header/Header";
 import Menu from "./Menu/Menu";
 
-function App() {
+function App(props) {
   const [headerTitle, setHeaderTitle] = useState("Madrid");
   const [headerSubtitle, setHeaderSubtitle] = useState("Descubre todos sus secretos");
 
   function getHeading (title, subtitle) {
     setHeaderTitle(title);
     setHeaderSubtitle(subtitle);
-    // console.log(title);
-    // console.log(subtitle);
   }
 
   return (
