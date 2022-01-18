@@ -48,7 +48,7 @@ const lightBackground = {
 
 export default function IntrodGastro() {
     return (
-        <div style={lightBackground}>
+        <div >
             <IntroText text={text} gallery={gallery} />
         </div>
     )

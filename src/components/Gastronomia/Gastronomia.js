@@ -9,7 +9,7 @@ export default function Gastronomia() {
         <>  
             <IntrodGastro />
             <Platos title="Platos con historia"/>
-            <Restaurantes />
+            <Restaurantes title="Ven a probar la mejor gastronomía"/>
         </>
     )
 }
