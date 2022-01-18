@@ -1,6 +1,9 @@
 .menu{
     width: 100%;
     height: 5rem;
+    position: sticky;
+	top: 0;
+    z-index: 20;
 
     &__list{
         display: flex;
@@ -18,6 +21,7 @@
         justify-content: space-around;
         line-height: 4;
         position: relative;
+        background-color: rgb(185, 185, 185);
         
         &:before {
             position: absolute;
