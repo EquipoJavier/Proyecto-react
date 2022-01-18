@@ -38,7 +38,7 @@ export default function Menu(props) {
           <li className="menu__item">
             <nav>
               <Link to="/gastronomia" onClick={function() {
-                getHeading("Gastronomia", "");
+                getHeading("Gastronomia", "Un sabor inigualable");
                 setCurrentUrl((c) => c = window.location.pathname);
               }}>Gastronomia</Link>
             </nav>
