@@ -12,8 +12,8 @@ function App() {
   function getHeading (title, subtitle) {
     setHeaderTitle(title);
     setHeaderSubtitle(subtitle);
-    console.log(title);
-    console.log(subtitle);
+    // console.log(title);
+    // console.log(subtitle);
   }
 
   return (

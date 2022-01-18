@@ -4,13 +4,13 @@ import iconParq4 from "../../../Recursos/img/icono faunia.png";
 
 export default function Card4(){
     return(
-        <div class="col-1-of-2">
-          <div class="card--ocio">
-            <div class="card--ocio__side card--ocio__side--front">
+        <div className="col-1-of-2">
+          <div className="card--ocio">
+            <div className="card--ocio__side card--ocio__side--front">
               <img src={card4Front} alt=""/>
             </div>
-            <div class="card--ocio__side card--ocio__side--back card--ocio__side--back-4">
-              <div class="card--ocio__cta">
+            <div className="card--ocio__side card--ocio__side--back card--ocio__side--back-4">
+              <div className="card--ocio__cta">
                 <img src={iconParq4} alt=""/>
                 <p>
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.

@@ -3,7 +3,7 @@ import Roads from "./Roads/Roads";
 
 export default function SectionAllTransports() {
   return (
-    <section class="section__allTransports">
+    <section className="section__allTransports">
       <h1>¡Desplázate, ahorra, visita!</h1>
       <Bus />
       <Roads />
