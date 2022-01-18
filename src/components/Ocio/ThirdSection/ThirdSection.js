@@ -6,15 +6,15 @@ import "./ThirdSection.scss";
 
 export default function ThirdSection() {
   return (
-    <section class="third__section" id="third__section">
-      <h1 class="third__section--title">
+    <section className="third__section" id="third__section">
+      <h1 className="third__section--title">
         ¡LA DIVERSION REUNIDA EN UN SOLO LUGAR!
       </h1>
-      <div class="row--ocio">
+      <div className="row--ocio">
         <Card1 />
         <Card2 />
       </div>
-      <div class="row--ocio">
+      <div className="row--ocio">
         <Card3 />
         <Card4 />
       </div>
