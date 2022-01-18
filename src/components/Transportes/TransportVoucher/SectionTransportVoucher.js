@@ -1,6 +1,7 @@
 import FirstVoucher from "./FirstVoucher/FirstVoucher";
 import SecondVoucher from "./SecondVoucher/SecondVoucher";
 import ThirdVoucher from "./ThirdVoucher/ThirdVoucher";
+import "./SectionTransportVoucher.scss";
 
 export default function SectionTransportVoucher() {
   return (

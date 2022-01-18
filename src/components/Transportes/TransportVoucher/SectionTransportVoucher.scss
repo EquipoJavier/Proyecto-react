@@ -1,0 +1,25 @@
+.section__transportVoucher {
+  
+    clip-path: polygon(0 0, 100% 10%, 100% 100%, 0 90%);
+    height: 100vh;
+    padding-top: 30vh;
+    transform: translateY(-10vh);
+    background-image: linear-gradient(
+        to right bottom,
+        rgba(128, 128, 128, 0.904),
+        rgba(255, 255, 255, 0.8),
+        rgba(128, 128, 128, 0.904)
+      ),
+      url("../../Recursos/img/mapa-metro-fondo.png");
+    background-size: cover;
+    background-attachment: fixed;
+  
+    & h1 {
+      text-align: center;
+      margin-bottom: 8vh;
+      font-size: 30px;
+      transform: translateY(-5vh);
+      text-decoration: underline;
+      text-shadow: 4px 4px 6px rgba(78, 78, 78, 0.842);
+    }
+  }

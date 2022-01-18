@@ -1,40 +1,21 @@
-.header_index {
-    background-color: rgb(189, 189, 192);
-    height: 45vh;
-    background-image:linear-gradient(to right bottom, rgba(255, 255, 255, 0.5), rgba(7, 7, 7, 0.8)),url('../Recursos/img/header.jpg');
-    background-size: cover; 
-    background-position: top; 
-    position: relative;
+// Para estilos relacionados con las fuentes de toda la página (tipo fuente, tamaño, etc)
+body {
+    font-size: $default-font-size;
+    font-family:sans-serif;
+}
 
-   
-
-    @media (max-width:900px) {
-        -webkit-clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
-        clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
-    }
-
-      
-    &--text-box {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        text-align: center; 
-      }   
-  }
-
-  .heading_index-primary{
+.heading_index-primary{
     text-transform: uppercase;
     color: rgb(255, 255, 255);
 
     &--main{
         display: block;
         font-weight: 700;
-        letter-spacing: 3vw;
-        font-size: 6rem;
+        letter-spacing: 6.5rem;
+        font-size: 7rem;
         padding-left: 5rem;
         
-        @media (max-width:600px) {
+        @include respond(phone) {
             letter-spacing: 1rem;
         }
         &#gastronomia {
@@ -50,7 +31,7 @@
         letter-spacing: 1rem;
         font-size: 2rem;
 
-        @media (max-width:600px) {
+        @include respond(phone) {
             letter-spacing: .5rem;
         }
 

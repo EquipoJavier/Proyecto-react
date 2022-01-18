@@ -1,0 +1,51 @@
+.section__location {
+  height: 90vh;
+  text-align: center;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 90%);
+  margin-top: 8rem;
+
+  &--title {
+    padding-bottom: 3rem;
+    font-size: 3rem;
+    letter-spacing: 1rem;
+    text-shadow: 4px 4px 6px rgba(78, 78, 78, 0.842);
+  }
+
+  &--flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 0 20rem;
+
+    &-item {
+      
+      &--ul {
+        display: flex;
+        height: 30rem;
+        list-style: none;
+        flex-direction: column;
+        justify-content: space-between;
+
+        &-icon {
+          cursor: pointer;
+
+          &:hover {
+            animation-name: rotateIcons;
+            animation-duration: 0.5s;
+            animation-iteration-count: infinite;
+          }
+        }
+      }
+    }
+  }
+
+  &--map {
+    width: 30vw;
+    height: 30rem;
+  }
+}
+
+hr{
+  margin: 0 auto;
+  margin-bottom: 8rem;
+}
