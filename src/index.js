@@ -20,6 +20,7 @@ ReactDOM.render(
         <Route path="transportes" element={<Transportes />} />
         <Route path="ocio" element={<Ocio />} />
         <Route path="gastronomia" element={<Gastronomia />} />
+        <Route path="cultura" />
         {/* <Route path="cultura" element={<Cultura />} /> */}
       </Route>
     </Routes>

@@ -6,7 +6,6 @@
         display: flex;
         list-style: none;
         justify-content: space-around;
-        background-color: grey;
         align-content: stretch;
         height: 100%;
         align-items: center;
@@ -51,3 +50,29 @@
 
     }
 }
+
+.index{
+    //LA OPACIDAD SIEMPRE A 0.8
+    background-color: rgba(175, 59, 150, 0.8);
+}
+
+.ocio{
+    //LA OPACIDAD SIEMPRE A 0.8
+    background-color: rgb(56, 100, 243, 0.8);
+}
+
+.transportes{
+    //LA OPACIDAD SIEMPRE A 0.8
+    background-color: rgba(26, 194, 26, 0.8);
+}
+
+.cultura{
+    //LA OPACIDAD SIEMPRE A 0.8
+background-color: rgba(248, 99, 0, 0.8);
+}
+
+.gastronomia{
+    //LA OPACIDAD SIEMPRE A 0.8
+    background-color: rgb(165, 47, 47, 0.8);
+}
+
