@@ -18,8 +18,8 @@ function App() {
 
   return (
     <div>
-      <Menu getHeading={getHeading}/>
       <Header title={headerTitle} subtitle={headerSubtitle} />
+      <Menu getHeading={getHeading}/>
       <Outlet />
       <UpButton />
       <Footer />
