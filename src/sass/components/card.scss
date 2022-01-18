@@ -1,48 +1,4 @@
-.card--transporte {
-  perspective: 150rem; // perspective works on child elements
-  -moz-perspective: 150rem;
-  position: relative;
-  /* Perspective has gone because when we use position absolute the parent(.card), has width of zero pixels.
-       Here we can not use the clearfix trick, so
-       we add the same height of their childrens */
-  height: 18rem;
-  width: 20vw;
 
-  &__side {
-    transition: all 0.8s ease;
-    position: absolute;
-    top: 0;
-    left: 0;
-    backface-visibility: hidden; // It hides the back side of the component
-    overflow: hidden; // image was overflowing the parent, so the corners were no rounder. This is a fix.
-    box-shadow: 0 1.5rem 4rem rgba($color-black-ocio, 0.15);
-    border-radius: 15px;
-
-    &--back {
-      transform: rotateY(180deg);
-    }
-  }
-
-  &:hover &__side--front {
-    transform: rotateY(-180deg);
-  }
-  &:hover &__side--back {
-    transform: rotateY(0);
-  }
-
-  @include respond(tab-port) {
-    .card--transporte {
-      height: 10rem;
-      width: 15vw;
-      &__side img{
-        height: 100%;
-        width: 100%;
-      }
-    }
-  }
-
-
-}
 
 .card--ocio {
   perspective: 150rem; // perspective works on child elements
