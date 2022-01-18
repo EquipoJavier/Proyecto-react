@@ -6,11 +6,12 @@ import Header from "./Header/Header";
 import Menu from "./Menu/Menu";
 
 function App() {
-  const [headerTitle, setHeaderTitle] = useState("Madrid");
-  const [headerSubtitle, setHeaderSubtitle] = useState("Descubre todos sus secretos");
+  const [headerTitle, setHeaderTitle] = useState(sessionStorage.getItem('title') != null ? sessionStorage.getItem('title') : "Madrid");
+  const [headerSubtitle, setHeaderSubtitle] = useState(sessionStorage.getItem('subtitle') != null ? sessionStorage.getItem('subtitle') : "Descubre todos sus secretos");
 
   function getHeading (title, subtitle) {
     setHeaderTitle(title);
+    sessionStorage.setItem('title', title)
     setHeaderSubtitle(subtitle);
     // console.log(title);
     // console.log(subtitle);
