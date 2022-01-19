@@ -1,0 +1,18 @@
+
+
+.second__section{
+    background-color: rgb(126, 121, 121);
+    
+
+    &--title {
+        background: url("../../Recursos/img/rosa.gif");
+        background-position: center;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-align: center;
+        font-size: 40px;
+        font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+        padding-top: 15vh;
+      }
+    
+}
