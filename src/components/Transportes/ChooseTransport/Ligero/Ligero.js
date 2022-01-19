@@ -22,7 +22,7 @@ export default function Ligero() {
               width="600vw"
               height="350vh"
               style= {{ border:0 }}
-              allowfullscreen=""
+              allowFullScreen=""
               loading="lazy"
             ></iframe>
           </div>

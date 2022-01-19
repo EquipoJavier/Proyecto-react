@@ -1,5 +1,7 @@
 import ListTransport from "./ListTransport/ListTransport";
 import Map from "./Map/Map";
+import "./SectionLocation.scss";
+import "../../../sass/base/animations.scss";
 
 
 export default function SectionLocation(){
@@ -8,12 +10,11 @@ export default function SectionLocation(){
         <>
         <section className="section__location" id="section__location">
             <h1 className="section__location--title">Cónoce como desplazarte</h1>
-            <div className="row--transporte">
+            <hr width="400" />
+            <div className="section__location--flex">
                 <Map />
                 <ListTransport />
             </div>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugiat eligendi, est explicabo cupiditate quo animi dolore amet architecto quia debitis voluptate voluptas, officiis magnam consectetur iusto, unde consequatur voluptates suscipit.
-            Nostrum aliquid exercitationem non cumque, nemo, perferendis quibusdam placeat inventore molestiae expedita voluptate. Modi distinctio tempora ex earum rem, dolore natus rerum quo labore! Repudiandae est tenetur magnam rem totam?</p>
         </section>
         </>
     )
