@@ -1,10 +1,8 @@
 .restaurantes {
-    background-color: #F5F5F5;
     height: 50vh;
 
     &__titulo {
         text-align: center;
-        padding-top: 2rem;
 
         &--heading {
             background-image: linear-gradient(to right, rgb(143, 28, 12), rgb(94, 14, 14));
