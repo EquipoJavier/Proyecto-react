@@ -1,8 +1,7 @@
-
-
 .second__section{
-    background-color: rgb(126, 121, 121);
-    
+    background-color: #766E65;
+    width: 100%;
+    padding: 6rem 0 15rem 0;
 
     &--title {
         background: url("../../Recursos/img/rosa.gif");
@@ -13,6 +12,7 @@
         font-size: 40px;
         font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
         padding-top: 15vh;
+        padding-bottom: 15vh;
       }
     
 }
