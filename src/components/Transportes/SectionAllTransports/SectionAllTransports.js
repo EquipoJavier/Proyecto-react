@@ -1,5 +1,6 @@
 import Bus from "./Bus/Bus";
 import Roads from "./Roads/Roads";
+import "./SectionAllTransports.scss";
 
 export default function SectionAllTransports() {
   return (

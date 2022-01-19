@@ -19,7 +19,7 @@ export default function Menu(props) {
           </li>
           <li className={location.pathname === "/transportes" ? " menu__item transportes" : 'menu__item' }>
               <Link to="/transportes" onClick={function() {
-                getHeading("Transportes", "");
+                getHeading("Transportes", "Desplazarse es fácil, económicamente, lo nuestro");
                 window.scrollTo({
                   top: 0,
                   behavior: "smooth",
@@ -27,7 +27,7 @@ export default function Menu(props) {
           </li>
           <li className={location.pathname === "/ocio" ? " menu__item ocio" : 'menu__item' }>
               <Link to="/ocio" onClick={function() {
-                getHeading("Ocio", "");
+                getHeading("Ocio", "La aventura de divertirse");
                 window.scrollTo({
                   top: 0,
                   behavior: "smooth",
@@ -43,7 +43,7 @@ export default function Menu(props) {
           </li>
           <li className={location.pathname === "/cultura" ? " menu__item cultura" : 'menu__item' }>
               <Link to="/cultura" onClick={function() {
-                getHeading("Cultura", "");
+                getHeading("Cultura", "Subtítulo de cultura");
                 window.scrollTo({
                   top: 0,
                   behavior: "smooth",
