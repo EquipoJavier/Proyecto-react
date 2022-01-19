@@ -18,8 +18,8 @@ export default function Slider(){
     // </div>
     // </>
 
-<figure class="icon-cards mt-3">
-  <div class="icon-cards__content">
+<figure className="icon-cards mt-3">
+  <div className="icon-cards__content">
    <img className="icon-cards__item d-flex align-items-center justify-content-center" src={slider1} />
    <img className="icon-cards__item d-flex align-items-center justify-content-center" src={slider2} />
    <img className="icon-cards__item d-flex align-items-center justify-content-center" src={slider3} />

@@ -1,5 +1,5 @@
 .section__transportVoucher {
-  clip-path: polygon(0 0, 100% 10%, 100% 100%, 0 90%);
+  // clip-path: polygon(0 0, 100% 10%, 100% 100%, 0 90%);
   height: 100vh;
   background-image: linear-gradient(
       to right bottom,
@@ -13,18 +13,43 @@
 
 
   &--h1 {
-    padding-top: 12rem;
+    padding: 3rem;
+    padding-top: 8rem;
     text-align: center;
     font-size: 2.6rem;
-    letter-spacing: 0.5rem;
-    text-decoration: underline;
-    text-shadow: 4px 4px 6px rgba(78, 78, 78, 0.842);
+    letter-spacing: .7rem;
+    text-shadow: 4px 4px 6px rgb(65, 65, 65);
   }
+
   &_content{
     margin-top: 10rem;
     display: flex;
     justify-content: space-evenly;
+
+    &--item{
+      & h2{
+        background-color: rgba(207, 207, 207, 0.801);
+        border: double;
+        border-radius: 15px;
+        border-color: rgba(122, 122, 122);
+        font-family: "Latin Modern Roman";
+        font-style: italic;
+
+        &:hover{
+          transform: scale(1.15);
+        }
+      }
+    }
   }
+}
+
+hr{
+  margin: 0 auto;
+  margin-bottom: 8rem;
+  width: 40rem;
+  height: 2px ;
+  border: none ;
+  background-color: #333 ;
 }
 
 .card--transporte {
