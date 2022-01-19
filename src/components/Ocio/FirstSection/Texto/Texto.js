@@ -1,7 +1,7 @@
 import "./Texto.scss";
 export default function Texto() {
   return (
-    <div className="col-1-of-2">
+    <div className="first__section--text">
       <h3 className="first__section--title">¡LA DIVERSIÓN ESTÁ EN MADRID!</h3>
       <br />
       <br />
@@ -18,6 +18,8 @@ export default function Texto() {
         consequuntur praesentium distinctio et porro nam, quidem aperiam. Animi,
         cumque explicabo.
       </p>
+     <hr className="first__section--line" width="300"/>
     </div>
+     
   );
 }

@@ -3,6 +3,7 @@ import Emt from "./Emt/Emt";
 import Interurbano from "./Interurbano/Interurbano";
 import Ligero from "./Ligero/Ligero";
 import Metro from "./Metro/Metro";
+import "./ChooseTransport.scss";
 
 export default function ChooseTransport(){
 

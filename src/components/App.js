@@ -13,9 +13,7 @@ function App() {
     setHeaderTitle(title);
     sessionStorage.setItem('title', title)
     setHeaderSubtitle(subtitle);
-    sessionStorage.setItem('subtitle', subtitle)
-    // console.log(title);
-    // console.log(subtitle);
+    sessionStorage.setItem('subtitle', subtitle);
   }
 
   return (

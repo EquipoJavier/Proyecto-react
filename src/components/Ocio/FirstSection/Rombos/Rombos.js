@@ -1,7 +1,6 @@
 import "./Rombos.scss";
 export default function Rombos() {
   return (
-    <div className="col-1-of-2 col-1-of-2">
       <div className="rombos">
         <img
           className="rombos--img"
@@ -24,6 +23,5 @@ export default function Rombos() {
           alt=""
         />
       </div>
-    </div>
   );
 }
