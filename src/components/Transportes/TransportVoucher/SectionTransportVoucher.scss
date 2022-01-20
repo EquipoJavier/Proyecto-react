@@ -29,15 +29,13 @@
       & h2 {
         background-color: rgb(233, 233, 233);
         border: double;
+        border-color: rgba(0, 0, 0, 0.45);
         border-radius: 15px;
         background-image: linear-gradient(
-          to right bottom,
+          to top,
           rgba(255, 255, 255, .4),
-          rgba(128, 128, 128, .4),
-          rgba(255, 255, 255, .4),
-          rgba(128, 128, 128, .4),
-          rgba(255, 255, 255, .4),
-          rgba(128, 128, 128, .4)
+          rgba(128, 128, 128, .7),
+          rgba(255, 255, 255, .4)
         );
         font-family: "Latin Modern Roman";
         font-style: italic;
