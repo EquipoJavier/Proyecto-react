@@ -4,21 +4,22 @@ import Interurbano from "./Interurbano/Interurbano";
 import Ligero from "./Ligero/Ligero";
 import Metro from "./Metro/Metro";
 import "./ChooseTransport.scss";
+import Popup from "./Popup/Popup";
 
-export default function ChooseTransport(){
+export default function ChooseTransport() {
 
-    return(
-        <section className="choose__transport" id="choose__transport">
-            <h1>¡Elige tu transporte e infórmate!</h1>
-            <div className="row--transporte choose__transport_options">
-                <Metro />
-                <Emt />
-                <Interurbano />
-            </div>
-            <div className="row--transporte choose__transport_options">
-                <Ligero />
-                <Cercanias />       
-            </div>        
-        </section>
-    )
+  return (
+    <section className="choose__transport" id="choose__transport">
+      <h1>¡Elige tu transporte e infórmate!</h1>
+      <div className="choose__transport_options" >
+        <Metro />
+        <Emt />
+        <Interurbano />
+        <Ligero />
+        <Cercanias />
+
+        <Popup />
+      </div>
+    </section>
+  );
 }
