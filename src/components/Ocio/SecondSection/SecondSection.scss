@@ -1,18 +1,25 @@
 .second__section{
-    background-color: #766E65;
+  background: linear-gradient(
+    rgba(194, 191, 191, 0.7),
+    rgba(197, 179, 179, 0.7)
+  ),url("../../Recursos/img/fondo-cine.jpg");
+  background-color: transparent;
+  background-size: cover;
     width: 100%;
-    padding: 6rem 0 15rem 0;
+    padding: 6rem 0 10rem 0;
 
     &--title {
         background: url("../../Recursos/img/rosa.gif");
-        background-position: center;
+        background-position: bottom;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         text-align: center;
-        font-size: 40px;
-        font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+        font-size: 3rem;
+        font-family: "Fira Sans", sans-serif;
+        // font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
         padding-top: 15vh;
         padding-bottom: 15vh;
+        letter-spacing: 1;
       }
     
 }

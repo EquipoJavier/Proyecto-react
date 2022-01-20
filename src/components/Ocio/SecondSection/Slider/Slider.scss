@@ -1,12 +1,12 @@
 
 .slider {
-    margin: 0 auto;
+    margin-left: 25rem;
     position: relative;
-    width: 80vw;
-    height: 60vw;
-    max-width:430px;
-    max-height: 300px;
-    perspective: 1000px;
+    width: 70vw;
+    height: 50vw;
+    max-width:260px;
+    max-height: 210px;
+    perspective: 250px;
     transform-origin: center;
   
   
@@ -28,10 +28,14 @@
   
       &__item {
         position: absolute;
-        width: 80vw;
-        height: 60vw;
-        max-width: 430px;
-        max-height: 300px;
+        // width: 80vw;
+        // height: 60vw;
+        // max-width: 430px;
+        // max-height: 300px;
+        width: 70vw;
+        height: 50vw;
+        max-width:260px;
+        max-height: 210px;
         box-shadow: 0 5px 20px rgba(0,0,0,.1);
         border-radius: 6px;
         transform-origin: center;
