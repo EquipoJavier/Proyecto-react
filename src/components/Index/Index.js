@@ -10,7 +10,7 @@ export default function Index(){
         <>
         <section className="section__index">
         <h2>¿Qué quieres buscar?</h2>
-        <div className="row--transporte">
+        <div className="  ">
             <div className="story">
                 <figure className="story__shape">
                     <img src={gastronomia} alt="Gastronomía" className="story__img" />
@@ -31,7 +31,7 @@ export default function Index(){
                 </div>
             </div>
         </div>
-        <div className="row--transporte">
+        <div className="  ">
             <div className="story">
                 <figure className="story__shape">
                     <img src={cultura} alt="Cultura" className="story__img" />
@@ -50,7 +50,7 @@ export default function Index(){
                 </div>
             </div>
         </div>
-        <div className="row--transporte">
+        <div className="  ">
             <div className="story">
                 <figure className="story__shape">
                     <img width="150" src={ocio} alt="Ocio" className="story__img" />
@@ -71,7 +71,7 @@ export default function Index(){
                 </div>
             </div>
         </div>
-        <div className="row--transporte">
+        <div className="  ">
             <div className="story">
                 <figure className="story__shape">
                     <img width="150" src={transporte} alt="Transportes" className="story__img" />

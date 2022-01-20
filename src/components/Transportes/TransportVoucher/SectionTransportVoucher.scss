@@ -1,6 +1,6 @@
 .section__transportVoucher {
-  clip-path: polygon(0 0, 100% 10%, 100% 100%, 0 90%);
-  height: 90vh;
+  // clip-path: polygon(0 0, 100% 10%, 100% 100%, 0 90%);
+  height: 100vh;
   background-image: linear-gradient(
       to right bottom,
       rgba(128, 128, 128, 0.904),
@@ -11,24 +11,54 @@
   background-size: cover;
   background-attachment: fixed;
 
-
   &--h1 {
-    padding-top: 12rem;
+    padding: 3rem;
+    padding-top: 8rem;
     text-align: center;
     font-size: 2.6rem;
-    letter-spacing: 0.5rem;
-    text-decoration: underline;
-    text-shadow: 4px 4px 6px rgba(78, 78, 78, 0.842);
+    letter-spacing: 0.7rem;
+    text-shadow: 4px 4px 6px rgb(65, 65, 65);
   }
-  &_content{
+
+  &_content {
     margin-top: 10rem;
     display: flex;
     justify-content: space-evenly;
+
+    &--item {
+      & h2 {
+        background-color: rgb(233, 233, 233);
+        border: double;
+        border-color: rgba(0, 0, 0, 0.45);
+        border-radius: 15px;
+        background-image: linear-gradient(
+          to top,
+          rgba(255, 255, 255, .4),
+          rgba(128, 128, 128, .7),
+          rgba(255, 255, 255, .4)
+        );
+        font-family: "Latin Modern Roman";
+        font-style: italic;
+
+        &:hover {
+          transform: scale(1.15);
+        }
+      }
+    }
   }
 }
 
+hr {
+  margin: 0 auto;
+  margin-bottom: 8rem;
+  width: 40rem;
+  height: 2px;
+  border: none;
+  background-color: #333;
+}
+
 .card--transporte {
-  perspective: 150rem; 
+  perspective: 150rem;
   -moz-perspective: 150rem;
   position: relative;
   height: 18rem;
@@ -39,8 +69,8 @@
     position: absolute;
     top: 0;
     left: 0;
-    backface-visibility: hidden; 
-    overflow: hidden; 
+    backface-visibility: hidden;
+    overflow: hidden;
     box-shadow: 0 1.5rem 4rem rgba(black, 0.15);
     border-radius: 15px;
 
@@ -67,4 +97,3 @@
     }
   }
 }
-

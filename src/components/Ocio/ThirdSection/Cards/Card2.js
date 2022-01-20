@@ -4,7 +4,7 @@ import iconParq2 from "../../../Recursos/img/icono warner.png";
 
 export default function Card2() {
   return (
-    <div className="col-1-of-2">
+    <div className=" ">
       <div className="card--ocio">
         <div className="card--ocio__side card--ocio__side--front">
           <img src={card2Front} alt="" />
