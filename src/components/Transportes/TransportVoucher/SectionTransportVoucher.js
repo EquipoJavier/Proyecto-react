@@ -7,6 +7,7 @@ export default function SectionTransportVoucher() {
   return (
     <section className="section__transportVoucher">
       <h1 className="section__transportVoucher--h1">Así se desplazan económicamente los madrileños</h1>
+      <hr />
       <div className="section__transportVoucher_content">
         <FirstVoucher />
         <SecondVoucher />

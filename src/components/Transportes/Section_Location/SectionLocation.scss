@@ -14,9 +14,8 @@
   &--flex {
     display: flex;
     align-items: center;
-    justify-content: space-around;
-    margin: 0 20rem;
-
+    margin: 0 10rem;
+    
     &-item {
       
       &--ul {
@@ -24,7 +23,8 @@
         height: 30rem;
         list-style: none;
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: space-evenly;
+        margin: 0 3rem;
 
         &-icon {
           cursor: pointer;

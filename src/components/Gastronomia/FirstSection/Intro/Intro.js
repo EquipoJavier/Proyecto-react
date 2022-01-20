@@ -23,7 +23,9 @@ export default function Intro(props) {
                     {gallery.map(function (image) {
                         return (
                             <>
-                            <img className="intro__gallery--image" src={image.img} alt="Img"/>
+                                <div className="intro__gallery--image">
+                                    <img className="intro__gallery--image" src={image.img} alt="Img"/>
+                                </div>
                             </>
                         )
                     })}

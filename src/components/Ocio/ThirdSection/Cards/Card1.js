@@ -5,7 +5,7 @@ import iconParq1 from "../../../Recursos/img/icono parque atracciones.png";
 export default function Card1(){
     return (
         <>
-        <div className="col-1-of-2">
+        <div className=" ">
           <div className="card--ocio">
             <div className="card--ocio__side card--ocio__side--front">
               <img src={card1Front} alt="" />
