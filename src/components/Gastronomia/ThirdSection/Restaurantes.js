@@ -37,9 +37,9 @@ export default function Restaurantes(props) {
 
             {restaurantes.map((restaurant, index) => {
                 if(index%2 === 0) {
-                    return <RestaurantTextbox restaurante={restaurant} imgOnRight={true}/>
+                    return <RestaurantTextbox key={restaurant.name} restaurante={restaurant} imgOnRight={true}/>
                 } else {
-                    return <RestaurantTextbox restaurante={restaurant} imgOnRight={false}/>
+                    return <RestaurantTextbox key={restaurant.name} restaurante={restaurant} imgOnRight={false}/>
                 }
             })}
 

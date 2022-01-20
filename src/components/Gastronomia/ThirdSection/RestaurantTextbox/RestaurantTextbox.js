@@ -8,11 +8,11 @@ export default function RestaurantTextbox({restaurant, imgOnRight}) {
                 <div className="resTextbox__text">
                     <span className="resTextbox__text--title"></span>
                     <div className="resTextbox__text--descr">
-    
+
                     </div>
                 </div>
                 <div className="resTextbox__img">
-    
+                    <img src={restaurant.img} alt={restaurant.name}/>
                 </div>
             </div>
         )
