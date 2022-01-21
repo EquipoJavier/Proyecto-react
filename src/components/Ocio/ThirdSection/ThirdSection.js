@@ -9,10 +9,10 @@ export default function ThirdSection() {
         ¡LA DIVERSION REUNIDA EN UN SOLO LUGAR!
       </h1>
        <div>
-       <Card name={"Card1"} />
-       <Card name={"Card2"} />
-       <Card name={"Card3"} />
-       <Card name={"Card4"} />
+       <Card name="card1" />
+       <Card name="card2"/>
+       <Card name="card3"/>
+       <Card name="card4"/>
       </div>
     </section>
   );
