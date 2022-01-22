@@ -1,0 +1,65 @@
+
+.voucher{
+  height: 100vh;
+    background-image: linear-gradient(
+      to right bottom,
+      rgba(128, 128, 128, 0.904),
+      rgba(255, 255, 255, 0.8),
+      rgba(128, 128, 128, 0.904)
+    ),
+    url("../../Recursos/img/final--transportes.jpg");
+    background-size: cover;
+
+    &--h1 {
+      padding-top: 5rem;
+      text-align: center;
+      font-size: 2.6rem;
+      letter-spacing: 0.7rem;
+      text-shadow: 4px 4px 6px rgb(65, 65, 65);
+    }
+
+    &__content{
+      display: flex;
+      background-color: blueviolet;
+      justify-content: space-around;
+      align-items: center;
+      margin: 5rem auto;
+      width: 80%;
+      height: 70%;
+      
+      &--form {
+        background-color: rgb(103, 207, 129);
+        display: flex;
+        flex: 1 ;
+        flex-direction: column;
+        height: 70%;
+      }
+
+      &--img {
+        position: relative;
+        & img{
+          border-radius: 4%;
+        }
+
+        &-holder{
+          position: absolute;
+          top: 0;
+          right: 0;
+          margin-right: 0.35rem;
+          margin-top: .8rem;
+          width: 90px;
+          height: 110px;
+        }
+      }
+
+    }
+}
+
+.img{
+  width: 90px;
+  height: 110px;
+  object-fit: cover;
+}
+#input[type="file"]{
+  display: none;
+}

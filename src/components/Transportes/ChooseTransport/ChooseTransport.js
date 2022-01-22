@@ -4,7 +4,7 @@ import Interurbano from "./Interurbano/Interurbano";
 import Ligero from "./Ligero/Ligero";
 import Metro from "./Metro/Metro";
 import "./ChooseTransport.scss";
-import Popup from "./Popup/Popup";
+// import Popup from "./Popup/Popup";
 
 export default function ChooseTransport() {
 
@@ -18,7 +18,7 @@ export default function ChooseTransport() {
         <Ligero />
         <Cercanias />
 
-        <Popup />
+        {/* <Popup /> */}
       </div>
     </section>
   );

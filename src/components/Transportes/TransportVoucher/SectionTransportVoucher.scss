@@ -11,17 +11,23 @@
   background-size: cover;
   background-attachment: fixed;
 
-  &--h1 {
+  &--h1, &--h1-subtitle {
     padding: 3rem;
     padding-top: 8rem;
     text-align: center;
     font-size: 2.6rem;
     letter-spacing: 0.7rem;
     text-shadow: 4px 4px 6px rgb(65, 65, 65);
+    text-decoration: none;
+    display: block;
+    &-subtitle{
+      font-size: 2rem;
+      letter-spacing: 0.7rem;
+      color: black;
+    }
   }
 
   &_content {
-    margin-top: 10rem;
     display: flex;
     justify-content: space-evenly;
 
@@ -55,6 +61,12 @@ hr {
   height: 2px;
   border: none;
   background-color: #333;
+}
+
+.arrow{
+  animation-name: rotateIcons;
+  animation-duration: 0.5s;
+  animation-iteration-count: infinite;
 }
 
 .card--transporte {
