@@ -12,7 +12,7 @@ export default function Transportes(){
     const [create, setCreate] = useState(localStorage.getItem("name") !== null && localStorage.getItem("img") !== null && localStorage.getItem("surname") !== null);
     const [name, setName] = useSemiPersistentState("name", localStorage.getItem("name") !== null ? localStorage.getItem("name") : "");
     const [surname, setSurName] = useSemiPersistentState("surname", localStorage.getItem("surname") !== null ? localStorage.getItem("surname") : "");
-    const [fileInput, setFileInput] = useSemiPersistentState("img", localStorage.getItem("img") !== null ? localStorage.getItem("img") : profileDefault);
+    const [fileInput, setFileInput] = useSemiPersistentState("img", localStorage.getItem("img") !== null ? localStorage.getItem("img") : null);
 
     return(
         <>

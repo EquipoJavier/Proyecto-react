@@ -29,6 +29,9 @@ const [disabled, setDisabled] = useState(localStorage.getItem("name") === null |
     localStorage.setItem("name", sessionStorage.getItem("name"));
     localStorage.setItem("surname", sessionStorage.getItem("surname"));
     localStorage.setItem("img", sessionStorage.getItem("img"));
+    sessionStorage.removeItem("name");
+    sessionStorage.removeItem("surname");
+    sessionStorage.removeItem("img");
   };
 
 
@@ -69,7 +72,7 @@ const [disabled, setDisabled] = useState(localStorage.getItem("name") === null |
           <i className="material-icons">photo</i>
           Elige una foto...
         </label>
-        <button disabled={!disabled} className="but" type="button" onClick={() => { handleCreate() }} > Crear </button>
+        <button disabled={!disabled && localStorage.getItem("name") === null && localStorage.getItem("img") === null && localStorage.getItem("surname") === null } className="but" type="button" onClick={() => { handleCreate() }} > Crear </button>
         <button disabled={disabled} className="but" type="button" > Aceptar los cambios </button>
       </form>
     </>
