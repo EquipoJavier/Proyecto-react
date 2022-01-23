@@ -45,7 +45,7 @@
         flex-direction: column;
         align-items: flex-start;
         justify-content: space-around;
-        & > label:not(:last-child) {
+        & > label:not(:nth-last-child(4n+3)) {
           display: flex;
           justify-content: space-between;
           width: 50%;
@@ -63,7 +63,7 @@
         margin-left: 1.5rem;
         font-size: 1.4rem;
       }
-      & img {
+      & > img {
         border-radius: 6px;
       }
       &-holder {
