@@ -3,15 +3,14 @@ import bono from "../../Recursos/img/crea-tu-bono.jpg";
 import Form from "./Form/Form";
 import "./VoucherCrud.scss";
 
-export default function VoucherCrud({ name, setName, setCreate, surname, setSurName, setFileInput}) {
- 
+export default function VoucherCrud({ name, setName, setCreate, surname, setSurName, setFileInput, setDisabled , disabled}) {
 
   return (
     <div className="voucher" id="voucher">
       <h1 className="voucher--h1">¡Crea tu propia tarjeta!</h1>
       <div className="voucher__content">
         <div className="voucher__content--form">
-          <Form setCreate={setCreate} setFileInput={setFileInput} name={name} setName={setName} surname={surname} setSurName={setSurName} />
+          <Form setCreate={setCreate} setFileInput={setFileInput} name={name} setName={setName} surname={surname} setSurName={setSurName} setDisabled={setDisabled} disabled={disabled} />
         </div>
         <div className="voucher__content--img">
           <img src={bono} alt=" " />

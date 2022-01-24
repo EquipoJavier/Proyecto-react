@@ -1,22 +1,29 @@
 import { useState } from "react";
 import bono from "../../Recursos/img/crea-tu-bono.jpg";
 import "../CRUD_Voucher/VoucherCrud.scss";
+import Bono from "./Bono/Bono";
+import ButtonHiddenCrud from "./ButtonHiddenCrud/ButtonHiddenCrud";
 import "./HiddenCrud.scss";
+import Paragraph from "./Paragraph/Paragraph";
 
-export default function HiddenCrud({ name, surname, fileInput, visibility }) {
-    const [deletedDisabled, setDeletedDisabled] = useState(true);
-    const [modifiedDisabled, setModifiedDisabled] = useState(true);
+export default function HiddenCrud({ name, surname, fileInput, visibility , setCreate ,setDisabled }) {
+  const [deletedDisabled, setDeletedDisabled] = useState(true);
+  const [modifiedDisabled, setModifiedDisabled] = useState(true);
 
-    const handleDelete = (e) => {
-        setModifiedDisabled(false);
-        setDeletedDisabled(true);
-      };
+  const handleDelete = (e) => {
+    setModifiedDisabled(false);
+    setDeletedDisabled(true);
+    localStorage.removeItem("name");
+    localStorage.removeItem("img");
+    localStorage.removeItem("surname");
+    setCreate(false);
+    setDisabled(true);
+  };
 
-      const handleModify = (e) => {
-        setModifiedDisabled(true);
-        setDeletedDisabled(false);
-      };
-
+  const handleModify = (e) => {
+    setModifiedDisabled(true);
+    setDeletedDisabled(false);
+  };
 
   return (
     <div className={visibility}>
@@ -26,35 +33,13 @@ export default function HiddenCrud({ name, surname, fileInput, visibility }) {
       <div className="visible__content">
         <div className="visible__content">
           <div className="visible__content-paragraphs">
-            <div className="visible__content-paragraphs--p">
-              <p>
-                Presente esta tarjeta en su oficina correspondiente y te
-                entregarán una física.
-              </p>
-              <p>
-                Recuerde que siempre puede{" "}
-                <strong>
-                  <i>modificar</i>
-                </strong>{" "}
-                sus datos o{" "}
-                <strong>
-                  <i>eliminar</i>
-                </strong>{" "}
-                esta tarjeta.
-              </p>
-            </div>
+            <Paragraph />
             <div className="visible__content-paragraphs--changes">
-              <button disabled={!modifiedDisabled} className="but" type="button" onClick={() => { handleModify() }}> Modificar </button>
-              <button disabled={!deletedDisabled} className="but" type="button" onClick={() => { handleDelete() }} > Eliminar </button>
+              <ButtonHiddenCrud disabled={modifiedDisabled} className="but" handle={handleModify}  text="Modificar" />
+              <ButtonHiddenCrud disabled={deletedDisabled} className="but" handle={handleDelete}  text="Eliminar" />
             </div>
           </div>
-          <div className="visible__content-bono">
-            <img src={bono} alt=" " />
-            <p className="visible__content-bono--names">{name + "\n" + surname}</p>
-            <div className="visible__content-bono--holder">
-              <img src={fileInput} alt=" " id="img" className="img" />
-            </div>
-          </div>
+          <Bono bono={bono} name={name} surname={surname} fileInput={fileInput} />
         </div>
       </div>
     </div>
