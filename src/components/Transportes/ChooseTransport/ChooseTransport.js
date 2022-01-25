@@ -7,16 +7,19 @@ import "./ChooseTransport.scss";
 // import Popup from "./Popup/Popup";
 
 export default function ChooseTransport() {
-
   return (
     <section className="choose__transport" id="choose__transport">
       <h1>¡Elige tu transporte e infórmate!</h1>
-      <div className="choose__transport_options" >
-        <Metro />
-        <Emt />
-        <Interurbano />
-        <Ligero />
-        <Cercanias />
+      <div className="choose__transport_options">
+        <div className="choose__transport_options-">
+          <Metro />
+          <Emt />
+          <Interurbano />
+        </div>
+        <div className="choose__transport_options-">
+          <Ligero />
+          <Cercanias />
+        </div>
 
         {/* <Popup /> */}
       </div>

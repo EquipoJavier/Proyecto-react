@@ -1,39 +1,53 @@
 .choose__transport {
     height: 100vh;
+    padding-bottom: 8rem;
   
     &_options {
-      text-align: center;
+      width: 80%;
+      margin: 0 auto;
+      &-{
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        margin: 5rem;
+
+        &-option {
+          border-radius: 10px;
+          margin: 1.5rem;
+          box-shadow: 0 2.5rem 4rem rgba(black, 0.5);
+          width: 22rem;
+          height: 22rem;
   
-      &--option {
-        border-radius: 10px;
-        margin: 1.5rem;
-        box-shadow: 0 2.5rem 4rem rgba(black, 0.5);
-  
-        & h2 {
-          text-align: center;
-          text-decoration: underline overline;
-          text-shadow: 4px 4px 5px rgba(82, 82, 82, 0.842);
-          letter-spacing: 0.6vw;
-          transform: translateY(-5rem) skewX(-15deg) rotateZ(2.7deg);
-          color: black;
-        }
-  
-        &:hover {
-          transform: scale(1.1);
-          background-image: linear-gradient(
-            to right bottom,
-            rgba(92, 92, 92, 0.295),
-            rgb(255, 255, 255),
-            rgba(92, 92, 92, 0.295)
-          );
-          transition: 0.5s ease-in-out;
+    
+          & h2 {
+            text-align: center;
+            text-decoration: underline overline;
+            text-shadow: 4px 4px 5px rgba(82, 82, 82, 0.842);
+            letter-spacing: 0.6vw;
+            transform: translateY(-5rem) skewX(-15deg) rotateZ(2.7deg);
+            color: black;
+          }
+    
+          &:hover {
+            transform: scale(1.1);
+            background-image: linear-gradient(
+              to right bottom,
+              rgba(92, 92, 92, 0.295),
+              rgb(255, 255, 255),
+              rgba(92, 92, 92, 0.295)
+            );
+            transition: 0.5s ease-in-out;
+          }
         }
       }
+  
     }
   
     & h1 {
       text-align: center;
-      font-size: 30px;
+      padding-top: 3rem;
+      font-size: 2.7rem;
+      letter-spacing: 0.5rem;
       text-shadow: 4px 4px 6px rgba(78, 78, 78, 0.842);
     }
   }
