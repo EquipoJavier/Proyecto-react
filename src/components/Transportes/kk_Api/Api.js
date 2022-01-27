@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from "react";
 
-export default function Api() {
+export default function kk_Api() {
   const [items, setItems] = useState([]);
   const [done, setDone] = useState(false);
 
 
   useEffect(() => {
-    const randomNumber = Math.round(Math.random()*10);
-    fetch(`https://jsonplaceholder.typicode.com/users/${randomNumber}`)
+    fetch("http://localhost:3001/transportes")
       .then((result) => result.json())
       .then((items) => {
-        setItems([items]);
+        setItems(items);
         setDone(true);
       })}, []);
 
@@ -18,10 +17,14 @@ export default function Api() {
     <div>{ done ? <ul>
       {items.map(function (item) {
         return (
-          <li key={item.id}>
-            <p>{item.id}</p>
-            <p>Su nombre es {item.name}</p>
-          </li>
+          item.first.map(function (it) {
+            return (
+              <li key={it.id}>
+                <p><b>{it.name}</b></p>
+                <p>{it.text}</p>
+              </li>
+            );
+          })
         );
       })}
     </ul>

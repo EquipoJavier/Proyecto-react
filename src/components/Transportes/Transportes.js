@@ -6,7 +6,7 @@ import VoucherCrud from "./CRUD_Voucher/VoucherCrud";
 import HiddenCrud from "./Hidden_CRUD/HiddenCrud";
 import usePersistentState from "./CRUD_Voucher/usePersistentState.js";
 import "./Transportes.scss";
-import Api from "./Api/Api";
+import { useOutletContext } from "react-router-dom";
 
 export default function Transportes(){
     const [create, setCreate] = useState(localStorage.getItem("name") === null && localStorage.getItem("img") === null && localStorage.getItem("surname") !== null);
@@ -15,10 +15,11 @@ export default function Transportes(){
     const [surname, setSurName] = usePersistentState("surname", localStorage.getItem("surname") !== null ? localStorage.getItem("surname") : null);
     const [fileInput, setFileInput] = usePersistentState("img", localStorage.getItem("img") !== null ? localStorage.getItem("img") : null);
 
+    const [done , pageEndPoint] = useOutletContext();
+    
     return(
         <>
-        <Api />
-            <SectionLocation />
+            <SectionLocation done={done} pageEndPoint={pageEndPoint} />
             <SectionTransportVoucher />
             <ChooseTransport />
             <VoucherCrud name={name} setName={setName} setCreate={setCreate} surname={surname} setSurName={setSurName} setFileInput={setFileInput} setDisabled={setDisabled} disabled={disabled} />

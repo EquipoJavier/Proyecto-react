@@ -1,9 +1,77 @@
 {
-    "posts": [
-      { "id": 1, "title": "json-server", "author": "typicode" }
-    ],
-    "comments": [
-      { "id": 1, "body": "some comment", "postId": 1 }
-    ],
-    "profile": { "name": "typicode" }
-  }
+  "index": [
+    {
+      "first": [
+        {
+          "id": "1",
+          "name": "Metro de Madrid: ",
+          "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque quas facere"
+        }
+      ]
+    }
+  ],
+  "transportes": [
+    {
+      "first": [
+        {
+          "id": "1",
+          "name": "Metro de Madrid: ",
+          "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque quas facere"
+        },
+        {
+          "id": "2",
+          "name": "Autobuses EMT: ",
+          "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit."
+        },
+        {
+          "id": "3",
+          "name": "Autobuses Interurbanos: ",
+          "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit."
+        },
+        {
+          "id": "4",
+          "name": "Metro Ligero: ",
+          "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque quas facere"
+        },
+        {
+          "id": "5",
+          "name": "Cercanías: ",
+          "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque quas facere"
+        }
+      ]
+    }
+  ],
+  "ocio": [
+    {
+      "first": [
+        {
+          "id": "1",
+          "name": "Metro de Madrid: ",
+          "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque quas facere"
+        }
+      ]
+    }
+  ],
+  "gastronomía": [
+    {
+      "first": [
+        {
+          "id": "1",
+          "name": "Metro de Madrid: ",
+          "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque quas facere"
+        }
+      ]
+    }
+  ],
+  "cultura": [
+    {
+      "first": [
+        {
+          "id": "1",
+          "name": "Metro de Madrid: ",
+          "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque quas facere"
+        }
+      ]
+    }
+  ]
+}
