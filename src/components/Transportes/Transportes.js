@@ -6,6 +6,7 @@ import VoucherCrud from "./CRUD_Voucher/VoucherCrud";
 import HiddenCrud from "./Hidden_CRUD/HiddenCrud";
 import usePersistentState from "./CRUD_Voucher/usePersistentState.js";
 import "./Transportes.scss";
+import Api from "./Api/Api";
 
 export default function Transportes(){
     const [create, setCreate] = useState(localStorage.getItem("name") === null && localStorage.getItem("img") === null && localStorage.getItem("surname") !== null);
@@ -16,6 +17,7 @@ export default function Transportes(){
 
     return(
         <>
+        <Api />
             <SectionLocation />
             <SectionTransportVoucher />
             <ChooseTransport />

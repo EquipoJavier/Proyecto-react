@@ -1,27 +1,29 @@
-import { useState , useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
-export default function Api(){
+export default function Api() {
+  const [items, setItems] = useState([]);
+  const [done, setDone] = useState(false);
 
-    const url = "https://services5.arcgis.com/UxADft6QPcvFyDU1/arcgis/rest/services/Red_Metro/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=4326&f=json";
-    const [multiData, setMultiData] = useState();
+  useEffect(() => {
+    const randomNumber = Math.round(Math.random()*10);
+    fetch(`https://jsonplaceholder.typicode.com/users/${randomNumber}`)
+      .then((result) => result.json())
+      .then((items) => {
+        setItems([items]);
+        setDone(true);
+      })}, []);
 
-    const fetchApi = async () => {
-        const response = await fetch(url);
-        const responseJson = await response.json();
-        setMultiData(responseJson);
-    }
-
-    useEffect(()=>{
-        fetchApi();
-    }, []);
-
-    return (
-        <ul>
-            {   
-            setTimeout(() => multiData ? multiData.map((data) => {
-                return <li>{data}</li>
-            }) : 'Cargando...', 10)   
-            }
-        </ul>
-    );
+  return (
+    <div>{ done ? <ul>
+      {items.map(function (item) {
+        return (
+          <li key={item.id}>
+            <p>{item.id}</p>
+            <p>Su nombre es {item.name}</p>
+          </li>
+        );
+      })}
+    </ul>
+   : <p>Cargando resultados...</p>}</div>
+  );
 }

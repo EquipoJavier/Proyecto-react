@@ -9,8 +9,8 @@ import slider5 from "../../../Recursos/img/carrousel5.png";
 export default function Slider(){
     return(
 
-<figure class="slider">
-  <div class="slider__content">
+<figure  className="slider">
+  <div  className="slider__content">
    <img className="slider__item" src={slider1} alt=""/>
    <img className="slider__item" src={slider2} alt=""/>
    <img className="slider__item" src={slider3} alt=""/>
