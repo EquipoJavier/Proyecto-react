@@ -7,7 +7,7 @@ export default function VoucherCrud({ name, setName, setCreate, surname, setSurN
 
   return (
     <div className="voucher" id="voucher">
-      <h1 className="voucher--h1">¡Crea tu propia tarjeta!</h1>
+      <h1 className="voucher--h1">¡Crea todas las tarjetas para tu familia!</h1>
       <div className="voucher__content">
         <div className="voucher__content--form">
           <Form setCreate={setCreate} setFileInput={setFileInput} name={name} setName={setName} surname={surname} setSurName={setSurName} setDisabled={setDisabled} disabled={disabled} />
