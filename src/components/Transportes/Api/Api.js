@@ -4,6 +4,7 @@ export default function Api() {
   const [items, setItems] = useState([]);
   const [done, setDone] = useState(false);
 
+
   useEffect(() => {
     const randomNumber = Math.round(Math.random()*10);
     fetch(`https://jsonplaceholder.typicode.com/users/${randomNumber}`)
