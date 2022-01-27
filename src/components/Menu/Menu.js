@@ -49,6 +49,14 @@ export default function Menu(props) {
                   behavior: "smooth",
               })}}>Cultura</Link>
           </li>
+          <li className={location.pathname === "/visita" ? " menu__item visita" : 'menu__item' }>
+              <Link to="/visita" onClick={function() {
+                getHeading("Organiza tu visita", "");
+                window.scrollTo({
+                  top: 0,
+                  behavior: "smooth",
+              })}}>Organiza tu visita</Link>
+          </li>
         </ul>
       </nav>
   );

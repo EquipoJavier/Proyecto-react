@@ -1,0 +1,86 @@
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+    font-family: "Fira Sans", sans-serif;
+}
+
+.visita {
+    &__body {
+    background-color: #f5f5f5;
+    }
+
+    &__box {
+        background-color: green; // TEST
+        height: 70vh; // TEST
+        margin: 5rem 15rem;
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__addButton {
+        flex-basis: 20%;
+        display: flex;
+        align-self: center;
+    }
+    
+    &__content {
+        background-color: aquamarine; //TEST
+        height: 50vh; // TEST
+        display: flex;
+        flex-direction: column;
+
+        &__form {
+            margin: 1rem 3rem;
+            display: flex;
+
+            & > label {
+                padding-left: 3rem;
+                padding-right: 0.5rem;
+            }
+
+            &--submit {
+                margin-left: auto;
+                margin-right: 5rem;
+            }
+        }
+
+        &__table {
+            background-color: azure;
+            width: 80%;
+            align-self: center;
+            display: flex;
+            
+            & table {
+                flex-basis: 100%;
+                border-collapse: collapse;
+
+                & tr {
+                    border: 1px solid black;
+
+                    & > * {
+                        padding: 1rem;
+                    }
+                }
+
+                & th, td {
+                    //border: 1px solid black;
+                }
+                & th {
+                    text-align: left;
+                }
+            }
+
+            &--buttons {
+                float: right;
+                
+                & button {
+                    margin: 0 0.5rem;
+                }
+            }
+        }
+    }
+
+}
