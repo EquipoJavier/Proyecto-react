@@ -8,7 +8,7 @@ export default function Visita() {
                     <Button title="Añadir elemento al itinerario" hoverClass="darkRed"/>
                 </div>
                 <div className="visita__content">
-                    Este formulario saldría al darle al botón de añadir:
+                    El formulario saldría al darle al botón de añadir. La tabla aparecería al añadir al menos un elemento.
                     <div className="visita__content__form">
                         <label>Día: </label>
                         <input type="date" />
