@@ -1,6 +1,7 @@
 .button {
     align-self: center; // The component is implemented as a flex element. This centers it in its container.
     background-color: #766E65;
+    color: black;
     padding: 2rem;
     font-size: 2rem;
     text-transform: uppercase;
@@ -9,12 +10,11 @@
     border: none;
     border-radius: 1rem;
     box-shadow: 1px 1px 5px 2px rgb(0,0,0, 0.2);
-    transition: background-color 0.4s;
+    transition: transform 0.1s;
 
     &:link,
     &:visited {
         text-decoration: none;
-        color: inherit;
     }
 
     &:hover {
@@ -24,4 +24,15 @@
     &:active {
         transform: translateY(1px);
     }
+}
+
+/////////////////////////////////////////
+// ESTILOS HOVER
+
+// Para crear nuevos estilos, crear una nueva clase a continuación.
+// El transition es necesario para poder animar el cambio de color, hay que incluirlo en estas clases (en vez de en .button)
+.darkRed {
+    transition: background-color 0.4s, color 0.4s;
+    background-color: rgb(143, 28, 12);
+    color: #fff;
 }
