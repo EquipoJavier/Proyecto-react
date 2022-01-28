@@ -21,6 +21,9 @@ export default function UpButton() {
     case "/cultura":
       currentClass = "btn__subir btn__subir--cultura";
       break;
+    case "/visita":
+      currentClass = "btn__subir btn__subir--visita";
+      break;
     default:
       currentClass = "btn__subir btn__subir--index";
       break;

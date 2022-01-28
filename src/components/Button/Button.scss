@@ -11,6 +11,7 @@
     border-radius: 1rem;
     box-shadow: 1px 1px 5px 2px rgb(0,0,0, 0.2);
     transition: transform 0.1s;
+    cursor: pointer;
 
     &:link,
     &:visited {
@@ -35,4 +36,10 @@
     transition: background-color 0.4s, color 0.4s;
     background-color: rgb(143, 28, 12);
     color: #fff;
+}
+
+.violet {
+    transition: background-color 0.4s, color 0.4s;
+    background-color: rgb(62, 9, 207);
+    color: #99938b;
 }
