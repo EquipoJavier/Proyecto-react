@@ -1,124 +1,116 @@
- 
-  @media (max-width: 900px) {
- 
-    .section__location{
-        height: 160vh;
-        &--title {
-            margin-right: 13vw;
-            font-size: 20px;
-            width: 50vw;
-        }
-        &--map{
-            margin:auto;
-            padding-left: 10rem;
-            width: 80vw;
-        }
-        &--ul {
-            &-subtitle {
-                margin-top: 60vh;
-                width: 4vw;
-                transform: translateX(-17vh) rotateZ(90deg);
-                margin-bottom: -18vh;
-              }
-              &-icon {
-                display: block;
-                margin-left: 30vw;
-              }
-        }
-        & p{
-            transform: translateY(-90vh);
-            width: 50vw;
-            float: left;
-            margin-left: 21vw;
-          }
+@media (max-width: 900px) {
+  .section__location {
+    height: 160vh;
+    &--title {
+      margin-right: 13vw;
+      font-size: 20px;
+      width: 50vw;
     }
-  
-    .section__transportVoucher {
-      height: 65vh;
-      
-        & h1 {
-          float: right;
-          margin: 0 auto;
-          margin-right: 18vw;
-          font-size: 20px;
-          transform: translateY(-24vw);
-        }
-  
-        & > *{
-          transform: translateY(-18vw);
-  
-        }
+    &--map {
+      margin: auto;
+      padding-left: 10rem;
+      width: 80vw;
+    }
+    &--ul {
+      &-subtitle {
+        margin-top: 60vh;
+        width: 4vw;
+        transform: translateX(-17vh) rotateZ(90deg);
+        margin-bottom: -18vh;
       }
-    
-      .section__allTransports {
-        height: 70vh;
-        & h1 {
-          transform: translateY(-17vw) skewX(-15deg) rotateZ(2.7deg);
-        }
-      
-        & h4 {
-          position: absolute;
-          margin: 0 auto;
-          padding-left: 5vw;
-          font-size: 1.20rem;
-          z-index: -1;
-          transform: translateY(-100vh)  rotateX(-40deg);
-        }
-      
-        &_bus {
-          transform: translateY(-10vw);
-          clip-path: polygon(0 0, 100% 4%, 100% 100%, 0 100%);
-          height: 100vh;
-          width: 100vw;
-          position: relative;
-          &--img img{
-            height: 20rem;
-            width: 50rem;
-            margin-right: 5rem;
-          }
-          
-        }
+      &-icon {
+        display: block;
+        margin-left: 30vw;
       }
-  
-      .choose__transport {
-        margin-top: -25vw;
-        height: 130vh;
-        margin-right: -10vw;
-        
-      
-        &_options {
-          text-align: center;
-          
-          &--option {
-      
-            & h2 {
-              margin-top: 12vh; 
-              text-align: none;
-              margin-left: -2vw;
-              text-decoration: underline ;
-              text-shadow: 4px 4px 5px rgba(82, 82, 82, 0.842);
-              letter-spacing: 0.1vw;
-              transform: translateY(-5vh) skewX(-15deg) rotateZ(2.7deg);
-              color: black;
-              font-size: 20px;
-            }
-          }
-        }
-      
-        & h1 {
-          text-align: center;
-          margin: 8vh auto;
-          font-size: 20px;
-          transform: translateY(-8vh);
-          text-shadow: 4px 4px 6px rgba(78, 78, 78, 0.842);
-        }
-      }
-      
-  }
-  
-  @media (max-width: 1260px){
-    .choose__transport {
-      margin-right: -10vw;
+    }
+    & p {
+      transform: translateY(-90vh);
+      width: 50vw;
+      float: left;
+      margin-left: 21vw;
     }
   }
-  
+
+  .section__transportVoucher {
+    height: 65vh;
+
+    & h1 {
+      float: right;
+      margin: 0 auto;
+      margin-right: 18vw;
+      font-size: 20px;
+      transform: translateY(-24vw);
+    }
+
+    & > * {
+      transform: translateY(-18vw);
+    }
+  }
+
+  .section__allTransports {
+    height: 70vh;
+    & h1 {
+      transform: translateY(-17vw) skewX(-15deg) rotateZ(2.7deg);
+    }
+
+    & h4 {
+      position: absolute;
+      margin: 0 auto;
+      padding-left: 5vw;
+      font-size: 1.2rem;
+      z-index: -1;
+      transform: translateY(-100vh) rotateX(-40deg);
+    }
+
+    &_bus {
+      transform: translateY(-10vw);
+      clip-path: polygon(0 0, 100% 4%, 100% 100%, 0 100%);
+      height: 100vh;
+      width: 100vw;
+      position: relative;
+      &--img img {
+        height: 20rem;
+        width: 50rem;
+        margin-right: 5rem;
+      }
+    }
+  }
+
+  .choose__transport {
+    margin-top: -25vw;
+    height: 130vh;
+    margin-right: -10vw;
+
+    &_options {
+      text-align: center;
+
+      &--option {
+        & h2 {
+          margin-top: 12vh;
+          text-align: none;
+          margin-left: -2vw;
+          text-decoration: underline;
+          text-shadow: 4px 4px 5px rgba(82, 82, 82, 0.842);
+          letter-spacing: 0.1vw;
+          transform: translateY(-5vh) skewX(-15deg) rotateZ(2.7deg);
+          color: black;
+          font-size: 20px;
+        }
+      }
+    }
+
+    & h1 {
+      text-align: center;
+      margin: 8vh auto;
+      font-size: 20px;
+      transform: translateY(-8vh);
+      text-shadow: 4px 4px 6px rgba(78, 78, 78, 0.842);
+    }
+  }
+}
+
+@media (max-width: 1260px) {
+  .choose__transport {
+    margin-right: -10vw;
+  }
+}

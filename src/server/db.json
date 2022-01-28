@@ -15,29 +15,33 @@
       "first": [
         {
           "id": "1",
-          "name": "Metro de Madrid: ",
-          "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. ",
+          "name": "Metro de Madrid",
+          "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit  ",
           "link": "https://www.metromadrid.es/es"
         },
         {
           "id": "2",
-          "name": "Autobuses EMT: ",
-          "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit."
+          "name": "Autobuses EMT",
+          "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit ",
+          "link": "https://www.emtmadrid.es/"
         },
         {
           "id": "3",
-          "name": "Autobuses Interurbanos: ",
-          "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit."
+          "name": "Autobuses Interurbanos",
+          "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit ",
+          "link": "https://www.crtm.es/"
         },
         {
           "id": "4",
-          "name": "Metro Ligero: ",
-          "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque quas facere"
+          "name": "Metro Ligero",
+          "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque quas facere ",
+          "link": "https://www.metroligero-oeste.es/"
         },
         {
           "id": "5",
-          "name": "Cercanías: ",
-          "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque quas facere"
+          "name": "Cercanías",
+          "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque quas facere ",
+          "link": "https://www.renfe.com/es/es"
         }
       ]
     }

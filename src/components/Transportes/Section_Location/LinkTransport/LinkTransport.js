@@ -10,7 +10,7 @@ export default function LinkTransport({ done, pageEndPoint }) {
               return (
                 <li key={item.id} className="section__location--flex-item--ul">
                   <p>
-                    <b>{item.name}</b>{item.text}<a href={item.link} style={{textDecoration: "none"}} >Accede a la web del Metro de Madrid</a>
+                    <b>{item.name}: </b>{item.text}<a href={item.link} style={{textDecoration: "none"}} >accede a la web de {item.name}</a>
                   </p>
                 </li>
               );
