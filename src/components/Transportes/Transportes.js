@@ -15,6 +15,8 @@ export default function Transportes(){
     const [surname, setSurName] = usePersistentState("surname", localStorage.getItem("surname") !== null ? localStorage.getItem("surname") : null);
     const [fileInput, setFileInput] = usePersistentState("img", localStorage.getItem("img") !== null ? localStorage.getItem("img") : null);
 
+
+    //con el método useOutletContext() obtenemos los valores pasados en el context a Outlet anteriormente en App
     const [done , pageEndPoint] = useOutletContext();
     
     return(

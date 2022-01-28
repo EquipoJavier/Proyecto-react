@@ -16,7 +16,8 @@
         {
           "id": "1",
           "name": "Metro de Madrid: ",
-          "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque quas facere"
+          "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. ",
+          "link": "https://www.metromadrid.es/es"
         },
         {
           "id": "2",
