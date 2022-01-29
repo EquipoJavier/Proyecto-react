@@ -1,20 +1,16 @@
-import Cercanias from "./Cercanias/Cercanias";
-import Emt from "./Emt/Emt";
-import Interurbano from "./Interurbano/Interurbano";
-import Ligero from "./Ligero/Ligero";
-import Metro from "./Metro/Metro";
+import Block from "../Block/Block";
 
 export default function All() {
   return (
     <>
       <div className="choose__transport_options-">
-        <Metro />
-        <Emt />
-        <Interurbano />
-      </div>
+        <Block type={"metro"} />
+        <Block type={"emt"} />
+        <Block type={"inter"} />
+        </div>
       <div className="choose__transport_options-">
-        <Ligero />
-        <Cercanias />
+        <Block type={"ligero"} />
+        <Block type={"cercanias"} />
       </div>
     </>
   );

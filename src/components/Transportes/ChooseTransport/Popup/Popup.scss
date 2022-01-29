@@ -1,123 +1,73 @@
-.popup {
-    display: flex;
-    flex-wrap: wrap;
-    margin: 0 5rem;
-    //padding-bottom: 5rem;
-    justify-content: space-around;
+.popup_transportes {
+  width: 80vw;
+  height: 35vw;
+  background-color: brown;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
 
-    &__elem {
-        position: relative;
-        margin: 4rem;
-        //flex-grow: 1;
-        flex-basis: 17%;
-        aspect-ratio: 1/1;
+  &--btn{
+      position: absolute;
+      right: 0;
+      margin: 1rem 1rem 0 0;
+      color: rgb(0, 0, 3);
+  }
 
-        &:hover .popup__img--name {
-            opacity: 1;
-            transform: translate(-50%, -50%);
-        }
-        &:hover .popup__img--thumbnail {
-            transform: scale(1.1);
-            filter: blur(1px) brightness(60%);
-        }
+  &--img {
+    margin: 5%;
+    width: 40%;
+    position: relative;
+  }
+
+  &-aside {
+      display: flex;
+      flex-direction: column;
+
+    &--h1{
+        text-align: center;
+        padding-top: 1.5rem;
+        font-size: 2.5rem;
+        letter-spacing: 0.5rem;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-image: url("../../../Recursos/img/fondopopup.gif");
+        background-position: bottom;
     }
 
-    &__img {
-        &--thumbnail {
-        border: 2px solid black;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: all 0.3s;
-        }
+    &--text {
+      margin: 5%;
+      overflow-y: scroll;
+      position: relative;
 
-        &--name {
-            position: absolute;
-            background-color: rgba(192, 192, 192, 0.6);
-            padding: 1.5rem;
-            left: 50%;
-            bottom: 45%;
-            text-transform: uppercase;
-            font-weight: 700;
-            font-size: 2.5rem;
-            letter-spacing: 0.2rem;
-            cursor: pointer;
-            transform: translate(-50%, 20%);
-            transition: all 0.3s;
-            opacity: 0;
-        }
+      &::-webkit-scrollbar {
+        width: 12px;
+        height: 12px;
+      }
+
+      &::-webkit-scrollbar-track-piece {
+        background: #aaa;
+        border-radius: 10px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: #7a7a7a;
+        border-radius: 10px;
+      }
+
+      &::-webkit-scrollbar-corner {
+        background: #999;
+      }
+
+      &::-webkit-scrollbar-thumb:window-inactive {
+        background: #888;
+      }
+
+      &-p {
+        padding: 0 2rem;
+        text-align: justify;
+      }
     }
-
-    &__background {
-        height: 100vh;
-        width: 100%;
-        position: fixed;
-        top: 0;
-        left: 0;
-        background-color: rgba(0, 0, 0, 0.2);
-        z-index: 9500;
-        //visibility: hidden;
-        opacity: 1;
-        transition: all 0.3s;
-    }
-
-    &__box {
-        position: absolute;
-        display: flex;
-        border: 2px solid black;
-        border-radius: 0.5rem;
-        width: 80%;
-        height: 40rem;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-
-        &--left {
-            // width: 100%;
-            background-color: grey;
-            border-top-left-radius: 0.5rem;
-            border-bottom-left-radius: 0.5rem;
-            width: 25%;
-        }
-
-        &--right {
-            // width: 100%;
-            background-color: white;
-            border-top-right-radius: 0.5rem;
-            border-bottom-right-radius: 0.5rem;
-            flex-grow: 3;
-            width: 75%;
-            position: relative;
-        }
-
-        &--heading {
-            text-align: center;
-            text-transform: uppercase;
-            letter-spacing: 0.4rem;
-            padding: 2rem 1rem 1rem 1rem;
-        }
-
-        &--descr {
-            text-align:center;
-            font-size: 2.2rem;
-            padding: 2rem;
-        }
-
-        &--img {
-            height: 100%;
-            object-position: center;
-            object-fit: cover;
-        }
-    }
-}
-
-.closeButton {
-    position: absolute;
-    left: 50%;
-    bottom: 10%;
-    cursor: pointer;
-    text-transform: uppercase;
-    transform: translate(-50%, -10%);
-    padding: 1rem;
-    font-weight: bold;
+  }
 }
