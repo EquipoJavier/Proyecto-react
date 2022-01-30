@@ -31,6 +31,7 @@ function App() {
   //le indico la ruta con el recurso a solicitar y en el caso de que pathname hubiera sido "/" (referido a index), a la url le paso /index
 
 
+
   //Se corre este efecto cada vez que cambie la url (es decir, queramos solicitar otro recurso)
   useEffect(() => {
     //con fecth obtenemos el contenido de ese recurso p.ejem("http://localhost:3001/transportes")
@@ -39,6 +40,7 @@ function App() {
       .then((result) => result.json())
       //despues al recibir el json lo añadimos en el estado de items y cambiamos done a true para saber que hemos recibido los datos
       .then((items) => {
+        // console.log(items, "bbb");
         setItems(items);
         setDone(true);
       })
@@ -49,7 +51,7 @@ function App() {
   }, [url]);
 
   //si se ha obtenido el resultado (done === true) entonces nos pasa el endpoint correspondiente a la página en la que te encuentras acutalmente (en este caso el endpoint sería "transportes")
-  if (done) {
+  if (done && pathname !== "/visita") {
     var pageEndPoint = items.map((item) => {
       return item;
     });

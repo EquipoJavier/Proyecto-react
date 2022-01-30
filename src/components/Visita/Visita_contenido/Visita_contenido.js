@@ -5,6 +5,7 @@ import VisitaTabla from './Visita_tabla/Visita_tabla';
 export default function VisitaContenido(props) {
     const[hidden, setHidden] = useState(true);
 
+
     function toggleContent() {
         setHidden(!hidden);
     }
@@ -30,10 +31,14 @@ export default function VisitaContenido(props) {
                     <label>A dónde ir: </label>
                     <select>
                         <option>--- Elige ---</option>
-                        <option>Opción 1</option>
+                        {props.restaurantes.map(restaurante => {
+                            return <option key={restaurante}>{restaurante}</option>
+                        })}
+
+                        {/* <option>Opción 1</option>
                         <option>Opción 2</option>
                         <option>Opción 3</option>
-                        <option>Opción 4</option>
+                        <option>Opción 4</option> */}
                     </select>
 
                     <button className="visita__content__form--submit" onClick={() => {
