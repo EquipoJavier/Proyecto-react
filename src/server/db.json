@@ -12,7 +12,7 @@
   ],
   "transportes": [
     {
-      "first": [
+      "location": [
         {
           "id": "1",
           "name": "Metro de Madrid",
@@ -42,6 +42,38 @@
           "name": "Cercanías",
           "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque quas facere ",
           "link": "https://www.renfe.com/es/es"
+        }
+      ],
+      "choose": [
+        {
+          "id": "1",
+          "type": "metro",
+          "name": "Metro de Madrid",
+          "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit  "
+        },
+        {
+          "id": "2",
+          "type": "emt",
+          "name": "Autobuses EMT",
+          "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit "
+        },
+        {
+          "id": "3",
+          "type": "inter",
+          "name": "Autobuses Interurbanos",
+          "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit "
+        },
+        {
+          "id": "4",
+          "type": "ligero",
+          "name": "Metro Ligero",
+          "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque quas facere "
+        },
+        {
+          "id": "5",
+          "type": "cercanias",
+          "name": "Cercanías",
+          "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque quas facere "
         }
       ]
     }

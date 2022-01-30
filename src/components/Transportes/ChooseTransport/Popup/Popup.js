@@ -1,11 +1,12 @@
 import metro from "../../../Recursos/img/metropopup.jpg";
 import "./Popup.scss";
 
-export default function Popup({ show, setShow }) {
+export default function Popup({ info, show, setShow }) {
   return (
     <div className={ show ? "popup_transportes": "hidden"}>
       <div className="popup_transportes--btn" onClick={() => {
         setShow(false);
+        window.onscroll=function(){};
       }}>
         <i className="material-icons">close</i>
       </div>

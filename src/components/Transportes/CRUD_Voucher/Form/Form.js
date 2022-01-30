@@ -1,5 +1,6 @@
 import InputImage from "./InputImage/InputImage";
 import LabelInput from "./LabelInput/LabelInput";
+import Radio from "./Radio/Radio";
 
 export default function Form(props) {
 
@@ -30,6 +31,7 @@ export default function Form(props) {
       <form className="voucher__content--form-f">
         <LabelInput value={name} handle={handleName} text={"Nombre"} />
         <LabelInput value={surname} handle={handleSurName} text={"Apellidos"} />
+        <Radio />
         <InputImage setFileInput={props.setFileInput} />
         <button disabled={!props.disabled } className="but" type="button" onClick={() => { handleCreate() }} > Crear </button>
         <button disabled={props.disabled} className="but" type="button" > Aceptar los cambios </button>
