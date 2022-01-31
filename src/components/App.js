@@ -4,7 +4,6 @@ import UpButton from "./UpButton/UpButton";
 import Footer from "./Footer/Footer";
 import Header from "./Header/Header";
 import Menu from "./Menu/Menu";
-import { useRef } from "react/cjs/react.development";
 
 function App() {
   const [headerTitle, setHeaderTitle] = useState(
@@ -26,15 +25,26 @@ function App() {
     setHeaderSubtitle(subtitle);
     sessionStorage.setItem("subtitle", subtitle);
   }
-  
-  const pathname = useLocation().pathname; //obtengo la ruta acutal p.ejem("/transportes")
-  const url = `http://localhost:3001${pathname === "/" ? "/index" : pathname}`; 
-  const pageEndPoint = useRef();
-  //le indico la ruta con el recurso a solicitar y en el caso de que pathname hubiera sido "/" (referido a index), a la url le paso /index
 
+  const pathname = useLocation().pathname; //obtengo la ruta acutal p.ejem("/transportes")
+  // const url = `http://localhost:3001${pathname === "/" ? "/index" : pathname}`;
+  const url = "http://localhost:3001/data";
+  //le indico la ruta con el recurso a solicitar y en el caso de que pathname hubiera sido "/" (referido a index), a la url le paso /index
 
   //Se corre este efecto cada vez que cambie la url (es decir, queramos solicitar otro recurso)
   useEffect(() => {
+    fetch(url)
+      .then((res) => res.json())
+      .then((result) => {
+        setItems(result);
+        setDone(true);
+      }).catch(function (error) {
+        console.log("Hubo un problema con la petición Fetch:" + error.message);
+      });
+
+    /*
+    console.log(url);
+    if(pathname !== "/visita") {
     //con fecth obtenemos el contenido de ese recurso p.ejem("http://localhost:3001/transportes")
     fetch(url)
     //si hemos conseguid obtenerlo devolvemos una promesa que se resuelve con el resultado como JSON
@@ -48,14 +58,39 @@ function App() {
       .catch(function (error) {
         console.log("Hubo un problema con la petición Fetch:" + error.message);
       });
-
+    } else {
+      fetch('http://localhost:3001/data')
+      .then(res => res.json())
+      .then(result => {
+        setItems(result);
+        setDone(true);
+      })
+    }
+    */
   }, [url]);
 
   //si se ha obtenido el resultado (done === true) entonces nos pasa el endpoint correspondiente a la página en la que te encuentras acutalmente (en este caso el endpoint sería "transportes")
   if (done) {
-    pageEndPoint.current = items.map((item) => {
-      return item;
-    });
+    var pageEndPoint;
+    switch (pathname) {
+      case "/":
+        pageEndPoint = items.index;
+        break;
+      case "/transportes":
+        pageEndPoint = items.transportes;
+        break;
+      case "/ocio":
+        pageEndPoint = items.ocio;
+        break;
+      case "/gastronomia":
+        pageEndPoint = items.gastronomia;
+        break;
+      case "/cultura":
+        pageEndPoint = items.cultura;
+        break;
+      default:
+        pageEndPoint = items;
+    }
   }
 
   return (

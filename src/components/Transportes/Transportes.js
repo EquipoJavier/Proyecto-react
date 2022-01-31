@@ -19,12 +19,14 @@ export default function Transportes(){
 
     //con el método useOutletContext() obtenemos los valores pasados en el context a Outlet anteriormente en App
     const [done , pageEndPoint] = useOutletContext();
+
+   
     
     return(
         <>
             <SectionLocation done={done} pageEndPoint={pageEndPoint} />
             <SectionTransportVoucher />
-            <ChooseTransport />
+            <ChooseTransport done={done} pageEndPoint={pageEndPoint} />
             <VoucherCrud setType={setType} name={name} setName={setName} setCreate={setCreate} surname={surname} setSurName={setSurName} setFileInput={setFileInput} setDisabled={setDisabled} disabled={disabled} />
             <HiddenCrud  type={type} name={name} surname={surname} fileInput={fileInput} visibility={!create ? "hidden" : "visible"} setCreate={setCreate} setDisabled={setDisabled} />
         </>

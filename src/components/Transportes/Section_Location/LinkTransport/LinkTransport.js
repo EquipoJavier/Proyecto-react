@@ -5,18 +5,14 @@ export default function LinkTransport({ done, pageEndPoint }) {
     <div className="section__location--flex-item">
       <ul className="section__location--flex-item--ul flex-1">
         {done ? (
-          pageEndPoint.current.map((ob) => {
-            // console.log(ob);
-            return ob.location.map(function (item) {
+          pageEndPoint.location.map(function (item) {
               return (
                 <li key={item.id} className="section__location--flex-item--ul">
                   <p>
                     <b>{item.name}: </b>{item.text}<a href={item.link} style={{textDecoration: "none"}} >accede a la web de {item.name}</a>
                   </p>
                 </li>
-              );
-            });
-          })
+              )})
         ) : (
           <img style={{
             width: "70px"
