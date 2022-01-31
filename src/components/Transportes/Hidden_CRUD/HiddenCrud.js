@@ -1,12 +1,11 @@
 import { useState } from "react";
-import bono from "../../Recursos/img/crea-tu-bono.jpg";
 import "../CRUD_Voucher/VoucherCrud.scss";
 import Bono from "./Bono/Bono";
 import ButtonHiddenCrud from "./ButtonHiddenCrud/ButtonHiddenCrud";
 import "./HiddenCrud.scss";
 import Paragraph from "./Paragraph/Paragraph";
 
-export default function HiddenCrud({ name, surname, fileInput, visibility , setCreate ,setDisabled }) {
+export default function HiddenCrud({ type, name, surname, fileInput, visibility , setCreate ,setDisabled }) {
   const [deletedDisabled, setDeletedDisabled] = useState(true);
   const [modifiedDisabled, setModifiedDisabled] = useState(true);
 
@@ -16,6 +15,7 @@ export default function HiddenCrud({ name, surname, fileInput, visibility , setC
     localStorage.removeItem("name");
     localStorage.removeItem("img");
     localStorage.removeItem("surname");
+    localStorage.removeItem("type");
     setCreate(false);
     setDisabled(true);
   };
@@ -39,7 +39,7 @@ export default function HiddenCrud({ name, surname, fileInput, visibility , setC
               <ButtonHiddenCrud disabled={deletedDisabled} className="but" handle={handleDelete}  text="Eliminar" />
             </div>
           </div>
-          <Bono bono={bono} name={name} surname={surname} fileInput={fileInput} />
+          <Bono bono={type} name={name} surname={surname} fileInput={fileInput} />
         </div>
       </div>
     </div>

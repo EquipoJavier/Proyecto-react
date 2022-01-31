@@ -24,6 +24,7 @@ export default function Form(props) {
     localStorage.setItem("name", sessionStorage.getItem("name"));
     localStorage.setItem("surname", sessionStorage.getItem("surname"));
     localStorage.setItem("img", sessionStorage.getItem("img"));
+    localStorage.setItem("type", sessionStorage.getItem("type"));
   };
 
   return (
@@ -31,7 +32,7 @@ export default function Form(props) {
       <form className="voucher__content--form-f">
         <LabelInput value={name} handle={handleName} text={"Nombre"} />
         <LabelInput value={surname} handle={handleSurName} text={"Apellidos"} />
-        <Radio />
+        <Radio setType={props.setType} />
         <InputImage setFileInput={props.setFileInput} />
         <button disabled={!props.disabled } className="but" type="button" onClick={() => { handleCreate() }} > Crear </button>
         <button disabled={props.disabled} className="but" type="button" > Aceptar los cambios </button>

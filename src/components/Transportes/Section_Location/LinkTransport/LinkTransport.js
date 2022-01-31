@@ -5,7 +5,8 @@ export default function LinkTransport({ done, pageEndPoint }) {
     <div className="section__location--flex-item">
       <ul className="section__location--flex-item--ul flex-1">
         {done ? (
-          pageEndPoint.map((ob) => {
+          pageEndPoint.current.map((ob) => {
+            // console.log(ob);
             return ob.location.map(function (item) {
               return (
                 <li key={item.id} className="section__location--flex-item--ul">

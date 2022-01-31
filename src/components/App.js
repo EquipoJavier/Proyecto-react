@@ -4,6 +4,7 @@ import UpButton from "./UpButton/UpButton";
 import Footer from "./Footer/Footer";
 import Header from "./Header/Header";
 import Menu from "./Menu/Menu";
+import { useRef } from "react/cjs/react.development";
 
 function App() {
   const [headerTitle, setHeaderTitle] = useState(
@@ -25,9 +26,10 @@ function App() {
     setHeaderSubtitle(subtitle);
     sessionStorage.setItem("subtitle", subtitle);
   }
-
+  
   const pathname = useLocation().pathname; //obtengo la ruta acutal p.ejem("/transportes")
   const url = `http://localhost:3001${pathname === "/" ? "/index" : pathname}`; 
+  const pageEndPoint = useRef();
   //le indico la ruta con el recurso a solicitar y en el caso de que pathname hubiera sido "/" (referido a index), a la url le paso /index
 
 
@@ -46,11 +48,12 @@ function App() {
       .catch(function (error) {
         console.log("Hubo un problema con la petición Fetch:" + error.message);
       });
+
   }, [url]);
 
   //si se ha obtenido el resultado (done === true) entonces nos pasa el endpoint correspondiente a la página en la que te encuentras acutalmente (en este caso el endpoint sería "transportes")
   if (done) {
-    var pageEndPoint = items.map((item) => {
+    pageEndPoint.current = items.map((item) => {
       return item;
     });
   }
