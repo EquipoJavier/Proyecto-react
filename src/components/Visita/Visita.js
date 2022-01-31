@@ -8,26 +8,26 @@ export default function Visita() {
     const [test, setTest] = useState([]);
     const [done, setDone] = useState(false);
 
-    useEffect(() => {
-        fetch('http://localhost:3001/TESTgastr')
-        .then((result) => result.json())
-        .then((asd) => {
-            setTest(asd);
-            setDone(true);
-        })
-    }, []);
+//     useEffect(() => {
+//         fetch('http://localhost:3001/TESTgastr')
+//         .then((result) => result.json())
+//         .then((asd) => {
+//             setTest(asd);
+//             setDone(true);
+//         })
+//     }, []);
 
-if (done) {
-    var arrayPlatos = test.platos.map(plato => {
-        console.log(plato.name);
-        return plato.name;
-    })
-    console.log("-----------------");
-    var arrayRestaurantes = test.restaurantes.map(restaurante => {
-        console.log(restaurante.name);
-        return restaurante.name;
-    })
-}
+// if (done) {
+//     var arrayPlatos = test.platos.map(plato => {
+//         console.log(plato.name);
+//         return plato.name;
+//     })
+//     console.log("-----------------");
+//     var arrayRestaurantes = test.restaurantes.map(restaurante => {
+//         console.log(restaurante.name);
+//         return restaurante.name;
+//     })
+// }
 
 
     function toggleContent() {
@@ -42,7 +42,8 @@ if (done) {
                         toggleContent();
                     }} />
                 </div>
-                <VisitaContenido hidden={hidden} restaurantes={arrayRestaurantes}/>
+                <VisitaContenido hidden={hidden} />
+                {/* <VisitaContenido hidden={hidden} restaurantes={arrayRestaurantes}/> */}
             </div>
         </div>
     );
