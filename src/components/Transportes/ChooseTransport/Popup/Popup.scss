@@ -19,6 +19,14 @@
   box-shadow: 0 2.5rem 4rem rgba(black, 0.7);
   border-radius: 1%;
 
+  &--loading {
+    position: relative;
+    & > img {
+      width: 50%;
+      margin-top: 15%;
+    }
+  }
+
 
   &--btn{
       position: absolute;
@@ -58,7 +66,6 @@
         background-clip: text;
         -webkit-text-fill-color: transparent;
         background-image: url("../../../Recursos/img/fondopopup.gif");
-        background-position: top;
     }
 
     &--text {
