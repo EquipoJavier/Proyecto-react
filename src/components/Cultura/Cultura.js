@@ -4,6 +4,7 @@ import TitulosSecundarios  from "./TitulosSecundarios";
 import ImagenParque from "./ImagenesParques";
 import ImagenOtrasVisitas from "./ImagenesOtrasVisitas";
 import Reloj from "./Reloj";
+import BotonScroll from "./ScrollBoton";
 import RelojAnalogico from "./RelojAnalogico";
 import Video from "./Video";
 import PopUp from "./PopUp";
@@ -86,6 +87,7 @@ function EstilosBotonCierrePopUp() {
         <PopUp/>
         <button className="boton-PopUp_Cierre" onClick={()=>BotonPulsado()}>X</button>
       </div>
+      <BotonScroll/>
         <section className="opiniones">
           <div className="opiniones--text-box">
             <TitulosSecundarios clase="opiniones_heading--primary" tituloSecundario="Opiniones" />

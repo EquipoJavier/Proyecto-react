@@ -89,8 +89,7 @@ export default function Carrusel() {
     function CarruselBtnDrch(){
         slider.current.style.transition = '2s ease all';     
         slider.current.style.transform = `translateX(${translateX+32.5}%)`; 
-        setBotonPulsado(false);
-        console.log(">>>>>1",translateX+32.5)      
+        setBotonPulsado(false);      
         setTranslateX(translateX+32.5);
         setActivoDrch(true);
     }
@@ -112,10 +111,8 @@ export default function Carrusel() {
             setTranslateX(0);
         }else{
             slider.current.style.transition = 'none'; 
-            slider.current.style.transform = `translateX(${translateX-32.5}%)`;
-            console.log(">>>>>2",translateX-32.5) 
+            slider.current.style.transform = `translateX(${translateX-32.5}%)`; 
             setTranslateX(0);
-            console.log("derecho");
         }
   
             rotate(botonPulsado);
@@ -149,7 +146,7 @@ export default function Carrusel() {
                 <div className="carrusel--container_exterior">
                     <div className="opiniones_carrusel--container" style={{transform: "translateX(0%)"}} ref={slider} onTransitionEnd={()=>CarruselTransitionEnd()}>
                             {
-                                fotos.slice(0,5).map((props)=>
+                                fotos.map((props)=>
                                     <div className="opiniones_contenido" key={props.id}>
 
                                         <div className="imagenes--container">

@@ -22,7 +22,7 @@ export default function All({ done, pageEndPoint, show, setShow }) {
         <Block type={"ligero"} setShow={setShow} setTypes={setTypes} />
         <Block type={"cercanias"} setShow={setShow} setTypes={setTypes} />
       </div>
-      {show ? <Popup popupInfo={popupInfo} done={done} setTypes={setTypes} types={types} show={show} setShow={setShow} /> : <></>}
+      {show ? <Popup popupInfo={popupInfo} done={done} types={types} show={show} setShow={setShow} /> : <></>}
     </>
   );
 }
