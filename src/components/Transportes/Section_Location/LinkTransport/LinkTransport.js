@@ -1,5 +1,8 @@
 import loading from "../../../Recursos/img/loading.gif";
 
+/* he refactorizado el método de uso de la api: al eliminar arrays/objetos intermedios
+  te puedes ahorrar maps y hacer más claro el código*/
+
 export default function LinkTransport({ done, pageEndPoint }) {
   return (
     <div className="section__location--flex-item">

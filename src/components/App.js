@@ -31,6 +31,7 @@ function App() {
   const url = "http://localhost:3001/data";
   //le indico la ruta con el recurso a solicitar y en el caso de que pathname hubiera sido "/" (referido a index), a la url le paso /index
 
+
   //Se corre este efecto cada vez que cambie la url (es decir, queramos solicitar otro recurso)
   useEffect(() => {
     fetch(url)
@@ -75,21 +76,27 @@ function App() {
     switch (pathname) {
       case "/":
         pageEndPoint = items.index;
+        console.log(pathname, pageEndPoint);
         break;
       case "/transportes":
         pageEndPoint = items.transportes;
+        console.log(pathname, pageEndPoint);
         break;
       case "/ocio":
         pageEndPoint = items.ocio;
+        console.log(pathname, pageEndPoint);
         break;
       case "/gastronomia":
         pageEndPoint = items.gastronomia;
+        console.log(pathname, pageEndPoint);
         break;
       case "/cultura":
         pageEndPoint = items.cultura;
+        console.log(pathname, pageEndPoint);
         break;
       default:
         pageEndPoint = items;
+        console.log(pathname, pageEndPoint);
     }
   }
 
@@ -98,6 +105,7 @@ function App() {
       <Header title={headerTitle} subtitle={headerSubtitle} />
       <Menu getHeading={getHeading} />
       {/* Pasamos a Outlet (el contenido a mostrar en la página) una propiedad de react router que se llama context en la que pasamos el estado de done y el endpoint, de esta manera el componente que lleve su contenido a mostrar tendrá automáticamente sus propios datos sin tener que preocuparse si serán los de otro path/recurso */}
+      {/* <Outlet /> */}
       <Outlet context={[done, pageEndPoint]} />
       <UpButton />
       <Footer />
