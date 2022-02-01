@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './Visita_contenido.scss';
 import VisitaTabla from './Visita_tabla/Visita_tabla';
 
@@ -6,14 +6,28 @@ import loadingGif from '../../Recursos/img/loading.gif'
 
 export default function VisitaContenido(props) {
     const[hidden, setHidden] = useState(true);
-
+    const [category, setCategory] = useState();
+    const [contentEndPoint, setContentEndPoint] = useState();
 
     function toggleContent() {
         setHidden(!hidden);
     }
+
+    // useEffect(() => {
+    //     switch(category) {
+    //         case "Cultura":
+    //             setContentEndPoint(props.pageEndPoint.map(item => {return null}))
+    //     }
+    // }, [category])
+
     if (props.done) {
+    // props.pageEndPoint.gastronomia.restaurantes.map(restaurante => {
+    //     return console.log(restaurante.name);
+    // })
+
+
         if(props.hidden) {
-            return null;
+            return <></>;
         } else {
             return (
                 <div className="visita__content">
@@ -22,7 +36,7 @@ export default function VisitaContenido(props) {
                         <input type="date" />
 
                         <label>Categoría: </label>
-                        <select>
+                        <select value={category} onChange={event => {setCategory(event.target.value)}}>
                             <option>--- Elige ---</option>
                             <option>Cultura</option>
                             <option>Gastronomía</option>
@@ -32,14 +46,9 @@ export default function VisitaContenido(props) {
                         <label>A dónde ir: </label>
                         <select>
                             <option>--- Elige ---</option>
-                            {props.restaurantes.map(restaurante => {
+                            {/* {props.pageEndPoint.map(restaurante => {
                                 return <option key={restaurante}>{restaurante}</option>
-                            })}
-
-                            {/* <option>Opción 1</option>
-                            <option>Opción 2</option>
-                            <option>Opción 3</option>
-                            <option>Opción 4</option> */}
+                            })} */}
                         </select>
 
                         <button className="visita__content__form--submit" onClick={() => {
@@ -54,8 +63,10 @@ export default function VisitaContenido(props) {
             );
         }
     } else {
-        <img style={{
-            width: "70px"
-          }} src={loadingGif} alt="Loading..." />
+        return (
+            <img style={{
+              width: "70px"
+            }} src={loadingGif} alt="Loading..." />
+          )
     }
 }
