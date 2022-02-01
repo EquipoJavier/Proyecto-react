@@ -28,7 +28,7 @@ function App() {
 
   const pathname = useLocation().pathname; //obtengo la ruta acutal p.ejem("/transportes")
   // const url = `http://localhost:3001${pathname === "/" ? "/index" : pathname}`;
-  const url = "http://localhost:3001/data";
+  const url = "http://st:3001/data";
   //le indico la ruta con el recurso a solicitar y en el caso de que pathname hubiera sido "/" (referido a index), a la url le paso /index
 
   //Se corre este efecto cada vez que cambie la url (es decir, queramos solicitar otro recurso)
