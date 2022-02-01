@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Cultura from './Cultura';
-
+import Cultura from './components/Cultura/Cultura';
+import '../src/components/sass/main.scss';
 
 ReactDOM.render(
-    <Cultura />,
+    <Cultura/>,
     document.getElementById('root')
 );
