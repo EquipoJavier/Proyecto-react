@@ -1,0 +1,32 @@
+.rombos {
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  
+    &--img {
+      z-index: 1;
+      width:23%;
+      margin-bottom: -15%;
+      clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+      transform: scale(1);
+      transition: all 0.25s;
+  
+      &:hover {
+        z-index: 2;
+        transform: scale(1.5);
+      }
+    }
+  }
+  
+  @media (max-width: 900px) {
+    .rombos {
+      transform: translateX(10vw);
+      align-items: center;
+  
+      &--img {
+        max-width: 48%;
+        margin-bottom: 0;
+      }
+    }
+  }

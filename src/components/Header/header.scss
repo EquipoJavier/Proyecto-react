@@ -1,0 +1,94 @@
+.header_index {
+    background-color: rgb(189, 189, 192);
+    height: 45vh;
+    background-image:linear-gradient(to right bottom, rgba(255, 255, 255, 0.1), rgba(7, 7, 7, 0.5)),url('../Recursos/img/fondo-header.jpg');
+    background-size: cover; 
+    background-position: center; 
+    position: relative;
+
+    &--logo{
+        position: fixed;
+        width:45px;
+        height:45px;
+        right: 0;
+        top: 0;
+        margin-top: 5px;
+        margin-right: 15px;
+        z-index: 25;
+        cursor: pointer;
+        
+        &-img{
+            font-size: 45px;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-color: white;
+        }
+    }
+   
+
+    @media (max-width:900px) {
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+        clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+    }
+
+      
+    &--text-box {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center; 
+      }   
+  }
+
+  .heading_index-primary{
+    text-transform: uppercase;
+    color: rgb(255, 255, 255);
+
+    &--main{
+        display: block;
+        font-weight: 700;
+        letter-spacing: 3vw;
+        font-size: 6rem;
+        padding-left: 5rem;
+        
+        @media (max-width:600px) {
+            letter-spacing: 1rem;
+        }
+        &#gastronomia {
+            color: rgb(129, 15, 0);
+            -webkit-text-stroke: 2px black;
+        }
+    }
+
+    
+    &--sub{
+        display: block;
+        font-weight: 500;
+        letter-spacing: 1rem;
+        font-size: 2rem;
+
+        @media (max-width:600px) {
+            letter-spacing: .5rem;
+        }
+
+    }
+}
+
+.header_index--text-box{
+    background-color: rgba(255, 255, 255, 0.4);
+}
+.heading_cultura-primary{
+    text-transform: uppercase;
+    color: rgb(255, 255, 255);
+    display: block;
+    font-weight: 700;
+    letter-spacing: 6.5rem;
+    font-size: 7rem; 
+    padding-left: 5rem;
+}
+
+.header_cultura--text-box{
+    background-color: rgba(255, 255, 255, 0.3);
+}

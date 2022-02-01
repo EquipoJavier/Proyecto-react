@@ -1,0 +1,33 @@
+.first__section {
+  
+  &--text{
+    margin-left: 7rem;
+    flex-basis: 80%;
+    justify-content: center;
+  
+  }
+  &--title {
+    text-align: center;
+    
+  }
+  &--paraphrad {
+    margin-top: 3rem;
+    justify-content: center;
+  }
+
+  &--line{
+    // width:300;
+    // margin-top: 10rem;
+    // margin-left: 12rem;
+    // height: 1px;
+    // background-color: black;
+    // visibility: hidden;
+    margin: 0 auto;
+    margin-top: 80px;
+    width: 60%;
+    border: 0;
+    height: 2px;
+    background-image: linear-gradient(to right, rgba(78, 71, 71, 0), rgba(2, 2, 2, 0.822), rgba(78, 71, 71, 0));
+}
+  
+}
