@@ -1,21 +1,28 @@
-import Cercanias from "./Cercanias/Cercanias";
-import Emt from "./Emt/Emt";
-import Interurbano from "./Interurbano/Interurbano";
-import Ligero from "./Ligero/Ligero";
-import Metro from "./Metro/Metro";
+import Block from "../Block/Block";
+import Popup from "../Popup/Popup";
+import { useState } from "react";
 
-export default function All() {
+export default function All({ done, pageEndPoint, show, setShow }) {
+
+  const [types, setTypes] = useState();
+  var popupInfo = [];
+
+  if(done){
+    popupInfo = pageEndPoint.choose;
+  }
+
   return (
     <>
       <div className="choose__transport_options-">
-        <Metro />
-        <Emt />
-        <Interurbano />
-      </div>
+        <Block type={"metro"} setShow={setShow} setTypes={setTypes} />
+        <Block type={"emt"} setShow={setShow} setTypes={setTypes} />
+        <Block type={"inter"} setShow={setShow} setTypes={setTypes} />
+        </div>
       <div className="choose__transport_options-">
-        <Ligero />
-        <Cercanias />
+        <Block type={"ligero"} setShow={setShow} setTypes={setTypes} />
+        <Block type={"cercanias"} setShow={setShow} setTypes={setTypes} />
       </div>
+      {show ? <Popup popupInfo={popupInfo} done={done} types={types} show={show} setShow={setShow} /> : <></>}
     </>
   );
 }

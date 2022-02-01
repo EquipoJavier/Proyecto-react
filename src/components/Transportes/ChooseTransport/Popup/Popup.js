@@ -1,91 +1,51 @@
+import metro from "../../../Recursos/img/metro_xl.gif";
+import emt from "../../../Recursos/img/emt_xl.gif";
+import inter from "../../../Recursos/img/interurbanos_cm_xl.gif";
+import ligero from "../../../Recursos/img/metroligero_xl.gif";
+import cercanias from "../../../Recursos/img/cercanias_xl.gif";
+import loading from "../../../Recursos/img/loading.gif";
 import "./Popup.scss";
-import PopupElem from './Popup-elem';
 
-const transports = [
-  {
-    name: "Metro",
-    iframe: (
-      <iframe
-        title="metro"
-        src="https://www.metromadrid.es/sites/default/files/web/planos/Plano_base_cartografica_junio_2020.pdf"
-        width="600vw"
-        height="350vh"
-        style={{ border: 0 }}
-        allowFullScreen=""
-        loading="lazy"
-      ></iframe>
-    ),
-  },
-  {
-    name: "Emt",
-    iframe: (
-      <iframe
-        title="emt"
-        src="https://navegapormadrid.emtmadrid.es/app/"
-        width="600vw"
-        height="350vh"
-        style={{ border: 0 }}
-        allowFullScreen=""
-        loading="lazy"
-      ></iframe>
-    ),
-  },
-  {
-    name: "Interurbano",
-    iframe: (
-      <iframe
-        title="interurbano"
-        src="https://crtm.maps.arcgis.com/apps/Embed/index.html?webmap=f3176125b9de4d6f9ed9a867284f544f&extent=-5.7391,39.4841,-1.6824,41.239&home=true&zoom=true&scale=true&search=true&searchextent=true&legend=true&basemap_gallery=true&disable_scroll=false&theme=light"
-        width="600vw"
-        height="350vh"
-        style={{ border: 0 }}
-        allowFullScreen=""
-        loading="lazy"
-      ></iframe>
-    ),
-  },
-  {
-    name: "Metro ligero",
-    iframe: (
-      <iframe
-        title="ligero"
-        src="https://www.metromadrid.es/sites/default/files/web/planos/MetroLigeroesp.pdf"
-        width="600vw"
-        height="350vh"
-        style={{ border: 0 }}
-        allowFullScreen=""
-        loading="lazy"
-      ></iframe>
-    ),
-  },
-  {
-    name: "Cercanías",
-    iframe: (
-      <iframe
-        title="cercanias"
-        src="https://www.crtm.es/media/393460/cercanias.pdf"
-        width="600vw"
-        height="350vh"
-        style={{ border: 0 }}
-        allowFullScreen=""
-        loading="lazy"
-      ></iframe>
-    ),
-  },
-];
 
-export default function Popup() {
+export default function Popup({ popupInfo, done, types, show, setShow }) {
+
+  
+  if(done){
+    var info = popupInfo[types];
+  }
+
   return (
-      <>
-          <div className="popup">
-              {transports.map(function(transport) {
-                  return (
-                      <div className="popup__elem" key={transport.name}>
-                          <PopupElem transport={transport}/>
-                      </div>
-                  )
-              })}
-          </div>
-      </>
-  )
+    <div className={ show ? "popup_transportes": "hidden"}>
+      <div className="popup_transportes--btn" onClick={() => {
+        setShow(false);
+        window.onscroll=function(){};
+      }}>
+        <i className="material-icons">close</i>
+      </div>
+      <div className="popup_transportes--options" >
+        <img src={metro} alt="" />
+        <img src={emt} alt="" />
+        <img src={inter} alt="" />
+        <img src={ligero} alt="" />
+        <img src={cercanias} alt="" />
+      </div>
+
+      { info ? <><div className="popup_transportes-aside">
+        <h1 className="popup_transportes-aside--h1">{info.name}</h1>
+        <aside className="popup_transportes-aside--text">
+          <p className="popup_transportes-aside--text-p">
+            {info.text}
+          </p>
+        </aside>
+      </div></> 
+      : 
+      (
+        <img style={{
+          width: "70px"
+        }} src={loading} alt="Loading..." />
+      )
+      }
+      
+    </div>
+  );
 }
