@@ -11,6 +11,7 @@ export default function VisitaContenido(props) {
 
     const initialCategoryState = {
         selectedCategory: false,
+        showPlanning: false,
         category: "",
         categoryElements: []
     }
@@ -44,6 +45,11 @@ export default function VisitaContenido(props) {
                         return element.name;
                     })
                 }
+            case "Submit":
+                return {
+                    ...state,
+                    showPlanning: true
+                }
             default:
                 return {initialCategoryState}
         }
@@ -69,7 +75,7 @@ export default function VisitaContenido(props) {
                 <div className="visita__content">
                     <VisitaForm toggleContent={toggleContent} dispatch={categoryDispatch} categoryElements={categoryState.categoryElements}/>
                     
-                    <VisitaTabla hidden={hidden}/>
+                    <VisitaTabla isShown={categoryState.showPlanning} planning={endpoint.visita}/>
                 </div>
             );
         }

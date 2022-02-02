@@ -143,9 +143,9 @@
     },
     "visita": [
       {
-        "day": "",
-        "category": "",
-        "option": ""
+        "day": "1",
+        "category": "Gastronomia",
+        "option": "Test"
       }
     ],
     "users": [
