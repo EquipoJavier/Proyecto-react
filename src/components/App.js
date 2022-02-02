@@ -50,27 +50,21 @@ function App() {
     switch (pathname) {
       case "/":
         pageEndPoint = items.index;
-        console.log(pathname, pageEndPoint);
         break;
       case "/transportes":
         pageEndPoint = items.transportes;
-        console.log(pathname, pageEndPoint);
         break;
       case "/ocio":
         pageEndPoint = items.ocio;
-        console.log(pathname, pageEndPoint);
         break;
       case "/gastronomia":
         pageEndPoint = items.gastronomia;
-        console.log(pathname, pageEndPoint);
         break;
       case "/cultura":
         pageEndPoint = items.cultura;
-        console.log(pathname, pageEndPoint);
         break;
       default:
         pageEndPoint = items;
-        console.log(pathname, pageEndPoint);
     }
   }
 

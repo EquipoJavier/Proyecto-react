@@ -9,7 +9,8 @@ export default function Visita() {
     const [done , pageEndPoint] = useOutletContext();
 
     function toggleContent() {
-        setHidden(!hidden);
+        // setHidden(!hidden);
+        setHidden(false);
     }
 
     return (
