@@ -6,9 +6,11 @@ import VisitaForm from './VisitaForm/VisitaForm';
 import loadingGif from '../../Recursos/img/loading.gif'
 
 export default function VisitaContenido(props) {
-    const[hidden, setHidden] = useState(true);
+    const [hidden, setHidden] = useState(true);
+    const endpoint = props.pageEndPoint;
 
     const initialCategoryState = {
+        selectedCategory: false,
         category: "",
         categoryElements: []
     }
@@ -17,8 +19,9 @@ export default function VisitaContenido(props) {
         switch (action.type) {
             case "Gastronomía":
                 return {
+                    selectedCategory: true,
                     category: "gastronomia",
-                    categoryElements: props.pageEndPoint.gastronomia.restaurantes.map(restaurante => {
+                    categoryElements: endpoint.gastronomia.restaurantes.map(restaurante => {
                         return restaurante.name;
                     })
                 }
@@ -27,15 +30,17 @@ export default function VisitaContenido(props) {
             // Pero la idea es la misma que en gastronomía: un map para recoger los NOMBRES de museos/parques/etc
             case "Cultura":
                 return {
+                    selectedCategory: true,
                     category: "cultura",
-                    categoryElements: props.pageEndPoint.cultura.first.map(element => {
+                    categoryElements: endpoint.cultura.first.map(element => {
                         return element.name;
                     })
                 }
             case "Ocio":
                 return {
+                    selectedCategory: true,
                     category: "ocio",
-                    categoryElements: props.pageEndPoint.ocio.first.map(element => {
+                    categoryElements: endpoint.ocio.first.map(element => {
                         return element.name;
                     })
                 }
@@ -62,9 +67,8 @@ export default function VisitaContenido(props) {
         } else {
             return (
                 <div className="visita__content">
-                        <VisitaForm toggleContent={toggleContent} dispatch={categoryDispatch} elementsArray={categoryState.categoryElements}/>
+                    <VisitaForm toggleContent={toggleContent} dispatch={categoryDispatch} categoryElements={categoryState.categoryElements}/>
                     
-
                     <VisitaTabla hidden={hidden}/>
                 </div>
             );

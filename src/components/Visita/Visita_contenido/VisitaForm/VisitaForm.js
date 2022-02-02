@@ -1,7 +1,6 @@
 import { useState } from "react";
 export default function VisitaForm(props) {
-
-    console.log(props.elementsArray);
+    const dropdown = props.categoryElements;
 
     return (
         <div className="visita__content__form">
@@ -9,7 +8,6 @@ export default function VisitaForm(props) {
                 <input type="date" />
 
                 <label>Categoría: </label>
-                {/* <select value={props.category} onChange={event => {props.setCategory(event.target.value)}}> */}
                 <select onChange={event => {props.dispatch({type:event.target.value})}}>
                     <option style={{display:"none"}}>--- Elige ---</option>
                     <option>Cultura</option>
@@ -21,9 +19,9 @@ export default function VisitaForm(props) {
                 <label>A dónde ir: </label>
                 <select>
                     <option style={{display:"none"}}>--- Elige ---</option>
-                    {/* {props.pageEndPoint.map(restaurante => {
-                        return <option key={restaurante}>{restaurante}</option>
-                    })} */}
+                    {dropdown.map(element => {
+                        return <option key={element}>{element}</option>
+                    })}
                 </select>
 
                 <button className="visita__content__form--submit" onClick={() => {
