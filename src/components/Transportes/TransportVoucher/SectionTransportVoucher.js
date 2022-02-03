@@ -13,6 +13,7 @@ export default function SectionTransportVoucher() {
         <SecondVoucher />
         <ThirdVoucher />
       </div>
+      <a href="#voucher"><h1 className="section__transportVoucher--h1-subtitle"><i className="material-icons arrow">arrow_forward</i>¡Para hacerte con las tuyas pulsa aquí!<i className="material-icons arrow">arrow_back</i></h1></a>
     </section>
   )
 }

@@ -1,0 +1,21 @@
+.visita__content {
+    background-color: aquamarine; //TEST
+    height: 50vh; // TEST
+    display: flex;
+    flex-direction: column;
+
+    &__form {
+        margin: 1rem 3rem;
+        display: flex;
+
+        & > label {
+            padding-left: 3rem;
+            padding-right: 0.5rem;
+        }
+
+        &--submit {
+            margin-left: auto;
+            margin-right: 5rem;
+        }
+    }
+}

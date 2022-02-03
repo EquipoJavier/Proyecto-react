@@ -2,17 +2,54 @@
     display: flex;
     margin: 5rem;
     padding: 1rem;
-    background-color: aquamarine; // TEST
+    background-color: #dfdfdf; // TEST
+    border: 2px solid #cecece;
+    border-radius: 1rem;
     min-height: 10vh; // TEST
 
     &__text {
-        flex-grow: 1;
+        //background-color: rgb(58, 67, 196); // TEST
         display: flex;
-        background-color: rgb(58, 67, 196); // TEST
+        flex-direction: column;
+
+        &>* {
+        }
+
+        &--title {
+            align-self: center;
+            color: rgb(143, 28, 12);
+            text-transform: uppercase;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            letter-spacing: 0.2rem;
+            text-shadow: 0 2px 1px rgb(0, 0, 0, 0.4);
+            padding: 3rem;
+
+        }
+        
+        &--descr {
+            text-align: center;
+            padding: 2rem 4rem;
+            font-size: 2rem;
+            line-height: 2.8rem;
+            margin-bottom: auto;
+        }
     }
 
     &__img {
-        flex-grow: 1;
-        background-color: brown;
+        width: 100%;
+        flex: 0 0 40%;
+        
+        // Fix to make every textbox the same height, and every image to stretch
+        // and fill the box (since every image has different sizes)
+        aspect-ratio: 1/0.66;
+        display: flex;
+        
+        & img {
+            width: 100%;
+            object-fit: fill;
+            border-radius: 0.5rem;
+        }
     }
 }

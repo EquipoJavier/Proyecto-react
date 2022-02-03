@@ -95,4 +95,16 @@
       box-shadow: 7px 7px darken(rgb(165, 47, 47), 20%), -7px -7px lighten(rgb(165, 47, 47), 20%);
     }
   }
+
+  &--visita {
+        &:before{
+      border-top: 5px solid lighten(rgb(62, 9, 207), 5%);
+      border-left: 5px solid lighten(rgb(62, 9, 207), 5%);
+      border-right: 5px solid darken(rgb(62, 9, 207), 5%);
+      border-bottom: 5px solid darken(rgb(62, 9, 207), 5%);
+      }
+    &:hover{
+      box-shadow: 7px 7px darken(rgb(62, 9, 207), 20%), -7px -7px lighten(rgb(62, 9, 207), 20%);
+}
+}
 }

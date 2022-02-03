@@ -1,91 +1,52 @@
+import loading from "../../../Recursos/img/loading.gif";
 import "./Popup.scss";
-import PopupElem from './Popup-elem';
+import PopupMenu from "./PopupMenu/PopupMenu";
 
-const transports = [
-  {
-    name: "Metro",
-    iframe: (
-      <iframe
-        title="metro"
-        src="https://www.metromadrid.es/sites/default/files/web/planos/Plano_base_cartografica_junio_2020.pdf"
-        width="600vw"
-        height="350vh"
-        style={{ border: 0 }}
-        allowFullScreen=""
-        loading="lazy"
-      ></iframe>
-    ),
-  },
-  {
-    name: "Emt",
-    iframe: (
-      <iframe
-        title="emt"
-        src="https://navegapormadrid.emtmadrid.es/app/"
-        width="600vw"
-        height="350vh"
-        style={{ border: 0 }}
-        allowFullScreen=""
-        loading="lazy"
-      ></iframe>
-    ),
-  },
-  {
-    name: "Interurbano",
-    iframe: (
-      <iframe
-        title="interurbano"
-        src="https://crtm.maps.arcgis.com/apps/Embed/index.html?webmap=f3176125b9de4d6f9ed9a867284f544f&extent=-5.7391,39.4841,-1.6824,41.239&home=true&zoom=true&scale=true&search=true&searchextent=true&legend=true&basemap_gallery=true&disable_scroll=false&theme=light"
-        width="600vw"
-        height="350vh"
-        style={{ border: 0 }}
-        allowFullScreen=""
-        loading="lazy"
-      ></iframe>
-    ),
-  },
-  {
-    name: "Metro ligero",
-    iframe: (
-      <iframe
-        title="ligero"
-        src="https://www.metromadrid.es/sites/default/files/web/planos/MetroLigeroesp.pdf"
-        width="600vw"
-        height="350vh"
-        style={{ border: 0 }}
-        allowFullScreen=""
-        loading="lazy"
-      ></iframe>
-    ),
-  },
-  {
-    name: "Cercanías",
-    iframe: (
-      <iframe
-        title="cercanias"
-        src="https://www.crtm.es/media/393460/cercanias.pdf"
-        width="600vw"
-        height="350vh"
-        style={{ border: 0 }}
-        allowFullScreen=""
-        loading="lazy"
-      ></iframe>
-    ),
-  },
-];
+export default function Popup({
+  popupInfo,
+  done,
+  setTypes,
+  types,
+  show,
+  setShow,
+}) {
+  if (done) {
+    var info = popupInfo[types];
+  }
 
-export default function Popup() {
   return (
-      <>
-          <div className="popup">
-              {transports.map(function(transport) {
-                  return (
-                      <div className="popup__elem" key={transport.name}>
-                          <PopupElem transport={transport}/>
-                      </div>
-                  )
-              })}
+    <div className={show ? "popup_transportes" : "hidden"}>
+      <div
+        className="popup_transportes--btn"
+        onClick={() => {
+          setShow(false);
+          window.onscroll = function () {};
+        }}
+      >
+        <i className="material-icons">close</i>
+      </div>
+      <div className="popup_transportes--options">
+        <PopupMenu setTypes={setTypes} type={"metro"} />
+        <PopupMenu setTypes={setTypes} type={"emt"} />
+        <PopupMenu setTypes={setTypes} type={"inter"} />
+        <PopupMenu setTypes={setTypes} type={"ligero"} />
+        <PopupMenu setTypes={setTypes} type={"cercanias"} />
+      </div>
+
+      {info ? (
+        <>
+          <div className="popup_transportes-aside">
+            <h1 className="popup_transportes-aside--h1">{info.name}</h1>
+            <aside className="popup_transportes-aside--text">
+              <p className="popup_transportes-aside--text-p">{info.text}</p>
+            </aside>
           </div>
-      </>
-  )
+        </>
+      ) : (
+        <div className="popup_transportes--loading">
+          <img src={loading} alt="Loading..." />
+        </div>
+      )}
+    </div>
+  );
 }

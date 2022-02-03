@@ -10,12 +10,7 @@ import bravasImg from '../Recursos/img/gastr-bravas.jpg';
 import huevosImg from '../Recursos/img/gastr-huevosEstrellados.jpg';
 import tortillaImg from '../Recursos/img/gastr-tortilla patata.jpg';
 
-/* Idealmente el "json" que le pases a Popup para que los presente en pantalla lo deberías pasar a través de la página que lo vaya a usar
-(Gastronomía le pasa "platos", Transportes le pasa "medios de transporte", etc). No sé cómo hacer eso exactamente, así que de momento a modo
-de prueba, voy a poner los datos de los platos aquí, a la espera de saber cómo pasarle el "json" aquí para dejar Popup como un componetne genérico.*/
 
-/* Las imágenes no están cargadas desde la carpeta '/src/Recursos/img' sino desde: '/public/imagenesTest'. Si luego descubrieramos una mejor forma de 
-importar imágenes, habría que refactorizar el nombre de esa carpeta (la de /public/imagenesTest) y cambiar el 'src' de la imagen en Popup-elem.js */
 const dishes = [
     {
         name: "Cocido",

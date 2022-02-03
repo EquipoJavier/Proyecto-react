@@ -1,3 +1,4 @@
+import Button from '../../../Button/Button';
 import './RestaurantTextbox.scss';
 
 export default function RestaurantTextbox({restaurant, imgOnRight}) {
@@ -6,10 +7,13 @@ export default function RestaurantTextbox({restaurant, imgOnRight}) {
         return (
             <div className="resTextbox">
                 <div className="resTextbox__text">
-                    <span className="resTextbox__text--title"></span>
+                    <span className="resTextbox__text--title">
+                        {restaurant.name}
+                    </span>
                     <div className="resTextbox__text--descr">
-
+                        {restaurant.descr}
                     </div>
+                    <Button url={restaurant.url} title="Visitar" hoverClass="darkRed"/>
                 </div>
                 <div className="resTextbox__img">
                     <img src={restaurant.img} alt={restaurant.name}/>
@@ -20,13 +24,16 @@ export default function RestaurantTextbox({restaurant, imgOnRight}) {
         return (
             <div className="resTextbox">
                 <div className="resTextbox__img">
-
+                    <img src={restaurant.img} alt={restaurant.name}/>
                 </div>
                 <div className="resTextbox__text">
-                    <span className="resTextbox__text--title"></span>
+                    <span className="resTextbox__text--title">
+                        {restaurant.name}
+                    </span>
                     <div className="resTextbox__text--descr">
-    
+                        {restaurant.descr}
                     </div>
+                    <Button url={restaurant.url} title="Visitar" colorFT="#fff" colorBG="rgb(143, 28, 12)"/>
                 </div>
             </div>
         )

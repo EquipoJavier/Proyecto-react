@@ -1,0 +1,31 @@
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+    font-family: "Fira Sans", sans-serif;
+}
+
+.visita {
+    &__body {
+    background-color: #f5f5f5;
+    }
+
+    &__box {
+        background-color: green; // TEST
+        height: 70vh; // TEST
+        margin: 5rem 15rem;
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__addButton {
+        flex-basis: 20%;
+        display: flex;
+        align-self: center;
+    }
+    
+    
+
+}
