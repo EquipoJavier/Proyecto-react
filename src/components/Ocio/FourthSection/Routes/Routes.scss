@@ -1,6 +1,7 @@
 .routes{
 display: flex;
- 
+
+
   &__img{
     width: 25rem;
     box-shadow: 0 1.5rem 4rem rgba(black, 0.4);
@@ -9,20 +10,21 @@ display: flex;
     transition: all 0.2s;
     outline-offset: 2rem;
 
+
+
+
     &:hover {
       outline: 1.5rem solid #351313;
       transform: scale(1.05) translateY(-0.5rem);
       box-shadow: 0 2.5rem 4rem rgba(black, 0.5);
       z-index: 20;
     }
-
-    &__text {
-        font-family: "Times New Roman", Times, serif;
-    }
-
-    &--1{
-      justify-content: flex-end;
-    }
+    
   }
+
+  &__text {
+    font-family: "Times New Roman", Times, serif;
+}
+
 }
  
