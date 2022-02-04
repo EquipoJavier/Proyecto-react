@@ -4,6 +4,8 @@ export default function VisitaTabla(props) {
     const planning = props.planning;
     const isShown = props.isShown;
 
+    
+
     return isShown ? (
         <div className="visita__content__table">
             <table>
@@ -15,7 +17,7 @@ export default function VisitaTabla(props) {
                     </tr>
                 </thead>
                 <tbody>
-                    {planning.map(row => {
+                    {planning.length === 0 ? null : planning.map(row => {
                         return (
                             <tr>
                                 <td>{row.day}</td>

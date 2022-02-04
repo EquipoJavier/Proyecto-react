@@ -141,15 +141,15 @@
         }
       ]
     },
-    "visita": [
-      {
-        "day": "1",
-        "category": "Gastronomia",
-        "option": "Test"
-      }
-    ],
     "users": [
       {}
     ]
-  }
+  },
+  "visita": [
+    {
+      "day": "1",
+      "category": "Gastronomia",
+      "option": "Test"
+    }
+  ]
 }

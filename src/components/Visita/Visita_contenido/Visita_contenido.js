@@ -73,7 +73,11 @@ export default function VisitaContenido(props) {
         } else {
             return (
                 <div className="visita__content">
-                    <VisitaForm toggleContent={toggleContent} dispatch={categoryDispatch} categoryElements={categoryState.categoryElements}/>
+                    <VisitaForm toggleContent={toggleContent} 
+                                dispatch={categoryDispatch} 
+                                categoryElements={categoryState.categoryElements} 
+                                planning={endpoint.visita}
+                    />
                     
                     <VisitaTabla isShown={categoryState.showPlanning} planning={endpoint.visita}/>
                 </div>
