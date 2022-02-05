@@ -147,9 +147,65 @@
         "category": "",
         "option": ""
       }
-    ],
-    "users": [
-      {}
     ]
+  },
+  "transportes": {
+    "location": [ 
+      {
+        "id": "1",
+        "name": "Metro de Madrid",
+        "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit  ",
+        "link": "https://www.metromadrid.es/es"
+      },
+      {
+        "id": "2",
+        "name": "Autobuses EMT",
+        "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit ",
+        "link": "https://www.emtmadrid.es/"
+      },
+      {
+        "id": "3",
+        "name": "Autobuses Interurbanos",
+        "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit ",
+        "link": "https://www.crtm.es/"
+      },
+      {
+        "id": "4",
+        "name": "Metro Ligero",
+        "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque quas facere ",
+        "link": "https://www.metroligero-oeste.es/"
+      },
+      {
+        "id": "5",
+        "name": "Cercanías",
+        "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque quas facere ",
+        "link": "https://www.renfe.com/es/es"
+      }
+    ],
+    "choose": {
+      "metro" : {
+        "name": "Metro de Madrid",
+        "text": "Metro es apócope de ferrocarril metropolitano. Es un medio de transporte urbano constituido por una red más o menos tupida estructurada en tramos cortos y regulares. Permite desplazar a numerosos viajeros en distancias breves a cierta velocidad. Las líneas de metro suelen ir soterradas en ciudades como Madrid o Barcelona, pero también existen ejemplos de líneas elevadas en Chicago o Nueva York. En la actualidad, la red de metro alcanza ciudades dormitorio dentro de grandes conurbaciones.El primer ferrocarril metropolitano se implantó en 1863 en Londres, provisto de locomotoras de vapor. Cuando el metro llegó a España, ya iniciado el siglo XX, lo hizo en su versión eléctrica. Madrid tuvo su primera línea metropolitana en 1919 y Barcelona en 1924. Valencia dispuso de metro en 1988, Bilbao en 1995, Palma de Mallorca en 2007, Sevilla en 2009 y Málaga en 2014.Antes de la construcción de la línea 1 de metro en Madrid, la capital ya disponía de transporte público en el último tercio del siglo XIX. En 1871 comenzó a funcionar el primer tranvía de tracción animal, tirado por caballos, siendo sustituido paulatinamente desde 1879 por los tranvías de vapor. Como el tráfico iba en aumento en la capital, el ingeniero Pedro García Faria propuso un proyecto de ferrocarril metropolitano para el transporte subterráneo de personas y mercancías con la Puerta del Sol como punto de partida de cinco hipotéticas líneas. El proyecto nunca se llevó a cabo, y aún más, cayó en el olvido ante la electrificación de la red de tranvías entre 1898 y 1906.Pero no todos los ingenieros habían desechado definitivamente el proyecto de García Faria, pues muchos consideraban que el ferrocarril metropolitano no era el capricho de un visionario, sino una necesidad real. Así que en 1913 los ingenieros Miguel Otamendi, Carlos Mendoza y Antonio González Echarte presentaron un nuevo plan de actuación: cuatro líneas que dispondrían de un recorrido de 154 Km en una malla que se extendería por el centro urbano madrileño. El proyecto estaba financiado en parte por el Banco de Vizcaya, que aportó 4 millones de pesetas, una cantidad a todas luces insuficientes para el desarrollo de las obras. El rey Alfonso XIII se involucró personalmente y aportó un millón de pesetas más procedente de su fortuna personal. El generoso gesto del monarca arrastró a otros muchos inversores, con lo que por fin se reunió la cantidad necesaria para abordar el plan.Con este capital inicial se fundó el 24 de enero de 1917 la Compañía Metropolitana Alfonso XIII, que encargó al prestigioso arquitecto Antonio Palacios Ramil la construcción de las estaciones y accesos. En julio de 1917 comenzaron las obras del metro de Madrid por el método de galería clave, consistente en cubrir de ladrillo los túneles según se excavaban, al tiempo que se apuntalaban, ampliaban y se cubrían de hormigón.La primera línea del nuevo metropolitano madrileño fue el tramo Sol-Cuatro Caminos, con 3,48 Km de longitud y 8 estaciones, y que se cubría en 10 minutos. Fue inaugurado el 17 de octubre de 1919 por los reyes de España, y se abrió al público el 31 del mismo mes. Los madrileños estaban entusiasmados ante la apertura de su nuevo medio de transporte. Durante el primer año fueron transportados más de 14 millones de usuarios, que pagaron 15 céntimos por su uso y difrute."
+      },
+      "emt" : {
+        "name": "Autobuses EMT",
+        "text": "La Empresa Municipal de Transportes de Madrid ha aprobado inicialmente, en su última Comisión Delegada, el texto modificado del nuevo Reglamento para Viajar en los autobuses de EMT, cuya aprobación definitiva y entrada en vigor será elevada a la Comisión Delegada del Consorcio Regional de Transportes de Madrid y, en última instancia, a la Consejería de Transportes de la Comunidad de Madrid. La nueva redacción del Reglamento de EMT, que queda actualizado en algunos de sus puntos para adaptarse a los nuevos tiempos, incluye importantes novedades referentes a la posibilidad de viajar con perros y otras mascotas; asimismo, se regula por primera vez la posibilidad de viajar con patinetes eléctricos, monopatines y otros objetos a bordo, y se ahonda en los derechos de los viajeros con discapacidad o ceguera.La novedad más destacada del nuevo articulado es que EMT permitirá viajar con mascotas, fundamentalmente perros, por su propio pie. En este sentido, a la normativa actual que permite viajar con perros y otras mascotas en trasportines o similares y que permite acceder con perros por su propio pie cuando se trata de animales guía de personas discapacitadas o ciegas, se agrega la posibilidad de viajar con perros siempre que el propietario disponga de una tarjeta específica de autorización expedida por EMT.En consonancia con los nuevos sistemas de pago que se imponen en el mundo del transporte, el reglamento cita expresamente la posibilidad de abonar el precio del billete sencillo mediante dispositivos móviles, tecnologías sin contacto, tarjetas bancarias o sistemas análogos, cuando estos medios estén disponibles a bordo de los autobuses. Quien desee abonar con moneda fraccionaria a bordo, y no disponga del importe exacto de la tarifa del billete sencillo, deberá aportar una cantidad no superior a cuatro veces el precio del billete. Sobre una incorrecta o indebida utilización de la Tarjeta de Transporte Público (TTP), uno de los artículos de este reglamento faculta al personal de EMT y del Consorcio Regional de Transportes de Madrid a retirar dicho título en determinados supuestos: cuando el portador de la tarjeta no sea el mismo que el titular de la misma, cuando se detecte una alteración o manipulación de su identidad o cuando se compruebe que la tarjeta no es válida para su utilización por cualquier circunstancia. Al retirarse el título, los viajeros deberán recibir un justificante donde figurará el motivo de la retirada. Viajar sin tarjeta o sin billete a bordo trae consigo una sanción de un importe igual al resultado de multiplicar por 20 el coste de la tarifa de un billete sencillo. Por último, el nuevo Reglamento se ha redactado con lenguaje inclusivo a fin de fomentar la igualdad de género, eliminando así cualquier tipo de discriminación. De igual manera, queda recogida la obligación por parte de EMT de ofrecer información “accesible” a todos los usuarios sin distinción y con independencia de sus condiciones físicas, psíquicas o sensoriales."
+      },
+      "inter" : {
+        "name": "Autobuses Interurbanos",
+        "text": "Transporte interurbano es todo aquel transporte de viajeros que discurra íntegramente por suelo urbano, definido por la legislación urbanística, así como los que estén exclusivamente dedicados a comunicar entre sí núcleos urbanos diferentes situados dentro de distintos términos municipales. Es un tipo de transporte que puede ser regular o discrecional, pero generalmente la normativa trata de regular el servicio regular de pasajeros.El transporte interurbano regular por autobús se considera servicio público de interés general sometido a concesión administrativa temporal en exclusiva. La empresa transportista ganadora del concurso presta su servicio en régimen de monopolio en las rutas e itinerarios fijados mientras dura la concesión.La principal ventaja del transporte público interurbano de viajeros por carretera es que garantiza la movilidad sostenible de todos los segmentos de población (jóvenes, personas que no conducen, personas mayores, etc.). De hecho, el autobús es el modo de transporte colectivo más utilizado en España.Pero además, el bus es el que menos despilfarro genera: según Fomento, un autobús sustituye entre 14 y 30 vehículos particulares. Y las emisiones de CO2 por viajero de un autobús son 6 veces menores que las de un coche. El bus es 3 veces más eficiente que el vehículo privado en términos de litros de combustible por viajero/kilómetro transportado."
+      },
+      "ligero" : {
+        "name": "Metro Ligero",
+        "text": "Un modo de transporte pensado para ti, cómodo, accesible, seguro y respetuoso con el medio ambiente.La línea ML1 discurre por los barrios de Sanchinarro y Las Tablas. Son áreas urbanas nuevas, con zonas verdes y espacios abiertos que necesitan comunicación entre sus puntos de interés: empresas, colegios, zonas comerciales, hospitales, centros culturales. La apuesta por una alternativa de movilidad que responde a un nuevo estilo de vida.Cada día, de casa a la oficina, al colegio, de compras. En fin de semana para ir al cine, a tomar algo o comer con los amigos. El metro ligero conecta la zona norte de Madrid con el centro, con toda la red de metro y con el tren. En superficie, a pie de calle, con paradas libres de barreras. En sus tramos subterráneos, con estaciones diseñadas para que cualquier persona pueda acceder a sus instalaciones.Vayas donde vayas, en metro ligero queremos ir contigo.El Metro ligero, sin embargo, con una capacidad más adaptada a ciudades de mediano tamaño, tiene casi en su totalidad plataforma viaria reservada y en el resto, con prioridad semafórica, apunta.Los andenes y la plataforma de los vehículos es baja y continua, totalmente accesible a personas con movilidad reducida. Su trazado es mayoritariamente en superficie, aunque suele haber tramos subterráneos.El tranvía, en su versión tradicional, comparte con frecuencia la plataforma con el tráfico rodado, según las explicaciones de Espinosa, y no tiene prioridad semafórica. Su trazado es normalmente en superficie y su capacidad de transporte de viajeros, su velocidad comercial y su accesibilidad son menores que en el Metro Ligero"
+      },
+      "cercanias" : {
+        "name": "Cercanías",
+        "text": "Cercanías Madrid es el servicio ferroviario explotado por Renfe Cercanías, división de Renfe Operadora, sobre una infraestructura de Adif, que comunica la ciudad de Madrid con su área metropolitana y las principales poblaciones de la Comunidad de Madrid.Su red se extiende por gran parte de la región, incluyendo además diversas localidades de provincias limítrofes con Madrid como Azuqueca y Guadalajara en la provincia de Guadalajara y la zona del Puerto de Cotos entre Madrid y Segovia.Cercanías Madrid llega pues a la gran mayoría de la población de la Comunidad de Madrid, incluidas algunas partes de su área metropolitana, que en su interpretación más amplia, alcanza hasta las ciudades de Guadalajara, Ávila y Segovia.La red, con una plantilla de unos 1300 empleados, cuenta con diez líneas en funcionamiento, discurriendo por 370 km de vías férreas, con 89 estaciones de las que más de 20 ofrecen correspondencia con el Metro de Madrid y una de ellas con el Tranvía de Parla. En días laborables hay unas 1.385 circulaciones diarias, pudiendo transportar un total de 880.000 viajeros."
+      }
+    }
+  },
+  "users": {
+    
   }
 }
