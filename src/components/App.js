@@ -47,8 +47,8 @@ function App() {
     });
   }, [urlData]);
 
-  
-  if (done) { //si se ha obtenido el resultado (done === true) entonces nos pasa el endpoint correspondiente a la página en la que te encuentras acutalmente (indicado por la variable "pathname", por ejemplo /transportes)
+  //si se ha obtenido el resultado (done === true) entonces nos pasa el endpoint correspondiente a la página en la que te encuentras acutalmente (en este caso el endpoint sería "transportes")
+  if (done) {
     var pageEndPoint;
     switch (pathname) {
       case "/":
