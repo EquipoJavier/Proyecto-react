@@ -3,11 +3,14 @@ import './Visita_contenido.scss';
 import VisitaTabla from './Visita_tabla/Visita_tabla';
 import VisitaForm from './VisitaForm/VisitaForm';
 
-import loadingGif from '../../Recursos/img/loading.gif'
-
 export default function VisitaContenido(props) {
     const [hidden, setHidden] = useState(true);
-    const endpoint = props.pageEndPoint;
+    const [pageInfoEndpoint, planningEndpoint] = props.pageEndPoint;
+    const [newPlan, setNewPlan] = useState({
+        day: "",
+        category: "",
+        option: ""
+    });
 
     const initialCategoryState = {
         selectedCategory: false,
@@ -22,7 +25,7 @@ export default function VisitaContenido(props) {
                 return {
                     selectedCategory: true,
                     category: "gastronomia",
-                    categoryElements: endpoint.gastronomia.restaurantes.map(restaurante => {
+                    categoryElements: pageInfoEndpoint.gastronomia.restaurantes.map(restaurante => {
                         return restaurante.name;
                     })
                 }
@@ -33,7 +36,7 @@ export default function VisitaContenido(props) {
                 return {
                     selectedCategory: true,
                     category: "cultura",
-                    categoryElements: endpoint.cultura.first.map(element => {
+                    categoryElements: pageInfoEndpoint.cultura.first.map(element => {
                         return element.name;
                     })
                 }
@@ -41,7 +44,7 @@ export default function VisitaContenido(props) {
                 return {
                     selectedCategory: true,
                     category: "ocio",
-                    categoryElements: endpoint.ocio.first.map(element => {
+                    categoryElements: pageInfoEndpoint.ocio.first.map(element => {
                         return element.name;
                     })
                 }
@@ -63,33 +66,41 @@ export default function VisitaContenido(props) {
     function toggleContent() {
         setHidden(!hidden);
     }
+
+    async function createPlan() {
+        // planningEndpoint.push(newPlan);
+        console.log(newPlan);
+
+        const res = await fetch('http://localhost:3001/visita', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newPlan)
+        });
+        const content = await res.json();
+        console.log(content);
+    }
     
     /////////////////////////////////
     // COMPONENT RENDER
 
-    if (props.done) {
-        if(props.hidden) {
-            return null;
-        } else {
-            return (
-                <div className="visita__content">
-                    <VisitaForm toggleContent={toggleContent} 
-                                dispatch={categoryDispatch} 
-                                categoryElements={categoryState.categoryElements} 
-                                planning={endpoint.visita}
-                    />
-                    
-                    <VisitaTabla isShown={categoryState.showPlanning} planning={endpoint.visita}/>
-                </div>
-            );
-        }
+    if(props.hidden) {
+        return null;
     } else {
         return (
-            <img style={{
-              width: "70px",
-              marginRight: "auto",
-              marginLeft: "auto",
-            }} src={loadingGif} alt="Loading..." />
-          )
+            <div className="visita__content">
+                <VisitaForm toggleContent={toggleContent} 
+                            dispatch={categoryDispatch} 
+                            categoryElements={categoryState.categoryElements} 
+                            planning={planningEndpoint}
+                            newPlan={newPlan}
+                            setNewPlan={setNewPlan}
+                            createPlan={createPlan}
+                />
+
+                <VisitaTabla isShown={categoryState.showPlanning} planning={planningEndpoint}/>
+            </div>
+        );
     }
 }

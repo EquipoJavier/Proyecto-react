@@ -28,43 +28,49 @@ function App() {
 
   const pathname = useLocation().pathname; //obtengo la ruta acutal p.ejem("/transportes")
   // const url = `http://localhost:3001${pathname === "/" ? "/index" : pathname}`;   //le indico la ruta con el recurso a solicitar y en el caso de que pathname hubiera sido "/" (referido a index), a la url le paso /index
-  const url = "http://localhost:3001/data"; // la URL del recurso (json) que se va a btener
-
+  const urlData = "http://localhost:3001/data"; // la URL del recurso (json) que se va a obtener
+  const urlVisita = "http://localhost:3001/visita"; // La URL del recurso de "visita" (CRUD planning)
 
 
   //Se corre este efecto cada vez que cambie la url (es decir, queramos solicitar otro recurso)
   useEffect(() => {
-    fetch(url) //con fecth obtenemos el recurso de la URL indicada
-      .then((res) => res.json())     //si hemos conseguid obtenerlo devolvemos una promesa que se resuelve con el resultado como JSON
-      .then((result) => { //despues al recibir el json lo añadimos en el estado de items y cambiamos done a true para saber que hemos recibido los datos
-        setItems(result);
-        setDone(true);
-      }).catch(function (error) { //en el caso de no recibirlo capturamos el error para no cortar la ejecución de la aplicación y mostramos el contenido del error en consola
+    Promise.all([ // Al hacer más de una solicitud fetch, hay que meterlas en una promesa para que se hagan a la vez
+      fetch(urlData) // con fecth obtenemos el recurso de la URL indicada
+        .then(res => res.json()), // si hemos conseguid obtenerlo devolvemos una promesa que se resuelve con el resultado como JSON
+      fetch(urlVisita)
+        .then(res => res.json())
+    ]).then(result => { // Al terminar la promesa que envuelve a los fetch, se fija el array obtenido como el nuevo estado de "items", y se cambia "done" a true para indicar que los datos se han recibido.
+      setItems(result);
+      setDone(true);
+    }).catch(function (error) {
         console.log("Hubo un problema con la petición Fetch:" + error.message);
-      });
-  }, [url]);
+    });
+  }, [urlData]);
 
   
   if (done) { //si se ha obtenido el resultado (done === true) entonces nos pasa el endpoint correspondiente a la página en la que te encuentras acutalmente (indicado por la variable "pathname", por ejemplo /transportes)
     var pageEndPoint;
     switch (pathname) {
       case "/":
-        pageEndPoint = items.index;
+        pageEndPoint = items[0].index;
         break;
       case "/transportes":
-        pageEndPoint = items.transportes;
+        pageEndPoint = items[0].transportes;
         break;
       case "/ocio":
-        pageEndPoint = items.ocio;
+        pageEndPoint = items[0].ocio;
         break;
       case "/gastronomia":
-        pageEndPoint = items.gastronomia;
+        pageEndPoint = items[0].gastronomia;
         break;
       case "/cultura":
-        pageEndPoint = items.cultura;
+        pageEndPoint = items[0].cultura;
+        break;
+      case "/visita":
+        pageEndPoint = items;
         break;
       default:
-        pageEndPoint = items;
+        throw new Error("Error al recuperar datos externos")
     }
   }
 

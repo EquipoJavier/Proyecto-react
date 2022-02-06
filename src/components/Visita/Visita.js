@@ -4,6 +4,8 @@ import Button from '../Button/Button';
 import './Visita.scss';
 import VisitaContenido from './Visita_contenido/Visita_contenido';
 
+import loadingGif from '../Recursos/img/loading.gif'
+
 export default function Visita() {
     const [hidden, setHidden] = useState(true);
     const [done , pageEndPoint] = useOutletContext();
@@ -13,8 +15,9 @@ export default function Visita() {
         setHidden(false);
     }
 
-    return (
-        <div className="visita__body">
+    if (done) {
+        return (
+            <div className="visita__body">
             <div className="visita__box">
                 <div className="visita__addButton">
                     <Button title="Añadir elemento al itinerario" hoverClass="violet" onClick={() => {
@@ -26,4 +29,13 @@ export default function Visita() {
             </div>
         </div>
     );
+    } else {
+        return (
+            <img style={{
+              width: "70px",
+              marginRight: "auto",
+              marginLeft: "auto",
+            }} src={loadingGif} alt="Loading..." />
+          )
+    }
 }

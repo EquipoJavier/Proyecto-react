@@ -2,7 +2,10 @@ import { useState } from "react";
 export default function VisitaForm(props) {
     const dispatch = props.dispatch;
     const dropdown = props.categoryElements;
-    const [planning, setPlanning] = props.planning;
+    const newPlan = props.newPlan;
+    const setNewPlan = props.setNewPlan;
+    const createPlan = props.createPlan;
+    // const [planning, setPlanning] = props.planning;
 
     const submitData = e => {
         e.preventDefault();
@@ -14,22 +17,35 @@ export default function VisitaForm(props) {
         // .then(res => res.json())
         // .then(result => setPlanning(result.planning))
     }
-console.log (planning, "<<<");
+    
     return (
         <div className="visita__content__form">
             <form onSubmit={submitData}>
                 <label>Día: </label>
+                {/* /////////////////////// INPUT */}
                     {/* <input type="date" /> */}
-                    <input type="date" onChange={event => {
+
+                    {/* <input type="date" onChange={event => {
                         setPlanning({...planning, day: event.target.value})
+                    }}/> */}
+
+                    <input type="date" onChange={event => {
+                        setNewPlan({...newPlan, day: event.target.value})
                     }}/>
                     
+                {/* /////////////////////// SELECT CATEGORY */}
                     <label>Categoría: </label>
-                    <select onChange={event => {dispatch({type:event.target.value})}}>
+                    {/* <select onChange={event => {dispatch({type:event.target.value})}}> */}
+
                     {/* <select onChange={event => {
                             dispatch({type:event.target.value});
                             setPlanning({...planning, category: event.target.value})
                         }}> */}
+
+                    <select onChange={event =>  {
+                            dispatch({type:event.target.value});
+                            setNewPlan({...newPlan, category: event.target.value})
+                    }}>
                         <option style={{display:"none"}}>--- Elige ---</option>
                         <option>Cultura</option>
                         <option>Gastronomía</option>
@@ -37,11 +53,17 @@ console.log (planning, "<<<");
                     </select>
 
 
+                {/* /////////////////////// SELECT ITEM */}
                     <label>Qué hacer: </label>
-                    <select>
+                    {/* <select> */}
+
                     {/* <select onChange={event => {
                         setPlanning({...planning, option: event.target.value})
                     }}> */}
+
+                    <select onChange={event => {
+                        setNewPlan({...newPlan, option: event.target.value})
+                    }}>
                         <option style={{display:"none"}}>--- Elige ---</option>
                         {dropdown.map(element => {
                             return <option key={element}>{element}</option>
@@ -49,7 +71,8 @@ console.log (planning, "<<<");
                     </select>
 
                     <button className="visita__content__form--submit" onClick={() => {
-                        dispatch({type:"Submit"})
+                        dispatch({type:"Submit"});
+                        createPlan();
                     }}>
                         Añadir itinerario
                     </button> 
