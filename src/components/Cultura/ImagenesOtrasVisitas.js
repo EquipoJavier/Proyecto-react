@@ -1,5 +1,5 @@
 import PalacioReal from '../Recursos/img/PalacioReal.jpg';
-import Matadero from '../Recursos/img/Matadero.jpg';
+import Matadero from '../Recursos/img/matadero.jpg';
 import EstacionFantasmaDeChamberi from '../Recursos/img/EstacionFantasmaChamberi.jpg';
 import PuertaDeAlcala from '../Recursos/img/PuertaAlcala.jpg';
 import TeatroReal from '../Recursos/img/TeatroReal.jpg';
