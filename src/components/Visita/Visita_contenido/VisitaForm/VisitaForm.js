@@ -4,7 +4,6 @@ export default function VisitaForm(props) {
     const newPlan = props.newPlan;
     const setNewPlan = props.setNewPlan;
     const createPlan = props.createPlan;
-    // const [planning, setPlanning] = props.planning;
     
     return (
         <div className="visita__content__form">

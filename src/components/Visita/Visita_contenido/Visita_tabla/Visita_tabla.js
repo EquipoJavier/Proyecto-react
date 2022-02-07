@@ -3,6 +3,7 @@ import './Visita_tabla.scss';
 export default function VisitaTabla(props) {
     const planning = props.planning;
     const isShown = props.isShown;
+    const updatePlan = props.updatePlan;
 
     return isShown ? (
         <div className="visita__content__table">
@@ -22,7 +23,7 @@ export default function VisitaTabla(props) {
                                 <td>{row.category}</td>
                                 <td>{row.option}</td>
                                 <td className="visita__content__table--buttons">
-                                    <button>Cambiar</button>
+                                    <button onClick={() => {updatePlan(row)}}>Cambiar</button>
                                     <button>Eliminar</button>
                                 </td>
                             </tr>

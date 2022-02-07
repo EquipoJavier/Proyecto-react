@@ -81,7 +81,6 @@ function App() {
         break;
       case "/visita":
         pageEndPoint = items;
-        console.log(pageEndPoint);
         break;
       default:
         throw new Error("Error al recuperar datos externos")

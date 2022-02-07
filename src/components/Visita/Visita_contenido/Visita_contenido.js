@@ -6,7 +6,6 @@ import VisitaForm from './VisitaForm/VisitaForm';
 export default function VisitaContenido(props) {
     const infoEndpoint = props.pageEndPoint.data;
     const planningEndpoint = props.pageEndPoint.planning;
-    // const [pageInfoEndpoint, planningEndpoint] = props.pageEndPoint;
     const addPlan = props.addPlan;
 
     const [hidden, setHidden] = useState(true);
@@ -85,6 +84,18 @@ export default function VisitaContenido(props) {
         const response = await res.json();
         await addPlan(response);
     }
+
+    async function updatePlan(plan) {
+        // const res = await fetch('http://localhost:3001/visita', {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     },
+        //     body: JSON.stringify(newPlan)
+        // });
+        // const response = await res.json();
+        // console.log(response);
+    }
     
     /////////////////////////////////
     // COMPONENT RENDER
@@ -103,7 +114,7 @@ export default function VisitaContenido(props) {
                             createPlan={createPlan}
                 />
 
-                <VisitaTabla isShown={categoryState.showPlanning} planning={planningEndpoint}/>
+                <VisitaTabla isShown={categoryState.showPlanning} planning={planningEndpoint} updatePlan={updatePlan}/>
             </div>
         );
     }
