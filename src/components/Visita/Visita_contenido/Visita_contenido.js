@@ -4,8 +4,10 @@ import VisitaTabla from './Visita_tabla/Visita_tabla';
 import VisitaForm from './VisitaForm/VisitaForm';
 
 export default function VisitaContenido(props) {
-    const [hidden, setHidden] = useState(true);
     const [pageInfoEndpoint, planningEndpoint] = props.pageEndPoint;
+    const addPlan = props.addPlan;
+
+    const [hidden, setHidden] = useState(true);
     const [newPlan, setNewPlan] = useState({
         day: "",
         category: "",
@@ -16,16 +18,17 @@ export default function VisitaContenido(props) {
         selectedCategory: false,
         showPlanning: false,
         category: "",
-        categoryElements: []
+        dropdown: []
     }
 
     const categoryReducer = (state, action) => {
         switch (action.type) {
             case "Gastronomía":
                 return {
+                    ...state,
                     selectedCategory: true,
                     category: "gastronomia",
-                    categoryElements: pageInfoEndpoint.gastronomia.restaurantes.map(restaurante => {
+                    dropdown: pageInfoEndpoint.gastronomia.restaurantes.map(restaurante => {
                         return restaurante.name;
                     })
                 }
@@ -34,17 +37,19 @@ export default function VisitaContenido(props) {
             // Pero la idea es la misma que en gastronomía: un map para recoger los NOMBRES de museos/parques/etc
             case "Cultura":
                 return {
+                    ...state,
                     selectedCategory: true,
                     category: "cultura",
-                    categoryElements: pageInfoEndpoint.cultura.first.map(element => {
+                    dropdown: pageInfoEndpoint.cultura.first.map(element => {
                         return element.name;
                     })
                 }
             case "Ocio":
                 return {
+                    ...state,
                     selectedCategory: true,
                     category: "ocio",
-                    categoryElements: pageInfoEndpoint.ocio.first.map(element => {
+                    dropdown: pageInfoEndpoint.ocio.first.map(element => {
                         return element.name;
                     })
                 }
@@ -68,9 +73,6 @@ export default function VisitaContenido(props) {
     }
 
     async function createPlan() {
-        // planningEndpoint.push(newPlan);
-        console.log(newPlan);
-
         const res = await fetch('http://localhost:3001/visita', {
             method: 'POST',
             headers: {
@@ -78,8 +80,8 @@ export default function VisitaContenido(props) {
             },
             body: JSON.stringify(newPlan)
         });
-        const content = await res.json();
-        console.log(content);
+        const response = await res.json();
+        await addPlan(response);
     }
     
     /////////////////////////////////
@@ -92,7 +94,7 @@ export default function VisitaContenido(props) {
             <div className="visita__content">
                 <VisitaForm toggleContent={toggleContent} 
                             dispatch={categoryDispatch} 
-                            categoryElements={categoryState.categoryElements} 
+                            dropdown={categoryState.dropdown} 
                             planning={planningEndpoint}
                             newPlan={newPlan}
                             setNewPlan={setNewPlan}

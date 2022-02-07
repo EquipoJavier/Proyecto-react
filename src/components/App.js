@@ -19,6 +19,12 @@ function App() {
   const [items, setItems] = useState([]);
   const [done, setDone] = useState(false);
 
+  function addPlan(plan) {
+    setItems([
+      items[0],[...items[1], plan] 
+    ])
+  }
+
   function getHeading(title, subtitle) {
     setHeaderTitle(title);
     sessionStorage.setItem("title", title);
@@ -80,7 +86,7 @@ function App() {
       <Menu getHeading={getHeading} />
       {/* Pasamos a Outlet (el contenido a mostrar en la página) una propiedad de react router que se llama context en la que pasamos el estado de done y el endpoint, de esta manera el componente que lleve su contenido a mostrar tendrá automáticamente sus propios datos sin tener que preocuparse si serán los de otro path/recurso */}
       {/* <Outlet /> */}
-      <Outlet context={[done, pageEndPoint]} />
+      <Outlet context={[done, pageEndPoint, addPlan]} />
       <UpButton />
       <Footer />
     </div>
