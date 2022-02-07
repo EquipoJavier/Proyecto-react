@@ -1,0 +1,31 @@
+.update {
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+    z-index: 9500;
+    opacity: 1;
+    transition: all 0.3s;
+
+    &__content {
+        height: 50rem; //TEST 
+        width: 60%; //TEST 
+        background-color: aliceblue; //TEST
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__form {
+        flex: 0 1 90%;
+    }
+
+    &__close {
+        align-self: center;
+    }
+}

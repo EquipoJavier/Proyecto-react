@@ -2,10 +2,9 @@ import './Visita_tabla.scss';
 
 export default function VisitaTabla(props) {
     const planning = props.planning;
-    const isShown = props.isShown;
-    const updatePlan = props.updatePlan;
+    const dispatch = props.dispatch;
 
-    return isShown ? (
+    return (
         <div className="visita__content__table">
             <table>
                 <thead>
@@ -23,7 +22,17 @@ export default function VisitaTabla(props) {
                                 <td>{row.category}</td>
                                 <td>{row.option}</td>
                                 <td className="visita__content__table--buttons">
-                                    <button onClick={() => {updatePlan(row)}}>Cambiar</button>
+                                    <button onClick={() => {
+                                        dispatch({
+                                            type: "Update",
+                                            payload: {
+                                                day: row.day,
+                                                category: row.category,
+                                                option: row.option,
+                                                id: row.id
+                                            }
+                                        })
+                                        }}>Cambiar</button>
                                     <button>Eliminar</button>
                                 </td>
                             </tr>
@@ -32,7 +41,5 @@ export default function VisitaTabla(props) {
                 </tbody>
             </table>
         </div>
-    ) : (
-        null
     )
 }

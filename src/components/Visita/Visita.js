@@ -1,11 +1,12 @@
 import { useState, useReducer } from 'react';
 import { useOutletContext } from 'react-router-dom';
-import VisitaForm from './Visita_contenido/VisitaForm/VisitaForm';
+import VisitaForm from './VisitaForm/VisitaForm';
 
 import loadingGif from '../Recursos/img/loading.gif'
-import VisitaTabla from './Visita_contenido/Visita_tabla/Visita_tabla';
+import VisitaTabla from './VisitaTabla/Visita_tabla';
 
 import './Visita.scss';
+import UpdateForm from './UpdateForm/UpdateForm';
 
 export default function Visita() {
     const [done , pageEndPoint, addPlan] = useOutletContext();
@@ -19,9 +20,10 @@ export default function Visita() {
 
     const initialCategoryState = {
         selectedCategory: false,
+        selectedPlan: {},
         showPlanning: false,
         category: "",
-        dropdown: []
+        dropdown: [],
     }
 
     const categoryReducer = (state, action) => {
@@ -30,7 +32,7 @@ export default function Visita() {
                 return {
                     ...state,
                     selectedCategory: true,
-                    category: "gastronomia",
+                    category: "Gastronomía",
                     dropdown: pageEndPoint.data.gastronomia.restaurantes.map(restaurante => {
                         return restaurante.name;
                     })
@@ -42,7 +44,7 @@ export default function Visita() {
                 return {
                     ...state,
                     selectedCategory: true,
-                    category: "cultura",
+                    category: "Cultura",
                     dropdown: pageEndPoint.data.cultura.first.map(element => {
                         return element.name;
                     })
@@ -51,15 +53,23 @@ export default function Visita() {
                 return {
                     ...state,
                     selectedCategory: true,
-                    category: "ocio",
+                    category: "Ocio",
                     dropdown: pageEndPoint.data.ocio.first.map(element => {
                         return element.name;
                     })
                 }
-            case "Submit":
+            case "Update":
                 return {
                     ...state,
+                    category: action.payload.category,
+                    selectedPlan: action.payload,
                     showPlanning: true
+                }
+            case "CloseForm":
+                return {
+                    ...state,
+                    selectedPlan: {},
+                    showPlanning: false
                 }
             default:
                 return {initialCategoryState}
@@ -88,15 +98,7 @@ export default function Visita() {
     }
 
     async function updatePlan(plan) {
-        // const res = await fetch('http://localhost:3001/visita', {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //     },
-        //     body: JSON.stringify(newPlan)
-        // });
-        // const response = await res.json();
-        console.log(plan);
+        // console.log(plan);
     }
 
     
@@ -108,17 +110,22 @@ export default function Visita() {
         return (
             <div className="visita__body">
                 <div className="visita__box">
-                    <VisitaForm toggleContent={toggleContent} 
-                                dispatch={categoryDispatch} 
+                    <VisitaForm dispatch={categoryDispatch} 
                                 dropdown={categoryState.dropdown} 
-                                planning={pageEndPoint.planning}
                                 newPlan={newPlan}
                                 setNewPlan={setNewPlan}
                                 createPlan={createPlan}
                     />
 
-                    <VisitaTabla isShown={categoryState.showPlanning} planning={pageEndPoint.planning} updatePlan={updatePlan}/>
-                    {/* <VisitaContenido done={done} pageEndPoint={pageEndPoint} addPlan={addPlan}/> */}
+                    <VisitaTabla planning={pageEndPoint.planning} 
+                                 dispatch={categoryDispatch} 
+                    />
+                    <UpdateForm isShown={categoryState.showPlanning}
+                                dropdown={categoryState.dropdown} 
+                                category={categoryState.category}
+                                dispatch={categoryDispatch} 
+                                selectedPlan={categoryState.selectedPlan}
+                    />
                 </div>
             </div>
         );

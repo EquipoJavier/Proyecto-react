@@ -38,7 +38,6 @@ export default function VisitaForm(props) {
 
                 {/* /////////////////////// SUBMIT */}
                     <button className="visita__content__form--submit" onClick={() => {
-                        dispatch({type:"Submit"});
                         createPlan();
                     }}>
                         Añadir itinerario

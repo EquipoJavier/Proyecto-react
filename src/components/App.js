@@ -22,13 +22,6 @@ function App() {
   });
   const [done, setDone] = useState(false);
 
-  function addPlan(plan) { // Función para actualizar el planning (página "visitas")
-    setItems({
-      ...items,
-      planning: [...items.planning, plan]
-    })
-  }
-
   function getHeading(title, subtitle) {
     setHeaderTitle(title);
     sessionStorage.setItem("title", title);
@@ -41,6 +34,12 @@ function App() {
   const urlData = "http://localhost:3001/data"; // la URL del recurso (json) que se va a obtener
   const urlVisita = "http://localhost:3001/visita"; // La URL del recurso de "visita" (CRUD planning)
 
+  function addPlan(plan) { // Función para actualizar el planning (página "visitas")
+    setItems({
+      ...items,
+      planning: [...items.planning, plan]
+    })
+  }
 
   //Se corre este efecto cada vez que cambie la url (es decir, queramos solicitar otro recurso)
   useEffect(() => {
