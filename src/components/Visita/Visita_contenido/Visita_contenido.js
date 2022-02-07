@@ -4,7 +4,9 @@ import VisitaTabla from './Visita_tabla/Visita_tabla';
 import VisitaForm from './VisitaForm/VisitaForm';
 
 export default function VisitaContenido(props) {
-    const [pageInfoEndpoint, planningEndpoint] = props.pageEndPoint;
+    const infoEndpoint = props.pageEndPoint.data;
+    const planningEndpoint = props.pageEndPoint.planning;
+    // const [pageInfoEndpoint, planningEndpoint] = props.pageEndPoint;
     const addPlan = props.addPlan;
 
     const [hidden, setHidden] = useState(true);
@@ -28,7 +30,7 @@ export default function VisitaContenido(props) {
                     ...state,
                     selectedCategory: true,
                     category: "gastronomia",
-                    dropdown: pageInfoEndpoint.gastronomia.restaurantes.map(restaurante => {
+                    dropdown: infoEndpoint.gastronomia.restaurantes.map(restaurante => {
                         return restaurante.name;
                     })
                 }
@@ -40,7 +42,7 @@ export default function VisitaContenido(props) {
                     ...state,
                     selectedCategory: true,
                     category: "cultura",
-                    dropdown: pageInfoEndpoint.cultura.first.map(element => {
+                    dropdown: infoEndpoint.cultura.first.map(element => {
                         return element.name;
                     })
                 }
@@ -49,7 +51,7 @@ export default function VisitaContenido(props) {
                     ...state,
                     selectedCategory: true,
                     category: "ocio",
-                    dropdown: pageInfoEndpoint.ocio.first.map(element => {
+                    dropdown: infoEndpoint.ocio.first.map(element => {
                         return element.name;
                     })
                 }

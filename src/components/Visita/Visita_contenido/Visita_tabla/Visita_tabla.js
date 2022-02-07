@@ -17,7 +17,7 @@ export default function VisitaTabla(props) {
                 <tbody>
                     {planning.length === 0 ? null : planning.map(row => {
                         return (
-                            <tr>
+                            <tr key={row.id}>
                                 <td>{row.day}</td>
                                 <td>{row.category}</td>
                                 <td>{row.option}</td>

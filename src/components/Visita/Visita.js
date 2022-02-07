@@ -15,6 +15,8 @@ export default function Visita() {
         setHidden(false);
     }
 
+    console.log(pageEndPoint);
+
     if (done) {
         return (
             <div className="visita__body">
