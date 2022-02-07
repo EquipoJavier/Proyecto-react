@@ -20,12 +20,18 @@ function App() {
   const [items, setItems] = useState([]);
   const [done, setDone] = useState(false);
 
+const [showLogin,setShowLogin]=useState(false);
+
+
+
+
   function getHeading(title, subtitle) {
     setHeaderTitle(title);
     sessionStorage.setItem("title", title);
     setHeaderSubtitle(subtitle);
     sessionStorage.setItem("subtitle", subtitle);
   }
+
 
   const pathname = useLocation().pathname; //obtengo la ruta acutal p.ejem("/transportes")
   // const url = `http://localhost:3001${pathname === "/" ? "/index" : pathname}`;
@@ -97,8 +103,8 @@ function App() {
 
   return (
     <div>
-      <Header title={headerTitle} subtitle={headerSubtitle} />
-      <Users />
+      {showLogin?<Users setShowLogin={setShowLogin}/>:<></>}
+      <Header title={headerTitle} subtitle={headerSubtitle} setShowLogin={setShowLogin}/>
       <Menu getHeading={getHeading} />
       {/* Pasamos a Outlet (el contenido a mostrar en la página) una propiedad de react router que se llama context en la que pasamos el estado de done y el endpoint, de esta manera el componente que lleve su contenido a mostrar tendrá automáticamente sus propios datos sin tener que preocuparse si serán los de otro path/recurso */}
       {/* <Outlet /> */}
