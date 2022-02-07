@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import md5 from "md5";
+import md5 from "js-md5";
 import Cookies from "universal-cookie";
 
 const url = "http://localhost:3001/users";
@@ -21,7 +21,7 @@ export default function Users() {
   };
 
   async function iniciarSesion() {
-    await axios.get(url +"?" + "username=" + form.username + "&password=" + form.password)
+    await axios.get(url +"?" + "username=" + form.username + "&password=" + md5(form.password))
       .then((response) => {
         return response.data;
       })
