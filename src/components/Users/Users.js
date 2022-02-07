@@ -14,7 +14,7 @@ export default function Users() {
 
   useEffect(() => {
     cookies.get("username") && localStorage.setItem("username", cookies.get("username"));
-  }, []);
+  }, [cookies]);
 
   function handleChange(e) {
     setForm({ ...form, [e.target.name]: e.target.value });
