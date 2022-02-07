@@ -4,6 +4,7 @@ import UpButton from "./UpButton/UpButton";
 import Footer from "./Footer/Footer";
 import Header from "./Header/Header";
 import Menu from "./Menu/Menu";
+import Users from "./Users/Users";
 
 function App() {
   const [headerTitle, setHeaderTitle] = useState(
@@ -76,33 +77,28 @@ function App() {
     switch (pathname) {
       case "/":
         pageEndPoint = items.index;
-        console.log(pathname, pageEndPoint);
         break;
       case "/transportes":
         pageEndPoint = items.transportes;
-        console.log(pathname, pageEndPoint);
         break;
       case "/ocio":
         pageEndPoint = items.ocio;
-        console.log(pathname, pageEndPoint);
         break;
       case "/gastronomia":
         pageEndPoint = items.gastronomia;
-        console.log(pathname, pageEndPoint);
         break;
       case "/cultura":
         pageEndPoint = items.cultura;
-        console.log(pathname, pageEndPoint);
         break;
       default:
         pageEndPoint = items;
-        console.log(pathname, pageEndPoint);
     }
   }
 
   return (
     <div>
       <Header title={headerTitle} subtitle={headerSubtitle} />
+      <Users />
       <Menu getHeading={getHeading} />
       {/* Pasamos a Outlet (el contenido a mostrar en la página) una propiedad de react router que se llama context en la que pasamos el estado de done y el endpoint, de esta manera el componente que lleve su contenido a mostrar tendrá automáticamente sus propios datos sin tener que preocuparse si serán los de otro path/recurso */}
       {/* <Outlet /> */}
