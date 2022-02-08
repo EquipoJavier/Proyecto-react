@@ -16,7 +16,7 @@ export default function VisitaForm(props) {
                     
                 {/* /////////////////////// SELECT CATEGORY */}
                     <select onChange={event =>  {
-                            dispatch({type:event.target.value.toLowerCase()});
+                            dispatch({type:event.target.value});
                             setNewPlan({...newPlan, category: event.target.value})
                     }}>
                         <option style={{display:"none"}}>--- Elige ---</option>

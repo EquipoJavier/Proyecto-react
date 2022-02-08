@@ -27,10 +27,10 @@ export default function VisitaTabla(props) {
         }
 
         dispatch({
-            type: "Update",
+            type: "UPDATE",
             payload: {
                 day: row.day,
-                category: row.category.toLowerCase(),
+                category: row.category,
                 option: row.option,
                 id: row.id
             },

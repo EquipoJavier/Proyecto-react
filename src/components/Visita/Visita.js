@@ -11,7 +11,6 @@ import UpdateForm from './UpdateForm/UpdateForm';
 export default function Visita() {
     const [done , pageEndPoint, addPlan] = useOutletContext();
 
-    const [hidden, setHidden] = useState(true);
     const [newPlan, setNewPlan] = useState({
         day: "",
         category: "",
@@ -27,10 +26,10 @@ export default function Visita() {
 
     const categoryReducer = (state, action) => {
         switch (action.type) {
-            case "gastronomia":
+            case "GASTRONOMIA":
                 return {
                     ...state,
-                    category: "gastronomia",
+                    category: "GASTRONOMIA",
                     dropdown: pageEndPoint.data.gastronomia.restaurantes.map(restaurante => {
                         return restaurante.name;
                     })
@@ -38,37 +37,39 @@ export default function Visita() {
 
             // Cultura y ocio son temporales, esto es un ejemplo a falta de datos.
             // Pero la idea es la misma que en gastronomía: un map para recoger los NOMBRES de museos/parques/etc
-            case "cultura":
+            case "CULTURA":
                 return {
                     ...state,
-                    category: "cultura",
+                    category: "CULTURA",
                     dropdown: pageEndPoint.data.cultura.first.map(element => {
                         return element.name;
                     })
                 }
-            case "ocio":
+            case "OCIO":
                 return {
                     ...state,
-                    category: "ocio",
+                    category: "OCIO",
                     dropdown: pageEndPoint.data.ocio.first.map(element => {
                         return element.name;
                     })
                 }
-            case "Update":
+            case "UPDATE":
+                setNewPlan(action.payload)
                 return {
                     ...state,
                     category: action.payload.category,
                     selectedPlan: action.payload,
                     showPlanning: true,
-                    dropdown: pageEndPoint.data[action.payload.category][action.categoryIndex].map(element => {
+                    dropdown: pageEndPoint.data[action.payload.category.toLowerCase()][action.categoryIndex].map(element => {
                         return element.name;
                     })
                 }
-            case "CloseForm":
+            case "CLOSE_FORM":
                 return {
                     ...state,
                     selectedPlan: {},
-                    showPlanning: false
+                    showPlanning: false,
+                    dropdown: []
                 }
             default:
                 return {initialCategoryState}
@@ -79,10 +80,6 @@ export default function Visita() {
         categoryReducer,
         initialCategoryState
     );
-
-    function toggleContent() {
-        setHidden(!hidden);
-    }
 
     async function createPlan() {
         const res = await fetch('http://localhost:3001/visita', {
@@ -96,8 +93,19 @@ export default function Visita() {
         await addPlan(response);
     }
 
-    async function updatePlan(plan) {
-        // console.log(plan);
+    async function updatePlan() {
+        const id = newPlan.id;
+        const url = `http://localhost:3001/visita/${id}`;
+
+        const res = await fetch(url, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newPlan)
+        });
+        const response = await res.json();
+        await addPlan(response);
     }
 
     
@@ -124,6 +132,9 @@ export default function Visita() {
                                 category={categoryState.category}
                                 dispatch={categoryDispatch} 
                                 selectedPlan={categoryState.selectedPlan}
+                                newPlan={newPlan}
+                                setNewPlan={setNewPlan}
+                                updatePlan={updatePlan}
                     />
                 </div>
             </div>

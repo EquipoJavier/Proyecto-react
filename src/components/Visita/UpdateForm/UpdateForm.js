@@ -1,12 +1,14 @@
 import './UpdateForm.scss';
 
 export default function UpdateForm(props) {
-    const isShown = props.isShown;
-    const dropdown = props.dropdown;
-    const category = props.category.toUpperCase();
-    const dispatch = props.dispatch;
-    const selectedPlan = props.selectedPlan;
-    console.log(selectedPlan);
+    const isShown = props.isShown; // Indica si el componente se muestra
+    const category = props.category; // Contiene la categoría seleccionada
+    const dropdown = props.dropdown; // Contiene los elementos a mostrar de la categoría seleccionada
+    const dispatch = props.dispatch; // Función dispatch del reducer
+    const selectedPlan = props.selectedPlan // Contiene los datos del plan (fila de la tabla) seleccionado
+    const newPlan = props.newPlan; // Estado; contendrá los nuevos datos modificados del plan seleccionado
+    const setNewPlan = props.setNewPlan; // Función actualizadora del estado newPlan
+    const updatePlan = props.updatePlan; // Función que ejecuta la actualización en el JSON de datos
     
     return isShown ? (
         <>
@@ -17,15 +19,15 @@ export default function UpdateForm(props) {
                         
                         <form onSubmit={e => e.preventDefault()}>
                             <label>Día:</label>
-                                <input type="date" value={selectedPlan.day} onChange={event =>{
-                                    console.log("DIA CAMBIADO: ", event.target.value)
+                                <input type="date" defaultValue={selectedPlan.day} onChange={event =>{
+                                    setNewPlan({...newPlan, day: event.target.value})
                                 }}/>
                                 
                             {/* /////////////////////// SELECT CATEGORY */}
                             <label>Categoría:</label>
                                 <select defaultValue={category} onChange={event => {
                                     dispatch({type: event.target.value})
-                                    console.log("CATEGORIA CAMBIADO: ", event.target.value)
+                                    setNewPlan({...newPlan, category: event.target.value})
                                 }}>
                                     <option style={{display:"none"}}>--- Elige ---</option>
                                     <option>CULTURA</option>
@@ -36,7 +38,7 @@ export default function UpdateForm(props) {
                             {/* /////////////////////// SELECT ITEM */}
                             <label>Qué hacer:</label>
                                 <select defaultValue={selectedPlan.option} onChange={event => {
-                                    console.log("OPCION CAMBIADO: ", event.target.value)
+                                    setNewPlan({...newPlan, option: event.target.value})
                                 }}>
                                     <option style={{display:"none"}}>--- Elige ---</option>
                                     {dropdown.map(element => {
@@ -46,11 +48,13 @@ export default function UpdateForm(props) {
 
                             {/* /////////////////////// SUBMIT */}
                             <div className="update__form__buttons">
-                                <button>
+                                <button onClick={() => {
+                                    updatePlan();
+                                }}>
                                     Actualizar
                                 </button> 
                                 <button className="update__close" onClick={() => {
-                                    dispatch({type: "CloseForm"})
+                                    dispatch({type: "CLOSE_FORM"})
                                 }}>Cerrar</button>
                             </div>
                         </form>
