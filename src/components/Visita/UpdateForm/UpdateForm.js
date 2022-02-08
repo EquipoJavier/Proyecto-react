@@ -6,6 +6,7 @@ export default function UpdateForm(props) {
     const category = props.category.toUpperCase();
     const dispatch = props.dispatch;
     const selectedPlan = props.selectedPlan;
+    console.log(selectedPlan);
     
     return isShown ? (
         <>
@@ -34,7 +35,7 @@ export default function UpdateForm(props) {
                             
                             {/* /////////////////////// SELECT ITEM */}
                             <label>Qué hacer:</label>
-                                <select onChange={event => {
+                                <select defaultValue={selectedPlan.option} onChange={event => {
                                     console.log("OPCION CAMBIADO: ", event.target.value)
                                 }}>
                                     <option style={{display:"none"}}>--- Elige ---</option>
