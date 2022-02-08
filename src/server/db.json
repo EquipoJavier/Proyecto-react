@@ -147,7 +147,37 @@
         "name": "Cercanías",
         "text": "Cercanías Madrid es el servicio ferroviario explotado por Renfe Cercanías, división de Renfe Operadora, sobre una infraestructura de Adif, que comunica la ciudad de Madrid con su área metropolitana y las principales poblaciones de la Comunidad de Madrid.Su red se extiende por gran parte de la región, incluyendo además diversas localidades de provincias limítrofes con Madrid como Azuqueca y Guadalajara en la provincia de Guadalajara y la zona del Puerto de Cotos entre Madrid y Segovia.Cercanías Madrid llega pues a la gran mayoría de la población de la Comunidad de Madrid, incluidas algunas partes de su área metropolitana, que en su interpretación más amplia, alcanza hasta las ciudades de Guadalajara, Ávila y Segovia.La red, con una plantilla de unos 1300 empleados, cuenta con diez líneas en funcionamiento, discurriendo por 370 km de vías férreas, con 89 estaciones de las que más de 20 ofrecen correspondencia con el Metro de Madrid y una de ellas con el Tranvía de Parla. En días laborables hay unas 1.385 circulaciones diarias, pudiendo transportar un total de 880.000 viajeros."
       }
-    }
+    },
+    "tarjetas": [
+      {
+        "propertyOf": "prueba",
+        "nombre": "Jose",
+        "apellidos": "Ángel Martínez",
+        "tipo": "azul",
+        "id": 1
+      },
+      {
+        "propertyOf": "fer",
+        "nombre": "Fer",
+        "apellidos": "Jiménez Becerra",
+        "tipo": "viajes",
+        "id": 2
+      },
+      {
+        "propertyOf": "fer",
+        "nombre": "Juan",
+        "apellidos": "Martínez Carrión",
+        "tipo": "mensual",
+        "id": 3
+      },
+      {
+        "propertyOf": "fer",
+        "nombre": "Luis",
+        "apellidos": "Carrillo Felipez",
+        "tipo": "azul",
+        "id": 4
+      }
+    ]
   },
   "users": [
     {

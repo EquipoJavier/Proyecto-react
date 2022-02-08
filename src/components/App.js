@@ -20,10 +20,8 @@ function App() {
   const [items, setItems] = useState([]);
   const [done, setDone] = useState(false);
 
-const [showLogin,setShowLogin]=useState(false);
-
-
-
+  const [showLogin, setShowLogin] = useState(false);
+  const [isLogin, setIsLogin] = useState(false);
 
   function getHeading(title, subtitle) {
     setHeaderTitle(title);
@@ -32,12 +30,10 @@ const [showLogin,setShowLogin]=useState(false);
     sessionStorage.setItem("subtitle", subtitle);
   }
 
-
   const pathname = useLocation().pathname; //obtengo la ruta acutal p.ejem("/transportes")
   // const url = `http://localhost:3001${pathname === "/" ? "/index" : pathname}`;
   const url = "http://localhost:3001/data";
   //le indico la ruta con el recurso a solicitar y en el caso de que pathname hubiera sido "/" (referido a index), a la url le paso /index
-
 
   //Se corre este efecto cada vez que cambie la url (es decir, queramos solicitar otro recurso)
   useEffect(() => {
@@ -46,7 +42,8 @@ const [showLogin,setShowLogin]=useState(false);
       .then((result) => {
         setItems(result);
         setDone(true);
-      }).catch(function (error) {
+      })
+      .catch(function (error) {
         console.log("Hubo un problema con la petición Fetch:" + error.message);
       });
 
@@ -100,12 +97,15 @@ const [showLogin,setShowLogin]=useState(false);
 
   return (
     <div>
-      {showLogin?<Users setShowLogin={setShowLogin}/>:<></>}
-      <Header title={headerTitle} subtitle={headerSubtitle} setShowLogin={setShowLogin}/>
+      {showLogin ? <Users setIsLogin={setIsLogin} setShowLogin={setShowLogin} /> : <></>}
+      <Header
+        title={headerTitle}
+        subtitle={headerSubtitle}
+        setShowLogin={setShowLogin}
+      />
       <Menu getHeading={getHeading} />
       {/* Pasamos a Outlet (el contenido a mostrar en la página) una propiedad de react router que se llama context en la que pasamos el estado de done y el endpoint, de esta manera el componente que lleve su contenido a mostrar tendrá automáticamente sus propios datos sin tener que preocuparse si serán los de otro path/recurso */}
-      {/* <Outlet /> */}
-      <Outlet context={[done, pageEndPoint]} />
+      <Outlet context={[isLogin, done, pageEndPoint]} />
       <UpButton />
       <Footer />
     </div>

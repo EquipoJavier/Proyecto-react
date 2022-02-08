@@ -8,15 +8,15 @@ import buttonCerrar from '../Recursos/img/cerrar.png';
 const url = "http://localhost:3001/users";
 const cookies = new Cookies();
 
-export default function Users({setShowLogin}) {
+export default function Users({setIsLogin, setShowLogin}) {
   const [form, setForm] = useState({
     username: "",
     password: "",
   });
 
-  useEffect(() => {
-    cookies.get("username") && localStorage.setItem("username", cookies.get("username"));
-  }, [cookies]);
+  // useEffect(() => {
+  //   cookies.get("username") && localStorage.setItem("username", cookies.get("username"));
+  // }, [cookies]);
 
   function handleChange(e) {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -36,6 +36,7 @@ export default function Users({setShowLogin}) {
           cookies.set("username", respuesta.username, { path: "/" });
           alert(`Bienvenido ${respuesta.username}`);
           setShowLogin(false);
+          setIsLogin(true);
           window.onscroll = function () {};
         } else {
           alert("El usuario o la contraseña no son correctos");
