@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ChooseTransport from "./ChooseTransport/ChooseTransport";
 import SectionLocation from "./Section_Location/SectionLocation";
 import SectionTransportVoucher from "./TransportVoucher/SectionTransportVoucher";
@@ -6,7 +6,6 @@ import VoucherCrud from "./CRUD_Voucher/VoucherCrud";
 import HiddenCrud from "./Hidden_CRUD/HiddenCrud";
 import usePersistentState from "./CRUD_Voucher/usePersistentState.js";
 import "./Transportes.scss";
-import { useOutletContext } from "react-router-dom";
 
 export default function Transportes(){
     const [create, setCreate] = useState(localStorage.getItem("name") === null && localStorage.getItem("img") === null && localStorage.getItem("surname") !== null);
@@ -16,11 +15,23 @@ export default function Transportes(){
     const [fileInput, setFileInput] = usePersistentState("img", localStorage.getItem("img") ? localStorage.getItem("img") : null);
     const [type, setType] = usePersistentState("type", localStorage.getItem("type") ? localStorage.getItem("type") : null);
 
+    const url = "http://localhost:3001/transportes";
+    const [pageEndPoint, setPageEndPoint] = useState([]);
+    const [done, setDone] = useState(false);
 
-    //con el método useOutletContext() obtenemos los valores pasados en el context a Outlet anteriormente en App
-    const [done , pageEndPoint] = useOutletContext();
+    useEffect(() => {
+        fetch(url)
+        .then((res) => res.json())
+        .then((result) => {
+            setTimeout(()=>{
+                setPageEndPoint(result);
+                setDone(true);
+            },1500);
+        }).catch(function (error) {
+          console.log("Hubo un problema con la petición Fetch:" + error.message);
+        });
+    },[]);
 
-   
     
     return(
         <>

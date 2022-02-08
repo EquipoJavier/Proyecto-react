@@ -84,9 +84,6 @@ const [showLogin,setShowLogin]=useState(false);
       case "/":
         pageEndPoint = items.index;
         break;
-      case "/transportes":
-        pageEndPoint = items.transportes;
-        break;
       case "/ocio":
         pageEndPoint = items.ocio;
         break;
