@@ -147,16 +147,22 @@
   },
   "visita": [
     {
-      "day": "2022-02-08",
-      "category": "Gastronomía",
+      "day": "2022-02-09",
+      "category": "GASTRONOMIA",
       "option": "Taberna La Bola",
       "id": 1
     },
     {
       "day": "2022-02-09",
-      "category": "Cultura",
+      "category": "CULTURA",
       "option": "Cuevas de Luis Candelas",
       "id": 2
+    },
+    {
+      "day": "2022-02-10",
+      "category": "OCIO",
+      "option": "Metro de Madrid:",
+      "id": 3
     }
   ]
 }

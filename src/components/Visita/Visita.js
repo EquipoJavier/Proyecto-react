@@ -19,7 +19,6 @@ export default function Visita() {
     });
 
     const initialCategoryState = {
-        selectedCategory: false,
         selectedPlan: {},
         showPlanning: false,
         category: "",
@@ -28,11 +27,10 @@ export default function Visita() {
 
     const categoryReducer = (state, action) => {
         switch (action.type) {
-            case "Gastronomía":
+            case "gastronomia":
                 return {
                     ...state,
-                    selectedCategory: true,
-                    category: "Gastronomía",
+                    category: "gastronomia",
                     dropdown: pageEndPoint.data.gastronomia.restaurantes.map(restaurante => {
                         return restaurante.name;
                     })
@@ -40,20 +38,18 @@ export default function Visita() {
 
             // Cultura y ocio son temporales, esto es un ejemplo a falta de datos.
             // Pero la idea es la misma que en gastronomía: un map para recoger los NOMBRES de museos/parques/etc
-            case "Cultura":
+            case "cultura":
                 return {
                     ...state,
-                    selectedCategory: true,
-                    category: "Cultura",
+                    category: "cultura",
                     dropdown: pageEndPoint.data.cultura.first.map(element => {
                         return element.name;
                     })
                 }
-            case "Ocio":
+            case "ocio":
                 return {
                     ...state,
-                    selectedCategory: true,
-                    category: "Ocio",
+                    category: "ocio",
                     dropdown: pageEndPoint.data.ocio.first.map(element => {
                         return element.name;
                     })
@@ -63,7 +59,10 @@ export default function Visita() {
                     ...state,
                     category: action.payload.category,
                     selectedPlan: action.payload,
-                    showPlanning: true
+                    showPlanning: true,
+                    dropdown: pageEndPoint.data[action.payload.category][action.categoryIndex].map(element => {
+                        return element.name;
+                    })
                 }
             case "CloseForm":
                 return {

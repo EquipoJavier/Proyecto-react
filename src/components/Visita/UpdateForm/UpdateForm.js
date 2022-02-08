@@ -3,13 +3,12 @@ import './UpdateForm.scss';
 export default function UpdateForm(props) {
     const isShown = props.isShown;
     const dropdown = props.dropdown;
-    const category = props.category;
+    const category = props.category.toUpperCase();
     const dispatch = props.dispatch;
     const selectedPlan = props.selectedPlan;
     
     return isShown ? (
         <>
-            {console.log(category, "<<<<")}
             <div className="update">
                 <div className="update__content">
                     <div className="update__form">
@@ -28,9 +27,9 @@ export default function UpdateForm(props) {
                                     console.log("CATEGORIA CAMBIADO: ", event.target.value)
                                 }}>
                                     <option style={{display:"none"}}>--- Elige ---</option>
-                                    <option>Cultura</option>
-                                    <option>Gastronomía</option>
-                                    <option>Ocio</option>
+                                    <option>CULTURA</option>
+                                    <option>GASTRONOMIA</option>
+                                    <option>OCIO</option>
                                 </select>
                             
                             {/* /////////////////////// SELECT ITEM */}

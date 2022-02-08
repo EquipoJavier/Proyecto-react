@@ -16,13 +16,13 @@ export default function VisitaForm(props) {
                     
                 {/* /////////////////////// SELECT CATEGORY */}
                     <select onChange={event =>  {
-                            dispatch({type:event.target.value});
+                            dispatch({type:event.target.value.toLowerCase()});
                             setNewPlan({...newPlan, category: event.target.value})
                     }}>
                         <option style={{display:"none"}}>--- Elige ---</option>
-                        <option>Cultura</option>
-                        <option>Gastronomía</option>
-                        <option>Ocio</option>
+                        <option>CULTURA</option>
+                        <option>GASTRONOMIA</option>
+                        <option>OCIO</option>
                     </select>
 
 
