@@ -13,7 +13,7 @@ export default function Select({ newVoucher, setNewVoucher }) {
     <>
       <label htmlFor="voucher">
         Elige tarjeta
-        <select id="voucher" name="voucher" size={1} onChange={handleChange}>
+        <select value={newVoucher.type} id="voucher" name="voucher" size={1} onChange={handleChange}>
           {options.map((item) => {
             return (
               <option key={item.id} value={item.value}>

@@ -16,6 +16,9 @@ import viajes from "../../../Recursos/img/tarjeta_multi.jpg";
 import fondo from "../../../Recursos/img/final--transportes.jpg";
 import "./Read.scss";
 import { Add, FindReplace } from "@material-ui/icons";
+import { confirmAlert } from "react-confirm-alert";
+import "react-confirm-alert/src/react-confirm-alert.css";
+import axios from "axios";
 
 const images = {
   azul: azul,
@@ -24,12 +27,51 @@ const images = {
 };
 
 export default function Read({
+  url,
   setDone,
   setShowForm,
   user,
   done,
   pageEndPoint,
+  setForUpdate,
+  setPageEndPoint,
 }) {
+  async function deleteVoucher(item) {
+    confirmAlert({
+      title: "Borrar tarjeta " + item.type,
+      message:
+        "¿Quieres borrar la tarjeta " +
+        item.type +
+        " de " +
+        item.name +
+        " " +
+        item.surname +
+        "?",
+      buttons: [
+        {
+          label: "Borrar",
+          onClick: async () => {
+            alert("Borrando la tarjeta de " + item.name);
+            await axios
+              .delete(url + "/" + item.id)
+              .then((response) => {
+                setPageEndPoint(
+                  pageEndPoint.filter((tarjeta) => tarjeta.id !== item.id)
+                );
+              })
+              .catch((error) => {
+                console.log(error);
+              });
+          },
+        },
+        {
+          label: "Cancelar",
+          onClick: () => alert("Cancelando operación de borrado..."),
+        },
+      ],
+    });
+  }
+
   return (
     <div className="voucher__read-content">
       {done ? (
@@ -140,7 +182,8 @@ export default function Read({
                         <TableCell
                           style={{ fontSize: "20px", textAlign: "center" }}
                         >
-                          {item.type.charAt(0).toUpperCase() + item.type.slice(1)}
+                          {item.type.charAt(0).toUpperCase() +
+                            item.type.slice(1)}
                         </TableCell>
                         <TableCell
                           style={{ fontSize: "20px", textAlign: "center" }}
@@ -175,7 +218,10 @@ export default function Read({
                             variant="contained"
                             color="success"
                             startIcon={<Edit />}
-                            onClick={setShowForm}
+                            onClick={(e) => {
+                              setShowForm(true);
+                              setForUpdate(item);
+                            }}
                           >
                             Edit
                           </Button>
@@ -188,6 +234,9 @@ export default function Read({
                             variant="contained"
                             color="error"
                             startIcon={<DeleteSweep />}
+                            onClick={() => {
+                              deleteVoucher(item);
+                            }}
                           >
                             Delete
                           </Button>
@@ -229,7 +278,7 @@ export default function Read({
         variant="contained"
         color="info"
         startIcon={<FindReplace />}
-        onClick={()=>setDone(false)}
+        onClick={() => setDone(false)}
       >
         Cargar los datos de nuevo
       </Button>

@@ -2,15 +2,15 @@ import InputImage from "./InputImage/InputImage";
 import LabelInput from "./LabelInput/LabelInput";
 import profileDefault from "../../../Recursos/img/transport-profile.png";
 import bono from "../../../Recursos/img/crea-tu-bono.jpg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Select from "./Select/Select";
 import "./Form.scss";
 import { Button } from "@material-ui/core";
 import { Add } from "@material-ui/icons";
+import Edit from "@mui/icons-material/Edit";
 import axios from "axios";
 
-export default function Form({setDone, user, setShowForm}) {
-
+export default function Form({ url, forUpdate, setForUpdate, setDone, user, setShowForm }) {
   const [newVoucher, setNewVoucher] = useState({
     name: sessionStorage.getItem("tar-name") || "",
     surname: sessionStorage.getItem("tar-surname") || "",
@@ -19,38 +19,82 @@ export default function Form({setDone, user, setShowForm}) {
     propertyOf: user,
   });
 
+  useEffect(() => {
+    forUpdate != {} && setNewVoucher({ ...newVoucher, ...forUpdate });
+    return () => {
+      setNewVoucher({});
+    }
+  }, [forUpdate]);
+
   const handleName = (e) => {
-    setNewVoucher({...newVoucher, name : e.target.value});
+    setNewVoucher({ ...newVoucher, name: e.target.value });
     sessionStorage.setItem("tar-name", e.target.value);
   };
 
   const handleSurName = (e) => {
-    setNewVoucher({...newVoucher, surname : e.target.value});
+    setNewVoucher({ ...newVoucher, surname: e.target.value });
     sessionStorage.setItem("tar-surname", e.target.value);
   };
-  console.log(newVoucher);
-  const url = "http://localhost:3001/tarjetas";
 
-  async function createNewVoucher(){
-
-    if(newVoucher.name!=""&&newVoucher.surname!=""&&newVoucher.fileInput!=null&&newVoucher.propertyOf!=""){
-      await axios.post(url, newVoucher).then((response)=> {
-        alert('Tarjeta creada');
-        sessionStorage.removeItem("tar-name");
-        sessionStorage.removeItem("tar-surname");
-        setShowForm(false);
-        setDone(false);
-      }).catch((error)=> {console.log(error)});
-    }else{
-      alert("Introduce todos tus datos antes de crear la tarjeta");
+  async function createNewVoucher() {
+    if (
+      newVoucher.name != "" &&
+      newVoucher.surname != "" &&
+      newVoucher.fileInput != null &&
+      newVoucher.propertyOf != ""
+    ) {
+      await axios
+        .post(url, newVoucher)
+        .then((response) => {
+          alert("Tarjeta creada");
+          sessionStorage.removeItem("tar-name");
+          sessionStorage.removeItem("tar-surname");
+          setShowForm(false);
+          setDone(false);
+          setForUpdate({});
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else {
+      alert("Inicia sesión e introduce todos tus datos antes de crear la tarjeta");
     }
-  };
+  }
+
+  async function editVoucher() {
+    if (
+      newVoucher.name != "" &&
+      newVoucher.surname != "" &&
+      newVoucher.fileInput != null &&
+      newVoucher.propertyOf != ""
+    ) {
+      await axios
+        .put(url+"/"+newVoucher.id, newVoucher)
+        .then((response) => {
+          alert("Tarjeta actualizada");
+          sessionStorage.removeItem("tar-name");
+          sessionStorage.removeItem("tar-surname");
+          setShowForm(false);
+          setDone(false);
+          setNewVoucher(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else {
+      alert("Inicia sesión e introduce todos tus datos antes de crear la tarjeta");
+    }
+  }
 
   return (
     <div className="voucher__form-content">
       <div className="voucher__form-content--form">
         <form className="voucher__form-content--form-f">
-          <LabelInput value={newVoucher.name} handle={handleName} text={"Nombre"} />
+          <LabelInput
+            value={newVoucher.name}
+            handle={handleName}
+            text={"Nombre"}
+          />
           <LabelInput
             value={newVoucher.surname}
             handle={handleSurName}
@@ -58,18 +102,35 @@ export default function Form({setDone, user, setShowForm}) {
           />
           <Select newVoucher={newVoucher} setNewVoucher={setNewVoucher} />
           <InputImage newVoucher={newVoucher} setNewVoucher={setNewVoucher} />
-          <Button
-            style={{
-              fontSize: "14px",
-              textAlign: "center",
-            }}
-            variant="contained"
-            color="primary"
-            startIcon={<Add />}
-            onClick={createNewVoucher}
-          >
-            Crear nueva tarjeta
-          </Button>
+          {forUpdate == {} ? (
+            <Button
+              style={{
+                fontSize: "14px",
+                textAlign: "center",
+              }}
+              variant="contained"
+              color="primary"
+              startIcon={<Add />}
+              onClick={createNewVoucher}
+            >
+              Crear nueva tarjeta
+            </Button>
+          ) : (
+            <Button
+              style={{
+                fontSize: "14px",
+                textAlign: "center",
+                color: "green",
+                backgroundColor: "white"
+              }}
+              variant="contained"
+              color="inherit"
+              startIcon={<Edit />}
+              onClick={editVoucher}
+            >
+              Aceptar los cambios
+            </Button>
+          )}
         </form>
       </div>
       <div className="voucher__form-content--img">
