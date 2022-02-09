@@ -1,4 +1,4 @@
-import { useState, useReducer } from 'react';
+import { useState, useReducer, useEffect } from 'react';
 import { useOutletContext } from 'react-router-dom';
 import VisitaForm from './VisitaForm/VisitaForm';
 
@@ -9,18 +9,23 @@ import './Visita.scss';
 import UpdateForm from './UpdateForm/UpdateForm';
 
 export default function Visita() {
-    const [done , pageEndPoint, alterPlan] = useOutletContext();
 
-    const [newPlan, setNewPlan] = useState({
+    const [done , pageEndPoint, alterPlan] = useOutletContext();
+    
+    const initialPlanState = {
         day: "",
         category: "",
         option: ""
-    });
+    };
+
+    
+    
+    const [newPlan, setNewPlan] = useState(initialPlanState);
 
     const initialCategoryState = {
         selectedPlan: {},
         showPlanning: false,
-        category: "",
+        category: "--- Elige ---",
         dropdown: [],
     }
 
@@ -56,7 +61,6 @@ export default function Visita() {
             case "UPDATE":
                 setNewPlan(action.payload)
                 return {
-                    ...state,
                     category: action.payload.category,
                     selectedPlan: action.payload,
                     showPlanning: true,
@@ -65,12 +69,10 @@ export default function Visita() {
                     })
                 }
             case "CLOSE_FORM":
-                setNewPlan({    
-                    day: "",
-                    category: "",
-                    option: ""})
+                setNewPlan(initialPlanState)
                 return {
                     ...state,
+                    category: "--- Elige ---",
                     selectedPlan: {},
                     showPlanning: false,
                 }
@@ -83,6 +85,7 @@ export default function Visita() {
         categoryReducer,
         initialCategoryState
     );
+
 
     async function createPlan() {
         const res = await fetch('http://localhost:3001/visita', {
@@ -117,6 +120,7 @@ export default function Visita() {
     // COMPONENT RENDER
 
     if (done) {
+        {console.log(newPlan)}
         return (
             <div className="visita__body">
                 <div className="visita__box">

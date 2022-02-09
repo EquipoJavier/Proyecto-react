@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 
 export default function VisitaForm(props) {
     const dispatch = props.dispatch;
@@ -19,7 +18,7 @@ export default function VisitaForm(props) {
                     }}/>
                     
                 {/* /////////////////////// SELECT CATEGORY */}
-                    <select defaultValue={category} onChange={event =>  {
+                    <select value={category} onChange={event =>  {
                             dispatch({type:event.target.value});
                             setNewPlan({...newPlan, category: event.target.value})
                     }}>
