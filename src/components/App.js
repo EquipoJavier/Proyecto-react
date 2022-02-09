@@ -53,7 +53,12 @@ function App() {
         setItems({
           ...items,
           planning: [...items.planning.map(plan => plan.id !== alteredPlan.id ? plan : alteredPlan)]
-          // planning: [...items.planning]
+        })
+        break;
+      case "delete":
+        setItems({
+          ...items,
+          planning: [...items.planning.filter(plan => plan.id !== alteredPlan.id)]
         })
         break;
       default:

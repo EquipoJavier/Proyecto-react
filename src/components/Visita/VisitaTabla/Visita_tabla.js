@@ -57,7 +57,15 @@ export default function VisitaTabla(props) {
                                 <td>{row.option}</td>
                                 <td className="visita__content__table--buttons">
                                     <button onClick={() => {dispatchUpdate(row)}}>Cambiar</button>
-                                    <button>Eliminar</button>
+                                    <button onClick={() => dispatch({
+                                        type: "DELETE",
+                                        payload: {
+                                            day: row.day,
+                                            category: row.category,
+                                            option: row.option,
+                                            id: row.id
+                                        },
+                                    })}>Eliminar</button>
                                 </td>
                             </tr>
                         )

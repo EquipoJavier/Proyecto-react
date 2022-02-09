@@ -1,30 +1,37 @@
 import { useState, useReducer, useEffect } from 'react';
 import { useOutletContext } from 'react-router-dom';
 import VisitaForm from './VisitaForm/VisitaForm';
-
-import loadingGif from '../Recursos/img/loading.gif'
 import VisitaTabla from './VisitaTabla/Visita_tabla';
+import UpdateForm from './UpdateForm/UpdateForm';
+import DeleteForm from './DeleteForm/DeleteForm';
 
 import './Visita.scss';
-import UpdateForm from './UpdateForm/UpdateForm';
+import loadingGif from '../Recursos/img/loading.gif'
+
 
 export default function Visita() {
 
-    const [done , pageEndPoint, alterPlan] = useOutletContext();
+    // Recuperar los datos pasados al componente Outlet de react-router desde App.js
+    const [done , pageEndPoint, alterPlan] = useOutletContext(); 
     
+    /* Objeto "plantilla" vacío con la estructura con que se guardan los planes en el
+        json. Se usa para "limpiar" estados/variables que manipulen planes (inserción,
+        modificación, etc) */
     const initialPlanState = {
         day: "",
         category: "",
         option: ""
     };
-
     
-    
-    const [newPlan, setNewPlan] = useState(initialPlanState);
+    /* Estado que almacenará el plan que se va a insertar/modificar/borrar en el json */
+    const [alteredPlan, setAlteredPlan] = useState(initialPlanState);
 
+    /* Estado inicial del reducer que gestiona el contenido de ciertos campos de los 
+        formularios de inserción/modificación/borrado */
     const initialCategoryState = {
-        selectedPlan: {},
-        showPlanning: false,
+        selectedPlan: {}, // Guarda los datos del plan cuando se va a modifcar/borrar
+        showPlanning: false, // Muestra (o no) el popup de modificación de un plan
+        showDelete: false,
         category: "--- Elige ---",
         dropdown: [],
     }
@@ -59,7 +66,7 @@ export default function Visita() {
                     })
                 }
             case "UPDATE":
-                setNewPlan(action.payload)
+                setAlteredPlan(action.payload)
                 return {
                     category: action.payload.category,
                     selectedPlan: action.payload,
@@ -68,13 +75,20 @@ export default function Visita() {
                         return element.name;
                     })
                 }
+            case "DELETE":
+                return {
+                    ...state,
+                    selectedPlan: action.payload,
+                    showDelete: true
+                }
             case "CLOSE_FORM":
-                setNewPlan(initialPlanState)
+                setAlteredPlan(initialPlanState)
                 return {
                     ...state,
                     category: "--- Elige ---",
                     selectedPlan: {},
                     showPlanning: false,
+                    showDelete: false
                 }
             default:
                 return {initialCategoryState}
@@ -93,14 +107,14 @@ export default function Visita() {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(newPlan)
+            body: JSON.stringify(alteredPlan)
         });
         const response = await res.json();
         await alterPlan(response, "create");
     }
 
     async function updatePlan() {
-        const id = newPlan.id;
+        const id = alteredPlan.id;
         const url = `http://localhost:3001/visita/${id}`;
 
         const res = await fetch(url, {
@@ -108,10 +122,25 @@ export default function Visita() {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(newPlan)
+            body: JSON.stringify(alteredPlan)
         });
         const response = await res.json();
         await alterPlan(response, "update");
+    }
+
+    async function deletePlan(alteredPlan) {
+        const id = alteredPlan.id;
+        const url = `http://localhost:3001/visita/${id}`;
+        
+        const res = await fetch(url, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(alteredPlan)
+        });
+        
+        await alterPlan(alteredPlan, "delete"); // Esta vez hay que pasar el plan a borrar, en vez del resultado de fetch() (ya que éste devuelve un objeto vacío)
     }
 
     
@@ -120,15 +149,14 @@ export default function Visita() {
     // COMPONENT RENDER
 
     if (done) {
-        {console.log(newPlan)}
         return (
             <div className="visita__body">
                 <div className="visita__box">
                     <VisitaForm dispatch={categoryDispatch} 
                                 category={categoryState.category}
                                 dropdown={categoryState.dropdown} 
-                                newPlan={newPlan}
-                                setNewPlan={setNewPlan}
+                                alteredPlan={alteredPlan}
+                                setAlteredPlan={setAlteredPlan}
                                 createPlan={createPlan}
                     />
 
@@ -140,9 +168,14 @@ export default function Visita() {
                                 category={categoryState.category}
                                 dispatch={categoryDispatch} 
                                 selectedPlan={categoryState.selectedPlan}
-                                newPlan={newPlan}
-                                setNewPlan={setNewPlan}
+                                alteredPlan={alteredPlan}
+                                setAlteredPlan={setAlteredPlan}
                                 updatePlan={updatePlan}
+                    />
+                    <DeleteForm isShown={categoryState.showDelete}
+                                dispatch={categoryDispatch} 
+                                selectedPlan={categoryState.selectedPlan}
+                                deletePlan={deletePlan}
                     />
                 </div>
             </div>

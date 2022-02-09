@@ -3,8 +3,8 @@ export default function VisitaForm(props) {
     const dispatch = props.dispatch;
     const category = props.category; // Contiene la categoría seleccionada
     const dropdown = props.dropdown;
-    const newPlan = props.newPlan;
-    const setNewPlan = props.setNewPlan;
+    const alteredPlan = props.alteredPlan;
+    const setAlteredPlan = props.setAlteredPlan;
     const createPlan = props.createPlan;
 
     
@@ -14,13 +14,13 @@ export default function VisitaForm(props) {
                 <label>Día: </label>
                 {/* /////////////////////// INPUT */}
                     <input type="date" onChange={event => {
-                        setNewPlan({...newPlan, day: event.target.value})
+                        setAlteredPlan({...alteredPlan, day: event.target.value})
                     }}/>
                     
                 {/* /////////////////////// SELECT CATEGORY */}
                     <select value={category} onChange={event =>  {
                             dispatch({type:event.target.value});
-                            setNewPlan({...newPlan, category: event.target.value})
+                            setAlteredPlan({...alteredPlan, category: event.target.value})
                     }}>
                         <option style={{display:"none"}}>--- Elige ---</option>
                         <option>CULTURA</option>
@@ -31,7 +31,7 @@ export default function VisitaForm(props) {
 
                 {/* /////////////////////// SELECT ITEM */}
                     <select onChange={event => {
-                        setNewPlan({...newPlan, option: event.target.value})
+                        setAlteredPlan({...alteredPlan, option: event.target.value})
                     }}>
                         <option style={{display:"none"}}>--- Elige ---</option>
                         {dropdown.map(element => {
