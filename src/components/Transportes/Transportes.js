@@ -32,7 +32,7 @@ export default function Transportes(){
             <SectionLocation done={done} pageEndPoint={pageEndPoint} />
             <SectionTransportVoucher />
             <ChooseTransport done={done} pageEndPoint={pageEndPoint} />
-            <VoucherCrud isLogin={isLogin} done={done} pageEndPoint={pageEndPoint} />
+            <VoucherCrud isLogin={isLogin} />
         </>
     )
 }

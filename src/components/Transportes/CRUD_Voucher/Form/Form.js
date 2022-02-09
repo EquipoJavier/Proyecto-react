@@ -5,6 +5,8 @@ import bono from "../../../Recursos/img/crea-tu-bono.jpg";
 import { useState } from "react";
 import Select from "./Select/Select";
 import "./Form.scss";
+import { Button } from "@material-ui/core";
+import { Add } from "@material-ui/icons";
 
 export default function Form() {
   const [name, setName] = useState(null);
@@ -32,9 +34,17 @@ export default function Form() {
           />
           <Select setType={setType} />
           <InputImage setFileInput={setFileInput} />
-          <button className="but" type="button">
-            Crear
-          </button>
+          <Button
+            style={{
+              fontSize: "14px",
+              textAlign: "center",
+            }}
+            variant="contained"
+            color="warning"
+            startIcon={<Add />}
+          >
+            Crear nueva tarjeta
+          </Button>
         </form>
       </div>
       <div className="voucher__form-content--img">

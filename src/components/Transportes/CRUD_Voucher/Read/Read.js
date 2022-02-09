@@ -37,12 +37,12 @@ export default function Read({ setShowForm, user, done, pageEndPoint }) {
             transparent 90%
           ),url(${fondo})`,
             backgroundSize: "cover",
-            backgroundPosition: "bottom",
+            backgroundPosition: "center",
           }}
           component={Paper}
         >
           <Table sx={{ minWidth: 300 }} size="large" aria-label="a dense table">
-            <TableHead>
+            <TableHead style={{backgroundColor: "rgba(190, 190, 190, 0.9)"}}>
               <TableRow>
                 <TableCell
                   style={{
