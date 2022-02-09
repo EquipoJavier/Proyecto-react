@@ -1,23 +1,25 @@
 
 export default function VisitaForm(props) {
-    const dispatch = props.dispatch;
+    const dispatch = props.dispatch; // Función dispatch del reducer
     const category = props.category; // Contiene la categoría seleccionada
-    const dropdown = props.dropdown;
-    const alteredPlan = props.alteredPlan;
-    const setAlteredPlan = props.setAlteredPlan;
-    const createPlan = props.createPlan;
+    const dropdown = props.dropdown; // Contiene los elementos a mostrar de la categoría seleccionada
+    const alteredPlan = props.alteredPlan; // Estado; contendrá los datos modificados del nuevo plan a insertar
+    const setAlteredPlan = props.setAlteredPlan; // Función actualizadora del estado newPlan
+    const createPlan = props.createPlan; // Función que ejecuta la inserción en el JSON de datos
 
     
     return (
         <div className="visita__content__form">
             <form onSubmit={e => e.preventDefault()}>
-                <label>Día: </label>
+
                 {/* /////////////////////// INPUT */}
+                <label>Día: </label>
                     <input type="date" onChange={event => {
                         setAlteredPlan({...alteredPlan, day: event.target.value})
                     }}/>
                     
                 {/* /////////////////////// SELECT CATEGORY */}
+                <label>Categoría: </label>
                     <select value={category} onChange={event =>  {
                             dispatch({type:event.target.value});
                             setAlteredPlan({...alteredPlan, category: event.target.value})
@@ -30,6 +32,7 @@ export default function VisitaForm(props) {
 
 
                 {/* /////////////////////// SELECT ITEM */}
+                <label>Qué hacer: </label>
                     <select onChange={event => {
                         setAlteredPlan({...alteredPlan, option: event.target.value})
                     }}>

@@ -2,9 +2,9 @@ import './UpdateForm.scss';
 
 export default function UpdateForm(props) {
     const isShown = props.isShown; // Indica si el componente se muestra
+    const dispatch = props.dispatch; // Función dispatch del reducer
     const category = props.category; // Contiene la categoría seleccionada
     const dropdown = props.dropdown; // Contiene los elementos a mostrar de la categoría seleccionada
-    const dispatch = props.dispatch; // Función dispatch del reducer
     const selectedPlan = props.selectedPlan // Contiene los datos del plan (fila de la tabla) seleccionado
     const alteredPlan = props.alteredPlan; // Estado; contendrá los nuevos datos modificados del plan seleccionado
     const setAlteredPlan = props.setAlteredPlan; // Función actualizadora del estado newPlan

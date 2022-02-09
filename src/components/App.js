@@ -17,8 +17,8 @@ function App() {
       : "Descubre todos sus secretos"
   );
   const [items, setItems] = useState({
-    data: "",
-    planning: "",
+    data: "", // Datos de las secciones Transportes, Ocio, Cultura y Gastronomía
+    planning: "", // Datos de la sección Visitas
   });
   const [done, setDone] = useState(false);
 
@@ -33,14 +33,10 @@ function App() {
   // const url = `http://localhost:3001${pathname === "/" ? "/index" : pathname}`;   //le indico la ruta con el recurso a solicitar y en el caso de que pathname hubiera sido "/" (referido a index), a la url le paso /index
   const urlData = "http://localhost:3001/data"; // la URL del recurso (json) que se va a obtener
   const urlVisita = "http://localhost:3001/visita"; // La URL del recurso de "visita" (CRUD planning)
-
-  function addPlan(plan) { // Función para actualizar el planning (página "visitas")
-    setItems({
-      ...items,
-      planning: [...items.planning, plan]
-    })
-  }
   
+  /* Función para el CRUD de /visitas. Debe estar en App.js en vez de en Visitas.js, porque para ver en tiempo real
+    los cambios producidos, se debe volver a cargar el json haciendo un nuevo "fetch()", lo cual se consigue modificando
+    el estado "items", que guarda toda la información recogida del json */
   function alterPlan(alteredPlan, mode) {
     switch (mode) {
       case "create":
@@ -115,6 +111,7 @@ function App() {
     <div>
       <Header title={headerTitle} subtitle={headerSubtitle} />
       <Menu getHeading={getHeading} />
+      
       {/* Pasamos a Outlet (el contenido a mostrar en la página) una propiedad de react router que se llama context en la que pasamos el estado de done y el endpoint, de esta manera el componente que lleve su contenido a mostrar tendrá automáticamente sus propios datos sin tener que preocuparse si serán los de otro path/recurso */}
       <Outlet context={[done, pageEndPoint, alterPlan]} />
       <UpButton />

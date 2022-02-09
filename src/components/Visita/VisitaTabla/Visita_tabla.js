@@ -1,8 +1,8 @@
 import './Visita_tabla.scss';
 
 export default function VisitaTabla(props) {
-    const planning = props.planning;
-    const dispatch = props.dispatch;
+    const planning = props.planning; // Contiene cada fila a presentar (cada plan, recuperado del json)
+    const dispatch = props.dispatch; // Función dispatch del reducer
 
     /* Como la estructura del json está hecha de forma diferente para cada categoría ([...].data.gastronomia.restaurantes.[...] para los restaurantes,
         [...].cultura.museos.[...] para los museos...), en el dispatch hace falta devolver tanto la categoría (cultura) como la propiedad del objeto (museos),

@@ -26,16 +26,17 @@ export default function Visita() {
     /* Estado que almacenará el plan que se va a insertar/modificar/borrar en el json */
     const [alteredPlan, setAlteredPlan] = useState(initialPlanState);
 
-    /* Estado inicial del reducer que gestiona el contenido de ciertos campos de los 
+    /* Estado inicial del reducer que gestionará el contenido de ciertos campos de los 
         formularios de inserción/modificación/borrado */
     const initialCategoryState = {
         selectedPlan: {}, // Guarda los datos del plan cuando se va a modifcar/borrar
+        category: "--- Elige ---", // Guarda la categoría de plan elegido
+        dropdown: [], // Guarda las opciones disponibles en la categoría de plan elegida
         showPlanning: false, // Muestra (o no) el popup de modificación de un plan
-        showDelete: false,
-        category: "--- Elige ---",
-        dropdown: [],
+        showDelete: false, // Muestra (o no) el popup de borrado de un plan
     }
 
+    // Función reductora, gestiona los cambios en los estados descritos en "initialCategoryState"
     const categoryReducer = (state, action) => {
         switch (action.type) {
             case "GASTRONOMIA":
@@ -66,7 +67,7 @@ export default function Visita() {
                     })
                 }
             case "UPDATE":
-                setAlteredPlan(action.payload)
+                setAlteredPlan(action.payload) // Guarda la información del plan a modificar
                 return {
                     category: action.payload.category,
                     selectedPlan: action.payload,
@@ -82,7 +83,7 @@ export default function Visita() {
                     showDelete: true
                 }
             case "CLOSE_FORM":
-                setAlteredPlan(initialPlanState)
+                setAlteredPlan(initialPlanState) // En caso de que haya cambiado, se vuelve al estado inicial
                 return {
                     ...state,
                     category: "--- Elige ---",
@@ -95,12 +96,13 @@ export default function Visita() {
         }
     } 
 
+    // Inicialización del reducer
     const [categoryState, categoryDispatch] = useReducer(
         categoryReducer,
         initialCategoryState
     );
 
-
+    // Inserción del nuevo plan (que está almacenado en el estado "alteredPlan")
     async function createPlan() {
         const res = await fetch('http://localhost:3001/visita', {
             method: 'POST',
@@ -110,9 +112,10 @@ export default function Visita() {
             body: JSON.stringify(alteredPlan)
         });
         const response = await res.json();
-        await alterPlan(response, "create");
+        await alterPlan(response, "create"); // alterPlan viene de App.js
     }
 
+    // Modificación del plan seleccionado (que está almacenado en el estado "alteredPlan")
     async function updatePlan() {
         const id = alteredPlan.id;
         const url = `http://localhost:3001/visita/${id}`;
@@ -125,7 +128,7 @@ export default function Visita() {
             body: JSON.stringify(alteredPlan)
         });
         const response = await res.json();
-        await alterPlan(response, "update");
+        await alterPlan(response, "update"); // alterPlan viene de App.js
     }
 
     async function deletePlan(alteredPlan) {
@@ -148,6 +151,8 @@ export default function Visita() {
     /////////////////////////////////
     // COMPONENT RENDER
 
+    /* Si el json ha cargado todos los datos (done), renderiza los componentes
+        si no, muestra un gif de espera */
     if (done) {
         return (
             <div className="visita__body">
