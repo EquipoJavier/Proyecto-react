@@ -10,41 +10,40 @@ const cookies = new Cookies();
 export default function VoucherCrud({isLogin}) {
   const [showForm, setShowForm] = useState(false);
 
-  const initialState = {
-    pageEndPoint : [],
-    done : false,
-    load : false
-  };
+  // const initialState = {
+  //   pageEndPoint : [],
+  //   done : false,
+  //   load : false
+  // };
   
 
-  const [state, dispatch] = useReducer(reducer, initialState);
+  // const [state, dispatch] = useReducer(reducer, initialState);
 
-  function reducer(state, action) {
-    switch (action.type) {
-      case 'LOAD':
-        return {
-          pageEndPoint : [],
-          done : false,
-          load : true
-        };
-      case 'LOADED':
-        return {
-          pageEndPoint : action.payload,
-          done : true,
-          load : false
-        }
-      default:
-        throw new Error();
-    }
-  }
+  // function reducer(state, action) {
+  //   switch (action.type) {
+  //     case 'LOAD':
+  //       return {
+  //         pageEndPoint : [],
+  //         done : false,
+  //         load : true
+  //       };
+  //     case 'LOADED':
+  //       return {
+  //         pageEndPoint : action.payload,
+  //         done : true,
+  //         load : false
+  //       }
+  //     default:
+  //       throw new Error();
+  //   }
+  // }
 
   
   const [pageEndPoint, setPageEndPoint] = useState([]);
   const [done, setDone] = useState(false);
-  const [load, setLoad] = useState();
 
   const url = "http://localhost:3001/tarjetas";
-  const user = useRef();
+  const user = useRef(cookies.get("username"));
 
   useEffect(() => {
       fetch(url)
@@ -57,7 +56,7 @@ export default function VoucherCrud({isLogin}) {
       }).catch(function (error) {
         console.log("Hubo un problema con la petición Fetch:" + error.message);
       });
-  },[]);
+  },[done]);
   
 
   useEffect(()=>{
@@ -66,8 +65,8 @@ export default function VoucherCrud({isLogin}) {
 
   return (
       <div className="voucher" id="voucher">
-        <h1 className="voucher--h1" >¡Crea todas las tarjetas para tu familia!</h1>
-        {showForm ? <Form /> : <Read setShowForm={setShowForm} user={user.current} done={done} pageEndPoint={pageEndPoint} /> }
+        <h1 className="voucher--h1" >¡Hola {user.current}! Estas son las tarjetas de tu familia</h1>
+        {showForm ? <Form setDone={setDone} user={user.current} setShowForm={setShowForm} /> : <Read setDone={setDone} setShowForm={setShowForm} user={user.current} done={done} pageEndPoint={pageEndPoint} /> }
       </div>
   );
 }

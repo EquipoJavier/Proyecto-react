@@ -4,16 +4,16 @@ const options = [
   { value: "viajes", label: "Viajes", id: "3" },
 ];
 
-export default function Select({ setType }) {
+export default function Select({ newVoucher, setNewVoucher }) {
   function handleChange(e) {
-    setType(e.target.value);
+    setNewVoucher({...newVoucher, type : e.target.value});
   }
 
   return (
     <>
       <label htmlFor="voucher">
         Elige tarjeta
-        <select name="voucher" size={1} onChange={handleChange}>
+        <select id="voucher" name="voucher" size={1} onChange={handleChange}>
           {options.map((item) => {
             return (
               <option key={item.id} value={item.value}>

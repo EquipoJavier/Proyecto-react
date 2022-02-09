@@ -2,9 +2,9 @@
 export default function LabelInput({ value, handle, text }) {
 
   return (
-      <label value={value} onChange={handle}>
+      <label>
       {text}
-      <input type="text" placeholder={`Introduce tu(s) ${text}...`} />
+      <input value={value} type="text" placeholder={`Introduce tu(s) ${text}...`} onChange={handle} />
     </label>
   );
 }
