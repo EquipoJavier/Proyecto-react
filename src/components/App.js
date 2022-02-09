@@ -40,6 +40,26 @@ function App() {
       planning: [...items.planning, plan]
     })
   }
+  
+  function alterPlan(alteredPlan, mode) {
+    switch (mode) {
+      case "create":
+        setItems({
+          ...items,
+          planning: [...items.planning, alteredPlan]
+        })
+        break;
+      case "update":
+        setItems({
+          ...items,
+          planning: [...items.planning.map(plan => plan.id !== alteredPlan.id ? plan : alteredPlan)]
+          // planning: [...items.planning]
+        })
+        break;
+      default:
+        throw new Error("Error en CRUD");
+    }
+  }
 
   //Se corre este efecto cada vez que cambie la url (es decir, queramos solicitar otro recurso)
   useEffect(() => {
@@ -91,7 +111,7 @@ function App() {
       <Header title={headerTitle} subtitle={headerSubtitle} />
       <Menu getHeading={getHeading} />
       {/* Pasamos a Outlet (el contenido a mostrar en la página) una propiedad de react router que se llama context en la que pasamos el estado de done y el endpoint, de esta manera el componente que lleve su contenido a mostrar tendrá automáticamente sus propios datos sin tener que preocuparse si serán los de otro path/recurso */}
-      <Outlet context={[done, pageEndPoint, addPlan]} />
+      <Outlet context={[done, pageEndPoint, alterPlan]} />
       <UpButton />
       <Footer />
     </div>

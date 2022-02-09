@@ -1,9 +1,13 @@
+import { useEffect } from "react";
+
 export default function VisitaForm(props) {
     const dispatch = props.dispatch;
+    const category = props.category; // Contiene la categoría seleccionada
     const dropdown = props.dropdown;
     const newPlan = props.newPlan;
     const setNewPlan = props.setNewPlan;
     const createPlan = props.createPlan;
+
     
     return (
         <div className="visita__content__form">
@@ -15,7 +19,7 @@ export default function VisitaForm(props) {
                     }}/>
                     
                 {/* /////////////////////// SELECT CATEGORY */}
-                    <select onChange={event =>  {
+                    <select defaultValue={category} onChange={event =>  {
                             dispatch({type:event.target.value});
                             setNewPlan({...newPlan, category: event.target.value})
                     }}>

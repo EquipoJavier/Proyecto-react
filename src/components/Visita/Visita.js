@@ -9,7 +9,7 @@ import './Visita.scss';
 import UpdateForm from './UpdateForm/UpdateForm';
 
 export default function Visita() {
-    const [done , pageEndPoint, addPlan] = useOutletContext();
+    const [done , pageEndPoint, alterPlan] = useOutletContext();
 
     const [newPlan, setNewPlan] = useState({
         day: "",
@@ -65,11 +65,14 @@ export default function Visita() {
                     })
                 }
             case "CLOSE_FORM":
+                setNewPlan({    
+                    day: "",
+                    category: "",
+                    option: ""})
                 return {
                     ...state,
                     selectedPlan: {},
                     showPlanning: false,
-                    dropdown: []
                 }
             default:
                 return {initialCategoryState}
@@ -90,7 +93,7 @@ export default function Visita() {
             body: JSON.stringify(newPlan)
         });
         const response = await res.json();
-        await addPlan(response);
+        await alterPlan(response, "create");
     }
 
     async function updatePlan() {
@@ -98,14 +101,14 @@ export default function Visita() {
         const url = `http://localhost:3001/visita/${id}`;
 
         const res = await fetch(url, {
-            method: 'PUT',
+            method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(newPlan)
         });
         const response = await res.json();
-        await addPlan(response);
+        await alterPlan(response, "update");
     }
 
     
@@ -118,6 +121,7 @@ export default function Visita() {
             <div className="visita__body">
                 <div className="visita__box">
                     <VisitaForm dispatch={categoryDispatch} 
+                                category={categoryState.category}
                                 dropdown={categoryState.dropdown} 
                                 newPlan={newPlan}
                                 setNewPlan={setNewPlan}
