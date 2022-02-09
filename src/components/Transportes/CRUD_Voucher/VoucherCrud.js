@@ -15,6 +15,7 @@ export default function VoucherCrud({isLogin}) {
     done : false,
     load : false
   };
+  
 
   const [state, dispatch] = useReducer(reducer, initialState);
 
@@ -36,7 +37,7 @@ export default function VoucherCrud({isLogin}) {
         throw new Error();
     }
   }
-  
+
   
   const [pageEndPoint, setPageEndPoint] = useState([]);
   const [done, setDone] = useState(false);
