@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import md5 from "js-md5";
 import "./Users.scss";
@@ -76,7 +76,7 @@ export default function Users({ setProfile, setIsLogin, isLogin, setShowLogin })
           localStorage.setItem("img",respuesta.img);
           setShowLogin(false);
           setIsLogin(true);
-          alert(`Bienvenido ${respuesta.username}`);
+          alert(`Estamos encantados de verte por aquí ${respuesta.username}`);
           window.onscroll = function () {};
         } else {
           alert("El usuario o la contraseña no son correctos");

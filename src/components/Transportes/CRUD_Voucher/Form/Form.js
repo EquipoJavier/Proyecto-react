@@ -138,7 +138,7 @@ export default function Form({ url, forUpdate, setForUpdate, setDone, user, setS
           <p className="voucher__form-content--img-p1">{newVoucher.name.toUpperCase()}</p>
           <p className="voucher__form-content--img-p2">{newVoucher.surname.toUpperCase()}</p>
         <div className="voucher__form-content--img-holder">
-          <img src={newVoucher.fileInput} alt=" " id="img" className="img" />
+          <img src={newVoucher.fileInput || profileDefault} alt=" " id="img" className="img" />
         </div>
       </div>
     </div>
