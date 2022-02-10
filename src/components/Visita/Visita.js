@@ -7,6 +7,7 @@ import DeleteForm from './DeleteForm/DeleteForm';
 
 import './Visita.scss';
 import loadingGif from '../Recursos/img/loading.gif'
+import currentDate from '../../utils/currentDate.js';
 
 
 export default function Visita() {
@@ -25,6 +26,9 @@ export default function Visita() {
     
     /* Estado que almacenará el plan que se va a insertar/modificar/borrar en el json */
     const [alteredPlan, setAlteredPlan] = useState(initialPlanState);
+    const today = currentDate;
+    
+    const [date, setDate] = useState(today)
 
     /* Estado inicial del reducer que gestionará el contenido de ciertos campos de los 
         formularios de inserción/modificación/borrado */
@@ -84,12 +88,9 @@ export default function Visita() {
                 }
             case "CLOSE_FORM":
                 setAlteredPlan(initialPlanState) // En caso de que haya cambiado, se vuelve al estado inicial
+                setDate(today);
                 return {
-                    ...state,
-                    category: "--- Elige ---",
-                    selectedPlan: {},
-                    showPlanning: false,
-                    showDelete: false
+                    ...initialCategoryState,
                 }
             default:
                 return {initialCategoryState}
@@ -163,6 +164,9 @@ export default function Visita() {
                                 alteredPlan={alteredPlan}
                                 setAlteredPlan={setAlteredPlan}
                                 createPlan={createPlan}
+                                date={date}
+                                setDate={setDate}
+                                today={today}
                     />
 
                     <VisitaTabla planning={pageEndPoint.planning} 
