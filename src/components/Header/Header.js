@@ -16,7 +16,7 @@ export default function Header(props) {
     <>
       <header className="header_index">
         <div className="header_index--logo" onClick={handleClick} >
-          <i className="material-icons header_index--logo-img">account_circle</i>
+          { props.profile !== null ? <img style={{maxWidth: "60px", maxHeight: "80px" }} src={props.profile} alt="" /> : <i className="material-icons header_index--logo-img">account_circle</i> }
         </div>
         <div className="header_index--text-box">
           <h1 className="heading_index-primary">

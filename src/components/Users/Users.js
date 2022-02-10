@@ -7,13 +7,22 @@ import Loading from "../Loading/Loading";
 
 const url = "http://localhost:3001/users";
 
-export default function Users({ setIsLogin, isLogin, setShowLogin }) {
+export default function Users({ setProfile, setIsLogin, isLogin, setShowLogin }) {
   const [form, setForm] = useState({
     username: "",
     password: "",
+    img: null
   });
   const [areUsers, setAreUsers] = useState(false);
   const [ourUsers, setOurUsers] = useState([]);
+
+  const imageHandler = (file) => {
+    var reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload= function(){
+      setForm({...form, img : reader.result});
+    }  
+  };
 
   function handleChange(e) {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -23,6 +32,7 @@ export default function Users({ setIsLogin, isLogin, setShowLogin }) {
     setIsLogin(false);
     localStorage.removeItem("username");
     setShowLogin(false);
+    setProfile(null);
     window.onscroll = function () {};
   }
 
@@ -44,7 +54,6 @@ export default function Users({ setIsLogin, isLogin, setShowLogin }) {
       });
   }
 
-
   async function iniciarSesion() {
     await axios
       .get(
@@ -63,6 +72,7 @@ export default function Users({ setIsLogin, isLogin, setShowLogin }) {
           var respuesta = response[0];
           localStorage.setItem("username", respuesta.username);
           alert(`Bienvenido ${respuesta.username}`);
+          setProfile(respuesta.img);
           setShowLogin(false);
           setIsLogin(true);
           window.onscroll = function () {};
@@ -79,13 +89,14 @@ export default function Users({ setIsLogin, isLogin, setShowLogin }) {
     let post = {
       username: form.username,
       password: md5(form.password),
+      img: form.img
     };
     seeUsers();
-    if(areUsers){
-      if(ourUsers.find(user => user === form.username)){ 
+    if (areUsers) {
+      if (ourUsers.find((user) => user === form.username)) {
         alert("El usuario introducido ya existe");
       } else {
-        if (form.username != "" && form.password != "") {
+        if (form.username != "" && form.password != "" && form.img !== null) {
           await axios
             .post(url, post)
             .then((response) => {
@@ -100,9 +111,8 @@ export default function Users({ setIsLogin, isLogin, setShowLogin }) {
           alert("Necesitas introducir los datos");
         }
       }
-      
     } else {
-      <Loading />
+      <Loading />;
     }
   }
 
@@ -139,7 +149,19 @@ export default function Users({ setIsLogin, isLogin, setShowLogin }) {
                 onChange={handleChange}
                 placeholder="&nbsp; &#xf084; Contraseña"
               />
-              <br />
+              <input
+                  type="file"
+                  name="img-upload"
+                  id="input"
+                  accept="image/*"
+                  onChange={(e) => imageHandler(e.target.files[0])}
+                ></input>
+                <br /><br />
+                <label htmlFor="input" className="photo">
+                  <i className="material-icons">photo</i>
+                  Elige una foto...
+                </label>
+              <br /><br />
               <div className="btn--popup">
                 <button className="btn--popup-login" onClick={iniciarSesion}>
                   Iniciar Sesión

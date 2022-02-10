@@ -14,6 +14,9 @@ export default function VoucherCrud({ isLogin, setShowLogin }) {
   const [user,setUser] = useState(localStorage.getItem("username")||null);
 
   useEffect(async () => {
+    if(done){
+      return
+    } else {
     fetch(url)
       .then((res) => res.json())
       .then((result) => {
@@ -25,7 +28,8 @@ export default function VoucherCrud({ isLogin, setShowLogin }) {
       .catch(function (error) {
         console.log("Hubo un problema con la petición Fetch:" + error.message);
       });
-  }, []);
+    }
+  }, [done]);
 
   useEffect(() => {
     setUser(localStorage.getItem("username"));

@@ -11,6 +11,7 @@ function App() {
   const [done, setDone] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
   const [isLogin, setIsLogin] = useState(localStorage.getItem("username") ? true : false);
+  const [profile, setProfile] = useState(null);
 
   const [headerTitle, setHeaderTitle] = useState(
     sessionStorage.getItem("title") != null
@@ -68,11 +69,12 @@ function App() {
 
   return (
     <div>
-      {showLogin ? <Users setIsLogin={setIsLogin} isLogin={isLogin} setShowLogin={setShowLogin} /> : <></>}
+      {showLogin ? <Users setProfile={setProfile} setIsLogin={setIsLogin} isLogin={isLogin} setShowLogin={setShowLogin} /> : <></>}
       <Header
         title={headerTitle}
         subtitle={headerSubtitle}
         setShowLogin={setShowLogin}
+        profile={profile}
       />
       <Menu getHeading={getHeading} />
       <Outlet context={[isLogin, setShowLogin, done, pageEndPoint]} />
