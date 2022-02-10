@@ -8,7 +8,7 @@ export default function VoucherCrud({ isLogin, setShowLogin }) {
   const [showForm, setShowForm] = useState(false);
   const [pageEndPoint, setPageEndPoint] = useState([]);
   const [done, setDone] = useState(false);
-  const [forUpdate, setForUpdate] = useState([]);
+  const [forUpdate, setForUpdate] = useState({});
 
   const url = "http://localhost:3001/tarjetas";
   const [user,setUser] = useState(localStorage.getItem("username")||null);
@@ -48,7 +48,7 @@ export default function VoucherCrud({ isLogin, setShowLogin }) {
               forUpdate={forUpdate}
               setForUpdate={setForUpdate}
               setDone={setDone}
-              user={user.current}
+              user={user}
               setShowForm={setShowForm}
             />
           ) : (

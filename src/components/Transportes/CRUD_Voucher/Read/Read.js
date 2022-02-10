@@ -235,7 +235,10 @@ export default function Read({
         variant="contained"
         color="info"
         startIcon={<Close />}
-        onClick={() => setShowLogin(true)}
+        onClick={() => {
+          setShowLogin(true);
+          setForUpdate({});
+        }}
       >
         Cerrar Sesión
       </Button>

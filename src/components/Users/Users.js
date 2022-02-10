@@ -72,11 +72,11 @@ export default function Users({ setProfile, setIsLogin, isLogin, setShowLogin })
         if (response.length > 0) {
           var respuesta = response[0];
           localStorage.setItem("username", respuesta.username);
-          alert(`Bienvenido ${respuesta.username}`);
           setProfile(respuesta.img);
           localStorage.setItem("img",respuesta.img);
           setShowLogin(false);
           setIsLogin(true);
+          alert(`Bienvenido ${respuesta.username}`);
           window.onscroll = function () {};
         } else {
           alert("El usuario o la contraseña no son correctos");

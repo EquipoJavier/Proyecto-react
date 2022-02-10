@@ -102,7 +102,7 @@ export default function Form({ url, forUpdate, setForUpdate, setDone, user, setS
           />
           <Select newVoucher={newVoucher} setNewVoucher={setNewVoucher} />
           <InputImage newVoucher={newVoucher} setNewVoucher={setNewVoucher} />
-          {forUpdate == {} ? (
+          {JSON.stringify(forUpdate)=='{}' ? (
             <Button
               style={{
                 fontSize: "14px",
