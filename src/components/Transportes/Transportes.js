@@ -25,14 +25,14 @@ export default function Transportes(){
         });
     },[]);
 
-    const [isLogin, ...tail] = useOutletContext();
+    const [isLogin, setShowLogin, ...tail] = useOutletContext();
     
     return(
         <>
             <SectionLocation done={done} pageEndPoint={pageEndPoint} />
             <SectionTransportVoucher />
             <ChooseTransport done={done} pageEndPoint={pageEndPoint} />
-            <VoucherCrud isLogin={isLogin} />
+            <VoucherCrud isLogin={isLogin} setShowLogin={setShowLogin} />
         </>
     )
 }

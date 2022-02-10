@@ -15,10 +15,11 @@ import mensual from "../../../Recursos/img/bono_maria_delante.jpg";
 import viajes from "../../../Recursos/img/tarjeta_multi.jpg";
 import fondo from "../../../Recursos/img/final--transportes.jpg";
 import "./Read.scss";
-import { Add, FindReplace } from "@material-ui/icons";
+import { Add, Close, FindReplace } from "@material-ui/icons";
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
 import axios from "axios";
+import Cell from "./Cell/Cell";
 
 const images = {
   azul: azul,
@@ -35,6 +36,7 @@ export default function Read({
   pageEndPoint,
   setForUpdate,
   setPageEndPoint,
+  setShowLogin,
 }) {
   async function deleteVoucher(item) {
     confirmAlert({
@@ -98,60 +100,13 @@ export default function Read({
                 style={{ backgroundColor: "rgba(190, 190, 190, 0.9)" }}
               >
                 <TableRow>
-                  <TableCell
-                    style={{
-                      fontSize: "20px",
-                      textAlign: "center",
-                      borderRight: "1px solid black",
-                    }}
-                  >
-                    Nombre
-                  </TableCell>
-                  <TableCell
-                    style={{
-                      fontSize: "20px",
-                      textAlign: "center",
-                      borderRight: "1px solid black",
-                    }}
-                  >
-                    Apellidos
-                  </TableCell>
-                  <TableCell
-                    style={{
-                      fontSize: "20px",
-                      textAlign: "center",
-                      borderRight: "1px solid black",
-                    }}
-                  >
-                    Tipo de tarjeta
-                  </TableCell>
-                  <TableCell
-                    style={{
-                      fontSize: "20px",
-                      textAlign: "center",
-                      borderRight: "1px solid black",
-                    }}
-                  >
-                    Su tarjeta virtual
-                  </TableCell>
-                  <TableCell
-                    style={{
-                      fontSize: "20px",
-                      textAlign: "center",
-                      borderRight: "1px solid black",
-                    }}
-                  >
-                    Su fotografía
-                  </TableCell>
-                  <TableCell
-                    style={{
-                      fontSize: "20px",
-                      textAlign: "center",
-                      borderRight: "1px solid black",
-                    }}
-                  >
-                    ¿Desea editar sus datos?
-                  </TableCell>
+                  <Cell text={"Nombre"} />
+                  <Cell text={"Apellidos"} />
+                  <Cell text={"Tipo de tarjeta"} />
+                  <Cell text={"Su tarjeta virtual"} />
+                  <Cell text={"Su fotografía"} />
+                  <Cell text={"¿Desea editar sus datos?"} />
+
                   <TableCell style={{ fontSize: "20px", textAlign: "center" }}>
                     ¿Desea borrar su tarjeta?
                   </TableCell>
@@ -281,6 +236,18 @@ export default function Read({
         onClick={() => setDone(false)}
       >
         Cargar los datos de nuevo
+      </Button>
+      <Button
+        style={{
+          fontSize: "14px",
+          textAlign: "center",
+        }}
+        variant="contained"
+        color="info"
+        startIcon={<Close />}
+        onClick={() => setShowLogin(true)}
+      >
+        Cerrar Sesión
       </Button>
     </div>
   );

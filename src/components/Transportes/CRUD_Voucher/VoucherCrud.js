@@ -6,7 +6,7 @@ import Cookies from "universal-cookie";
 
 const cookies = new Cookies();
 
-export default function VoucherCrud({ isLogin }) {
+export default function VoucherCrud({ isLogin, setShowLogin }) {
   const [showForm, setShowForm] = useState(false);
   const [pageEndPoint, setPageEndPoint] = useState([]);
   const [done, setDone] = useState(false);
@@ -35,29 +35,36 @@ export default function VoucherCrud({ isLogin }) {
 
   return (
     <div className="voucher" id="voucher">
-      <h1 className="voucher--h1">
-        ¡Hola {user.current}! Estas son las tarjetas de tu familia
-      </h1>
-      {showForm ? (
-        <Form
-          url={url}
-          forUpdate={forUpdate}
-          setForUpdate={setForUpdate}
-          setDone={setDone}
-          user={user.current}
-          setShowForm={setShowForm}
-        />
+      {isLogin ? (
+        <>
+          <h1 className="voucher--h1">
+            ¡Hola {user.current}! Estas son las tarjetas de tu familia
+          </h1>
+          {showForm ? (
+            <Form
+              url={url}
+              forUpdate={forUpdate}
+              setForUpdate={setForUpdate}
+              setDone={setDone}
+              user={user.current}
+              setShowForm={setShowForm}
+            />
+          ) : (
+            <Read
+              url={url}
+              setDone={setDone}
+              setShowForm={setShowForm}
+              user={user.current}
+              done={done}
+              pageEndPoint={pageEndPoint}
+              setForUpdate={setForUpdate}
+              setPageEndPoint={setPageEndPoint}
+              setShowLogin={setShowLogin}
+            />
+          )}
+        </>
       ) : (
-        <Read
-          url={url}
-          setDone={setDone}
-          setShowForm={setShowForm}
-          user={user.current}
-          done={done}
-          pageEndPoint={pageEndPoint}
-          setForUpdate={setForUpdate}
-          setPageEndPoint={setPageEndPoint}
-        />
+        <h1 onClick={()=>setShowLogin(true)} style={{textAlign: "center", cursor:"pointer"}}>Por favor, pulse este texto para regístrate o inicia sesión y así crear tus tarjetas</h1>
       )}
     </div>
   );
