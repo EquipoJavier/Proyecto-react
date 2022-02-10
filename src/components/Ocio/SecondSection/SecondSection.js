@@ -1,65 +1,59 @@
 import "./SecondSection.scss";
-// import salaCine from "../../Recursos/img/salacine.jpg";
-// import palomitas from "../../Recursos/img/palomitas.png";
-import Slider from "./Slider/Slider";
-import IconoParques from "../../Recursos/img/ico_ocio.png";
-import IconoMarinos from "../../Recursos/img/ico_marino.png";
-import IconoZoos from "../../Recursos/img/ico_zoos.png";
-import IconoAcuaticos from "../../Recursos/img/ico_acuaticos.png";
-import IconoOtros from "../../Recursos/img/ico_otros.png";
+import { useEffect, useState } from "react";
 
-// const [showContent,setShowContent]=useState(true);
-
-// function handleClick(event){
-//     display='none';
-//     setShowContent(false);
-// }
-
-
-
+const url = "http://localhost:3001/parks";
 
 export default function SecondSection() {
+  const [parks, setPark] = useState([]);
+  const[type,setType]=useState("atracciones");
+   
 
-    return (
-        <>
-            <section className="second__section" id="second__section">
-                {/* <h2 className="second__section--title">LOS MEJORES ESTRENOS EN LOS CINES DE MADRID</h2>
-                {/* <img className="second__section--sala" src={salaCine} alt=""/>
-                    <img className="second__section--palomitas" src={palomitas} alt=""/> */}
-                     {/* <Slider />  */}
-                     <div className="park-part">
-                     <h2>PURA ADRENALINA DE DIVERSIÓN </h2>
-                     <p>Madrid cuenta con unos lugares increibles para llevar la diversión al extremo y provocar ese chute de adenalia que te dejará una experiencia inigualable y querrás repetir sin dudarlo.
-                     Parques Reunidos es uno de los líderes mundiales de operadores de parques de ocio. La cartera del Grupo comprende más de 60 activos (parques de ocio y temáticos, zoológicos, acuarios, parques acuáticos y otras atracciones) en Europa, Norteamérica, Oriente Medio y Australi
-                     </p>
-                     <p>Madrid cuenta con unos lugares increibles para llevar la diversión al extremo y provocar ese chute de adenalia que te dejará una experiencia inigualable y querrás repetir sin dudarlo.
-                         ¡Estamos esperandote para que vengas con tu familia o tus amigos a pasar un dia increible en 
-                         uno de nuestros lugares favoritos!
-                     </p>
-                     <ul className="park-part--icons">
-                         <li>
-                            <a href="" >
-                                <img src={IconoParques} alt=""></img>
-                            <br/>PARQUES DE ATRACCIONES</a>
-                        </li>
-                        <li>
-                            <a href="" >
-                                <img src={IconoZoos} alt=""></img>
-                                <br/>ACUARIOS</a>
-                        </li>
-                        <li>
-                            <a href="" >
-                                <img src={IconoAcuaticos} alt=""></img>
-                                <br/>ZOOLÓGICOS</a>
-                        </li>
-                        <li>
-                            <a href="" >
-                                <img src={IconoOtros} alt=""></img>
-                                <br/>OTROS</a>
-                        </li>
-                     </ul>
-                     </div>
-                    </section>
-                </>
-                )
+
+  useEffect(() => {
+    fetch(url)
+      .then((res) => res.json())
+      .then((result) => {
+        setPark(result);
+      })
+      .catch(function (error) {
+        console.log("Hubo un problema con la petición Fetch:" + error.message);
+      });
+  }, []);
+
+  return (
+    <>
+      <section className="second__section" id="second__section">
+        <div className="park-part">
+          {parks.map((park) => { 
+              if(type==park.type){
+            return (
+              <>
+                <h2 style={{transition:"all 1s"}}>{park.name}</h2>
+                <p style={{transition:"all 1s"}}>{park.text1}</p>
+                <p style={{transition:"all 1s"}}>{park.text2}</p>
+              </>
+            );
+}})}
+
+          <ul className="park-part--icons">
+            {parks.map((park) => {
+              return (
+                <li style={
+                    park.type==type ? { webkitBackgroundClip:"text", backgroundClip: "text",webkitTextFillColor: "transparent",
+                        backgroundColor: "black", transition:"all 1s", transform: "scale(0.8)" } : {}
+                } onClick={(event)=> {
+                    setType(park.type);
+                    
+                    }}>
+                  <img style={{cursor:"pointer"}} src={park.icon} alt=""></img>
+                  <br />
+                  {park.name}
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </section>
+    </>
+  );
 }
