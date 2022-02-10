@@ -1,0 +1,50 @@
+.slider__variety{
+	width: 80vw;
+	margin:0 auto;
+    position:relative;
+
+	
+	&--each{
+        &-image {
+            position:relative;
+            margin:0 auto;
+        }
+    }
+
+    &--content{
+        z-index:2000000;
+        height: 60%;
+        width: 90%;
+        background-color: white;
+        text-align: center;
+        position:absolute;
+        top:0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin:auto;
+        font-family: montserrat,arial,sans-serif;
+        font-style: normal;
+        text-rendering: optimizeLegibility;
+
+        &>h2{
+            font-weight: 700;
+           
+        }
+            
+        &:hover {
+            &>h2{
+            color: #f70759;
+            transition: color .5s;
+            }
+            cursor:pointer;
+
+        }
+
+        & >p{
+            color:rgb(107, 103, 103);
+        }
+    }
+
+}
+
