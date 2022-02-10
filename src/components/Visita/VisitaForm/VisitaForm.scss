@@ -1,34 +1,49 @@
 .visita__form {
-    // background-color: aqua;
-    width: 60%;
+    // background-color: goldenrod;
+    width: 70%;
     margin: 1rem auto;
-    
-    & form {
-        display: flex;
+    display: flex;
+    flex-direction: column;
 
-        & label {
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 0.05rem;
-            padding-left: 3rem;
-            padding-right: 0.5rem;
-        }
-
-        & select {
+    &--inputs {
+        ///////////////////////////////
+        // Input style resets
+        & > * { 
             border: 0;
-            background-color: transparent;
-            width: 17rem;
-            border-bottom: 2px solid black;
             -webkit-appearance: none;
             -moz-appearance: none;
             appearance: none;
+            font-size: 1.6rem;
+            background-color: transparent;
         }
+        & input::-webkit-clear-button,
+        & input::-webkit-inner-spin-button,
+        & input::-webkit-calendar-picker-indicator {
+            display: none;
+        } /////////////////////////////
+
+        display: flex;
+        justify-content: space-around;
+        height: 5rem;
+
+        &__dropdown,
+        &__date {
+            width: 22rem;
+            border-bottom: 2px solid black;
+            text-align: center;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+
+            &:hover {
+                color: red;
+                border-bottom: 2px solid red;
+            }
+        }
+        
     }
-    
-    
 
     &--submit {
-        margin-left: auto;
-        margin-right: 5rem;
+        margin: 2rem 0;
     }
 }

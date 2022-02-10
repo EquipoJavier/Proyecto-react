@@ -34,7 +34,7 @@ export default function Visita() {
         formularios de inserción/modificación/borrado */
     const initialCategoryState = {
         selectedPlan: {}, // Guarda los datos del plan cuando se va a modifcar/borrar
-        category: "Categoría", // Guarda la categoría de plan elegido
+        category: "-- Categoría --", // Guarda la categoría de plan elegido
         dropdown: [], // Guarda las opciones disponibles en la categoría de plan elegida
         showPlanning: false, // Muestra (o no) el popup de modificación de un plan
         showDelete: false, // Muestra (o no) el popup de borrado de un plan
@@ -168,9 +168,9 @@ export default function Visita() {
                                 today={today}
                     />
 
-                    <VisitaTabla planning={pageEndPoint.planning} 
+                    {/* <VisitaTabla planning={pageEndPoint.planning} 
                                  dispatch={categoryDispatch} 
-                    />
+                    /> */}
                     <UpdateForm isShown={categoryState.showPlanning}
                                 dropdown={categoryState.dropdown} 
                                 category={categoryState.category}
