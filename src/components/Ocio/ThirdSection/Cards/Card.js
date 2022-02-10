@@ -48,38 +48,38 @@ export default function Card(props) {
   //JSX
 
   return (
-      <div className="card--ocio">
-        {cards.map(function (item) {
-          return (
-            <>
-              <div className="card--ocio__side card--ocio__side--front">
-                {item.name === props.name ? (
-                  <img key={item.id} src={item.frontImage} alt="" />
-                ) : null}
-              </div>
-              <div
-                key={item.id + "id"}
-                className={
-                  "card--ocio__side card--ocio__side--back" +
-                  ` card--ocio__side--back-${item.id}`
-                }
-              >
-                <div className="card--ocio__cta">
-                  <>
-                    {item.name === props.name ? (
-                      <>
-                        <img key={item.id + "img"} src={item.backIcon} alt="" />
-                        <p>{item.paragraph}</p>
-                        <br />
-                        <a href="transportes.html">Cómo llegar</a>
-                      </>
-                    ) : null}
-                  </>
-                </div>
-              </div>
-            </>
-          );
-        })}
-      </div>
+      // <div className="card--ocio">
+      //   {cards.map(function (item) {
+      //     return (
+      //       <>
+      //         <div className="card--ocio__side card--ocio__side--front">
+      //           {item.name === props.name ? (
+      //             <img key={item.id} src={item.frontImage} alt="" />
+      //           ) : null}
+      //         </div>
+      //         <div
+      //           key={item.id + "id"}
+      //           className={
+      //             "card--ocio__side card--ocio__side--back" +
+      //             ` card--ocio__side--back-${item.id}`
+      //           }
+      //         >
+      //           <div className="card--ocio__cta">
+      //             <>
+      //               {item.name === props.name ? (
+      //                 <>
+      //                   <img key={item.id + "img"} src={item.backIcon} alt="" />
+      //                   <p>{item.paragraph}</p>
+      //                   <br />
+      //                   <a href="transportes.html">Cómo llegar</a>
+      //                 </>
+      //               ) : null}
+      //             </>
+      //           </div>
+      //         </div>
+      //       </>
+      //     );
+      //   })}
+      // </div>
   );
 }

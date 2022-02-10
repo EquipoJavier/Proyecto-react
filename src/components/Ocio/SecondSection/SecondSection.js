@@ -1,28 +1,35 @@
 import "./SecondSection.scss";
 import { useEffect, useState } from "react";
+import loading from '../../Recursos/img/loading.gif';
 
 const url = "http://localhost:3001/parks";
 
 export default function SecondSection() {
   const [parks, setPark] = useState([]);
   const[type,setType]=useState("atracciones");
-   
+  const [haveData,setHaveData]=useState(false);
 
 
   useEffect(() => {
     fetch(url)
       .then((res) => res.json())
       .then((result) => {
-        setPark(result);
+        setTimeout(() => {
+          setPark(result);
+          setHaveData(true);
+        }, 2000);
       })
       .catch(function (error) {
         console.log("Hubo un problema con la petición Fetch:" + error.message);
       });
   }, []);
 
+
   return (
     <>
       <section className="second__section" id="second__section">
+        <h3 className="second__section--title">¡LLENATE DE ADRENALINA!</h3>
+        {haveData ? 
         <div className="park-part">
           {parks.map((park) => { 
               if(type==park.type){
@@ -30,7 +37,8 @@ export default function SecondSection() {
               <>
                 <h2 style={{transition:"all 1s"}}>{park.name}</h2>
                 <p style={{transition:"all 1s"}}>{park.text1}</p>
-                <p style={{transition:"all 1s"}}>{park.text2}</p>
+                <br/>
+                <p style={{transition:"all 1s", marginBottom:"3rem"}}>{park.text2}</p>
               </>
             );
 }})}
@@ -53,6 +61,7 @@ export default function SecondSection() {
             })}
           </ul>
         </div>
+: <div style={{width:"100%",position:"absolute", textAlign:"center"}}><img style={{width:"70px", margin:"0 auto", position:"relative" }} src={loading} alt=""/></div>}
       </section>
     </>
   );

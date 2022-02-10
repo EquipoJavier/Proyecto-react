@@ -5,7 +5,7 @@ export default function ThirdSection() {
   return (
     <section className="third__section" id="third__section">
       <h1 className="third__section--title">
-        ¡LA DIVERSION REUNIDA EN UN SOLO LUGAR!
+        LAS DIFERENTES OPCIONES DE OCIO
       </h1>
       <div className="card">
         <div className="card--">

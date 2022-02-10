@@ -1,5 +1,4 @@
 
-import Counter from "./contador";
 // import Favourites from "./Favourites/Favourites";
 import "./FourthSection.scss";
 import Landscapes from "./Lanscapes/Landscapes";
@@ -15,7 +14,7 @@ export default function FourthSection() {
                 {/* <h2 className="fourth__section--title">DESCUBRE TUS RUTAS PARA DESCONECTAR</h2> */}
                 <Landscapes />
                 {/* <Favourites /> */}
-                <Counter/>
+              
             </section>
         </>
     )
