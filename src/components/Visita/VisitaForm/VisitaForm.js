@@ -1,9 +1,8 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import './VisitaForm.scss';
 
 export default function VisitaForm(props) {
     const dispatch = props.dispatch; // Función dispatch del reducer
-    const category = props.category; // Contiene la categoría seleccionada
     const dropdown = props.dropdown; // Contiene los elementos a mostrar de la categoría seleccionada
     const alteredPlan = props.alteredPlan; // Estado; contendrá los datos modificados del nuevo plan a insertar
     const setAlteredPlan = props.setAlteredPlan; // Función actualizadora del estado newPlan
@@ -17,12 +16,21 @@ export default function VisitaForm(props) {
         if(alteredPlan.day === "") {
             setAlteredPlan({...alteredPlan, day: today})
         }
+        // eslint-disable-next-line
     }, [])
+
+    const [disabledSubmit, setDisabledSubmit] = useState(true)
+
+    useEffect(() => {
+        let isPlanFilled = Object.values(alteredPlan).every(item => item !== "")
+        isPlanFilled ? setDisabledSubmit(false) : setDisabledSubmit(true);
+    }, [alteredPlan])
+    
     
     return (
         <div className="visita__form">
             <form onSubmit={e => e.preventDefault()}>
-                
+
                 {/* /////////////////////// INPUT */}
                 <label>Día: </label>
                     <input value={date} type="date" onChange={event => {
@@ -37,12 +45,11 @@ export default function VisitaForm(props) {
                     
 
                 {/* /////////////////////// SELECT CATEGORY */}
-                <label>Categoría: </label>
-                    <select className="visita__form--dropdown" onChange={event =>  {
+                    <select onChange={event =>  {
                             dispatch({type:event.target.value.toUpperCase()});
-                            setAlteredPlan({...alteredPlan, category: event.target.value.toUpperCase()})
+                            setAlteredPlan({...alteredPlan, category: event.target.value})
                     }}>
-                        <option style={{display:"none"}}>--- Elige ---</option>
+                        <option style={{display:"none"}}>Categoría</option>
                         <option>Cultura</option>
                         <option>Gastronomia</option>
                         <option>Ocio</option>
@@ -51,7 +58,7 @@ export default function VisitaForm(props) {
                     {/* {console.log(dropdown)} */}
                 {/* /////////////////////// SELECT ITEM */}
                 <label>Qué hacer: </label>
-                    <select className="visita__form--dropdown" defaultValue={"--- Elige ---"} onChange={event => {
+                    <select defaultValue={"--- Elige ---"} onChange={event => {
                         setAlteredPlan({...alteredPlan, option: event.target.value})
                     }}>
                         <option style={{display:"none"}}>--- Elige ---</option>
@@ -63,7 +70,7 @@ export default function VisitaForm(props) {
                 {/* /////////////////////// SUBMIT */}
                 <button className="visita__form--submit" onClick={() => {
                     createPlan();
-                }}>
+                }} disabled={disabledSubmit}>
                     Añadir itinerario
                 </button> 
             </form>

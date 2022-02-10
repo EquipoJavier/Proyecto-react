@@ -9,17 +9,18 @@ export default function VisitaTabla(props) {
         por separado. Por eso, en vez de hacer el dispatch directamente en el onClick, se llama a la función "dispatchUpdate()", que recibe el elemento a
         modificar de la tabla, y en función de su categoría, se define el "índice" de esa categoría que va a almacenar los elementos a recuperar (los restaurantes,
         museos, etc) */
-    function dispatchUpdate(row) {
+        function dispatchUpdate(row) {
+        console.log(row.category, "categoria")
         var categoryIndex = "";
 
         switch (row.category) {
-            case "GASTRONOMIA":
+            case "Gastronomia":
                 categoryIndex = "restaurantes";
                 break;
-            case "CULTURA":
+            case "Cultura":
                 categoryIndex = "first";
                 break;
-            case "OCIO":
+            case "Ocio":
                 categoryIndex = "first";
                 break;
             default:

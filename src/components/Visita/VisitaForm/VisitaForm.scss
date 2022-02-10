@@ -1,22 +1,31 @@
 .visita__form {
     // background-color: aqua;
-    margin: 1rem 3rem;
+    width: 60%;
+    margin: 1rem auto;
     
     & form {
         display: flex;
+
+        & label {
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.05rem;
+            padding-left: 3rem;
+            padding-right: 0.5rem;
+        }
+
+        & select {
+            border: 0;
+            background-color: transparent;
+            width: 17rem;
+            border-bottom: 2px solid black;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
     }
     
-    & label {
-        font-weight: bold;
-        text-transform: uppercase;
-        letter-spacing: 0.05rem;
-        padding-left: 3rem;
-        padding-right: 0.5rem;
-    }
     
-    &--dropdown {
-        text-transform: capitalize;
-    }
 
     &--submit {
         margin-left: auto;

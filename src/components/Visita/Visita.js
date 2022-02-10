@@ -34,7 +34,7 @@ export default function Visita() {
         formularios de inserción/modificación/borrado */
     const initialCategoryState = {
         selectedPlan: {}, // Guarda los datos del plan cuando se va a modifcar/borrar
-        category: "--- Elige ---", // Guarda la categoría de plan elegido
+        category: "Categoría", // Guarda la categoría de plan elegido
         dropdown: [], // Guarda las opciones disponibles en la categoría de plan elegida
         showPlanning: false, // Muestra (o no) el popup de modificación de un plan
         showDelete: false, // Muestra (o no) el popup de borrado de un plan
@@ -76,6 +76,7 @@ export default function Visita() {
                     category: action.payload.category,
                     selectedPlan: action.payload,
                     showPlanning: true,
+                    // dropdown: pageEndPoint.data[action.payload.category.toLowerCase()][action.categoryIndex]
                     dropdown: pageEndPoint.data[action.payload.category.toLowerCase()][action.categoryIndex].map(element => {
                         return element.name;
                     })
@@ -105,6 +106,7 @@ export default function Visita() {
 
     // Inserción del nuevo plan (que está almacenado en el estado "alteredPlan")
     async function createPlan() {
+        console.log(alteredPlan);
         const res = await fetch('http://localhost:3001/visita', {
             method: 'POST',
             headers: {
