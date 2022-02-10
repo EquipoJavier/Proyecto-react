@@ -1,0 +1,25 @@
+.visita__form {
+    // background-color: aqua;
+    margin: 1rem 3rem;
+    
+    & form {
+        display: flex;
+    }
+    
+    & label {
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 0.05rem;
+        padding-left: 3rem;
+        padding-right: 0.5rem;
+    }
+    
+    &--dropdown {
+        text-transform: capitalize;
+    }
+
+    &--submit {
+        margin-left: auto;
+        margin-right: 5rem;
+    }
+}

@@ -1,4 +1,4 @@
-import { useState, useReducer, useEffect } from 'react';
+import { useState, useReducer } from 'react';
 import { useOutletContext } from 'react-router-dom';
 import VisitaForm from './VisitaForm/VisitaForm';
 import VisitaTabla from './VisitaTabla/Visita_tabla';
@@ -136,7 +136,7 @@ export default function Visita() {
         const id = alteredPlan.id;
         const url = `http://localhost:3001/visita/${id}`;
         
-        const res = await fetch(url, {
+        await fetch(url, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
@@ -148,7 +148,6 @@ export default function Visita() {
     }
 
     
-
     /////////////////////////////////
     // COMPONENT RENDER
 
