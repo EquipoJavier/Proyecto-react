@@ -9,27 +9,6 @@ export default function VisitaForm(props) {
     const date = props.date;
     const setDate = props.setDate;
     const today = props.today;
-
-    function defaultSelectedDate() {
-        if(dropdown.length === 0) {
-            const currentDate = new Date();
-            let day = currentDate.getDate();
-            if(day<10) {
-                day = "0"+day;
-            }
-            let month = currentDate.getMonth()+1;
-            if(month<10) {
-                month = "0"+month;
-            }
-            const year = currentDate.getFullYear();
-
-            const defaultDate = year + "-" + month + "-" + day;
-            
-            return defaultDate;
-        } else {
-            return "";
-        }
-    }
     
     return (
         <div className="visita__content__form">
@@ -39,10 +18,10 @@ export default function VisitaForm(props) {
                 <label>Día: </label>
                     <input value={date} type="date" onChange={event => {
                         setAlteredPlan({...alteredPlan, day: event.target.value});
-                        console.log("current ", today(), "seleted ", event.target.value);
-                        if (today() > event.target.value) {
+                        console.log("current ", today, "seleted ", event.target.value);
+                        if (today > event.target.value) {
                             alert("No puedes seleccionar una fecha anterior a la de hoy");
-                            setDate(today());
+                            setDate(today);
                         } else {
                             setDate(event.target.value);
                         }

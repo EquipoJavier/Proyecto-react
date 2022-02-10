@@ -26,8 +26,8 @@ export default function Visita() {
     
     /* Estado que almacenará el plan que se va a insertar/modificar/borrar en el json */
     const [alteredPlan, setAlteredPlan] = useState(initialPlanState);
-    const today = currentDate;
     
+    const today = currentDate();
     const [date, setDate] = useState(today)
 
     /* Estado inicial del reducer que gestionará el contenido de ciertos campos de los 
