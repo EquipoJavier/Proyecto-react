@@ -20,6 +20,7 @@ import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
 import axios from "axios";
 import Cell from "./Cell/Cell";
+import Loading from "../../../Loading/Loading";
 
 const images = {
   azul: azul,
@@ -100,16 +101,27 @@ export default function Read({
                 style={{ backgroundColor: "rgba(190, 190, 190, 0.9)" }}
               >
                 <TableRow>
-                  <Cell text={"Nombre"} />
-                  <Cell text={"Apellidos"} />
-                  <Cell text={"Tipo de tarjeta"} />
-                  <Cell text={"Su tarjeta virtual"} />
-                  <Cell text={"Su fotografía"} />
-                  <Cell text={"¿Desea editar sus datos?"} />
-
-                  <TableCell style={{ fontSize: "20px", textAlign: "center" }}>
-                    ¿Desea borrar su tarjeta?
-                  </TableCell>
+                  <Cell text={"Nombre"} border_right={"1px solid black"} />
+                  <Cell text={"Apellidos"} border_right={"1px solid black"} />
+                  <Cell
+                    text={"Tipo de tarjeta"}
+                    border_right={"1px solid black"}
+                  />
+                  <Cell
+                    text={"Su tarjeta virtual"}
+                    border_right={"1px solid black"}
+                  />
+                  <Cell
+                    text={"Su fotografía"}
+                    border_right={"1px solid black"}
+                  />
+                  <Cell
+                    text={"¿Desea editar sus datos?"}
+                    border_right={"1px solid black"}
+                  />
+                  <Cell
+                    text={"¿Desea borrar su tarjeta?"}
+                  />
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -122,29 +134,16 @@ export default function Read({
                           "&:last-child td, &:last-child th": { border: 0 },
                         }}
                       >
-                        <TableCell
-                          style={{ fontSize: "20px", textAlign: "center" }}
-                          component="th"
-                          scope="row"
-                        >
-                          {item.name}
-                        </TableCell>
-                        <TableCell
-                          style={{ fontSize: "20px", textAlign: "center" }}
-                        >
-                          {item.surname}
-                        </TableCell>
-                        <TableCell
-                          style={{ fontSize: "20px", textAlign: "center" }}
-                        >
-                          {item.type.charAt(0).toUpperCase() +
-                            item.type.slice(1)}
-                        </TableCell>
-                        <TableCell
-                          style={{ fontSize: "20px", textAlign: "center" }}
-                        >
-                          {}
-                          {
+                        <Cell text={item.name} />
+                        <Cell text={item.surname} />
+                        <Cell
+                          text={
+                            item.type.charAt(0).toUpperCase() +
+                            item.type.slice(1)
+                          }
+                        />
+                        <Cell
+                          text={
                             <img
                               key={item.name + i}
                               style={{ width: "100px", borderRadius: "5px" }}
@@ -152,11 +151,9 @@ export default function Read({
                               alt="Loading..."
                             />
                           }
-                        </TableCell>
-                        <TableCell
-                          style={{ fontSize: "20px", textAlign: "center" }}
-                        >
-                          {
+                        />
+                        <Cell
+                          text={
                             <img
                               key={item.name + i + "foto"}
                               style={{ width: "80px", maxHeight: "100px" }}
@@ -164,38 +161,38 @@ export default function Read({
                               alt="Loading..."
                             />
                           }
-                        </TableCell>
-                        <TableCell
-                          style={{ fontSize: "20px", textAlign: "center" }}
-                        >
-                          <Button
-                            style={{ fontSize: "14px", textAlign: "center" }}
-                            variant="contained"
-                            color="success"
-                            startIcon={<Edit />}
-                            onClick={(e) => {
-                              setShowForm(true);
-                              setForUpdate(item);
-                            }}
-                          >
-                            Edit
-                          </Button>
-                        </TableCell>
-                        <TableCell
-                          style={{ fontSize: "20px", textAlign: "center" }}
-                        >
-                          <Button
-                            style={{ fontSize: "14px", textAlign: "center" }}
-                            variant="contained"
-                            color="error"
-                            startIcon={<DeleteSweep />}
-                            onClick={() => {
-                              deleteVoucher(item);
-                            }}
-                          >
-                            Delete
-                          </Button>
-                        </TableCell>
+                        />
+                        <Cell
+                          text={
+                            <Button
+                              style={{ fontSize: "14px", textAlign: "center" }}
+                              variant="contained"
+                              color="success"
+                              startIcon={<Edit />}
+                              onClick={(e) => {
+                                setShowForm(true);
+                                setForUpdate(item);
+                              }}
+                            >
+                              Edit
+                            </Button>
+                          }
+                        />
+                        <Cell
+                          text={
+                            <Button
+                              style={{ fontSize: "14px", textAlign: "center" }}
+                              variant="contained"
+                              color="error"
+                              startIcon={<DeleteSweep />}
+                              onClick={() => {
+                                deleteVoucher(item);
+                              }}
+                            >
+                              Delete
+                            </Button>
+                          }
+                        />
                       </TableRow>
                     );
                 })}
@@ -216,14 +213,7 @@ export default function Read({
           </Button>
         </>
       ) : (
-        <img
-          className="voucher__read-content--loading"
-          style={{
-            width: "70px",
-          }}
-          src={loading}
-          alt="Loading..."
-        />
+        <Loading />
       )}
       <Button
         style={{

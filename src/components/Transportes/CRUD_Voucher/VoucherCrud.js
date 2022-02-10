@@ -1,10 +1,8 @@
 import Form from "./Form/Form";
 import "./VoucherCrud.scss";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Read from "./Read/Read";
-import Cookies from "universal-cookie";
 
-const cookies = new Cookies();
 
 export default function VoucherCrud({ isLogin, setShowLogin }) {
   const [showForm, setShowForm] = useState(false);
@@ -13,7 +11,7 @@ export default function VoucherCrud({ isLogin, setShowLogin }) {
   const [forUpdate, setForUpdate] = useState([]);
 
   const url = "http://localhost:3001/tarjetas";
-  const user = useRef(cookies.get("username"));
+  const [user,setUser] = useState(localStorage.getItem("username")||null);
 
   useEffect(async () => {
     fetch(url)
@@ -27,18 +25,18 @@ export default function VoucherCrud({ isLogin, setShowLogin }) {
       .catch(function (error) {
         console.log("Hubo un problema con la petición Fetch:" + error.message);
       });
-  }, [done]);
+  }, []);
 
   useEffect(() => {
-    user.current = cookies.get("username");
-  }, [cookies, done]);
+    setUser(localStorage.getItem("username"));
+  }, [isLogin]);
 
   return (
     <div className="voucher" id="voucher">
       {isLogin ? (
         <>
           <h1 className="voucher--h1">
-            ¡Hola {user.current}! Estas son las tarjetas de tu familia
+            ¡Hola {user}! Estas son las tarjetas de tu familia
           </h1>
           {showForm ? (
             <Form
@@ -54,7 +52,7 @@ export default function VoucherCrud({ isLogin, setShowLogin }) {
               url={url}
               setDone={setDone}
               setShowForm={setShowForm}
-              user={user.current}
+              user={user}
               done={done}
               pageEndPoint={pageEndPoint}
               setForUpdate={setForUpdate}

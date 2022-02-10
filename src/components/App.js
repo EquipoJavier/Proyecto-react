@@ -7,6 +7,11 @@ import Menu from "./Menu/Menu";
 import Users from "./Users/Users";
 
 function App() {
+  const [items, setItems] = useState([]);
+  const [done, setDone] = useState(false);
+  const [showLogin, setShowLogin] = useState(false);
+  const [isLogin, setIsLogin] = useState(localStorage.getItem("username") ? true : false);
+
   const [headerTitle, setHeaderTitle] = useState(
     sessionStorage.getItem("title") != null
       ? sessionStorage.getItem("title")
@@ -17,11 +22,6 @@ function App() {
       ? sessionStorage.getItem("subtitle")
       : "Descubre todos sus secretos"
   );
-  const [items, setItems] = useState([]);
-  const [done, setDone] = useState(false);
-
-  const [showLogin, setShowLogin] = useState(false);
-  const [isLogin, setIsLogin] = useState(false);
 
   function getHeading(title, subtitle) {
     setHeaderTitle(title);
@@ -68,7 +68,7 @@ function App() {
 
   return (
     <div>
-      {showLogin ? <Users setIsLogin={setIsLogin} setShowLogin={setShowLogin} /> : <></>}
+      {showLogin ? <Users setIsLogin={setIsLogin} isLogin={isLogin} setShowLogin={setShowLogin} /> : <></>}
       <Header
         title={headerTitle}
         subtitle={headerSubtitle}
