@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
 import './VisitaForm.scss';
+import capitalize from '../../../utils/capitalize';
 
 export default function VisitaForm(props) {
     const dispatch = props.dispatch; // Función dispatch del reducer
+    const category = capitalize(props.category.toLowerCase()); // Contiene la categoría seleccionada
     const dropdown = props.dropdown; // Contiene los elementos a mostrar de la categoría seleccionada
     const alteredPlan = props.alteredPlan; // Estado; contendrá los datos modificados del nuevo plan a insertar
     const setAlteredPlan = props.setAlteredPlan; // Función actualizadora del estado newPlan
@@ -45,7 +47,7 @@ export default function VisitaForm(props) {
                     
 
                 {/* /////////////////////// SELECT CATEGORY */}
-                    <select onChange={event =>  {
+                    <select value={category} onChange={event =>  {
                             dispatch({type:event.target.value.toUpperCase()});
                             setAlteredPlan({...alteredPlan, category: event.target.value})
                     }}>

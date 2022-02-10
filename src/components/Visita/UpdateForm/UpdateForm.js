@@ -11,7 +11,6 @@ export default function UpdateForm(props) {
     const setAlteredPlan = props.setAlteredPlan; // Función actualizadora del estado newPlan
     const updatePlan = props.updatePlan; // Función que ejecuta la actualización en el JSON de datos
 
-    console.log(dropdown)
     return isShown ? (
         <div className="update">
             <div className="update__content">
@@ -19,6 +18,8 @@ export default function UpdateForm(props) {
                     <span className="update__form__header">Modifca tu plan</span>
                     
                     <form onSubmit={e => e.preventDefault()}>
+                        
+                    {/* /////////////////////// INPUT */}
                         <label>Día:</label>
                             <input type="date" defaultValue={selectedPlan.day} onChange={event =>{
                                 setAlteredPlan({...alteredPlan, day: event.target.value})

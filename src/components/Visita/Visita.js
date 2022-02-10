@@ -76,7 +76,6 @@ export default function Visita() {
                     category: action.payload.category,
                     selectedPlan: action.payload,
                     showPlanning: true,
-                    // dropdown: pageEndPoint.data[action.payload.category.toLowerCase()][action.categoryIndex]
                     dropdown: pageEndPoint.data[action.payload.category.toLowerCase()][action.categoryIndex].map(element => {
                         return element.name;
                     })
@@ -149,7 +148,6 @@ export default function Visita() {
         await alterPlan(alteredPlan, "delete"); // Esta vez hay que pasar el plan a borrar, en vez del resultado de fetch() (ya que éste devuelve un objeto vacío)
     }
 
-    
     /////////////////////////////////
     // COMPONENT RENDER
 

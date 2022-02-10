@@ -10,7 +10,6 @@ export default function VisitaTabla(props) {
         modificar de la tabla, y en función de su categoría, se define el "índice" de esa categoría que va a almacenar los elementos a recuperar (los restaurantes,
         museos, etc) */
         function dispatchUpdate(row) {
-        console.log(row.category, "categoria")
         var categoryIndex = "";
 
         switch (row.category) {
