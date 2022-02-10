@@ -31,6 +31,7 @@ export default function Users({ setProfile, setIsLogin, isLogin, setShowLogin })
   function logOut() {
     setIsLogin(false);
     localStorage.removeItem("username");
+    localStorage.removeItem("img");
     setShowLogin(false);
     setProfile(null);
     window.onscroll = function () {};
@@ -73,6 +74,7 @@ export default function Users({ setProfile, setIsLogin, isLogin, setShowLogin })
           localStorage.setItem("username", respuesta.username);
           alert(`Bienvenido ${respuesta.username}`);
           setProfile(respuesta.img);
+          localStorage.setItem("img",respuesta.img);
           setShowLogin(false);
           setIsLogin(true);
           window.onscroll = function () {};

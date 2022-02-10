@@ -11,7 +11,7 @@ function App() {
   const [done, setDone] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
   const [isLogin, setIsLogin] = useState(localStorage.getItem("username") ? true : false);
-  const [profile, setProfile] = useState(null);
+  const [profile, setProfile] = useState(localStorage.getItem("img") || null);
 
   const [headerTitle, setHeaderTitle] = useState(
     sessionStorage.getItem("title") != null
