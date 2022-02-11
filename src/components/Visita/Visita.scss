@@ -18,5 +18,7 @@
         // background-color: green; // TEST
         height: 70vh; // TEST
         margin: 3rem 5rem;
+        display: flex;
+        flex-direction: column;
     }
 }

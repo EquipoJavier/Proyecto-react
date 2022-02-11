@@ -43,9 +43,9 @@ export default function VisitaTabla(props) {
             <table>
                 <thead>
                     <tr>
-                        <th>Días</th>
-                        <th>Categoría</th>
-                        <th>Qué hacer</th>
+                        <th className='visita__content__table--smallColumn'>Días</th>
+                        <th className='visita__content__table--smallColumn'>Categoría</th>
+                        <th className='visita__content__table--bigColumn'>Qué hacer</th>
                     </tr>
                 </thead>
                 <tbody>

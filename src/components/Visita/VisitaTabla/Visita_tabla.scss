@@ -1,8 +1,18 @@
 .visita__content__table {
     background-color: azure;
-    width: 80%;
-    align-self: center;
+    width: 70%;
     display: flex;
+    align-self: center;
+
+    &--smallColumn {
+        background-color: red;
+    }
+    
+    &--bigColumn {
+        background-color: blue;
+        min-width: 25rem;
+    }
+
     
     & table {
         flex-basis: 100%;
@@ -18,11 +28,16 @@
 
         & th, td {
             //border: 1px solid black;
+            // background-color: red;
         }
         & th {
             text-align: left;
         }
+        & th:not(:last-of-type) {
+            // background-color: blue;
+        }
     }
+
 
     &--buttons {
         float: right;

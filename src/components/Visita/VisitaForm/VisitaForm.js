@@ -21,11 +21,25 @@ export default function VisitaForm(props) {
         // eslint-disable-next-line
     }, [])
 
-    const [disabledSubmit, setDisabledSubmit] = useState(true)
-
     useEffect(() => {
         let isPlanFilled = Object.values(alteredPlan).every(item => item !== "")
-        isPlanFilled ? setDisabledSubmit(false) : setDisabledSubmit(true);
+        const button = document.getElementById("submitButton");
+        const coverR = document.getElementById("coverR");
+        const coverL = document.getElementById("coverL");
+        
+        if(!isPlanFilled) {
+            button.style.opacity = "0"
+            button.disabled = true;
+        } else {
+            button.style.opacity = "1"
+            button.style.cursor = "pointer"
+            button.disabled = false;
+
+            coverR.style.right = "-50%";
+            coverR.classList.add("revealed");
+            coverL.style.left = "-50%";
+            coverL.classList.add("revealed");
+        }
     }, [alteredPlan])
     
     
@@ -35,6 +49,7 @@ export default function VisitaForm(props) {
                 <div className='visita__form--inputs--input'>
                 {/* /////////////////////// INPUT */}
                     <input className="visita__form--inputs__date" value={date} type="date" onChange={event => {
+                        console.log("today", today, "selected", event.target.value);
                         if (today > event.target.value) {
                             alert("No puedes seleccionar una fecha anterior a la de hoy");
                             setDate(today);
@@ -75,11 +90,17 @@ export default function VisitaForm(props) {
                 </div>
             </div>
             {/* /////////////////////// SUBMIT */}
-            <button className="visita__form--submit" onClick={() => {
-                createPlan();
-            }} disabled={disabledSubmit}>
-                Añadir al planning
-            </button> 
+            <div className="visita__form--submit">
+                <button id='submitButton' className="visita__form--submitButton" onClick={() => {
+                    createPlan();
+                }} >
+                    Añadir al planning
+                </button> 
+                <div className="visita__form--submit--covers">
+                    <div className="visita__form--submit--covers--L" id="coverL">&nbsp;</div>
+                    <div className="visita__form--submit--covers--R" id='coverR'>&nbsp;</div>
+                </div>
+            </div>
         </form>
     )
 }
