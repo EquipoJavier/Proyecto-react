@@ -1,35 +1,17 @@
-import Form from "./Form/Form";
-import "./VoucherCrud.scss";
 import { useEffect, useState } from "react";
+import GetTarjetas from "./voucherServices";
+import Form from "./Form/Form";
 import Read from "./Read/Read";
-
+import "./VoucherCrud.scss";
 
 export default function VoucherCrud({ isLogin, setShowLogin }) {
   const [showForm, setShowForm] = useState(false);
-  const [pageEndPoint, setPageEndPoint] = useState([]);
-  const [done, setDone] = useState(false);
   const [forUpdate, setForUpdate] = useState({});
-
-  const url = "http://localhost:3001/tarjetas";
   const [user,setUser] = useState(localStorage.getItem("username")||null);
 
-  useEffect(async () => {
-    if(done){
-      return
-    } else {
-    fetch(url)
-      .then((res) => res.json())
-      .then((result) => {
-        setTimeout(() => {
-          setPageEndPoint(result);
-          setDone(true);
-        }, 1500);
-      })
-      .catch(function (error) {
-        console.log("Hubo un problema con la petición Fetch:" + error.message);
-      });
-    }
-  }, [done]);
+  const url = "http://localhost:3001/tarjetas";
+
+  const [pageEndPoint, setPageEndPoint, done, setDone] = GetTarjetas(url);
 
   useEffect(() => {
     setUser(localStorage.getItem("username"));
@@ -43,25 +25,10 @@ export default function VoucherCrud({ isLogin, setShowLogin }) {
             ¡Hola {user}! Estas son las tarjetas de tu familia
           </h1>
           {showForm ? (
-            <Form
-              url={url}
-              forUpdate={forUpdate}
-              setForUpdate={setForUpdate}
-              setDone={setDone}
-              user={user}
-              setShowForm={setShowForm}
+            <Form url={url} forUpdate={forUpdate} setForUpdate={setForUpdate} setDone={setDone} user={user} setShowForm={setShowForm}
             />
           ) : (
-            <Read
-              url={url}
-              setDone={setDone}
-              setShowForm={setShowForm}
-              user={user}
-              done={done}
-              pageEndPoint={pageEndPoint}
-              setForUpdate={setForUpdate}
-              setPageEndPoint={setPageEndPoint}
-              setShowLogin={setShowLogin}
+            <Read url={url} setDone={setDone} setShowForm={setShowForm} user={user} done={done} pageEndPoint={pageEndPoint} setForUpdate={setForUpdate} setPageEndPoint={setPageEndPoint} setShowLogin={setShowLogin}
             />
           )}
         </>

@@ -1,14 +1,11 @@
 import InputImage from "./InputImage/InputImage";
 import LabelInput from "./LabelInput/LabelInput";
-import profileDefault from "../../../Recursos/img/transport-profile.png";
-import bono from "../../../Recursos/img/crea-tu-bono.jpg";
 import { useEffect, useState } from "react";
 import Select from "./Select/Select";
 import "./Form.scss";
-import { Button } from "@material-ui/core";
-import { Add } from "@material-ui/icons";
-import Edit from "@mui/icons-material/Edit";
 import axios from "axios";
+import Bono from "./Bono/Bono";
+import FormButton from "./FormButton/FormButton";
 
 export default function Form({ url, forUpdate, setForUpdate, setDone, user, setShowForm }) {
   const [newVoucher, setNewVoucher] = useState({
@@ -27,12 +24,12 @@ export default function Form({ url, forUpdate, setForUpdate, setDone, user, setS
   }, [forUpdate]);
 
   const handleName = (e) => {
-    setNewVoucher({ ...newVoucher, name: e.target.value });
+    setNewVoucher({ ...newVoucher, name: e.target.value.toUpperCase() });
     sessionStorage.setItem("tar-name", e.target.value);
   };
 
   const handleSurName = (e) => {
-    setNewVoucher({ ...newVoucher, surname: e.target.value });
+    setNewVoucher({ ...newVoucher, surname: e.target.value.toUpperCase() });
     sessionStorage.setItem("tar-surname", e.target.value);
   };
 
@@ -103,44 +100,13 @@ export default function Form({ url, forUpdate, setForUpdate, setDone, user, setS
           <Select newVoucher={newVoucher} setNewVoucher={setNewVoucher} />
           <InputImage newVoucher={newVoucher} setNewVoucher={setNewVoucher} />
           {JSON.stringify(forUpdate)=='{}' ? (
-            <Button
-              style={{
-                fontSize: "14px",
-                textAlign: "center",
-              }}
-              variant="contained"
-              color="primary"
-              startIcon={<Add />}
-              onClick={createNewVoucher}
-            >
-              Crear nueva tarjeta
-            </Button>
+            <FormButton comp={"Add"} f={createNewVoucher} text={"Crear nueva tarjeta"} />
           ) : (
-            <Button
-              style={{
-                fontSize: "14px",
-                textAlign: "center",
-                color: "green",
-                backgroundColor: "white"
-              }}
-              variant="contained"
-              color="inherit"
-              startIcon={<Edit />}
-              onClick={editVoucher}
-            >
-              Aceptar los cambios
-            </Button>
+            <FormButton btnColor={"green"} btnBack={"white"} bcolor={"inherit"} comp={"Edit"} f={editVoucher} text={"Aceptar los cambios"} />
           )}
         </form>
       </div>
-      <div className="voucher__form-content--img">
-        <img src={bono} alt=" " />
-          <p className="voucher__form-content--img-p1">{newVoucher.name.toUpperCase()}</p>
-          <p className="voucher__form-content--img-p2">{newVoucher.surname.toUpperCase()}</p>
-        <div className="voucher__form-content--img-holder">
-          <img src={newVoucher.fileInput || profileDefault} alt=" " id="img" className="img" />
-        </div>
-      </div>
+      <Bono name={newVoucher.name} surname={newVoucher.surname} fileInput={newVoucher.fileInput} />
     </div>
   );
 }
