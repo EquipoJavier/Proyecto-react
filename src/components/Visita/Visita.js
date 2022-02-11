@@ -1,4 +1,4 @@
-import { useState, useReducer } from 'react';
+import { useState, useReducer, useEffect } from 'react';
 import { useOutletContext } from 'react-router-dom';
 import VisitaForm from './VisitaForm/VisitaForm';
 import VisitaTabla from './VisitaTabla/Visita_tabla';
@@ -26,15 +26,15 @@ export default function Visita() {
     
     /* Estado que almacenará el plan que se va a insertar/modificar/borrar en el json */
     const [alteredPlan, setAlteredPlan] = useState(initialPlanState);
+    const today = currentDate;
     
-    const today = currentDate();
     const [date, setDate] = useState(today)
 
     /* Estado inicial del reducer que gestionará el contenido de ciertos campos de los 
         formularios de inserción/modificación/borrado */
     const initialCategoryState = {
         selectedPlan: {}, // Guarda los datos del plan cuando se va a modifcar/borrar
-        category: "-- Categoría --", // Guarda la categoría de plan elegido
+        category: "--- Elige ---", // Guarda la categoría de plan elegido
         dropdown: [], // Guarda las opciones disponibles en la categoría de plan elegida
         showPlanning: false, // Muestra (o no) el popup de modificación de un plan
         showDelete: false, // Muestra (o no) el popup de borrado de un plan
@@ -105,7 +105,6 @@ export default function Visita() {
 
     // Inserción del nuevo plan (que está almacenado en el estado "alteredPlan")
     async function createPlan() {
-        console.log(alteredPlan);
         const res = await fetch('http://localhost:3001/visita', {
             method: 'POST',
             headers: {
@@ -137,7 +136,7 @@ export default function Visita() {
         const id = alteredPlan.id;
         const url = `http://localhost:3001/visita/${id}`;
         
-        await fetch(url, {
+        const res = await fetch(url, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
@@ -147,6 +146,8 @@ export default function Visita() {
         
         await alterPlan(alteredPlan, "delete"); // Esta vez hay que pasar el plan a borrar, en vez del resultado de fetch() (ya que éste devuelve un objeto vacío)
     }
+
+    
 
     /////////////////////////////////
     // COMPONENT RENDER
@@ -168,9 +169,9 @@ export default function Visita() {
                                 today={today}
                     />
 
-                    {/* <VisitaTabla planning={pageEndPoint.planning} 
+                    <VisitaTabla planning={pageEndPoint.planning} 
                                  dispatch={categoryDispatch} 
-                    /> */}
+                    />
                     <UpdateForm isShown={categoryState.showPlanning}
                                 dropdown={categoryState.dropdown} 
                                 category={categoryState.category}

@@ -8,7 +8,8 @@
     &--inputs {
         ///////////////////////////////
         // Input style resets
-        & > * { 
+        &__dropdown,
+        &__date {
             border: 0;
             -webkit-appearance: none;
             -moz-appearance: none;
@@ -25,20 +26,46 @@
         display: flex;
         justify-content: space-around;
         height: 5rem;
+        
+        
+        &--input {
+            height: 5rem;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 2px solid black;
+            transition: ease-in 0.3s;
+
+            
+            &:hover {
+                color: rgb(62, 9, 207);
+                border-bottom: 2px solid rgb(62, 9, 207);
+            }
+        }
+        
+        &--BG {
+            height: 100%;
+            width: 100%;
+            transform: translateY(100%);
+            position: absolute;
+            background-color: #766e653b;
+            transition: ease-out 0.2s;
+            transform-origin: bottom;
+        }
+
+        &--input:hover &--BG {
+            transform: translateY(0);
+        }
 
         &__dropdown,
         &__date {
             width: 22rem;
-            border-bottom: 2px solid black;
+            height: 100%;
             text-align: center;
             font-weight: bold;
             cursor: pointer;
-            transition: all 0.3s;
+            color: inherit;
+            // background-color: aquamarine;
 
-            &:hover {
-                color: red;
-                border-bottom: 2px solid red;
-            }
         }
         
     }

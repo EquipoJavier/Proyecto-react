@@ -32,39 +32,47 @@ export default function VisitaForm(props) {
     return (
         <form className="visita__form" onSubmit={e => e.preventDefault()}>
             <div className="visita__form--inputs">
-            {/* /////////////////////// INPUT */}
-                <input className="visita__form--inputs__date" value={date} type="date" onChange={event => {
-                    if (today > event.target.value) {
-                        alert("No puedes seleccionar una fecha anterior a la de hoy");
-                        setDate(today);
-                    } else {
-                        setAlteredPlan({...alteredPlan, day: event.target.value});
-                        setDate(event.target.value);
-                    }
-                }} required />
+                <div className='visita__form--inputs--input'>
+                    <div className='visita__form--inputs--BG'></div>
+                {/* /////////////////////// INPUT */}
+                    <input className="visita__form--inputs__date" value={date} type="date" onChange={event => {
+                        if (today > event.target.value) {
+                            alert("No puedes seleccionar una fecha anterior a la de hoy");
+                            setDate(today);
+                        } else {
+                            setAlteredPlan({...alteredPlan, day: event.target.value});
+                            setDate(event.target.value);
+                        }
+                    }} required />
+                </div>
                 
 
-            {/* /////////////////////// SELECT CATEGORY */}
-                <select className="visita__form--inputs__dropdown" value={category} onChange={event =>  {
-                        dispatch({type:event.target.value.toUpperCase()});
-                        setAlteredPlan({...alteredPlan, category: event.target.value})
-                }}>
-                    <option style={{display:"none"}}>-- Categoría --</option>
-                    <option>Cultura</option>
-                    <option>Gastronomia</option>
-                    <option>Ocio</option>
-                </select>
+                {/* /////////////////////// SELECT CATEGORY */}
+                <div className='visita__form--inputs--input'>
+                    <div className='visita__form--inputs--BG'></div>
+                    <select className="visita__form--inputs__dropdown" value={category} onChange={event =>  {
+                            dispatch({type:event.target.value.toUpperCase()});
+                            setAlteredPlan({...alteredPlan, category: event.target.value})
+                    }}>
+                        <option style={{display:"none"}}>-- Categoría --</option>
+                        <option>Cultura</option>
+                        <option>Gastronomia</option>
+                        <option>Ocio</option>
+                    </select>
+                </div>
 
-                {/* {console.log(dropdown)} */}
-            {/* /////////////////////// SELECT ITEM */}
-                <select className="visita__form--inputs__dropdown" defaultValue={"--- Elige ---"} onChange={event => {
-                    setAlteredPlan({...alteredPlan, option: event.target.value})
-                }}>
-                    <option style={{display:"none"}}>-- Qué hacer --</option>
-                    {dropdown.map(element => {
-                        return <option key={element}>{element}</option>
-                    })}
-                </select>
+                {/* /////////////////////// SELECT ITEM */}
+                <div className='visita__form--inputs--input'>
+                    <div className='visita__form--inputs--BG'></div>
+                    <select className="visita__form--inputs__dropdown" defaultValue={"--- Elige ---"} onChange={event => {
+                        setAlteredPlan({...alteredPlan, option: event.target.value})
+                    }}>
+                        <option style={{display:"none"}}>-- Qué hacer --</option>
+                        {dropdown.map(element => {
+                            return <option key={element}>{element}</option>
+                        })}
+                    </select>
+                </div>
             </div>
             {/* /////////////////////// SUBMIT */}
             <button className="visita__form--submit" onClick={() => {
