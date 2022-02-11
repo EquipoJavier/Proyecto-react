@@ -7,21 +7,27 @@ import Loading from "../Loading/Loading";
 
 const url = "http://localhost:3001/users";
 
-export default function Users({ setProfile, setIsLogin, isLogin, setShowLogin }) {
+export default function Users({
+  setProfile,
+  setIsLogin,
+  isLogin,
+  setShowLogin,
+}) {
   const [form, setForm] = useState({
     username: "",
     password: "",
-    img: null
+    img: null,
   });
   const [areUsers, setAreUsers] = useState(false);
   const [ourUsers, setOurUsers] = useState([]);
+  const [needRegister, setNeedRegister] = useState(true);
 
   const imageHandler = (file) => {
     var reader = new FileReader();
     reader.readAsDataURL(file);
-    reader.onload= function(){
-      setForm({...form, img : reader.result});
-    }  
+    reader.onload = function () {
+      setForm({ ...form, img: reader.result });
+    };
   };
 
   function handleChange(e) {
@@ -73,7 +79,7 @@ export default function Users({ setProfile, setIsLogin, isLogin, setShowLogin })
           var respuesta = response[0];
           localStorage.setItem("username", respuesta.username);
           setProfile(respuesta.img);
-          localStorage.setItem("img",respuesta.img);
+          localStorage.setItem("img", respuesta.img);
           setShowLogin(false);
           setIsLogin(true);
           alert(`Estamos encantados de verte por aquí ${respuesta.username}`);
@@ -91,7 +97,7 @@ export default function Users({ setProfile, setIsLogin, isLogin, setShowLogin })
     let post = {
       username: form.username,
       password: md5(form.password),
-      img: form.img
+      img: form.img,
     };
     seeUsers();
     if (areUsers) {
@@ -151,26 +157,51 @@ export default function Users({ setProfile, setIsLogin, isLogin, setShowLogin })
                 onChange={handleChange}
                 placeholder="&nbsp; &#xf084; Contraseña"
               />
-              <input
-                  type="file"
-                  name="img-upload"
-                  id="input"
-                  accept="image/*"
-                  onChange={(e) => imageHandler(e.target.files[0])}
-                ></input>
-                <br /><br />
-                <label htmlFor="input" className="photo">
-                  <i className="material-icons">photo</i>
-                  Elige una foto...
-                </label>
-              <br /><br />
+              {needRegister ? (
+                <>
+                  <input
+                    type="file"
+                    name="img-upload"
+                    id="input"
+                    accept="image/*"
+                    onChange={(e) => imageHandler(e.target.files[0])}
+                  ></input>
+                  <br />
+                  <br />
+                  <label htmlFor="input" className="photo">
+                    <i className="material-icons">photo</i>
+                    Elige una foto...
+                  </label>
+                </>
+              ) : (
+                <></>
+              )
+              }
+              <br />
+              <br />
               <div className="btn--popup">
-                <button className="btn--popup-login" onClick={iniciarSesion}>
-                  Iniciar Sesión
-                </button>
-                <button className="btn--popup-registro" onClick={registrarse}>
-                  Registrarse
-                </button>
+                {needRegister ? (
+                  <>
+                    <button
+                      className="btn--popup-registro"
+                      onClick={registrarse}
+                    >
+                      Registrarse
+                    </button>
+                    <br />
+                    <br />
+                    <button
+                      className="btn--popup-registro"
+                      onClick={() => setNeedRegister(false)}
+                    >
+                      Ya estoy registrado
+                    </button>
+                  </>
+                ) : (
+                  <button className="btn--popup-login" onClick={iniciarSesion}>
+                    Iniciar Sesión
+                  </button>
+                )}
               </div>
             </>
           ) : (
