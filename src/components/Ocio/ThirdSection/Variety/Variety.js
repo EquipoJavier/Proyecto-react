@@ -1,33 +1,9 @@
 import Slider from "infinite-react-carousel";
-import ImageBackground from "../../../Recursos/img/peliculas-rodadas-madrid.webp";
 import "./Variety.scss";
+import { useEffect, useState } from "react";
+import loading from '../../../Recursos/img/loading.gif';
 
-const cards = [
-  {
-    name: "Peliculas y series para ver Madrid",
-    image: ImageBackground,
-    text: "Conoce las distintas series y películas rodadas en Madrid. Directores como Pedro Almodóvar han realizado casi toda su filmografía en la capital española",
-    id: 1,
-  },
-  {
-    name: "Estilo",
-    image: ImageBackground,
-    text: "Conoce las distintas series y películas rodadas en Madrid. Directores como Pedro Almodóvar han realizado casi toda su filmografía en la capital española",
-    id: 2,
-  },
-  {
-    name: "MAPAS",
-    image: ImageBackground,
-    text: "Conoce las distintas series y películas rodadas en Madrid. Directores como Pedro Almodóvar han realizado casi toda su filmografía en la capital española",
-    id: 3,
-  },
-  {
-    name: "COCO",
-    image: ImageBackground,
-    text: "Conoce las distintas series y películas rodadas en Madrid. Directores como Pedro Almodóvar han realizado casi toda su filmografía en la capital española",
-    id: 4,
-  },
-];
+const url = "http://localhost:3001/themes";
 
 const settings = {
   autoplay: true,
@@ -35,27 +11,50 @@ const settings = {
 };
 
 export default function Variety() {
+  const [themes, setThemes] = useState([]);
+  const [haveData,setHaveData] = useState(false);
+
+  useEffect(() => {
+    fetch(url)
+      .then((res) => res.json())
+      .then((result) => {
+        setTimeout(() => {
+          setThemes(result);
+          setHaveData(true);
+        }, 2000);
+      })
+      .catch(function (error) {
+        console.log("Hubo un problema con la petición Fetch:" + error.message);
+      });
+  }, []);
+
+
+
+
   return (
     <div className="slider__variety">
+    {haveData ? 
       <Slider {...settings}>
-        {cards.map((card) => {
+        {themes.map((theme) => {
           return (
-            <>
-            <div key={card.id + "id"} className="slider__variety--each">
+            <div key={theme.id}>
+            <div className="slider__variety--each">
               <img
-                src={card.image}
+                src={theme.image}
                 className="slider__variety--each-image"
                 alt=""
               />
               </div>
               <div className="slider__variety--content">
-                <h2>{card.name}</h2>
-                <p>{card.text}</p>
+                <h2>{theme.name}</h2>
+                <p>{theme.text}</p>
+                <span className="slider__variety--content--link">¡Descúbrelos!</span>
               </div>
-              </>
+              </div>
           );
         })}
-      </Slider>
-    </div>
+        </Slider>
+        : <div style={{width:"100%",position:"absolute", textAlign:"center"}}><img style={{width:"70px", margin:"0 auto", position:"relative" }} src={loading} alt=""/></div>}
+        </div>
   );
 }

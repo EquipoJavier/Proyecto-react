@@ -16,7 +16,7 @@ export default function Visita() {
         <div className="visita__body">
             <div className="visita__box">
                 <div className="visita__addButton">
-                    <Button title="Añadir elemento al itinerario" hoverClass="violet" onClick={() => {
+                    <Button title="Añadir elemento al itinerario" hoverclassName="violet" onClick={() => {
                         toggleContent();
                     }} />
                 </div>

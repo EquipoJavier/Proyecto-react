@@ -28,14 +28,15 @@
         text-rendering: optimizeLegibility;
 
         &>h2{
-            font-weight: 700;
+            font-weight: 800;
+            font-size: 27px;
            
         }
             
         &:hover {
             &>h2{
             color: #f70759;
-            transition: color .5s;
+            transition: color .10s;
             }
             cursor:pointer;
 
@@ -43,6 +44,26 @@
 
         & >p{
             color:rgb(107, 103, 103);
+            text-align: center;
+            padding-top: 5rem;
+            font-weight: 500;
+            font-size: 18px;
+            padding-bottom: 4rem;
+        }
+
+
+        &--link{
+            font-family: montserrat,arial,sans-serif;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 20px;
+            text-decoration: underline;
+            padding-top:5rem;
+
+            &:hover{
+                color: #f70759;
+                cursor:pointer;
+            }
         }
     }
 

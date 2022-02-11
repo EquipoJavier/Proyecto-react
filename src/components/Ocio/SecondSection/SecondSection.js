@@ -34,20 +34,20 @@ export default function SecondSection() {
           {parks.map((park) => { 
               if(type==park.type){
             return (
-              <>
+              <div key={park.text1}>
                 <h2 style={{transition:"all 1s"}}>{park.name}</h2>
                 <p style={{transition:"all 1s"}}>{park.text1}</p>
                 <br/>
                 <p style={{transition:"all 1s", marginBottom:"3rem"}}>{park.text2}</p>
-              </>
+              </div>
             );
 }})}
 
           <ul className="park-part--icons">
             {parks.map((park) => {
               return (
-                <li style={
-                    park.type==type ? { webkitBackgroundClip:"text", backgroundClip: "text",webkitTextFillColor: "transparent",
+                <li key={park.id} style={
+                    park.type==type ? { WebkitBackgroundClip:"text", backgroundClip: "text",WebkitTextFillColor: "transparent",
                         backgroundColor: "black", transition:"all 1s", transform: "scale(0.8)" } : {}
                 } onClick={(event)=> {
                     setType(park.type);
