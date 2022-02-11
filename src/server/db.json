@@ -147,28 +147,22 @@
   },
   "visita": [
     {
-      "day": "2022-02-10",
+      "day": "2022-02-11",
       "category": "Cultura",
       "option": "Cuevas de Luis Candelas",
       "id": 1
     },
     {
-      "day": "2022-02-16",
-      "category": "Gastronomia",
-      "option": "Restaurante Botín",
+      "day": "2022-02-11",
+      "category": "Cultura",
+      "option": "Cuevas de Luis Candelas",
       "id": 2
-    },
-    {
-      "day": "2022-02-16",
-      "category": "Ocio",
-      "option": "Metro de Madrid:",
-      "id": 3
     },
     {
       "day": "2022-02-11",
       "category": "Cultura",
       "option": "Cuevas de Luis Candelas",
-      "id": 4
+      "id": 3
     }
   ]
 }

@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import './Visita_tabla.scss';
 
 export default function VisitaTabla(props) {
@@ -9,6 +11,17 @@ export default function VisitaTabla(props) {
         por separado. Por eso, en vez de hacer el dispatch directamente en el onClick, se llama a la función "dispatchUpdate()", que recibe el elemento a
         modificar de la tabla, y en función de su categoría, se define el "índice" de esa categoría que va a almacenar los elementos a recuperar (los restaurantes,
         museos, etc) */
+        // console.log(planning);
+        
+        // useEffect(() => {
+        //     let planTable = document.getElementById("plan_table");
+        //     if(planning.length === 0) {
+        //         planTable.style.opacity = "0";
+        //     } else {
+        //         planTable.style.opacity = "1";
+        //     }
+        // }, [planning.length])
+
         function dispatchUpdate(row) {
         var categoryIndex = "";
 
@@ -39,7 +52,7 @@ export default function VisitaTabla(props) {
     }
 
     return (
-        <div className="visita__content__table">
+        <div className="visita__content__table" id="plan_table">
             <table>
                 <thead>
                     <tr>
@@ -48,29 +61,31 @@ export default function VisitaTabla(props) {
                         <th className='visita__content__table--bigColumn'>Qué hacer</th>
                     </tr>
                 </thead>
-                <tbody>
-                    {planning.length === 0 ? null : planning.map(row => {
-                        return (
-                            <tr key={row.id}>
-                                <td>{row.day}</td>
-                                <td>{row.category}</td>
-                                <td>{row.option}</td>
-                                <td className="visita__content__table--buttons">
-                                    <button onClick={() => {dispatchUpdate(row)}}>Cambiar</button>
-                                    <button onClick={() => dispatch({
-                                        type: "DELETE",
-                                        payload: {
-                                            day: row.day,
-                                            category: row.category,
-                                            option: row.option,
-                                            id: row.id
-                                        },
-                                    })}>Eliminar</button>
-                                </td>
-                            </tr>
-                        )
-                    })}
-                </tbody>
+                    <TransitionGroup component="tbody">
+                        {planning.length === 0 ? null : planning.map((row) => {
+                            return (
+                                <CSSTransition key={row.id} timeout={300} classNames="item">
+                                    <tr key={row.id}>
+                                        <td>{row.day}</td>
+                                        <td>{row.category}</td>
+                                        <td>{row.option}</td>
+                                        <td className="visita__content__table--buttons">
+                                            <button className="visita__content__table--updateButton" onClick={() => {dispatchUpdate(row)}}>Cambiar</button>
+                                            <button className="visita__content__table--deleteButton" onClick={() => dispatch({
+                                                type: "DELETE",
+                                                payload: {
+                                                    day: row.day,
+                                                    category: row.category,
+                                                    option: row.option,
+                                                    id: row.id
+                                                },
+                                            })}>Eliminar</button>
+                                        </td>
+                                    </tr>
+                                </CSSTransition>
+                                )
+                        })}
+                    </TransitionGroup>
             </table>
         </div>
     )
