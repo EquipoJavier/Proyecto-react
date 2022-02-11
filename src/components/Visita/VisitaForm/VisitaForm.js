@@ -33,7 +33,6 @@ export default function VisitaForm(props) {
         <form className="visita__form" onSubmit={e => e.preventDefault()}>
             <div className="visita__form--inputs">
                 <div className='visita__form--inputs--input'>
-                    <div className='visita__form--inputs--BG'></div>
                 {/* /////////////////////// INPUT */}
                     <input className="visita__form--inputs__date" value={date} type="date" onChange={event => {
                         if (today > event.target.value) {
@@ -44,12 +43,12 @@ export default function VisitaForm(props) {
                             setDate(event.target.value);
                         }
                     }} required />
+                    {/* <div className='visita__form--inputs--BG'></div> */}
                 </div>
                 
 
                 {/* /////////////////////// SELECT CATEGORY */}
                 <div className='visita__form--inputs--input'>
-                    <div className='visita__form--inputs--BG'></div>
                     <select className="visita__form--inputs__dropdown" value={category} onChange={event =>  {
                             dispatch({type:event.target.value.toUpperCase()});
                             setAlteredPlan({...alteredPlan, category: event.target.value})
@@ -59,11 +58,11 @@ export default function VisitaForm(props) {
                         <option>Gastronomia</option>
                         <option>Ocio</option>
                     </select>
+                    {/* <div className='visita__form--inputs--BG'></div> */}
                 </div>
 
                 {/* /////////////////////// SELECT ITEM */}
                 <div className='visita__form--inputs--input'>
-                    <div className='visita__form--inputs--BG'></div>
                     <select className="visita__form--inputs__dropdown" defaultValue={"--- Elige ---"} onChange={event => {
                         setAlteredPlan({...alteredPlan, option: event.target.value})
                     }}>
@@ -72,13 +71,14 @@ export default function VisitaForm(props) {
                             return <option key={element}>{element}</option>
                         })}
                     </select>
+                    {/* <div className='visita__form--inputs--BG'></div> */}
                 </div>
             </div>
             {/* /////////////////////// SUBMIT */}
             <button className="visita__form--submit" onClick={() => {
                 createPlan();
             }} disabled={disabledSubmit}>
-                Añadir itinerario
+                Añadir al planning
             </button> 
         </form>
     )

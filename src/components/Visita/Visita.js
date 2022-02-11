@@ -169,9 +169,9 @@ export default function Visita() {
                                 today={today}
                     />
 
-                    <VisitaTabla planning={pageEndPoint.planning} 
+                    {/* <VisitaTabla planning={pageEndPoint.planning} 
                                  dispatch={categoryDispatch} 
-                    />
+                    /> */}
                     <UpdateForm isShown={categoryState.showPlanning}
                                 dropdown={categoryState.dropdown} 
                                 category={categoryState.category}
