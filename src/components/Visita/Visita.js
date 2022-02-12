@@ -72,6 +72,7 @@ export default function Visita() {
                 }
             case "UPDATE":
                 setAlteredPlan(action.payload) // Guarda la información del plan a modificar
+                setDate(today);
                 return {
                     category: action.payload.category,
                     selectedPlan: action.payload,

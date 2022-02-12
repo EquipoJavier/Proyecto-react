@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import './VisitaForm.scss';
 import capitalize from '../../../utils/capitalize';
+import { CSSTransition } from 'react-transition-group';
 
 export default function VisitaForm(props) {
     const dispatch = props.dispatch; // Función dispatch del reducer
@@ -13,34 +14,57 @@ export default function VisitaForm(props) {
     const setDate = props.setDate; // Función actualizadora del estado de la fecha
     const today = props.today; // Contiene la fecha actual
 
-    // Para que la fecha actual se guarde automáticamente al cargar la página
-    useEffect(() => {
+    useEffect(() => { // Para que la fecha actual se guarde automáticamente al cargar la página
         if(alteredPlan.day === "") {
             setAlteredPlan({...alteredPlan, day: today})
         }
         // eslint-disable-next-line
-    }, [])
+    }, [alteredPlan])
 
-    useEffect(() => {
+    const [showCovers, setShowCovers] = useState(false) // Controla si el div de las coberturas del Submit debe aparecer o no (react-transition-group)
+    const [transitionTimeout, setTransitionTimeout] = useState(500) // Controla el tiempo que dura la animación total del div de las coberturas (react-transition-group)
+
+    useEffect(() => { 
+        // Si el objeto "alteredPlan" está lleno (todas sus propiedades tienen valor), comienza la animación de revelar el botón de Submit
+        /* Transición: "transition: opacity ease-in 0s 0.7s". Deja 0.7s de delay para permitir que las coberturas aparezcan, y revela el botón 
+            (el botón se irá viendo a medida que la animación que mueve las coberturas lo revele) */
         let isPlanFilled = Object.values(alteredPlan).every(item => item !== "")
         const button = document.getElementById("submitButton");
-        const coverR = document.getElementById("coverR");
-        const coverL = document.getElementById("coverL");
         
         if(!isPlanFilled) {
-            button.style.opacity = "0"
-            button.disabled = true;
+            setShowCovers(false)
+                button.style.opacity = "0"
+                button.style.cursor = "default"
+                button.disabled = true;
         } else {
+            setShowCovers(true)
             button.style.opacity = "1"
             button.style.cursor = "pointer"
             button.disabled = false;
-
-            coverR.style.right = "-50%";
-            coverR.classList.add("revealed");
-            coverL.style.left = "-50%";
-            coverL.classList.add("revealed");
         }
     }, [alteredPlan])
+
+    function revealedCovers() { // Disparada con el componente de CSSTransition (react-transition-group)
+        // Animación que separa gradualmente las dos mitades del div de coberturas del Submit 
+        // Se inicia una vez que termine la animación en la que aparecen gradualmente las coberturas
+        // "transition: transform 0.7s ease-in-out;"
+        const coverR = document.getElementById("coverR");
+        const coverL = document.getElementById("coverL");
+
+        coverR.style.transform = "translate(100%)";
+        coverL.style.transform = "translate(-100%)";
+    }
+
+    function closingCovers() { // Disparada con el componente de CSSTransition (react-transition-group)
+        // Animación que junta gradualmente las dos mitades del div de coberturas del Submit 
+        // Se inicia nada más quede "no-lleno" el objeto "alteredPlan" (ver el efecto más arriba)
+        // "transition: transform 0.7s ease-in-out;"
+        const coverR = document.getElementById("coverR");
+        const coverL = document.getElementById("coverL");
+        
+        coverR.style.transform = "translate(0)";
+        coverL.style.transform = "translate(0)";
+    }
     
     
     return (
@@ -49,7 +73,6 @@ export default function VisitaForm(props) {
                 <div className='visita__form--inputs--input'>
                 {/* /////////////////////// INPUT */}
                     <input className="visita__form--inputs__date" value={date} type="date" onChange={event => {
-                        console.log("today", today, "selected", event.target.value);
                         if (today > event.target.value) {
                             alert("No puedes seleccionar una fecha anterior a la de hoy");
                             setDate(today);
@@ -58,7 +81,6 @@ export default function VisitaForm(props) {
                             setDate(event.target.value);
                         }
                     }} required />
-                    {/* <div className='visita__form--inputs--BG'></div> */}
                 </div>
                 
 
@@ -73,7 +95,6 @@ export default function VisitaForm(props) {
                         <option>Gastronomia</option>
                         <option>Ocio</option>
                     </select>
-                    {/* <div className='visita__form--inputs--BG'></div> */}
                 </div>
 
                 {/* /////////////////////// SELECT ITEM */}
@@ -86,7 +107,6 @@ export default function VisitaForm(props) {
                             return <option key={element}>{element}</option>
                         })}
                     </select>
-                    {/* <div className='visita__form--inputs--BG'></div> */}
                 </div>
             </div>
             {/* /////////////////////// SUBMIT */}
@@ -96,10 +116,34 @@ export default function VisitaForm(props) {
                 }} >
                     Añadir al planning
                 </button> 
-                <div className="visita__form--submit--covers">
-                    <div className="visita__form--submit--covers--L" id="coverL">&nbsp;</div>
-                    <div className="visita__form--submit--covers--R" id='coverR'>&nbsp;</div>
-                </div>
+                    <CSSTransition
+                    /* La animación para mostrar el botón Submit tiene 2 partes: una manejada por este componente y descrita en 
+                        VisitaForm.scss (en las clases .covers), en la que dos coberturas del mismo color que el fondo aparecen y 
+                        empiezan a crecer, tapando el Submit. La otra, una vez acabe la primera, es que estas dos coberturas se
+                        separan, revelando el Submit debajo (controlada con las funciones revealedCovers y closingCovers).
+                        Cuando el estado "showCovers" sea verdadero, se inicia la animación, disparando la animación y los eventos
+                        de entrada (onEntered -> ocurre cuando el elemento ha terminado de aparecer). Cuando sea falso, se inicia
+                        la "salida" de este elemento, disparando los eventos de salida (onExit -> cuando se inicia la salida, y 
+                        onExited -> cuando la salida ha terminado), y provocando la misma animación pero al revés: las coberturas
+                        se juntan, y luego desaparecen */
+                        in={showCovers}
+                        timeout={transitionTimeout}
+                        classNames="covers"
+                        mountOnEnter
+                        unmountOnExit
+                        onEntered={() => {
+                            setTransitionTimeout(1400)
+                            revealedCovers()
+                        }}
+                        onExit={() => closingCovers()}
+                        onExited={() => setTransitionTimeout(500)}
+                        
+                    >
+                        <div className="visita__form--submit--covers">
+                                <div className="visita__form--submit--covers--L" id="coverL">&nbsp;</div>
+                                <div className="visita__form--submit--covers--R" id='coverR'>&nbsp;</div>
+                        </div>
+                    </CSSTransition>
             </div>
         </form>
     )
