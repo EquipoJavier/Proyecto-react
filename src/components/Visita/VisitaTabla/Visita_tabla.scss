@@ -1,14 +1,14 @@
 .visita__content__table {
     // background-color: azure;
-    width: 60%;
+    width: 90%;
     display: flex;
     align-self: center;
     
     &--bigColumn {
-        min-width: 22rem;
+        // min-width: 22rem;
     }
     &--smallColumn {
-        min-width: 12rem;
+        // min-width: 12rem;
     }
 
     transition: opacity 0.4s ease-in;
@@ -97,10 +97,18 @@
 
 .item-enter {
     opacity: 0;
-    background-color: yellow;
 }
 
 .item-enter-active {
     opacity: 1;
-    transition: opacity 1s ease-in;
+    transition: opacity 0.4s ease-in;
+}
+
+.item-exit {
+    opacity: 1;
+}
+
+.item-exit-active {
+    opacity: 0;
+    transition: opacity 0.4s ease-in;
 }

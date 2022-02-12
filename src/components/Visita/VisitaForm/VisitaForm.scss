@@ -1,6 +1,6 @@
 .visita__form {
     // background-color: goldenrod;
-    width: 70%;
+    width: 100%;
     margin: 1rem auto;
     display: flex;
     flex-direction: column;
@@ -69,6 +69,10 @@
             font-weight: bold;
             cursor: pointer;
             color: inherit;
+        }
+
+        &__dropdown > option {
+            color: black;
         }
     }
 

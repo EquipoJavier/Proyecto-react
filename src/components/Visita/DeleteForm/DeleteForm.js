@@ -10,10 +10,10 @@ export default function DeleteForm(props) {
     function deleting() {
         // deletePlan(selectedPlan)
         setIsDeleting(true)
+        deletePlan(selectedPlan);
         setTimeout(() => {
             dispatch({type:"CLOSE_FORM"})
             setIsDeleting(false)
-            deletePlan(selectedPlan);
         }, 1500);
     }
 

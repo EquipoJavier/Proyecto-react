@@ -16,10 +16,10 @@ export default function UpdateForm(props) {
     function updating() {
         // deletePlan(selectedPlan)
         setIsUpdating(true)
+        updatePlan();
         setTimeout(() => {
             dispatch({type:"CLOSE_FORM"})
             setIsUpdating(false)
-            updatePlan();
         }, 1500);
     }
 
