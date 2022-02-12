@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react';
-import './FavouritesCrud.scss';
 import axios from 'axios';
 import {Modal, TextField, Button} from '@material-ui/core';
 import {makeStyles} from '@material-ui/core/styles';
-import CrudImageList from './ImageList/ImageList';
+import CrudImageList from './ImageList/CrudImageList';
 
 
 const url="http://localhost:3001/favourites";
@@ -38,7 +37,6 @@ export default function FavouritesCrud() {
   const [modalEliminar, setModalEliminar]= useState(false);
   const [favouriteSelected, setFavouriteSelected]=useState({
     name: "",
-    text: "",
     image: ""
   })
 
@@ -125,9 +123,7 @@ export default function FavouritesCrud() {
   const bodyInsertar=(
     <div className={styles.modal}>
       <h3>Agregar Nueva Ruta</h3>
-      <TextField className={styles.inputMaterial} label="Nombre" name="name" onChange={handleChange}/>
-      <br />
-      <TextField className={styles.inputMaterial} label="Texto" name="text" onChange={handleChange}/>          
+      <TextField className={styles.inputMaterial} label="Nombre" name="name" onChange={handleChange}/>        
 <br />
 <TextField className={styles.inputMaterial} label="Imagen" name="image" onChange={handleChange}/>
       <br /><br />
@@ -142,8 +138,6 @@ export default function FavouritesCrud() {
     <div className={styles.modal}>
       <h3>Editar </h3>
       <TextField className={styles.inputMaterial} label="Nombre" name="name" onChange={handleChange} value={favouriteSelected&&favouriteSelected.name || ""}/>
-      <br />
-      <TextField className={styles.inputMaterial} label="Texto" name="text" onChange={handleChange} value={favouriteSelected&&favouriteSelected.text || ""}/>          
 <br />
 <TextField className={styles.inputMaterial} label="Imagen" name="image" onChange={handleChange} value={favouriteSelected&&favouriteSelected.image || ""}/>
     
