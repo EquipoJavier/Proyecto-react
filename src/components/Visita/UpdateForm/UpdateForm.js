@@ -1,6 +1,7 @@
 import './UpdateForm.scss';
 import capitalize from '../../../utils/capitalize';
 import { useState } from 'react';
+import { CSSTransition } from 'react-transition-group';
 
 export default function UpdateForm(props) {
     const isShown = props.isShown; // Indica si el componente se muestra
@@ -14,75 +15,87 @@ export default function UpdateForm(props) {
 
     const [isUpdating, setIsUpdating] = useState(false)
     function updating() {
-        // deletePlan(selectedPlan)
+        /* Si se actualiza uno de los planes, se muestra un mensaje ("isUpdating" controla que sólo se
+            muestre este mensaje), y se produce la actualización. Tras un breve período, se cierra la 
+            ventana */
         setIsUpdating(true)
         updatePlan();
         setTimeout(() => {
             dispatch({type:"CLOSE_FORM"})
             setIsUpdating(false)
-        }, 1500);
+        }, 1200);
     }
 
-    return isShown ? (
-        <div className="update">
-            {!isUpdating ? 
-            (
-                <div className="update__content">
-                    <div className="update__form">
-                        <span className="update__form__header">Modifca tu plan</span>
-                        
-                        <form onSubmit={e => e.preventDefault()}>
+    return (
+        <CSSTransition
+        in={isShown}
+        timeout={600}
+        classNames="update"
+        mountOnEnter
+        unmountOnExit
+        >
+            <div className="update">
+                {!isUpdating ? 
+                (
+                    <div className="update__content">
+                        <div className="update__form">
+                            <span className="update__form__header">Modifca tu plan</span>
                             
-                        {/* /////////////////////// INPUT */}
-                            <label>Día:</label>
-                                <input type="date" defaultValue={selectedPlan.day} onChange={event =>{
-                                    setAlteredPlan({...alteredPlan, day: event.target.value})
-                                }}/>
-                                
-                            {/* /////////////////////// SELECT CATEGORY */}
-                            <label>Categoría:</label>
-                                <select defaultValue={category} onChange={event => {
-                                    dispatch({type:event.target.value.toUpperCase()});
-                                    setAlteredPlan({...alteredPlan, category: event.target.value})
-                                }}>
-                                    <option style={{display:"none"}}>--- Elige ---</option>
-                                    <option>Cultura</option>
-                                    <option>Gastronomia</option>
-                                    <option>Ocio</option>
-                                </select>
-                            
-                            {/* /////////////////////// SELECT ITEM */}
-                            <label>Qué hacer:</label>
-                                <select defaultValue={selectedPlan.option} onChange={event => {
-                                    setAlteredPlan({...alteredPlan, option: event.target.value})
-                                }}>
-                                    <option style={{display:"none"}}>--- Elige ---</option>
-                                    {dropdown.map(element => {
-                                        return <option key={element}>{element}</option>
-                                    })}
-                                </select>
+                                <form onSubmit={e => e.preventDefault()}>
+                                    <div className="update__form__inputs" >
+                                        {/* /////////////////////// INPUT */}
+                                        <div className='update__form__inputs--input'>
+                                            <input className="update__form__inputs__date" type="date" defaultValue={selectedPlan.day} onChange={event =>{
+                                                setAlteredPlan({...alteredPlan, day: event.target.value})
+                                            }} required />
+                                        </div>
+                                            
+                                        {/* /////////////////////// SELECT CATEGORY */}
+                                        <div className='update__form__inputs--input'>
+                                            <select className="update__form__inputs__dropdown" defaultValue={category} onChange={event => {
+                                                dispatch({type:event.target.value.toUpperCase()});
+                                                setAlteredPlan({...alteredPlan, category: event.target.value})
+                                            }}>
+                                                <option style={{display:"none"}}>--- Elige ---</option>
+                                                <option>Cultura</option>
+                                                <option>Gastronomia</option>
+                                                <option>Ocio</option>
+                                            </select>
+                                        </div>
+                                        
+                                        {/* /////////////////////// SELECT ITEM */}
+                                        <div className='update__form__inputs--input'>
+                                            <select className="update__form__inputs__dropdown" defaultValue={selectedPlan.option} onChange={event => {
+                                                setAlteredPlan({...alteredPlan, option: event.target.value})
+                                            }}>
+                                                <option style={{display:"none"}}>--- Elige ---</option>
+                                                {dropdown.map(element => {
+                                                    return <option key={element}>{element}</option>
+                                                })}
+                                            </select>
+                                        </div>
+                                    </div>
 
-                            {/* /////////////////////// SUBMIT */}
-                            <div className="update__form__buttons">
-                                <button onClick={() => {
-                                    updating();
-                                }}>
-                                    Actualizar
-                                </button> 
-                                <button className="update__close" onClick={() => {
-                                    dispatch({type: "CLOSE_FORM"})
-                                }}>Cerrar</button>
-                            </div>
-                        </form>
+                                    {/* /////////////////////// BUTTONS */}
+                                    <div className="update__form__buttons">
+                                        <button onClick={() => {
+                                            updating();
+                                        }}>
+                                            Actualizar
+                                        </button> 
+                                        <button className="update__close" onClick={() => {
+                                            dispatch({type: "CLOSE_FORM"})
+                                        }}>Cerrar</button>
+                                    </div>
+                                </form>
+                        </div>
                     </div>
-                </div>
-            ) : (
-                <div className='update__content'>
-                    <h1>Actualizando...</h1>
-                </div>
-            )}
-        </div>
-    ) : (
-        null
-    );
+                ) : (
+                    <div className='update__content'>
+                        <span className="update__form__header">Actualizando...</span>
+                    </div>
+                )}
+            </div>
+        </CSSTransition>
+    )
 }

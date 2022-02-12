@@ -8,7 +8,6 @@ export default function DeleteForm(props) {
 
     const [isDeleting, setIsDeleting] = useState(false)
     function deleting() {
-        // deletePlan(selectedPlan)
         setIsDeleting(true)
         deletePlan(selectedPlan);
         setTimeout(() => {

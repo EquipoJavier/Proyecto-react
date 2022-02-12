@@ -70,8 +70,8 @@ export default function VisitaForm(props) {
     return (
         <form className="visita__form" onSubmit={e => e.preventDefault()}>
             <div className="visita__form--inputs">
-                <div className='visita__form--inputs--input'>
                 {/* /////////////////////// INPUT */}
+                <div className='visita__form--inputs--input'>
                     <input className="visita__form--inputs__date" value={date} type="date" onChange={event => {
                         if (today > event.target.value) {
                             alert("No puedes seleccionar una fecha anterior a la de hoy");
