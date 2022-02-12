@@ -194,7 +194,7 @@ export default function Users({
                       className="btn--popup-registro"
                       onClick={() => setNeedRegister(false)}
                     >
-                      Ya estoy registrado
+                      Ya Tengo Cuenta
                     </button>
                   </>
                 ) : (

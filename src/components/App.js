@@ -6,32 +6,16 @@ import Header from "./Header/Header";
 import Menu from "./Menu/Menu";
 import Users from "./Users/Users";
 
-function App() {
+export default function App() {
   const [items, setItems] = useState([]);
   const [done, setDone] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
-  const [isLogin, setIsLogin] = useState(localStorage.getItem("username") ? true : false);
+  const [isLogin, setIsLogin] = useState(
+    localStorage.getItem("username") ? true : false
+  );
   const [profile, setProfile] = useState(localStorage.getItem("img") || null);
 
-  const [headerTitle, setHeaderTitle] = useState(
-    sessionStorage.getItem("title") != null
-      ? sessionStorage.getItem("title")
-      : "Madrid"
-  );
-  const [headerSubtitle, setHeaderSubtitle] = useState(
-    sessionStorage.getItem("subtitle") != null
-      ? sessionStorage.getItem("subtitle")
-      : "Descubre todos sus secretos"
-  );
-
-  function getHeading(title, subtitle) {
-    setHeaderTitle(title);
-    sessionStorage.setItem("title", title);
-    setHeaderSubtitle(subtitle);
-    sessionStorage.setItem("subtitle", subtitle);
-  }
-
-  const pathname = useLocation().pathname; 
+  const pathname = useLocation().pathname;
 
   const url = "http://localhost:3001/data";
 
@@ -69,14 +53,18 @@ function App() {
 
   return (
     <div>
-      {showLogin ? <Users setProfile={setProfile} setIsLogin={setIsLogin} isLogin={isLogin} setShowLogin={setShowLogin} /> : <></>}
-      <Header
-        title={headerTitle}
-        subtitle={headerSubtitle}
-        setShowLogin={setShowLogin}
-        profile={profile}
-      />
-      <Menu getHeading={getHeading} />
+      {showLogin ? (
+        <Users
+          setProfile={setProfile}
+          setIsLogin={setIsLogin}
+          isLogin={isLogin}
+          setShowLogin={setShowLogin}
+        />
+      ) : (
+        <></>
+      )}
+      <Header />
+      <Menu setShowLogin={setShowLogin} profile={profile} />
       <Outlet context={[isLogin, setShowLogin, done, pageEndPoint]} />
       <UpButton />
       <Footer />
@@ -84,4 +72,3 @@ function App() {
   );
 }
 
-export default App;

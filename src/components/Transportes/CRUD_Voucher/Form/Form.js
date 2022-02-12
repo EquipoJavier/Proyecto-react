@@ -5,9 +5,18 @@ import Select from "./Select/Select";
 import "./Form.scss";
 import axios from "axios";
 import Bono from "./Bono/Bono";
-import FormButton from "./FormButton/FormButton";
+import { Add } from "@material-ui/icons";
+import { Button } from "@material-ui/core";
+import Edit from "@mui/icons-material/Edit";
 
-export default function Form({ url, forUpdate, setForUpdate, setDone, user, setShowForm }) {
+export default function Form({
+  url,
+  forUpdate,
+  setForUpdate,
+  setDone,
+  user,
+  setShowForm,
+}) {
   const [newVoucher, setNewVoucher] = useState({
     name: sessionStorage.getItem("tar-name") || "",
     surname: sessionStorage.getItem("tar-surname") || "",
@@ -20,67 +29,63 @@ export default function Form({ url, forUpdate, setForUpdate, setDone, user, setS
     forUpdate != {} && setNewVoucher({ ...newVoucher, ...forUpdate });
     return () => {
       setNewVoucher({});
-    }
+    };
   }, [forUpdate]);
 
-  const handleName = (e) => {
+  function handleName(e) {
     setNewVoucher({ ...newVoucher, name: e.target.value.toUpperCase() });
     sessionStorage.setItem("tar-name", e.target.value);
-  };
+  }
 
-  const handleSurName = (e) => {
+  function handleSurName(e) {
     setNewVoucher({ ...newVoucher, surname: e.target.value.toUpperCase() });
     sessionStorage.setItem("tar-surname", e.target.value);
-  };
+  }
 
   async function createNewVoucher() {
-    if (
-      newVoucher.name != "" &&
-      newVoucher.surname != "" &&
-      newVoucher.fileInput != null &&
-      newVoucher.propertyOf != ""
-    ) {
-      await axios
-        .post(url, newVoucher)
-        .then((response) => {
-          alert("Tarjeta creada");
-          sessionStorage.removeItem("tar-name");
-          sessionStorage.removeItem("tar-surname");
-          setShowForm(false);
-          setDone(false);
-          setForUpdate({});
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    } else {
-      alert("Inicia sesión e introduce todos tus datos antes de crear la tarjeta");
-    }
+    newVoucher.name != "" &&
+    newVoucher.surname != "" &&
+    newVoucher.fileInput != null &&
+    newVoucher.propertyOf != ""
+      ? await axios
+          .post(url, newVoucher)
+          .then((response) => {
+            alert("Tarjeta creada");
+            sessionStorage.removeItem("tar-name");
+            sessionStorage.removeItem("tar-surname");
+            setShowForm(false);
+            setDone(false);
+            setForUpdate({});
+          })
+          .catch((error) => {
+            console.log(error);
+          })
+      : alert(
+          "Inicia sesión e introduce todos tus datos antes de crear la tarjeta"
+        );
   }
 
   async function editVoucher() {
-    if (
-      newVoucher.name != "" &&
-      newVoucher.surname != "" &&
-      newVoucher.fileInput != null &&
-      newVoucher.propertyOf != ""
-    ) {
-      await axios
-        .put(url+"/"+newVoucher.id, newVoucher)
-        .then((response) => {
-          alert("Tarjeta actualizada");
-          sessionStorage.removeItem("tar-name");
-          sessionStorage.removeItem("tar-surname");
-          setShowForm(false);
-          setDone(false);
-          setNewVoucher(response.data);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    } else {
-      alert("Inicia sesión e introduce todos tus datos antes de crear la tarjeta");
-    }
+    newVoucher.name != "" &&
+    newVoucher.surname != "" &&
+    newVoucher.fileInput != null &&
+    newVoucher.propertyOf != ""
+      ? await axios
+          .put(url + "/" + newVoucher.id, newVoucher)
+          .then((response) => {
+            alert("Tarjeta actualizada");
+            sessionStorage.removeItem("tar-name");
+            sessionStorage.removeItem("tar-surname");
+            setShowForm(false);
+            setDone(false);
+            setNewVoucher(response.data);
+          })
+          .catch((error) => {
+            console.log(error);
+          })
+      : alert(
+          "Inicia sesión e introduce todos tus datos antes de crear la tarjeta"
+        );
   }
 
   return (
@@ -99,14 +104,42 @@ export default function Form({ url, forUpdate, setForUpdate, setDone, user, setS
           />
           <Select newVoucher={newVoucher} setNewVoucher={setNewVoucher} />
           <InputImage newVoucher={newVoucher} setNewVoucher={setNewVoucher} />
-          {JSON.stringify(forUpdate)=='{}' ? (
-            <FormButton comp={"Add"} f={createNewVoucher} text={"Crear nueva tarjeta"} />
+          {JSON.stringify(forUpdate) == "{}" ? (
+            <Button
+              style={{
+                fontSize: "14px",
+                textAlign: "center",
+              }}
+              variant="contained"
+              color="primary"
+              startIcon={<Add />}
+              onClick={createNewVoucher}
+            >
+              Crear nueva tarjeta
+            </Button>
           ) : (
-            <FormButton btnColor={"green"} btnBack={"white"} bcolor={"inherit"} comp={"Edit"} f={editVoucher} text={"Aceptar los cambios"} />
+            <Button
+              style={{
+                fontSize: "14px",
+                textAlign: "center",
+                color: "green",
+                backgroundColor: "white",
+              }}
+              variant="contained"
+              color="inherit"
+              startIcon={<Edit />}
+              onClick={editVoucher}
+            >
+              Aceptar los cambios
+            </Button>
           )}
         </form>
       </div>
-      <Bono name={newVoucher.name} surname={newVoucher.surname} fileInput={newVoucher.fileInput} />
+      <Bono
+        name={newVoucher.name}
+        surname={newVoucher.surname}
+        fileInput={newVoucher.fileInput}
+      />
     </div>
   );
 }
