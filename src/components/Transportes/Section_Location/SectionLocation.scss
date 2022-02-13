@@ -50,3 +50,23 @@ hr{
   margin: 0 auto;
   margin-bottom: 8rem;
 }
+
+
+@media(max-width: 1200px){
+  .section__location--flex-item--ul > p {
+    overflow: hidden;
+    height: 2rem;
+  }
+}
+
+@media(max-width: 800px){
+  .section__location--map {
+    display: none;
+  }
+}
+
+@media(max-width: 560px){
+  .section__location--flex-item--ul > p {
+    display: none;    
+  }
+}
