@@ -44,12 +44,12 @@
     width: 30vw;
     height: 30rem;
   }
+  &--hr{
+    margin: 0 auto;
+    margin-bottom: 8rem;
+  }
 }
 
-hr{
-  margin: 0 auto;
-  margin-bottom: 8rem;
-}
 
 
 @media(max-width: 1200px){
@@ -66,7 +66,13 @@ hr{
 }
 
 @media(max-width: 560px){
-  .section__location--flex-item--ul > p {
-    display: none;    
+  .section__location{
+  &--flex {
+    margin: 0;  
   }
+  &--hr{
+      width: 70%;
+    }
+  }
+
 }
