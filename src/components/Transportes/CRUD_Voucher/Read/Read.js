@@ -19,6 +19,7 @@ import axios from "axios";
 import Cell from "./Cell/Cell";
 import Loading from "../../../Loading/Loading";
 
+
 const images = {
   azul: azul,
   mensual: mensual,
@@ -91,30 +92,30 @@ export default function Read({
           >
             <Table
               sx={{ minWidth: 300 }}
-              size="large"
+              size="normal"
               aria-label="a dense table"
             >
               <TableHead
-                style={{ backgroundColor: "rgba(190, 190, 190, 0.9)" }}
+                style={{ backgroundColor: "rgba(190, 190, 190, 0.6)" }}
               >
                 <TableRow>
-                  <Cell text={"Nombre"} border_right={"1px solid black"} />
-                  <Cell text={"Apellidos"} border_right={"1px solid black"} />
+                  <Cell text={"Nombre"} border_right={"1px solid grey"} />
+                  <Cell text={"Apellidos"} border_right={"1px solid grey"} />
                   <Cell
                     text={"Tipo de tarjeta"}
-                    border_right={"1px solid black"}
+                    border_right={"1px solid grey"}
                   />
                   <Cell
                     text={"Su tarjeta virtual"}
-                    border_right={"1px solid black"}
+                    border_right={"1px solid grey"}
                   />
                   <Cell
                     text={"Su fotografía"}
-                    border_right={"1px solid black"}
+                    border_right={"1px solid grey"}
                   />
                   <Cell
                     text={"¿Desea editar sus datos?"}
-                    border_right={"1px solid black"}
+                    border_right={"1px solid grey"}
                   />
                   <Cell
                     text={"¿Desea borrar su tarjeta?"}

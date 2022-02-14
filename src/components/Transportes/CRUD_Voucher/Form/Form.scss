@@ -106,3 +106,30 @@
     cursor: cell;
   }
   
+
+  @media (max-width: 1300px) {
+    .voucher__form-content{
+      flex-direction: column;
+      &--form{
+        margin-top: 8rem;
+        margin-bottom: 3rem;
+        width: 70%;
+      }
+    }
+  }
+
+  @media (max-width: 1120px) {
+    .voucher__form-content{
+      &--form{
+        width: 80%;
+      }
+    }
+  }
+
+  @media (max-width: 800px) {
+    .voucher__form-content{
+      &--form{
+        width: 90%;
+      }
+    }
+  }
