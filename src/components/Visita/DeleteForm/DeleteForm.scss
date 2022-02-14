@@ -1,5 +1,5 @@
 .delete {
-    height: 100vh;
+    height: 100%;
     width: 100%;
     position: fixed;
     top: 0;
@@ -10,8 +10,8 @@
     transition: all 0.3s;
 
     &__content {
-        height: 50rem; //TEST 
-        width: 60%; //TEST 
+        width: 60%;
+        min-height: 29rem;
         background-color: aliceblue; //TEST
         position: absolute;
         top: 50%;
@@ -21,11 +21,95 @@
         flex-direction: column;
     }
 
-    &__form {
+    &__text {
         flex: 0 1 90%;
+        display: flex;
+        flex-direction: column;
+
+        &--header {
+            align-self: center;
+            margin: 3rem 0;
+            text-transform: uppercase;
+            font-size: 3rem;
+            font-weight: bold;
+            letter-spacing: 0.3rem;
+        }
+
+        &--contents {
+            display: flex;
+            justify-content: space-around;
+            align-content: center;
+
+            &--element {
+                background-color: rgba(118, 110, 101, 0.15);
+                padding: 2rem;
+                width: 22rem;
+                position: relative;
+                text-align: center;
+                font-weight: bold;
+                color: inherit;
+                font-size: 1.8rem;
+                border-bottom: 2px solid black;
+            }
+        }
     }
 
-    &__close {
-        align-self: center;
+    &__buttons {
+        display: flex;
+        margin: 5rem auto 4rem;
+        width: 50%;
+        height: 5rem;
+        position: relative;
+        justify-content: space-between;
+
+        & button {
+            ///////////////////////////////
+            // Button style resets
+            border: 0;
+            //////////////////////////////
+            
+            // background-color: yellow;
+            width: 40%;
+            text-transform: uppercase;
+            font-weight: bold;
+            font-size: 1.6rem;
+            letter-spacing: 0.1rem;
+            cursor: pointer;
+            border-right: 3px solid black;
+            border-left: 3px solid black;
+        }
+
+        &--cancel {
+            background-color: aliceblue;
+            transition: background-color 0.1s ease-out;
+
+            &:hover {
+                background-color: rgba(118, 110, 101, 0.4);
+            }
+        }
+
+        &--delete {
+            background-color: rgba(223, 32, 18, 0.3);
+            transition: background-color 0.1s ease-out;
+            
+            &:hover {
+                background-color: rgba(223, 32, 18, 0.5);
+            }
+        }
     }
+}
+
+.delete-enter {
+    opacity: 0;
+}
+.delete-enter-active {
+    opacity: 1;
+    transition: all 0.2s ease-in;
+}
+.delete-exit {
+    opacity: 1;
+}
+.delete-exit-active {
+    opacity: 0;
+    transition: all 0.2s ease-in;
 }

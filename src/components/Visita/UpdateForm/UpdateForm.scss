@@ -10,8 +10,8 @@
     transition: all 0.3s;
     
     &__content {
-        width: 60%; //TEST 
-        height: 29rem;
+        width: 60%; 
+        min-height: 29rem;
         background-color: aliceblue; //TEST
         position: absolute;
         top: 50%;

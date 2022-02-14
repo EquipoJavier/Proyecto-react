@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { CSSTransition } from 'react-transition-group';
 import './DeleteForm.scss';
 export default function DeleteForm(props) {
     const isShown = props.isShown; // Indica si el componente se muestra
@@ -16,32 +17,43 @@ export default function DeleteForm(props) {
         }, 1500);
     }
 
-    return isShown ? (
-        <div className='delete'>
-            {!isDeleting ? 
-                ( 
-                    <div className='delete__content'>
-                        <div className="delete__text">
-                            <h1>Estás a punto de borrar un plan</h1>
-                            <span className='delete__planElement'>Día: {selectedPlan.day}</span>
-                            <span className='delete__planElement'>Categoría: {selectedPlan.category}</span>
-                            <span className='delete__planElement'>Plan: {selectedPlan.option}</span>
+    return (
+        <CSSTransition
+        in={isShown}
+        timeout={600}
+        classNames="delete"
+        mountOnEnter
+        unmountOnExit
+        >
+            <div className='delete'>
+                {!isDeleting ? 
+                    ( 
+                        <div className='delete__content'>
+                            <div className="delete__text">
+                                <span className="delete__text--header">Estás a punto de borrar un plan</span>
+                                <div className='delete__text--contents'>
+                                    <span className='delete__text--contents--element'>{selectedPlan.day}</span>
+                                    <span className='delete__text--contents--element'>{selectedPlan.category}</span>
+                                    <span className='delete__text--contents--element'>{selectedPlan.option}</span>
+                                </div>
+                            </div>
+                            
+                            <div className='delete__buttons'>
+                                <button className="delete__buttons--delete" onClick={() => {
+                                    deleting();
+                                }}>Confirmar</button>
+                                <button className="delete__buttons--cancel" onClick={() => dispatch({type:"CLOSE_FORM"})}>Cancelar</button>
+                            </div>
+                        </div> 
+                    ) : (
+                        <div className='delete__content'>
+                            <div className='delete__text'>
+                                <span className="delete__text--header">Borrando...</span>
+                            </div>
                         </div>
-                        <div className='delete__buttons'>
-                            <button onClick={() => {
-                                deleting();
-                            }}>Confirmar</button>
-                            <button onClick={() => dispatch({type:"CLOSE_FORM"})}>Cancelar</button>
-                        </div>
-                    </div> 
-                ) : (
-                    <div className='delete__content'>
-                        <h1>Borrando...</h1>
-                    </div>
-                )
-            }
-        </div>
-    ) : (
-        null
+                    )
+                }
+            </div>
+        </CSSTransition>
     )
 }

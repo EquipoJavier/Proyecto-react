@@ -147,18 +147,6 @@
   },
   "visita": [
     {
-      "day": "2022-02-11",
-      "category": "Cultura",
-      "option": "Cuevas de Luis Candelas",
-      "id": 1
-    },
-    {
-      "day": "2022-02-11",
-      "category": "Cultura",
-      "option": "Cuevas de Luis Candelas",
-      "id": 2
-    },
-    {
       "day": "2022-02-12",
       "category": "Gastronomia",
       "option": "Cuevas de Luis Candelas",
@@ -181,12 +169,6 @@
       "category": "Cultura",
       "option": "Cuevas de Luis Candelas",
       "id": 6
-    },
-    {
-      "day": "2022-02-12",
-      "category": "Cultura",
-      "option": "Cuevas de Luis Candelas",
-      "id": 7
     }
   ]
 }
