@@ -1,4 +1,4 @@
-import rutaVideo from "../Recursos/videos/cultura-parques-video.mp4";
+import rutaVideo from "../../Recursos/videos/cultura-parques-video.mp4";
 
 export default function Video() {
     return(

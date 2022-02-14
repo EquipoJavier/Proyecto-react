@@ -1,74 +1,76 @@
-import PalacioReal from '../Recursos/img/PalacioReal.jpg';
-import Matadero from '../Recursos/img/Matadero.jpg';
-import EstacionFantasmaDeChamberi from '../Recursos/img/EstacionFantasmaChamberi.jpg';
-import PuertaDeAlcala from '../Recursos/img/PuertaAlcala.jpg';
-import TeatroReal from '../Recursos/img/TeatroReal.jpg';
-import CatedralDeLaAlmudena from '../Recursos/img/CatedralAlmudena.jpg';
-import CuatroTorres from '../Recursos/img/CuatroTorres.jpg';
-import PlazaDeEspaña from '../Recursos/img/PlazaEspaña.jpg';
-import PlazaMayor from '../Recursos/img/PlazaMayor.jpg';
+import { useEffect, useReducer } from "react";
 
-const OtrasVisitasUno = [
-    {
-        'nombre': PalacioReal,
-        'texto': 'Palacio Real',
-        'id':'1'
-    },
-    {
-        'nombre': Matadero,
-        'texto': 'Matadero',
-        'id':'2'
-    },
-    {
-        'nombre': EstacionFantasmaDeChamberi,
-        'texto': 'Estacion Fantasma De Chamberi',
-        'id':'3'
+import {getAsyncOtrasVisitas} from "../Data";
+
+import Loading from "../../Recursos/img/loading.gif"
+
+
+const initialOtrasVisitasState = {
+    loading: false,
+    error: false,
+    otrasVisitas: []
+}
+
+
+const tarjetasReducer = (state, action)  => {
+    switch (action.type){
+      case "OTRAS_VISITAS_FETCH_INIT":
+        return {
+          loading: true,
+          error: false,
+          otrasVisitas: []
+        }
+      case "OTRAS_VISITAS_FETCH_SUCCESS":
+        return {
+          loading: false,
+          error: false,
+          otrasVisitas: action.payload
+        }
+      case "OTRAS_VISITAS_FETCH_ERROR":
+        return {
+          loading: false,
+          error: true,
+          otrasVisitas: []
+        }
     }
-]
+}
 
-const OtrasVisitasDos = [
-    {
-        'nombre': PuertaDeAlcala,
-        'texto': 'Puerta De Alcala',
-        'id':'4'
-    },
-    {
-        'nombre': TeatroReal,
-        'texto': 'Teatro Real',
-        'id':'5'
-    },
-    {
-        'nombre': CatedralDeLaAlmudena,
-        'texto': 'Catedral De La Almudena',
-        'id':'6'
-    }    
-]
-
-const OtrasVisitasTres = [
-    {
-        'nombre': CuatroTorres,
-        'texto': 'Cuatro Torres',
-        'id':'7'
-    },
-    {
-        'nombre': PlazaDeEspaña,
-        'texto': 'Plaza De España',
-        'id':'8'
-    },
-    {
-        'nombre': PlazaMayor,
-        'texto': 'Plaza Mayor',
-        'id':'9'
-    }
-]
 
 export default function ImagenOtrasVisitas() {
-    return(
-        <>
 
+    const [tarjetasState, dispatchOtrasVisitas] = useReducer(
+        tarjetasReducer,
+        initialOtrasVisitasState
+    );
+
+    const {otrasVisitas, loading, error} = tarjetasState;
+
+    useEffect(()=>{
+        dispatchOtrasVisitas({
+            type: "OTRAS_VISITAS_FETCH_INIT"
+        })
+
+        getAsyncOtrasVisitas().then(result => {
+            dispatchOtrasVisitas({
+                type: "OTRAS_VISITAS_FETCH_SUCCESS",
+                payload: result.data.otrasVisitas
+            })
+        
+        }).catch(err => dispatchOtrasVisitas({
+            type: "OTRAS_VISITAS_FETCH_ERROR"
+        }));
+      },[]);
+    
+    if(error){
+        return <p>Error!</p> 
+    }
+
+    return loading ? <img src={Loading}></img> :
+        
+        <>
             <div className="cultura-otras_visitas__container">    
             {
-                OtrasVisitasUno.map(function (props) {
+                otrasVisitas.slice(0,3).map(function (props) {
                     return(                    
                         <div className={'cultura-otras_visitas--imagenes cultura-otras_visitas--imagenes--' + props.id} key={props.id}>
                             <div className={'cultura-otras_visitas--imagenes--imagen--' + props.id}></div>
@@ -80,7 +82,7 @@ export default function ImagenOtrasVisitas() {
             </div>
             <div className="cultura-otras_visitas__container">    
             {
-                OtrasVisitasDos.map(function (props) {
+                otrasVisitas.slice(3,6).map(function (props) {
                     return(                    
                         <div className={'cultura-otras_visitas--imagenes cultura-otras_visitas--imagenes--' + props.id} key={props.id}>
                             <div className={'cultura-otras_visitas--imagenes--imagen--' + props.id}></div>
@@ -93,7 +95,7 @@ export default function ImagenOtrasVisitas() {
             
             <div className="cultura-otras_visitas__container">    
             {
-                OtrasVisitasTres.map(function (props) {
+                otrasVisitas.slice(6,9).map(function (props) {
                     return(
                     
                         <div className={'cultura-otras_visitas--imagenes cultura-otras_visitas--imagenes--' + props.id} key={props.id}>
@@ -105,5 +107,5 @@ export default function ImagenOtrasVisitas() {
             }
             </div>
         </>
-    )    
+       
 }
