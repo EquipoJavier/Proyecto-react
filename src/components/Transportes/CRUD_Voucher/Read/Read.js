@@ -17,8 +17,7 @@ import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
 import axios from "axios";
 import Cell from "./Cell/Cell";
-import Loading from "../../../Loading/Loading";
-
+import { withLoading } from "../../../Loading/withLoading";
 
 const images = {
   azul: azul,
@@ -26,7 +25,7 @@ const images = {
   viajes: viajes,
 };
 
-export default function Read({
+function Read({
   url,
   setDone,
   setShowForm,
@@ -75,7 +74,7 @@ export default function Read({
 
   return (
     <div className="voucher__read-content">
-      {done ? (
+      {
         <>
           <TableContainer
             style={{
@@ -117,9 +116,7 @@ export default function Read({
                     text={"¿Desea editar sus datos?"}
                     border_right={"1px solid grey"}
                   />
-                  <Cell
-                    text={"¿Desea borrar su tarjeta?"}
-                  />
+                  <Cell text={"¿Desea borrar su tarjeta?"} />
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -210,9 +207,7 @@ export default function Read({
             Crear nueva tarjeta
           </Button>
         </>
-      ) : (
-        <Loading />
-      )}
+      }
       <Button
         style={{
           fontSize: "14px",
@@ -243,3 +238,5 @@ export default function Read({
     </div>
   );
 }
+
+export default withLoading(Read);

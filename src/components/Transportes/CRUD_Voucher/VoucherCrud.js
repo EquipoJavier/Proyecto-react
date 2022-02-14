@@ -36,6 +36,7 @@ export default function VoucherCrud({ isLogin, setShowLogin }) {
             />
           ) : (
             <Read
+              loading={!done}
               url={url}
               setDone={setDone}
               setShowForm={setShowForm}
@@ -49,8 +50,11 @@ export default function VoucherCrud({ isLogin, setShowLogin }) {
           )}
         </>
       ) : (
-        <button className="btn--popup-login voucher--btn" onClick={() => setShowLogin(true)}>
-          Por favor, pulse aqui para regístrase o iniciar sesión y así poder 
+        <button
+          className="btn--popup-login voucher--btn"
+          onClick={() => setShowLogin(true)}
+        >
+          Por favor, pulse aqui para regístrase o iniciar sesión y así poder
           crear sus tarjetas
         </button>
       )}

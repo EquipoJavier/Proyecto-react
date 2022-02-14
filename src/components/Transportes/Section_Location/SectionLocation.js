@@ -8,11 +8,11 @@ export default function SectionLocation({ done, pageEndPoint }) {
   return (
     <>
       <section className="section__location">
-        <h1 className="section__location--title">Cónoce como desplazarte</h1>
+        <h1 className="section__location--title">Conoce como desplazarte</h1>
         <hr className="section__location--hr" width="400" />
         <div className="section__location--flex">
           <Map />
-          <LinkTransport done={done} pageEndPoint={pageEndPoint} />
+          <LinkTransport loading={!done} pageEndPoint={pageEndPoint} />
           <ListTransport />
         </div>
       </section>
