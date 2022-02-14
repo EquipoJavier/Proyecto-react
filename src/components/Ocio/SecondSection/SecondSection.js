@@ -36,9 +36,9 @@ export default function SecondSection() {
             return (
               <div key={park.text1}>
                 <h2 style={{transition:"all 1s"}}>{park.name}</h2>
-                <p style={{transition:"all 1s"}}>{park.text1}</p>
+                <p className="park-part--text1" style={{transition:"all 1s"}}>{park.text1}</p>
                 <br/>
-                <p style={{transition:"all 1s", marginBottom:"3rem"}}>{park.text2}</p>
+                <p className="park-part--text2" style={{transition:"all 1s", marginBottom:"3rem"}}>{park.text2}</p>
               </div>
             );
 }})}
@@ -48,14 +48,14 @@ export default function SecondSection() {
               return (
                 <li key={park.id} style={
                     park.type==type ? { WebkitBackgroundClip:"text", backgroundClip: "text",WebkitTextFillColor: "transparent",
-                        backgroundColor: "black", transition:"all 1s", transform: "scale(0.8)" } : {}
+                      transition:"all 1s", transform: "scale(0.8)", filter: "brightness(0.20)" } : {}
                 } onClick={(event)=> {
                     setType(park.type);
                     
                     }}>
-                  <img style={{cursor:"pointer"}} src={park.icon} alt=""></img>
+                  <img className="park-part--icons--styleIcon" src={park.icon} alt=""></img>
                   <br />
-                  {park.name}
+                  <p clasName="park-part--icons--name">{park.name}</p>
                 </li>
               );
             })}
