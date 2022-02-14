@@ -3,6 +3,7 @@ import axios from 'axios';
 import {Modal, TextField, Button} from '@material-ui/core';
 import {makeStyles} from '@material-ui/core/styles';
 import CrudImageList from './ImageList/CrudImageList';
+import "./FavouritesCrud.scss";
 
 
 const url="http://localhost:3001/favourites";
@@ -120,12 +121,24 @@ export default function FavouritesCrud() {
     getFavourites();
   }, [])
 
+
+  function putImage(file){
+    var reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload= function(){
+      setFavouriteSelected(prevState=>({
+        ...prevState,
+        image:reader.result
+      }))
+    }
+  }
+
   const bodyInsertar=(
     <div className={styles.modal}>
       <h3>Agregar Nueva Ruta</h3>
       <TextField className={styles.inputMaterial} label="Nombre" name="name" onChange={handleChange}/>        
 <br />
-<TextField className={styles.inputMaterial} label="Imagen" name="image" onChange={handleChange}/>
+<input type="file" accept="image/*" onChange={(event)=>putImage(event.target.files[0])}></input>
       <br /><br />
       <div align="right">
         <Button color="primary" onClick={()=>peticionPost()}>Insertar</Button>
@@ -139,8 +152,7 @@ export default function FavouritesCrud() {
       <h3>Editar </h3>
       <TextField className={styles.inputMaterial} label="Nombre" name="name" onChange={handleChange} value={favouriteSelected&&favouriteSelected.name || ""}/>
 <br />
-<TextField className={styles.inputMaterial} label="Imagen" name="image" onChange={handleChange} value={favouriteSelected&&favouriteSelected.image || ""}/>
-    
+<input type="file" accept="image/*" onChange={(event)=>putImage(event.target.files[0])}></input>    
       <br /><br />
       <div align="right">
         <Button color="primary" onClick={()=>peticionPut()}>Editar</Button>
@@ -153,8 +165,8 @@ export default function FavouritesCrud() {
     <div className={styles.modal}>
       <p>Estás seguro que deseas eliminar la ruta <b>{favouriteSelected && favouriteSelected.name}</b>? </p>
       <div align="right">
-        <Button color="secondary" onClick={()=>peticionDelete()}>Sí</Button>
-        <Button onClick={()=>abrirCerrarModalEliminar()}>No</Button>
+        <Button className="styleButton" color="secondary" onClick={()=>peticionDelete()}>Sí</Button>
+        <Button className="styleButton" onClick={()=>abrirCerrarModalEliminar()}>No</Button>
 
       </div>
 

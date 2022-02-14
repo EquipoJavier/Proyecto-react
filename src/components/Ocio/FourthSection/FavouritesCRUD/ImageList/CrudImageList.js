@@ -3,11 +3,12 @@ import ImageListItem from "@mui/material/ImageListItem";
 import ImageListItemBar from "@mui/material/ImageListItemBar";
 import ListSubheader from "@mui/material/ListSubheader";
 import IconButton from "@mui/material/IconButton";
-import InfoIcon from "@mui/icons-material/Info";
 import { Button } from "@material-ui/core";
 import "./CrudImageList.scss";
 import {makeStyles} from '@material-ui/core/styles';
-
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
+import StarIcon from '@mui/icons-material/Star';
 
 
 
@@ -41,10 +42,11 @@ export default function CrudImageList({
   const styles= useStyles();
   return (
     <div className="favourites__list"> 
-      <Button className={styles.boton} onClick={() => abrirCerrarModalInsertar()}>Inserta Ruta</Button>
+      <Button className={styles.boton} onClick={() => abrirCerrarModalInsertar()}>Inserta Nueva Ruta</Button>
       <ImageList className="favourites__list--component" sx={{ width: '80rem', height: '50rem' }} cols={2} >
-        <ImageListItem key="Subheader" cols={2}>
-          <ListSubheader component="div">MIS RUTAS FAVORITAS</ListSubheader>
+        <ImageListItem style={{position:"sticky"}} key="Subheader" cols={2}>
+          <ListSubheader style={{display:"flex", justifyContent:"center", fontSize:"17px", letterSpacing:"1rem", fontWeight:"800"}} component="div">MIS RUTAS FAVORITAS<StarIcon style={{height :"3rem", width:"3rem", fill:"yellow", marginTop:"0.6rem"}}></StarIcon></ListSubheader>
+          
         </ImageListItem>
         {JSON.stringify(images) !== "[]" &&
           images.map(function (image) {
@@ -54,13 +56,20 @@ export default function CrudImageList({
                           <ImageListItemBar
                               title={image.name}
                               className="favourites__list--bar"  
-                              actionIcon={<IconButton style={{height :"8rem"}}
+                              actionIcon={<><IconButton style={{height :"8rem"}}
                                   sx={{ color: "rgba(255, 255, 255, 0.54)"}}
                                  
                                   onClick={function (event) {selectImage(image, "Editar")}}
                               >
-                                  <InfoIcon style={{height :"3rem", width:"3rem"}} />
-                              </IconButton>}
+                                  <EditIcon style={{height :"3rem", width:"3rem"}} />
+                              </IconButton><IconButton style={{height :"8rem"}}
+                                  sx={{ color: "rgba(255, 255, 255, 0.54)"}}
+                                 
+                                  onClick={function (event) {selectImage(image, "Eliminar")}}
+                              >
+                                  <DeleteIcon style={{height :"3rem", width:"3rem"}} />
+                              </IconButton></>}
+                              
                           ></ImageListItemBar>
                       </ImageListItem>
                   );
