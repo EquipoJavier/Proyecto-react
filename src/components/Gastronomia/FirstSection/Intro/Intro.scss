@@ -16,7 +16,12 @@
             padding: 0rem;
         }
 
-        &>* {
+        @media only screen and (max-width: 1200px) {
+            margin: 2rem 5rem 10rem;
+        }
+
+        @media only screen and (max-width: 600px) {
+            margin: 2rem 2rem 5rem;
         }
     }
 
@@ -30,6 +35,16 @@
         & span {
             display: inline-block;
             margin-bottom: 1rem;
+        }
+
+        @media only screen and (max-width: 1200px) {
+            font-size: 1.6rem;
+            line-height: 3rem;
+        }
+
+        @media only screen and (max-width: 900px) {
+            font-size: 1.5rem;
+            line-height: 2rem;
         }
     }
 
@@ -54,6 +69,10 @@
 
         &:hover &--image:not(:hover) {
             //transform: scale(.95);
+        }
+
+        @media only screen and (max-width: 600px) {
+            display: none;
         }
     }
 }
