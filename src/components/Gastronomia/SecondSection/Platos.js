@@ -1,14 +1,17 @@
-import Popup from '../../Popup/Popup';
+import Popup from './Popup/Popup';
 import './Platos.scss';
+import { withLoading } from '../../Loading/withLoading';
 
-export default function Platos(props) {
+function Platos({ title, dishes }) {
     return (
         <div className="platos">
             <div className="platos__titulo">
-                <span className="platos__titulo--heading">{props.title}</span>
+                <span className="platos__titulo--heading">{title}</span>
             </div>
 
-            <Popup />
+            <Popup dishes={dishes.platos}/>
         </div>
     )
 }
+
+export default withLoading(Platos);

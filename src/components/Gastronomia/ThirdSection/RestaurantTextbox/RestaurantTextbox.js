@@ -33,7 +33,7 @@ export default function RestaurantTextbox({restaurant, imgOnRight}) {
                     <div className="resTextbox__text--descr">
                         {restaurant.descr}
                     </div>
-                    <Button url={restaurant.url} title="Visitar" colorFT="#fff" colorBG="rgb(143, 28, 12)"/>
+                    <Button url={restaurant.url} title="Visitar" hoverClass="darkRed"/>
                 </div>
             </div>
         )

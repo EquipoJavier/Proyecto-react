@@ -70,11 +70,11 @@ function App() {
       fetch(urlVisita)
         .then(res => res.json())
     ]).then(result => {
-      setDone(true)
       setItems({
         data: result[0],
         planning: result[1]
       })
+      setDone(true)
     }).catch(function (error) {
         console.log("Hubo un problema con la petición Fetch:" + error.message);
     });
