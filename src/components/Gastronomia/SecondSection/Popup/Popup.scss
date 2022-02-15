@@ -8,8 +8,8 @@
     &__elem {
         position: relative;
         margin: 4rem;
-        //flex-grow: 1;
         flex-basis: 17%;
+        flex-grow: 1;
         aspect-ratio: 1/1;
 
         &:hover .popup__img--name {
@@ -19,6 +19,19 @@
         &:hover .popup__img--thumbnail {
             transform: scale(1.1);
             filter: blur(1px) brightness(60%);
+        }
+
+        @media only screen and (max-width: 1200px) {
+            margin: 2rem;
+        }
+
+        @media only screen and (max-width: 900px) {
+            flex-basis: 30%;
+            margin: 4rem;
+        }
+
+        @media only screen and (max-width: 700px) {
+            margin: 2rem;
         }
     }
 
