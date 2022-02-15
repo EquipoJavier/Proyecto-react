@@ -1,6 +1,7 @@
 import HiddenBox from './Popup-elemHidden';
 import { useState } from 'react';
 import './Popup.scss';
+import { CSSTransition } from 'react-transition-group';
 
 export default function PopupElem(props) {
     const dish = props.dish;
@@ -12,7 +13,15 @@ export default function PopupElem(props) {
             setButtonPopup(true)
         }}>{dish.name}</span>
 
-        <HiddenBox dish={dish} buttonPopup={buttonPopup} setButtonPopup={setButtonPopup}/>
+        <CSSTransition
+        in={buttonPopup}
+        timeout={300}
+        classNames="popup"
+        mountOnEnter
+        unmountOnExit
+        >
+            <HiddenBox dish={dish} buttonPopup={buttonPopup} setButtonPopup={setButtonPopup}/>
+        </CSSTransition>
         </>
     )
 }

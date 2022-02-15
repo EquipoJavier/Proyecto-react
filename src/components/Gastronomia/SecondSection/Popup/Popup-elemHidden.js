@@ -1,12 +1,9 @@
+import Button from '../../../Button/Button.js';
 import './Popup.scss';
 
 export default function HiddenBox(props) {
     const dish = props.dish;
 
-    // Ver "Popup-elem.js" para la explicación de cómo funciona el popup
-    /* Lo ideal sería sacar el botón como componente aparte, pero no sé como haría para el tema de los estados, para pasarle la variable que controla
-    si el popup se muestra o no */
-    if(props.buttonPopup) {
         return (
             <div className="popup__background" id={dish.name}>
                 <div className="popup__box">
@@ -16,14 +13,14 @@ export default function HiddenBox(props) {
                     <div className="popup__box--right">
                         <h1 className="popup__box--heading">{dish.name}</h1>
                         <p className="popup__box--descr">{dish.descr}</p>
-                        <button className="closeButton" onClick={function() {
+                        <div className="closeButton">
+                            <Button className="closeButton" title="Cerrar" hoverClass="darkRed" onClick={() => props.setButtonPopup(false)} />
+                        </div>
+                        {/* <button className="closeButton" onClick={function() {
                             props.setButtonPopup(false)
-                        }}>Cerrar</button>
+                        }}>Cerrar</button> */}
                     </div>
                 </div>
             </div>
         )
-    } else {
-        return null;
-    }
 }

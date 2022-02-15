@@ -4,6 +4,7 @@ import Platos from './SecondSection/Platos';
 import './Gastronomia.scss';
 import Restaurantes from './ThirdSection/Restaurantes';
 import { useOutletContext } from 'react-router-dom';
+import '../../_variables.scss';
 
 export default function Gastronomia() {
 
