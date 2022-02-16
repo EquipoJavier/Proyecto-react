@@ -12,7 +12,7 @@ export default function VoucherCrud({ isLogin, setShowLogin }) {
 
   const url = "http://localhost:3001/tarjetas";
 
-  const [pageEndPoint, setPageEndPoint, done, setDone] = GetTarjetas(url);
+  const [pageEndPointTransportes, setPageEndPointTransportes, doneTransportes, setDoneTransportes] = GetTarjetas(url);
 
   useEffect(() => {
     setUser(localStorage.getItem("username"));
@@ -30,21 +30,21 @@ export default function VoucherCrud({ isLogin, setShowLogin }) {
               url={url}
               forUpdate={forUpdate}
               setForUpdate={setForUpdate}
-              setDone={setDone}
+              setDoneTransportes={setDoneTransportes}
               user={user}
               setShowForm={setShowForm}
             />
           ) : (
             <Read
-              loading={!done}
+              loading={!doneTransportes}
               url={url}
-              setDone={setDone}
+              setDoneTransportes={setDoneTransportes}
               setShowForm={setShowForm}
               user={user}
-              done={done}
-              pageEndPoint={pageEndPoint}
+              doneTransportes={doneTransportes}
+              pageEndPointTransportes={pageEndPointTransportes}
               setForUpdate={setForUpdate}
-              setPageEndPoint={setPageEndPoint}
+              setPageEndPointTransportes={setPageEndPointTransportes}
               setShowLogin={setShowLogin}
             />
           )}

@@ -55,7 +55,7 @@ export default function SecondSection() {
                     }}>
                   <img className="park-part--icons--styleIcon" src={park.icon} alt=""></img>
                   <br />
-                  <p clasName="park-part--icons--name">{park.name}</p>
+                  <p className="park-part--icons--name">{park.name}</p>
                 </li>
               );
             })}

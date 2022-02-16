@@ -9,15 +9,16 @@ export default function Transportes(){
 
     const url = "http://localhost:3001/transportes";
     
-    const [pageEndPoint, setPageEndPoint, done, setDone] = GetTransportes(url);
+    const [isLogin, setShowLogin, done, pageEndPoint,alterPlan] = useOutletContext();
 
-    const [isLogin, setShowLogin, ...tail] = useOutletContext();
+    const [pageEndPointTransportes, setPageEndPointTransportes, doneTransportes, setDoneTransportes] = GetTransportes(url);
+
     
     return(
         <>
-            <SectionLocation done={done} pageEndPoint={pageEndPoint} />
+            <SectionLocation doneTransportes={doneTransportes} pageEndPointTransportes={pageEndPointTransportes} />
             <SectionTransportVoucher />
-            <ChooseTransport done={done} pageEndPoint={pageEndPoint} />
+            <ChooseTransport doneTransportes={doneTransportes} pageEndPointTransportes={pageEndPointTransportes} />
             <VoucherCrud isLogin={isLogin} setShowLogin={setShowLogin} />
         </>
     )

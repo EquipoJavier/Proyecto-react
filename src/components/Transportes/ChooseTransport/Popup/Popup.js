@@ -4,13 +4,13 @@ import PopupMenu from "./PopupMenu/PopupMenu";
 
 export default function Popup({
   popupInfo,
-  done,
+  doneTransportes,
   setTypes,
   types,
   show,
   setShow,
 }) {
-  if (done) {
+  if (doneTransportes) {
     var info = popupInfo[types];
   }
 

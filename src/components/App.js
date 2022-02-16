@@ -18,8 +18,6 @@ export default function App() {
   );
   const [profile, setProfile] = useState(localStorage.getItem("img") || null);
 
-  const pathname = useLocation().pathname;
-
   const pathname = useLocation().pathname; //obtengo la ruta acutal p.ejem("/transportes")
   // const url = `http://localhost:3001${pathname === "/" ? "/index" : pathname}`;   //le indico la ruta con el recurso a solicitar y en el caso de que pathname hubiera sido "/" (referido a index), a la url le paso /index
   const urlData = "http://localhost:3001/data"; // la URL del recurso (json) que se va a obtener
@@ -64,21 +62,18 @@ export default function App() {
       setItems({
         data: result[0],
         planning: result[1]
-      })
-      setDone(true)
+      });
+      setDone(true);
     }).catch(function (error) {
         console.log("Hubo un problema con la petición Fetch:" + error.message);
     });
   }, [urlData]);
 
+  var pageEndPoint;
   if (done) {
-    var pageEndPoint;
     switch (pathname) {
       case "/":
         pageEndPoint = items.data.index;
-        break;
-      case "/ocio":
-        pageEndPoint = items.data.ocio;
         break;
       case "/gastronomia":
         pageEndPoint = items.data.gastronomia;
@@ -89,12 +84,9 @@ export default function App() {
       case "/visita":
         pageEndPoint = items;
         break;
-      default:
-        throw new Error("Error al recuperar datos externos")
     }
   }
   
-
   return (
     <div>
       {showLogin ? (

@@ -27,13 +27,13 @@ const images = {
 
 function Read({
   url,
-  setDone,
+  setDoneTransportes,
   setShowForm,
   user,
-  done,
-  pageEndPoint,
+  doneTransportes,
+  pageEndPointTransportes,
   setForUpdate,
-  setPageEndPoint,
+  setPageEndPointTransportes,
   setShowLogin,
 }) {
   async function deleteVoucher(item) {
@@ -55,8 +55,8 @@ function Read({
             await axios
               .delete(url + "/" + item.id)
               .then((response) => {
-                setPageEndPoint(
-                  pageEndPoint.filter((tarjeta) => tarjeta.id !== item.id)
+                setPageEndPointTransportes(
+                  pageEndPointTransportes.filter((tarjeta) => tarjeta.id !== item.id)
                 );
               })
               .catch((error) => {
@@ -120,7 +120,7 @@ function Read({
                 </TableRow>
               </TableHead>
               <TableBody>
-                {pageEndPoint.map((item, i) => {
+                {pageEndPointTransportes.map((item, i) => {
                   if (item.propertyOf === user)
                     return (
                       <TableRow
@@ -216,7 +216,7 @@ function Read({
         variant="contained"
         color="info"
         startIcon={<FindReplace />}
-        onClick={() => setDone(false)}
+        onClick={() => setDoneTransportes(false)}
       >
         Cargar los datos de nuevo
       </Button>

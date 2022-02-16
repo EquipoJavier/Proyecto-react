@@ -13,7 +13,7 @@ export default function Form({
   url,
   forUpdate,
   setForUpdate,
-  setDone,
+  setDoneTransportes,
   user,
   setShowForm,
 }) {
@@ -54,7 +54,7 @@ export default function Form({
             sessionStorage.removeItem("tar-name");
             sessionStorage.removeItem("tar-surname");
             setShowForm(false);
-            setDone(false);
+            setDoneTransportes(false);
             setForUpdate({});
           })
           .catch((error) => {
@@ -77,7 +77,7 @@ export default function Form({
             sessionStorage.removeItem("tar-name");
             sessionStorage.removeItem("tar-surname");
             setShowForm(false);
-            setDone(false);
+            setDoneTransportes(false);
             setNewVoucher(response.data);
           })
           .catch((error) => {
