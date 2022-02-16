@@ -3,15 +3,15 @@ import { useEffect, useReducer } from "react";
 import {getAsyncOtrasVisitas} from "../Data";
 
 import Loading from "../../Recursos/img/loading.gif"
-import PalacioReal from '../Recursos/img/PalacioReal.jpg';
-import Matadero from '../Recursos/img/matadero.jpg';
-import EstacionFantasmaDeChamberi from '../Recursos/img/EstacionFantasmaChamberi.jpg';
-import PuertaDeAlcala from '../Recursos/img/PuertaAlcala.jpg';
-import TeatroReal from '../Recursos/img/TeatroReal.jpg';
-import CatedralDeLaAlmudena from '../Recursos/img/CatedralAlmudena.jpg';
-import CuatroTorres from '../Recursos/img/CuatroTorres.jpg';
-import PlazaDeEspaña from '../Recursos/img/PlazaEspaña.jpg';
-import PlazaMayor from '../Recursos/img/PlazaMayor.jpg';
+import PalacioReal from '../../Recursos/img/PalacioReal.jpg';
+import Matadero from '../../Recursos/img/matadero.jpg';
+import EstacionFantasmaDeChamberi from '../../Recursos/img/EstacionFantasmaChamberi.jpg';
+import PuertaDeAlcala from '../../Recursos/img/PuertaAlcala.jpg';
+import TeatroReal from '../../Recursos/img/TeatroReal.jpg';
+import CatedralDeLaAlmudena from '../../Recursos/img/CatedralAlmudena.jpg';
+import CuatroTorres from '../../Recursos/img/CuatroTorres.jpg';
+import PlazaDeEspaña from '../../Recursos/img/PlazaEspaña.jpg';
+import PlazaMayor from '../../Recursos/img/PlazaMayor.jpg';
 
 
 const initialOtrasVisitasState = {

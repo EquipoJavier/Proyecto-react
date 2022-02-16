@@ -1,4 +1,4 @@
-// Cosas muy generales para toda la página (reseteo de estilos etc)
+/* // Cosas muy generales para toda la página (reseteo de estilos etc)
 *,
 *::after,
 *::before {
@@ -32,8 +32,8 @@ body {
     padding-right: 0;
     box-sizing: border-box;
     background-color: $color-white;
-    padding-left: 4rem;
-    padding-right: 4rem;
+    // padding-left: 4rem;
+    // padding-right: 4rem;
 
     // @include respond(big-desktop) {
     //     padding: 2rem;
@@ -59,3 +59,4 @@ body {
 //     font-weight: normal;
 //     font-style: normal;
 // }
+*/
