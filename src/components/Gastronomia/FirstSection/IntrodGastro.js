@@ -38,14 +38,6 @@ const gallery = [
     }
 ]
 
-// const darkBackground = {
-//     backgroundColor: "#766E65"
-// };
-
-// const lightBackground = {
-//     backgroundColor: "#F5F5F5"
-// }
-
 export default function IntrodGastro() {
     return (
         <div >
