@@ -1,0 +1,31 @@
+// Aquí meter sólo @import de otros archivos scss
+//@import "abstracts/functions";
+// @import "abstracts/mixins";
+@import "./abstracts/variables";
+
+@import "./base/animations";
+@import "./base/base";
+@import "./base/typography";
+// @import "base/utilities";
+
+@import "../Boton/button";
+@import "../Carrusel/carrusel";
+@import "../ImagenesParques/composition";
+@import "../PopUp/popUp";
+@import "../Reloj/reloj";
+@import "../Reloj/relojAnalogico";
+@import "../sass/components/loading";
+@import "../Tarjetas/card";
+@import "../Temperatura/temperatura";
+@import "../Video/bg-video";
+
+@import "./pages/cultura";
+@import "./pages/home";
+
+// @import "layout/footer";
+// @import "layout/header";
+// @import "layout/menu";
+@import "./layout/grid";
+
+
+@import url('https://fonts.googleapis.com/css?family=Lobster');

@@ -2,7 +2,7 @@
   background:linear-gradient(
        rgba(58, 56, 56, 0.486),
        rgba(133, 123, 123, 0.911)
-     ),url('../../Recursos/img/parque-atracc-fondo.gif');
+     ),url('../../Recursos/img/bg_parques.jpg');
   background-size: cover;
   background-position: center;
     width: 100%;
@@ -17,7 +17,7 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       text-align: center;
-      font-size: 55px;
+      font-size: 52px;
       font-family: Palatino, URW Palladio L, serif;
       
     }
@@ -58,6 +58,11 @@
     justify-content: center;
 
 
+    &--name{
+      cursor:pointer;
+       font-size:13px;
+       text-align:center;
+    }
     & li {
       display: flex;
       width: 16%;
@@ -72,7 +77,43 @@
       color:aliceblue;
       }
     }
+
+    &--styleIcon{
+      transition:all 1s;
+       transform:scale(0.8);
+       cursor:pointer;
+
+      &:hover{
+         filter: brightness(0.25); 
+
+      }
+    }
   }
+
+
 }
 
+@media (max-width: 900px){
+    .park-part{
+      &--text2{
+        display:none;
+      }
+    }
+}
 
+@media(max-width:600px){
+  .second__section{
+    &--title{
+      font-size: 40px;
+    }
+  }
+  .park-part{
+    &--icons{
+      &--name{
+        -webkit-background-clip:"text";
+         background-clip: "text";
+         -webkit-text-fill-color: "transparent";
+      }
+    }
+  }
+}
