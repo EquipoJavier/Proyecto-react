@@ -1,3 +1,4 @@
+@import '../../variables';
 .button {
     align-self: center; // Centrado
     background-color: #766E65;
@@ -12,6 +13,10 @@
     box-shadow: 1px 1px 5px 2px rgb(0,0,0, 0.2);
     transition: transform 0.1s;
     cursor: pointer;
+
+    @media only screen and (max-width: $mid_tablet) {
+        padding: 1rem;
+    }
 
     &:link,
     &:visited {
