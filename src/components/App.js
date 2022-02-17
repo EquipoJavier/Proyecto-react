@@ -4,7 +4,6 @@ import UpButton from "./UpButton/UpButton";
 import Footer from "./Footer/Footer";
 import Header from "./Header/Header";
 import Menu from "./Menu/Menu";
-
 function App() {
   const [headerTitle, setHeaderTitle] = useState(
     sessionStorage.getItem("title") != null
