@@ -138,7 +138,7 @@ export default function Menu({ setShowLogin, profile }) {
               });
             }}
           >
-            <p>Organiza</p> tu visita
+            <p>Organiza tu visita</p>
           </Link>
         </li>
       </ul>
