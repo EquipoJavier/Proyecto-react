@@ -1,25 +1,119 @@
 .second__section{
-  background: linear-gradient(
-    rgba(194, 191, 191, 0.7),
-    rgba(197, 179, 179, 0.7)
-  ),url("../../Recursos/img/fondo-cine.jpg");
-  background-color: transparent;
+  background:linear-gradient(
+       rgba(58, 56, 56, 0.486),
+       rgba(133, 123, 123, 0.911)
+     ),url('../../Recursos/img/bg_parques.jpg');
   background-size: cover;
+  background-position: center;
     width: 100%;
-    padding: 6rem 0 10rem 0;
-
-    &--title {
-        background: url("../../Recursos/img/rosa.gif");
-        background-position: bottom;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        text-align: center;
-        font-size: 3rem;
-        font-family: "Fira Sans", sans-serif;
-        // font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-        padding-top: 15vh;
-        padding-bottom: 15vh;
-        letter-spacing: 1;
-      }
+    height: 55vh;
+    padding: 12rem 0 25rem 0;
+    background-attachment: fixed;
     
+
+    &--title{
+      background: url("../../Recursos/img/background-black-second-section.gif");
+      background-position: center;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-align: center;
+      font-size: 52px;
+      font-family: Palatino, URW Palladio L, serif;
+      
+    }
+}
+
+.park-part{
+  width: 100%;
+  color:aliceblue;
+  position: relative;
+  margin:0 auto;
+
+
+  
+  & h2{
+    text-align: center;
+    font-size: 30px;
+    font-family: Palatino, URW Palladio L, serif;
+    text-transform: uppercase;
+    margin-bottom: 4rem;
+    margin-top:7rem;
+    
+  }
+  
+  & p{
+    text-align: center;
+    font-size:16px;
+    text-justify: justify;
+    line-height: 150%;
+    letter-spacing: -.25px;
+    margin: 0 7rem 0 7rem;
+  }
+  
+  &--icons{
+    display: flex;
+    padding:20 px 0 0;
+    list-style-type: none;
+    align-items: center;
+    justify-content: center;
+
+
+    &--name{
+      cursor:pointer;
+       font-size:13px;
+       text-align:center;
+    }
+    & li {
+      display: flex;
+      width: 16%;
+      font-size: 12px;
+      display: inline-block;
+      text-align: center;
+      vertical-align: top;
+     
+
+      & a{
+      text-decoration: none;
+      color:aliceblue;
+      }
+    }
+
+    &--styleIcon{
+      transition:all 1s;
+       transform:scale(0.8);
+       cursor:pointer;
+
+      &:hover{
+         filter: brightness(0.25); 
+
+      }
+    }
+  }
+
+
+}
+
+@media (max-width: 900px){
+    .park-part{
+      &--text2{
+        display:none;
+      }
+    }
+}
+
+@media(max-width:600px){
+  .second__section{
+    &--title{
+      font-size: 40px;
+    }
+  }
+  .park-part{
+    &--icons{
+      &--name{
+        -webkit-background-clip:"text";
+         background-clip: "text";
+         -webkit-text-fill-color: "transparent";
+      }
+    }
+  }
 }

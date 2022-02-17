@@ -4,6 +4,7 @@
     margin-left: 7rem;
     flex-basis: 80%;
     justify-content: center;
+    margin-top: 5rem;
   
   }
   &--title {
@@ -12,22 +13,49 @@
   }
   &--paraphrad {
     margin-top: 3rem;
-    justify-content: center;
+    justify-content: justify;
+  }
+
+  & h4{
+    text-align: center;
+    margin-top: 4rem;
   }
 
   &--line{
-    // width:300;
-    // margin-top: 10rem;
-    // margin-left: 12rem;
-    // height: 1px;
-    // background-color: black;
-    // visibility: hidden;
     margin: 0 auto;
-    margin-top: 80px;
-    width: 60%;
-    border: 0;
-    height: 2px;
-    background-image: linear-gradient(to right, rgba(78, 71, 71, 0), rgba(2, 2, 2, 0.822), rgba(78, 71, 71, 0));
+    margin-top: 60px;
+    width: 30%;
+    height: 1.3px;
+    background-image: linear-gradient(to right, rgba(124, 110, 110, 0.753), rgba(2, 2, 2, 0.822), rgba(114, 97, 97, 0.705));
 }
-  
+ 
+}
+
+@media (max-width: 900px) {
+  .first__section {
+    &--paraphrad:last-of-type{
+
+      display: none;
+
+    }
+    display: flex;
+    margin-top: 3rem;
+    
+
+    &--img {
+     width: 12rem;
+     height: 12rem;
+      margin-bottom: 0;
+    }
+  }
+}
+
+@media (max-width: 550px) {
+  .first__section {
+    &--paraphrad, &--text, & h4, &--title{
+      text-align: center;
+      margin-right: 3rem;
+    }
+
+  }
 }

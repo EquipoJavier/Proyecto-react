@@ -1,24 +1,11 @@
-export default function InputImage({ setFileInput }) {
+export default function InputImage({ newVoucher, setNewVoucher }) {
 
-    const allowedFileTypes = [
-        "image/png",
-        "image/jpeg",
-        "image/gif",
-        "image/jpg",
-      ];
-
-  const imageHandler = (e) => {
-    let reader = new FileReader();
-    reader.onloadend = () => {
-      if (reader.readyState === 2) {
-        allowedFileTypes.indexOf(e.target.files[0].type) > -1
-          ? setFileInput(reader.result)
-          : alert("Ha de ser una imagen jpeg, png o gif");
-      } else {
-        return;
-      }
-    };
-    e.target.files[0] !== undefined && reader.readAsDataURL(e.target.files[0]);
+  const imageHandler = (file) => {
+    var reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload= function(){
+      setNewVoucher({...newVoucher, fileInput : reader.result});
+    }  
   };
 
   return (
@@ -28,7 +15,7 @@ export default function InputImage({ setFileInput }) {
         name="img-upload"
         id="input"
         accept="image/*"
-        onChange={imageHandler}
+        onChange={(e)=>imageHandler(e.target.files[0])}
       ></input>
       <label htmlFor="input" className="photo">
         <i className="material-icons">photo</i>

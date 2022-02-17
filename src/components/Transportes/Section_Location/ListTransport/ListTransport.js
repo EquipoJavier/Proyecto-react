@@ -8,48 +8,23 @@ export default function ListTransport() {
   return (
     <div className="section__location--flex-item">
       <ul className="section__location--flex-item--ul flex-1">
-        <li className="section__location--flex-item--ul-icon" onClick={()=> {
-          window.scrollTo({
-            top: 1700,
-            behavior: "smooth",
-        });
-        }}>
+        <li className="section__location--flex-item--ul-icon">
           <img src={Metro} alt="" />
         </li>
 
-        <li className="section__location--flex-item--ul-icon" onClick={()=> {
-          window.scrollTo({
-            top: 1700,
-            behavior: "smooth",
-        });
-        }}>
+        <li className="section__location--flex-item--ul-icon">
           <img src={Emt} alt="" />
         </li>
 
-        <li className="section__location--flex-item--ul-icon" onClick={()=> {
-          window.scrollTo({
-            top: 1700,
-            behavior: "smooth",
-        });
-        }}>
+        <li className="section__location--flex-item--ul-icon">
           <img src={Inter} alt="" />
         </li>
 
-        <li className="section__location--flex-item--ul-icon" onClick={()=> {
-          window.scrollTo({
-            top: 1700,
-            behavior: "smooth",
-        });
-        }}>
+        <li className="section__location--flex-item--ul-icon">
           <img src={Ligero} alt="" />
         </li>
 
-        <li className="section__location--flex-item--ul-icon" onClick={()=> {
-          window.scrollTo({
-            top: 1700,
-            behavior: "smooth",
-        });
-        }}>
+        <li className="section__location--flex-item--ul-icon">
           <img src={Cercanias} alt="" />
         </li>
       </ul>

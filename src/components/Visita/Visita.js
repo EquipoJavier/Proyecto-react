@@ -13,7 +13,7 @@ import currentDate from '../../utils/currentDate.js';
 export default function Visita() {
 
     // Recuperar los datos pasados al componente Outlet de react-router desde App.js
-    const [done , pageEndPoint, alterPlan] = useOutletContext(); 
+    const [isLogin, setShowLogin, done, pageEndPoint,alterPlan] = useOutletContext(); 
     
     /* Objeto "plantilla" vacío con la estructura con que se guardan los planes en el
         json. Se usa para "limpiar" estados/variables que manipulen planes (inserción,

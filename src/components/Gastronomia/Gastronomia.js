@@ -8,8 +8,7 @@ import '../../_variables.scss';
 
 export default function Gastronomia() {
 
-    const [done , pageEndPoint] = useOutletContext();
-
+    const [isLogin, setShowLogin, done, pageEndPoint,alterPlan] = useOutletContext();
 
     return (
         <>  

@@ -1,0 +1,109 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &--popup {
+    width: 30%;
+    height: 65%;
+    position: relative;
+    margin: 0 auto;
+    background-color: rgb(255, 247, 247);
+    border-radius: 3%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.4);
+    &-cruz{
+      
+      position: absolute;
+      width: 15px;
+      top: 0;
+      right: 0;
+     margin-right: 5%;
+     margin-top: 5%;
+
+     &:hover{
+       cursor:pointer;
+
+     }
+    }
+
+    &--form {
+      width: 65%;
+      height: 30%;
+      position: relative;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+      outline: none;
+
+
+      &-title{
+        font-family: "Latin Modern Roman";
+        font-style: oblique;
+        background: rgb(201, 77, 87);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-size: 3rem;
+        margin-bottom: 2rem;
+        letter-spacing: 1px;
+      }
+
+      &-data{
+         font-family: FontAwesome !important;
+          margin:0.5rem;
+          position: relative;
+          font-family: 'Poppins', sans-serif;
+          font-size: 20px;
+          // box-shadow: 0 0 20px rgba(0, 0, 0, 0.377);
+          letter-spacing: 1px;
+          outline: none;
+          border: 0;
+          border-bottom:1px solid #5e5252;
+          background-color: transparent;
+          
+        &:hover,&:active{
+          transform: scale(1.1);
+        }
+         
+      }
+      
+    }
+  }
+}
+.btn--popup{
+  margin-top: 5%;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  position:relative;
+
+&-login, &-registro{
+    color: #fff;
+    background: linear-gradient(to right, #503d4a, #2c333a, #333d41);
+    font-size: 12px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    line-height: 38px;
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    transition: all 0.6s ease 0s;
+    cursor: pointer;
+
+    &:hover{
+        color: #fff;
+        letter-spacing: 2px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+}
+
+}

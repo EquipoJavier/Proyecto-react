@@ -4,30 +4,19 @@ import UpButton from "./UpButton/UpButton";
 import Footer from "./Footer/Footer";
 import Header from "./Header/Header";
 import Menu from "./Menu/Menu";
+import Users from "./Users/Users";
 
-function App() {
-  const [headerTitle, setHeaderTitle] = useState(
-    sessionStorage.getItem("title") != null
-      ? sessionStorage.getItem("title")
-      : "Madrid"
-  );
-  const [headerSubtitle, setHeaderSubtitle] = useState(
-    sessionStorage.getItem("subtitle") != null
-      ? sessionStorage.getItem("subtitle")
-      : "Descubre todos sus secretos"
-  );
+export default function App() {
   const [items, setItems] = useState({
     data: "", // Datos de las secciones Transportes, Ocio, Cultura y Gastronomía
     planning: "", // Datos de la sección Visitas
   });
   const [done, setDone] = useState(false);
-
-  function getHeading(title, subtitle) {
-    setHeaderTitle(title);
-    sessionStorage.setItem("title", title);
-    setHeaderSubtitle(subtitle);
-    sessionStorage.setItem("subtitle", subtitle);
-  }
+  const [showLogin, setShowLogin] = useState(false);
+  const [isLogin, setIsLogin] = useState(
+    localStorage.getItem("username") ? true : false
+  );
+  const [profile, setProfile] = useState(localStorage.getItem("img") || null);
 
   const pathname = useLocation().pathname; //obtengo la ruta acutal p.ejem("/transportes")
   // const url = `http://localhost:3001${pathname === "/" ? "/index" : pathname}`;   //le indico la ruta con el recurso a solicitar y en el caso de que pathname hubiera sido "/" (referido a index), a la url le paso /index
@@ -73,25 +62,18 @@ function App() {
       setItems({
         data: result[0],
         planning: result[1]
-      })
-      setDone(true)
+      });
+      setDone(true);
     }).catch(function (error) {
         console.log("Hubo un problema con la petición Fetch:" + error.message);
     });
   }, [urlData]);
 
-  //si se ha obtenido el resultado (done === true) entonces nos pasa el endpoint correspondiente a la página en la que te encuentras acutalmente (en este caso el endpoint sería "transportes")
+  var pageEndPoint;
   if (done) {
-    var pageEndPoint;
     switch (pathname) {
       case "/":
         pageEndPoint = items.data.index;
-        break;
-      case "/transportes":
-        pageEndPoint = items.data.transportes;
-        break;
-      case "/ocio":
-        pageEndPoint = items.data.ocio;
         break;
       case "/gastronomia":
         pageEndPoint = items.data.gastronomia;
@@ -102,22 +84,27 @@ function App() {
       case "/visita":
         pageEndPoint = items;
         break;
-      default:
-        throw new Error("Error al recuperar datos externos")
     }
   }
-
+  
   return (
     <div>
-      <Header title={headerTitle} subtitle={headerSubtitle} />
-      <Menu getHeading={getHeading} />
-      
-      {/* Pasamos a Outlet (el contenido a mostrar en la página) una propiedad de react router que se llama context en la que pasamos el estado de done y el endpoint, de esta manera el componente que lleve su contenido a mostrar tendrá automáticamente sus propios datos sin tener que preocuparse si serán los de otro path/recurso */}
-      <Outlet context={[done, pageEndPoint, alterPlan]} />
+      {showLogin ? (
+        <Users
+          setProfile={setProfile}
+          setIsLogin={setIsLogin}
+          isLogin={isLogin}
+          setShowLogin={setShowLogin}
+        />
+      ) : (
+        <></>
+      )}
+      <Header />
+      <Menu setShowLogin={setShowLogin} profile={profile} />
+      <Outlet context={[isLogin, setShowLogin, done, pageEndPoint,alterPlan]} />
       <UpButton />
       <Footer />
     </div>
   );
 }
 
-export default App;
