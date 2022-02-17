@@ -1,3 +1,4 @@
+@import '../../../variables';
 .restaurantes {
     &__titulo {
         text-align: center;
@@ -16,6 +17,22 @@
             &:hover {
                 transform: scale(1.05) translateY(0.5rem);
                 text-shadow: 0rem 0.5rem 1rem rgba(0, 0, 0, 0.3);
+            }
+
+            @media only screen and (max-width: $thin_tablet) {
+                letter-spacing: 0.6rem;
+            }
+
+            @media only screen and (max-width: $wide_phone) {
+                font-size: 3rem;
+            }
+
+            @media only screen and (max-width: $mid_phone) {
+                font-size: 2.5rem;
+            }
+
+            @media only screen and (max-width: $thin_phone) {
+                font-size: 2rem;
             }
         }
     }

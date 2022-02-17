@@ -13,7 +13,9 @@ export default function RestaurantTextbox({restaurant, imgOnRight}) {
                     <div className="resTextbox__text--descr">
                         {restaurant.descr}
                     </div>
-                    <Button url={restaurant.url} title="Visitar" hoverClass="darkRed"/>
+                    <div className="closeButton" >
+                        <Button url={restaurant.url} title="Visitar" hoverClass="darkRed"/>
+                    </div>
                 </div>
                 <div className="resTextbox__img">
                     <img src={restaurant.img} alt={restaurant.name}/>
@@ -33,7 +35,9 @@ export default function RestaurantTextbox({restaurant, imgOnRight}) {
                     <div className="resTextbox__text--descr">
                         {restaurant.descr}
                     </div>
-                    <Button url={restaurant.url} title="Visitar" hoverClass="darkRed"/>
+                    <div className="closeButton">
+                        <Button url={restaurant.url} title="Visitar" hoverClass="darkRed"/>
+                    </div>
                 </div>
             </div>
         )

@@ -1,5 +1,5 @@
 @import '../../variables';
-.button {
+.buttonG {
     align-self: center; // Centrado
     background-color: #766E65;
     color: black;
@@ -14,8 +14,13 @@
     transition: transform 0.1s;
     cursor: pointer;
 
-    @media only screen and (max-width: $mid_tablet) {
+    @media only screen and (max-width: $wide_tablet) {
         padding: 1rem;
+    }
+
+    @media only screen and (max-width: $thin_phone) {
+        font-size: 1.6rem;
+        letter-spacing: 0.1rem;
     }
 
     &:link,
