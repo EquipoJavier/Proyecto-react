@@ -56,7 +56,9 @@ function Read({
               .delete(url + "/" + item.id)
               .then((response) => {
                 setPageEndPointTransportes(
-                  pageEndPointTransportes.filter((tarjeta) => tarjeta.id !== item.id)
+                  pageEndPointTransportes.filter(
+                    (tarjeta) => tarjeta.id !== item.id
+                  )
                 );
               })
               .catch((error) => {
@@ -121,75 +123,78 @@ function Read({
               </TableHead>
               <TableBody>
                 {pageEndPointTransportes.map((item, i) => {
-                  if (item.propertyOf === user)
-                    return (
-                      <TableRow
-                        key={item.id}
-                        sx={{
-                          "&:last-child td, &:last-child th": { border: 0 },
-                        }}
-                      >
-                        <Cell text={item.name} />
-                        <Cell text={item.surname} />
-                        <Cell
-                          text={
-                            item.type.charAt(0).toUpperCase() +
-                            item.type.slice(1)
-                          }
-                        />
-                        <Cell
-                          text={
-                            <img
-                              key={item.name + i}
-                              style={{ width: "100px", borderRadius: "5px" }}
-                              src={images[item.type]}
-                              alt="Loading..."
-                            />
-                          }
-                        />
-                        <Cell
-                          text={
-                            <img
-                              key={item.name + i + "foto"}
-                              style={{ width: "80px", maxHeight: "100px" }}
-                              src={item.fileInput}
-                              alt="Loading..."
-                            />
-                          }
-                        />
-                        <Cell
-                          text={
-                            <Button
-                              style={{ fontSize: "14px", textAlign: "center" }}
-                              variant="contained"
-                              color="success"
-                              startIcon={<Edit />}
-                              onClick={(e) => {
-                                setShowForm(true);
-                                setForUpdate(item);
-                              }}
-                            >
-                              Edit
-                            </Button>
-                          }
-                        />
-                        <Cell
-                          text={
-                            <Button
-                              style={{ fontSize: "14px", textAlign: "center" }}
-                              variant="contained"
-                              color="error"
-                              startIcon={<DeleteSweep />}
-                              onClick={() => {
-                                deleteVoucher(item);
-                              }}
-                            >
-                              Delete
-                            </Button>
-                          }
-                        />
-                      </TableRow>
-                    );
+                  return item.propertyOf === user ? (
+                    <TableRow
+                      key={item.id}
+                      sx={{
+                        "&:last-child td, &:last-child th": { border: 0 },
+                      }}
+                    >
+                      <Cell key={item.id + "cell1"} text={item.name} />
+                      <Cell key={item.id + "cell2"} text={item.surname} />
+                      <Cell
+                        key={item.id + "cell3"}
+                        text={
+                          item.type.charAt(0).toUpperCase() + item.type.slice(1)
+                        }
+                      />
+                      <Cell
+                        key={item.id + "cell4"}
+                        text={
+                          <img
+                            key={item.name + i}
+                            style={{ width: "100px", borderRadius: "5px" }}
+                            src={images[item.type]}
+                            alt="Loading..."
+                          />
+                        }
+                      />
+                      <Cell
+                        key={item.id + "cell5"}
+                        text={
+                          <img
+                            key={item.name + i + "foto"}
+                            style={{ width: "80px", maxHeight: "100px" }}
+                            src={item.fileInput}
+                            alt="Loading..."
+                          />
+                        }
+                      />
+                      <Cell
+                        key={item.id + "cell6"}
+                        text={
+                          <Button
+                            style={{ fontSize: "14px", textAlign: "center" }}
+                            variant="contained"
+                            color="success"
+                            startIcon={<Edit />}
+                            onClick={(e) => {
+                              setShowForm(true);
+                              setForUpdate(item);
+                            }}
+                          >
+                            Edit
+                          </Button>
+                        }
+                      />
+                      <Cell
+                        key={item.id + "cell7"}
+                        text={
+                          <Button
+                            style={{ fontSize: "14px", textAlign: "center" }}
+                            variant="contained"
+                            color="error"
+                            startIcon={<DeleteSweep />}
+                            onClick={() => {
+                              deleteVoucher(item);
+                            }}
+                          >
+                            Delete
+                          </Button>
+                        }
+                      />
+                    </TableRow>
+                  ) : null;
                 })}
               </TableBody>
             </Table>

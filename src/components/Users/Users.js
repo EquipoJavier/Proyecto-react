@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import md5 from "js-md5";
 import "./Users.scss";
@@ -44,7 +44,7 @@ export default function Users({
   }
 
   async function seeUsers() {
-    setOurUsers(false);
+    setAreUsers(false);
     await axios
       .get(url)
       .then((response) => {
@@ -93,36 +93,43 @@ export default function Users({
       });
   }
 
-  async function registrarse() {
-    let post = {
-      username: form.username,
-      password: md5(form.password),
-      img: form.img,
-    };
-    seeUsers();
+  async function handleRegis() {
+    await seeUsers();
+  }
+
+  useEffect(() => {
+    async function register() {
+      let post = {
+        username: form.username,
+        password: md5(form.password),
+        img: form.img,
+      };
+      if (form.username !== "" && form.password !== "" && form.img !== null) {
+        await axios
+          .post(url, post)
+          .then((response) => {
+            iniciarSesion();
+            setShowLogin(false);
+            window.onscroll = function () {};
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      } else {
+        alert("Necesitas introducir los datos");
+      }
+    }
     if (areUsers) {
       if (ourUsers.find((user) => user === form.username)) {
         alert("El usuario introducido ya existe");
       } else {
-        if (form.username != "" && form.password != "" && form.img !== null) {
-          await axios
-            .post(url, post)
-            .then((response) => {
-              iniciarSesion();
-              setShowLogin(false);
-              window.onscroll = function () {};
-            })
-            .catch((error) => {
-              console.log(error);
-            });
-        } else {
-          alert("Necesitas introducir los datos");
-        }
+        register();
       }
     } else {
       <Loading />;
     }
-  }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [areUsers]);
 
   return (
     <div className="container">
@@ -175,8 +182,7 @@ export default function Users({
                 </>
               ) : (
                 <></>
-              )
-              }
+              )}
               <br />
               <br />
               <div className="btn--popup">
@@ -184,7 +190,7 @@ export default function Users({
                   <>
                     <button
                       className="btn--popup-registro"
-                      onClick={registrarse}
+                      onClick={handleRegis}
                     >
                       Registrarse
                     </button>

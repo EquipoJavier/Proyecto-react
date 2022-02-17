@@ -26,10 +26,12 @@ export default function Form({
   });
 
   useEffect(() => {
-    forUpdate != {} && setNewVoucher({ ...newVoucher, ...forUpdate });
+    JSON.stringify(forUpdate) !== "{}" &&
+      setNewVoucher({ ...newVoucher, ...forUpdate });
     return () => {
       setNewVoucher({});
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [forUpdate]);
 
   function handleName(e) {
@@ -43,10 +45,10 @@ export default function Form({
   }
 
   async function createNewVoucher() {
-    newVoucher.name != "" &&
-    newVoucher.surname != "" &&
-    newVoucher.fileInput != null &&
-    newVoucher.propertyOf != ""
+    newVoucher.name !== "" &&
+    newVoucher.surname !== "" &&
+    newVoucher.fileInput !== null &&
+    newVoucher.propertyOf !== ""
       ? await axios
           .post(url, newVoucher)
           .then((response) => {
@@ -66,10 +68,10 @@ export default function Form({
   }
 
   async function editVoucher() {
-    newVoucher.name != "" &&
-    newVoucher.surname != "" &&
-    newVoucher.fileInput != null &&
-    newVoucher.propertyOf != ""
+    newVoucher.name !== "" &&
+    newVoucher.surname !== "" &&
+    newVoucher.fileInput !== null &&
+    newVoucher.propertyOf !== ""
       ? await axios
           .put(url + "/" + newVoucher.id, newVoucher)
           .then((response) => {
@@ -104,7 +106,7 @@ export default function Form({
           />
           <Select newVoucher={newVoucher} setNewVoucher={setNewVoucher} />
           <InputImage newVoucher={newVoucher} setNewVoucher={setNewVoucher} />
-          {JSON.stringify(forUpdate) == "{}" ? (
+          {JSON.stringify(forUpdate) === "{}" ? (
             <Button
               style={{
                 fontSize: "14px",

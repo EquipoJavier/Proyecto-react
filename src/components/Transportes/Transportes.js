@@ -3,23 +3,27 @@ import SectionLocation from "./Section_Location/SectionLocation";
 import SectionTransportVoucher from "./TransportVoucher/SectionTransportVoucher";
 import VoucherCrud from "./CRUD_Voucher/VoucherCrud";
 import { useOutletContext } from "react-router-dom";
-import GetTransportes from "./transportServices";
+import { GetTransportes } from "./transportUtils";
 
-export default function Transportes(){
+export default function Transportes() {
+  const url = "http://localhost:3001/transportes";
 
-    const url = "http://localhost:3001/transportes";
-    
-    const [isLogin, setShowLogin, done, pageEndPoint,alterPlan] = useOutletContext();
+  const [isLogin, setShowLogin] = useOutletContext();
 
-    const [pageEndPointTransportes, setPageEndPointTransportes, doneTransportes, setDoneTransportes] = GetTransportes(url);
+  const [pageEndPointTransportes, doneTransportes] = GetTransportes(url);
 
-    
-    return(
-        <>
-            <SectionLocation doneTransportes={doneTransportes} pageEndPointTransportes={pageEndPointTransportes} />
-            <SectionTransportVoucher />
-            <ChooseTransport doneTransportes={doneTransportes} pageEndPointTransportes={pageEndPointTransportes} />
-            <VoucherCrud isLogin={isLogin} setShowLogin={setShowLogin} />
-        </>
-    )
+  return (
+    <>
+      <SectionLocation
+        doneTransportes={doneTransportes}
+        pageEndPointTransportes={pageEndPointTransportes}
+      />
+      <SectionTransportVoucher />
+      <ChooseTransport
+        doneTransportes={doneTransportes}
+        pageEndPointTransportes={pageEndPointTransportes}
+      />
+      <VoucherCrud isLogin={isLogin} setShowLogin={setShowLogin} />
+    </>
+  );
 }
