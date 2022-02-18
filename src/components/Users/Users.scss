@@ -9,8 +9,8 @@
   justify-content: center;
 
   &--popup {
-    width: 30%;
-    height: 65%;
+    width: 35vw;
+    height: 35vw;
     position: relative;
     margin: 0 auto;
     background-color: rgb(255, 247, 247);
@@ -19,19 +19,17 @@
     align-items: center;
     justify-content: center;
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.4);
-    &-cruz{
-      
+    &-cruz {
       position: absolute;
       width: 15px;
       top: 0;
       right: 0;
-     margin-right: 5%;
-     margin-top: 5%;
+      margin-right: 5%;
+      margin-top: 5%;
 
-     &:hover{
-       cursor:pointer;
-
-     }
+      &:hover {
+        cursor: pointer;
+      }
     }
 
     &--form {
@@ -44,8 +42,11 @@
       justify-content: center;
       outline: none;
 
+      & > * {
+        width: 100%;
+      }
 
-      &-title{
+      &-title {
         font-family: "Latin Modern Roman";
         font-style: oblique;
         background: rgb(201, 77, 87);
@@ -54,38 +55,61 @@
         font-size: 3rem;
         margin-bottom: 2rem;
         letter-spacing: 1px;
+        text-align: center;
       }
 
-      &-data{
-         font-family: FontAwesome !important;
-          margin:0.5rem;
-          position: relative;
-          font-family: 'Poppins', sans-serif;
-          font-size: 20px;
-          // box-shadow: 0 0 20px rgba(0, 0, 0, 0.377);
-          letter-spacing: 1px;
-          outline: none;
-          border: 0;
-          border-bottom:1px solid #5e5252;
-          background-color: transparent;
-          
-        &:hover,&:active{
+      &-data {
+        font-family: FontAwesome !important;
+        margin: 0.5rem;
+        position: relative;
+        font-family: "Poppins", sans-serif;
+        font-size: 20px;
+        // box-shadow: 0 0 20px rgba(0, 0, 0, 0.377);
+        letter-spacing: 1px;
+        outline: none;
+        border: 0;
+        border-bottom: 1px solid #5e5252;
+        background-color: transparent;
+
+        &:hover,
+        &:active {
           transform: scale(1.1);
         }
-         
       }
-      
+    }
+
+    @media (max-width: 1300px) {
+      width: 40%;
+      height: 55%;
+    }
+
+    @media (max-width: 800px) {
+      width: 60%;
+      height: 50%;
+    }
+
+    @media (max-width: 660px) {
+      width: 80%;
+      height: 70%;
+    }
+
+    @media (max-width: 500px) {
+      width: 100%;
+      height: 100%;
     }
   }
 }
-.btn--popup{
+.btn--popup {
   margin-top: 5%;
   display: flex;
   justify-content: space-around;
   width: 100%;
-  position:relative;
+  position: relative;
+  display: flex;
+  flex-direction: column;
 
-&-login, &-registro{
+  &-login,
+  &-registro {
     color: #fff;
     background: linear-gradient(to right, #503d4a, #2c333a, #333d41);
     font-size: 12px;
@@ -99,11 +123,10 @@
     transition: all 0.6s ease 0s;
     cursor: pointer;
 
-    &:hover{
-        color: #fff;
-        letter-spacing: 2px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    &:hover {
+      color: #fff;
+      letter-spacing: 2px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     }
-}
-
+  }
 }
