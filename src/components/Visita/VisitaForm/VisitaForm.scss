@@ -1,9 +1,14 @@
+@import '../../../variables';
 .visita__form {
     // background-color: goldenrod;
     width: 100%;
     margin: 1rem auto;
     display: flex;
     flex-direction: column;
+
+    @media only screen and (max-width: $mid_tablet) {
+        width: 100%;
+    }
 
     &--inputs {
         display: flex;
@@ -12,11 +17,11 @@
         &--input {
             height: 5rem;
             position: relative;
-            overflow: hidden;
             border-bottom: 2px solid black;
             transition: ease-in 0.3s;
             background-color: transparent;
             z-index: 1;
+            text-align: center;
             // background-color: aquamarine;
 
             &:after {
@@ -69,10 +74,24 @@
             font-weight: bold;
             cursor: pointer;
             color: inherit;
+            text-overflow: ellipsis;
+            overflow-wrap: break-word;
+        }
+        
+        &__dropdown > option {
+            white-space: pre-wrap;
+            color: black;
         }
 
-        &__dropdown > option {
-            color: black;
+        @media only screen and (max-width: $mid_tablet) {
+            flex-direction: column;
+
+            &--input {
+                margin-bottom: 2rem;
+                & > * {
+                    width: 100%;
+                }
+            }
         }
     }
 
@@ -82,6 +101,10 @@
         width: 40%;
         height: 5rem;
         position: relative;
+        
+        @media only screen and (max-width: $mid_tablet) {
+            width: 80%;
+        }
 
         &Button {
         ///////////////////////////////

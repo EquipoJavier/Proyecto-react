@@ -29,10 +29,10 @@ export default function VisitaTabla(props) {
                 categoryIndex = "restaurantes";
                 break;
             case "Cultura":
-                categoryIndex = "first";
+                categoryIndex = "museos";
                 break;
             case "Ocio":
-                categoryIndex = "first";
+                categoryIndex = "parques";
                 break;
             default:
                 categoryIndex = ""

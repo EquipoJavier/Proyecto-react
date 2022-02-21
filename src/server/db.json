@@ -80,11 +80,42 @@
       ]
     },
     "cultura": {
-      "first": [
+      "museos": [
         {
-          "name": "Cuevas de Luis Candelas",
-          "descr": "Es otro de los restaurantes más emblemáticos y conocidos de Madrid, situado junto a la Plaza Mayor, y que rinde homenaje al bandolero más conocido de Madrid, Luis Candelas, que habituaba a esconderse en el Arco de Cuchilleros tras sus robos, donde hoy se encuentra el restaurante. Un actor disfrazado de bandolero lo recuerda y da la bienvenida hoy día a todos los clientes. El interior tiene un ambiente muy castizo, y en su cocina se han recuperado todos los usos y costumbres que dan fundamento a la tradición gastronómica de Madrid. Sus especialidades son el cochinillo, el cordero lechal, los callos a la madrileña, el cocido de puchero y los postres típicos de Madrid.",
-          "url": "http://www.lascuevasdeluiscandelas.com/pages.html"
+          "id": "1",
+          "name": "Museo del Prado"
+        },
+        {
+          "id": "2",
+          "name": "Museo Reina Sofía"
+        },
+        {
+          "id": "3",
+          "name": "Museo Thyssen"
+        },
+        {
+          "id": "4",
+          "name": "Museo Nacional de Ciencias Naturales"
+        }
+      ]
+    },
+    "ocio": {
+      "parques": [
+        {
+          "id": "1",
+          "name": "Parque de Atracciones"
+        },
+        {
+          "id": "2",
+          "name": "Aquopolis"
+        },
+        {
+          "id": "3",
+          "name": "Zoo de Madrid"
+        },
+        {
+          "id": "1",
+          "name": "Atlantis Aquarium Madrid"
         }
       ]
     }
@@ -319,6 +350,12 @@
       "category": "Cultura",
       "option": "Cuevas de Luis Candelas",
       "id": 6
+    },
+    {
+      "day": "2022-02-21",
+      "category": "Ocio",
+      "option": "Parque de Atracciones",
+      "id": 7
     }
   ]
 }

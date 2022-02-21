@@ -14,6 +14,7 @@ export default function UpdateForm(props) {
     const updatePlan = props.updatePlan; // Función que ejecuta la actualización en el JSON de datos
 
     const [isUpdating, setIsUpdating] = useState(false)
+    console.log(dropdown, ">>>>>>");
     function updating() {
         /* Si se actualiza uno de los planes, se muestra un mensaje ("isUpdating" controla que sólo se
             muestre este mensaje), y se produce la actualización. Tras un breve período, se cierra la 

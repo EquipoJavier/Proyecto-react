@@ -42,6 +42,7 @@ export default function Visita() {
 
     // Función reductora, gestiona los cambios en los estados descritos en "initialCategoryState"
     const categoryReducer = (state, action) => {
+        console.log(action, "accion");
         switch (action.type) {
             case "GASTRONOMIA":
                 return {
@@ -58,7 +59,7 @@ export default function Visita() {
                 return {
                     ...state,
                     category: "CULTURA",
-                    dropdown: pageEndPoint.data.cultura.first.map(element => {
+                    dropdown: pageEndPoint.data.cultura.museos.map(element => {
                         return element.name;
                     })
                 }
@@ -66,7 +67,7 @@ export default function Visita() {
                 return {
                     ...state,
                     category: "OCIO",
-                    dropdown: pageEndPoint.data.ocio.first.map(element => {
+                    dropdown: pageEndPoint.data.ocio.parques.map(element => {
                         return element.name;
                     })
                 }
