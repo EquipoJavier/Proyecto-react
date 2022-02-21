@@ -16,6 +16,12 @@
   }
 }
 
+@media (max-width: 1100px) {
+  .third__section {
+    height: 45rem;
+  }
+}
+
 @media (max-width: 750px) {
   .third__section {
     display: none;

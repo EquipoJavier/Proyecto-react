@@ -66,6 +66,17 @@
     }
   }
 }
+
+@media (max-width: 1250px) {
+  .slider__variety {
+    &--content {
+      & > p {
+        padding-bottom: 2rem;
+      }
+    }
+  }
+}
+
 @media (max-width: 1110px) {
   .slider__variety {
     &--content {

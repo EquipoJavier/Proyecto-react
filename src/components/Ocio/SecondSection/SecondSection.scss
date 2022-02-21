@@ -117,6 +117,9 @@
 }
 
 @media (max-width: 520px) {
+  .second__section {
+    height: 15vh;
+  }
   .park-part {
     & h2 {
       display: none;
