@@ -1,5 +1,5 @@
 .section__location {
-  height: 90vh;
+  height: 70rem;
   text-align: center;
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 90%);
   margin-top: 8rem;
@@ -44,9 +44,35 @@
     width: 30vw;
     height: 30rem;
   }
+  &--hr{
+    margin: 0 auto;
+    margin-bottom: 8rem;
+  }
 }
 
-hr{
-  margin: 0 auto;
-  margin-bottom: 8rem;
+
+
+@media(max-width: 1200px){
+  .section__location--flex-item--ul > p {
+    overflow: hidden;
+    height: 2rem;
+  }
+}
+
+@media(max-width: 800px){
+  .section__location--map {
+    display: none;
+  }
+}
+
+@media(max-width: 560px){
+  .section__location{
+  &--flex {
+    margin: 0;  
+  }
+  &--hr{
+      width: 70%;
+    }
+  }
+
 }

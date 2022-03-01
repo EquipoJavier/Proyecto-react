@@ -4,13 +4,13 @@ import PopupMenu from "./PopupMenu/PopupMenu";
 
 export default function Popup({
   popupInfo,
-  done,
+  doneTransportes,
   setTypes,
   types,
   show,
   setShow,
 }) {
-  if (done) {
+  if (doneTransportes) {
     var info = popupInfo[types];
   }
 
@@ -38,7 +38,14 @@ export default function Popup({
           <div className="popup_transportes-aside">
             <h1 className="popup_transportes-aside--h1">{info.name}</h1>
             <aside className="popup_transportes-aside--text">
-              <p className="popup_transportes-aside--text-p">{info.text}</p>
+              {info.text.split("\n").map((text) => (
+                <div key={text.slice(0,5)}>
+                <p className="popup_transportes-aside--text-p">
+                  {text}
+                </p>
+                <br />
+                </div>
+              ))}
             </aside>
           </div>
         </>

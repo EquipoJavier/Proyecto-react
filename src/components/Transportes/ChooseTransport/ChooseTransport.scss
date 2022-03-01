@@ -70,3 +70,25 @@
   background-repeat: no-repeat;
   background-position: center;
 }
+
+@media(max-width: 590px){
+  .choose__transport {
+    
+    &_options {
+      &- {
+        flex-direction: column;
+        &-option {
+          width: 40vw;
+        height: 40vw;
+          &:hover {
+            transform: none;
+          }
+        }
+      }
+    }
+  }
+
+  .ligero{
+    margin-top: -10%;
+  }
+}

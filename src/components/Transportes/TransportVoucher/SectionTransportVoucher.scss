@@ -1,6 +1,5 @@
 .section__transportVoucher {
-  // clip-path: polygon(0 0, 100% 10%, 100% 100%, 0 90%);
-  height: 110vh;
+  height: 70rem;
   background-image: linear-gradient(
       to right bottom,
       rgba(128, 128, 128, 0.904),
@@ -11,7 +10,8 @@
   background-size: cover;
   background-attachment: fixed;
 
-  &--h1, &--h1-subtitle {
+  &--h1,
+  &--h1-subtitle {
     padding: 3rem;
     padding-top: 8rem;
     text-align: center;
@@ -20,7 +20,7 @@
     text-shadow: 4px 4px 6px rgb(65, 65, 65);
     text-decoration: none;
     display: block;
-    &-subtitle{
+    &-subtitle {
       font-size: 2rem;
       letter-spacing: 0.7rem;
       color: black;
@@ -39,9 +39,9 @@
         border-radius: 15px;
         background-image: linear-gradient(
           to top,
-          rgba(255, 255, 255, .4),
-          rgba(128, 128, 128, .7),
-          rgba(255, 255, 255, .4)
+          rgba(255, 255, 255, 0.4),
+          rgba(128, 128, 128, 0.7),
+          rgba(255, 255, 255, 0.4)
         );
         font-family: "Latin Modern Roman";
         font-style: italic;
@@ -63,7 +63,7 @@ hr {
   background-color: #333;
 }
 
-.arrow{
+.arrow {
   animation-name: rotateIcons;
   animation-duration: 0.5s;
   animation-iteration-count: infinite;
@@ -97,14 +97,76 @@ hr {
   &:hover &__side--back {
     transform: rotateY(0);
   }
+}
 
-  @media (max-width: 900px) {
-    .card--transporte {
-      height: 10rem;
-      width: 15vw;
-      &__side img {
-        height: 100%;
-        width: 100%;
+@media (max-width: 1100px) {
+  .section__transportVoucher {
+    height: 115rem;
+
+    &_content {
+      flex-direction: column;
+      &--item {
+        &:not(:last-child){
+          margin-bottom: 4rem;
+        }
+        & h2 {
+          width: 20%;
+          margin: 0 auto;
+
+          &:hover {
+            transform: none;
+          }
+        }
+      }
+    }
+  }
+  .card--transporte {
+    margin: 0 auto;
+
+    &__side {
+      backface-visibility: visible;
+      overflow: hidden;
+      box-shadow: 0 1.5rem 4rem rgba(black, 0.15);
+      border-radius: 15px;
+  
+      &--back {
+        transform: rotateY(0deg);
+      }
+    }
+
+    &:hover &__side--front {
+      transform: rotateY(0deg);
+    }
+    &:hover &__side--back {
+      transform: rotateY(0deg);
+    }
+  }
+}
+
+@media (max-width: 840px) {
+  .section__transportVoucher {
+    height: 125rem;
+    &--h1-subtitle {
+      display: none;
+    }
+    &_content {
+      &--item {
+        &:not(:last-child){
+          margin-bottom: 6rem;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 450px) {
+  .section__transportVoucher {
+
+    &_content {
+      &--item {
+        & h2 {
+          width: 40%;
+        }
       }
     }
   }

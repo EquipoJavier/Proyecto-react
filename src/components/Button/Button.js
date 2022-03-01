@@ -21,7 +21,7 @@ export default function Button(props) {
         setHovered(!hovered);
     }
     
-    const cssClass = "button " + (hovered ? props.hoverClass : "" );
+    const cssClass = "buttonG " + (hovered ? props.hoverClass : "" );
 
     return (
         <a href={props.url} className={cssClass} onClick={props.onClick} onMouseEnter={toggleHover} onMouseLeave={toggleHover} target="_blank" rel="noreferrer">

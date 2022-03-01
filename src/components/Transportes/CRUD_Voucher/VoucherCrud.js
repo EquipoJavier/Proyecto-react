@@ -1,24 +1,71 @@
-import profileDefault from "../../Recursos/img/transport-profile.png";
-import bono from "../../Recursos/img/crea-tu-bono.jpg";
+import { useEffect, useState } from "react";
+import GetTarjetas from "./voucherServices";
 import Form from "./Form/Form";
+import Read from "./Read/Read";
 import "./VoucherCrud.scss";
+import { useOutletContext } from "react-router-dom";
+import "../../Users/Users.scss";
 
-export default function VoucherCrud({setType, name, setName, setCreate, surname, setSurName, setFileInput, setDisabled , disabled}) {
+export default function VoucherCrud() {
+  const [showForm, setShowForm] = useState(false);
+  const [forUpdate, setForUpdate] = useState({});
+  const [user, setUser] = useState(localStorage.getItem("username") || null);
+
+  const [isLogin, setShowLogin] = useOutletContext();
+
+  const url = "http://localhost:3001/tarjetas";
+
+  const [
+    pageEndPointTransportes,
+    setPageEndPointTransportes,
+    doneTransportes,
+    setDoneTransportes,
+  ] = GetTarjetas(url);
+
+  useEffect(() => {
+    setUser(localStorage.getItem("username"));
+  }, [isLogin]);
 
   return (
     <div className="voucher" id="voucher">
-      <h1 className="voucher--h1">¡Crea todas las tarjetas para tu familia!</h1>
-      <div className="voucher__content">
-        <div className="voucher__content--form">
-          <Form setType={setType} setCreate={setCreate} setFileInput={setFileInput} name={name} setName={setName} surname={surname} setSurName={setSurName} setDisabled={setDisabled} disabled={disabled} />
-        </div>
-        <div className="voucher__content--img">
-          <img src={bono} alt=" " />
-          <div className="voucher__content--img-holder">
-            <img src={profileDefault} alt=" " id="img" className="img" />
-          </div>
-        </div>
-      </div>
+      {isLogin ? (
+        <>
+          <h1 className="voucher--h1">
+            ¡Hola {user}! Estas son las tarjetas de tu familia
+          </h1>
+          {showForm ? (
+            <Form
+              url={url}
+              forUpdate={forUpdate}
+              setForUpdate={setForUpdate}
+              setDoneTransportes={setDoneTransportes}
+              user={user}
+              setShowForm={setShowForm}
+            />
+          ) : (
+            <Read
+              loading={!doneTransportes}
+              url={url}
+              setDoneTransportes={setDoneTransportes}
+              setShowForm={setShowForm}
+              user={user}
+              doneTransportes={doneTransportes}
+              pageEndPointTransportes={pageEndPointTransportes}
+              setForUpdate={setForUpdate}
+              setPageEndPointTransportes={setPageEndPointTransportes}
+              setShowLogin={setShowLogin}
+            />
+          )}
+        </>
+      ) : (
+        <button
+          className="btn--popup-login voucher--btn"
+          onClick={() => setShowLogin(true)}
+        >
+          Por favor, pulse aqui para regístrase o iniciar sesión y así poder
+          crear sus tarjetas
+        </button>
+      )}
     </div>
   );
 }
