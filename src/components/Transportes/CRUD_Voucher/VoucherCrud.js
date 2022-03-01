@@ -3,16 +3,24 @@ import GetTarjetas from "./voucherServices";
 import Form from "./Form/Form";
 import Read from "./Read/Read";
 import "./VoucherCrud.scss";
+import { useOutletContext } from "react-router-dom";
 import "../../Users/Users.scss";
 
-export default function VoucherCrud({ isLogin, setShowLogin }) {
+export default function VoucherCrud() {
   const [showForm, setShowForm] = useState(false);
   const [forUpdate, setForUpdate] = useState({});
   const [user, setUser] = useState(localStorage.getItem("username") || null);
 
+  const [isLogin, setShowLogin] = useOutletContext();
+
   const url = "http://localhost:3001/tarjetas";
 
-  const [pageEndPointTransportes, setPageEndPointTransportes, doneTransportes, setDoneTransportes] = GetTarjetas(url);
+  const [
+    pageEndPointTransportes,
+    setPageEndPointTransportes,
+    doneTransportes,
+    setDoneTransportes,
+  ] = GetTarjetas(url);
 
   useEffect(() => {
     setUser(localStorage.getItem("username"));
