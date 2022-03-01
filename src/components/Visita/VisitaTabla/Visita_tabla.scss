@@ -1,3 +1,5 @@
+@import '../../../variables';
+
 .visita__content__table {
     width: 90%;
     display: flex;
@@ -34,10 +36,16 @@
         & tbody {
             font-size: 1.8rem;
             & tr {
-                // border: 1px solid black;
-                // transition: background-color 0.2s ease-in;
+                height: 5rem;
+                transition: background-color 0.3s;
+                
                 &:hover {
                     background-color: rgba(118, 110, 101, 0.15);
+                }
+
+                @media only screen and (max-width: $wide_tablet) {
+                    height: 4rem;
+                    font-size: 1.6rem;
                 }
             }
             & td:not(:last-of-type) {
@@ -47,50 +55,64 @@
 
         & th, td:not(.visita__content__table--buttons) {
             padding: 1rem;
+
+            @media only screen and (max-width: $thin_tablet) {
+                padding: 0.4rem;
+            }
         }
     }
 
     &--buttons {
-        // float: right;
-        // background-color: red;
-        display: flex;
-        align-items: center;
-        justify-content: end;
         background-color: #f5f5f5;
+        height: 100%;
+        min-width: 10rem;
+
+        & .buttonContainer {
+            display: flex;
+            height: 100%;
+            width: 100%;
+        }
         
         & button {
-            ///////////////////////////////
-            // Button style resets
-            border: 0;
-            /////////////////////////////
+            border: 0; // Button style resets
+
             flex-grow: 1;
             position: relative;
-            padding: 1rem 1rem;
             font-size: 1.8rem;
             cursor: pointer;
-            // transition: all 0.1s;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 3rem;
+            transition: background-color 0.3s;
 
             &:hover {
                 color: rgb(62, 9, 207);
+            }
+
+            @media only screen and (max-width: $wide_tablet) {
+                font-size: 1.6rem;
+            }
+            @media only screen and (max-width: $mid_tablet) {
+                background-size: 2.5rem;
             }
         }
     }
 
     &--updateButton {
         background-color: rgba(159, 205, 50, 0.3);
-        &--updateButton:after {
-            content: "";
-            position: absolute;
-            right: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            height: 70%;
-            width: 2px;
-            background-color: black;
+        background-image: url(../../../../public/assets/images/editar.svg);
+
+        &:hover {
+            background-color: rgba(135, 184, 23, 0.6);
         }
     }
     &--deleteButton {
         background-color: rgba(223, 32, 18, 0.3);
+        background-image: url(../../../../public/assets/images/borrar.svg);
+
+        &:hover {
+            background-color: rgba(223, 32, 18, 0.6);
+        }
     }
 }
 

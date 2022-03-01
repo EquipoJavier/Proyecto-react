@@ -41,7 +41,7 @@ export default function DeleteForm(props) {
                             <div className='delete__buttons'>
                                 <button className="delete__buttons--delete" onClick={() => {
                                     deleting();
-                                }}>Confirmar</button>
+                                }}>BORRAR</button>
                                 <button className="delete__buttons--cancel" onClick={() => dispatch({type:"CLOSE_FORM"})}>Cancelar</button>
                             </div>
                         </div> 

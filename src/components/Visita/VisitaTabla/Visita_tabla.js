@@ -69,16 +69,18 @@ export default function VisitaTabla(props) {
                                         <td>{row.category}</td>
                                         <td>{row.option}</td>
                                         <td className="visita__content__table--buttons">
-                                            <button className="visita__content__table--updateButton" onClick={() => {dispatchUpdate(row)}}>Cambiar</button>
-                                            <button className="visita__content__table--deleteButton" onClick={() => dispatch({
-                                                type: "DELETE",
-                                                payload: {
-                                                    day: row.day,
-                                                    category: row.category,
-                                                    option: row.option,
-                                                    id: row.id
-                                                },
-                                            })}>Eliminar</button>
+                                            <div className='buttonContainer'>
+                                                <button className="visita__content__table--updateButton" onClick={() => {dispatchUpdate(row)}}></button>
+                                                <button className="visita__content__table--deleteButton" onClick={() => dispatch({
+                                                    type: "DELETE",
+                                                    payload: {
+                                                        day: row.day,
+                                                        category: row.category,
+                                                        option: row.option,
+                                                        id: row.id
+                                                    },
+                                                })}></button>
+                                            </div>
                                         </td>
                                     </tr>
                                 </CSSTransition>

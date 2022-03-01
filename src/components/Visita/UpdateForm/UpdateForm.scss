@@ -1,3 +1,5 @@
+@import '../../../variables';
+
 .update {
     height: 100%;
     width: 100%;
@@ -33,6 +35,7 @@
             font-size: 3rem;
             font-weight: bold;
             letter-spacing: 0.3rem;
+            text-align: center;
         }
 
         &__inputs {
@@ -104,12 +107,24 @@
                     border-bottom: 2px solid rgb(62, 9, 207);
                 }
             }
+
+            @media only screen and (max-width: $wide_tablet) {
+                flex-direction: column;
+                align-items: center ;
+
+                &--input {
+                    width: 70%;
+                    margin-bottom: 2rem;
+                    display: flex;
+                    justify-content: center;
+                }
+            }
         }
 
         &__buttons {
             display: flex;
             margin: 5rem auto 4rem;
-            width: 50%;
+            width: 70%;
             height: 5rem;
             position: relative;
             justify-content:space-between;
@@ -133,6 +148,23 @@
 
                 &:hover {
                     background-color: rgba(118, 110, 101, 0.15);
+                }
+                
+                @media only screen and (max-width: $thin_tablet) {
+                    font-size: 1.4rem;
+                }
+            }
+
+            @media only screen and (max-width: $wide_phone) {
+                flex-direction: column;
+                align-items: center;
+                height: 15rem;
+                margin: 2rem auto 2rem;
+
+                & button {
+                    height: 5rem;
+                    width: 100%;
+                    margin-bottom: 2rem;
                 }
             }
         }
