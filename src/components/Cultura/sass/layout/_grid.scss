@@ -4,6 +4,17 @@
                 justify-content: center;
                 width: 80%;
                 margin: 0 auto;
+
+                @media(max-width:$wide-phone){
+                        flex-wrap: wrap;
+                        justify-content: space-around;
+                }
+
+                @media(max-width:$mid-phone){
+                        flex-direction: column;
+                        padding-left: 8rem;
+                }
+                
         }
 
         &-parques{
@@ -14,6 +25,8 @@
                         margin: 0 auto;
                         margin-top: 35rem;
                         padding: 1rem;
+                        
+                        
                 }
                 &_contenido{
                         padding-left:$padding;
@@ -21,6 +34,10 @@
                         width: 50%;
                         height: auto;
                         margin-left: 2rem;
+
+                        @media(max-width:$wide-phone){
+                                padding-right: 0rem;            
+                        }
                 }
         }
 

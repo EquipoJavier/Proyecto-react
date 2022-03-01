@@ -4,6 +4,20 @@ import UpButton from "./UpButton/UpButton";
 import Footer from "./Footer/Footer";
 import Header from "./Header/Header";
 import Menu from "./Menu/Menu";
+
+function App() {
+  const [headerTitle, setHeaderTitle] = useState(
+    sessionStorage.getItem("title") != null
+      ? sessionStorage.getItem("title")
+      : "Madrid"
+  );
+  const [headerSubtitle, setHeaderSubtitle] = useState(
+    sessionStorage.getItem("subtitle") != null
+      ? sessionStorage.getItem("subtitle")
+      : "Descubre todos sus secretos"
+  );
+  const [items, setItems] = useState([]);
+
 import Users from "./Users/Users";
 
 export default function App() {
@@ -11,6 +25,7 @@ export default function App() {
     data: "", // Datos de las secciones Transportes, Ocio, Cultura y Gastronomía
     planning: "", // Datos de la sección Visitas
   });
+
   const [done, setDone] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
   const [isLogin, setIsLogin] = useState(

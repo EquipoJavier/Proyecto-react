@@ -1,4 +1,6 @@
+import "./_reloj.scss";
 import { useEffect, useState } from "react"; 
+
 export default function Reloj() {
     const day = new Date();
     const hours = day.toLocaleTimeString('es-EN');

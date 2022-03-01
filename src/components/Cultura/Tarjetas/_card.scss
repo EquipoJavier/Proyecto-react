@@ -1,5 +1,9 @@
 .cultura-museo:not(:last-child){
     margin-right: 5rem;
+    @media(max-width:$wide-phone){
+        margin-right: 0;
+
+    }
 }
 .cultura-museo {
     perspective: 150rem; 
@@ -7,6 +11,15 @@
     position: relative;
     width: 100%;
     height: 40rem;
+    margin-bottom: 3rem;
+    
+    @media(max-width:$wide-phone){
+        width: 40%;
+        margin-bottom: -3rem;
+    }
+    @media(max-width:$mid-phone){
+        margin-left: 10rem;
+    }
 
     &__lado {
         width: 100%;
@@ -21,16 +34,24 @@
         overflow: hidden; 
         box-shadow: 0 1.5rem 4rem rgba($color-black,.15);
 
+        @media(max-width:$wide-phone){
+            height: 30rem;
+        }
         &--delante {
             background-color:$color-black;
             border-radius: 15px;
+            @media(max-width:$wide-phone){
+                width: 20rem;
+            }
         }
 
         &--detras {
             transform: rotateY(180deg);
             border-radius: 15px;
             border: white solid 4px;
-
+            @media(max-width:$wide-phone){
+                width: 20rem;
+            }
             &-1 {
                 background-image: linear-gradient(to right bottom, $color-pink,$color-orange);
             }
@@ -87,11 +108,21 @@
         left: 1rem;
         width: 95%;
 
+        @media(max-width:$wide-tablet){
+            font-size: 2rem;    
+        }
+        @media(max-width:$thin-tablet){
+            left: .5rem;
+            font-size: 1.5rem;    
+        }
+
         &-span {
             padding: .3rem;
             -webkit-box-decoration-break: clone;
             box-decoration-break: clone;
+
             &--1 {
+
                 background-image: linear-gradient(to right bottom, $color-pink,$color-orange);
             }
             &--2 {
@@ -116,6 +147,7 @@
         width: 90%;
         text-align: center;
         color: $color-white;
+        
 
         ul {
             list-style: none;
@@ -127,6 +159,12 @@
                 text-align: center;
                 font-size: 1.5rem;
                 padding: 0.75rem;
+                @media(max-width:$mid-tablet){
+                    font-size: 1.3rem;   
+                }
+                @media(max-width:$thin-tablet){
+                    font-size: 1.2rem;   
+                }
 
                 &:not(:last-child) {
                     border-bottom: 2px solid rgb(255, 255, 255);
@@ -135,54 +173,6 @@
         }
     }
           
-//   @include respond(tab-port) {
-    
-     //     height: auto;
-//     //     border-radius: 3px;
-//     //     background-color: $color-white;
-//     //     box-shadow: 0 1.5rem 4rem rgba($color-black, .15);
-        
-//     //     &__imagen{
-//     //         clip-path: none;
-//     //     }
-
-//     //     &__lado {
-//     //         height: auto;
-//     //         position: relative;
-//     //         box-shadow: none; 
-            
-//     //         &--detras{
-//     //             transform: rotateY(0);
-//     //         }  
-//     //     } 
-        
-        
-//     //     &:hover &__lado--delante {
-//     //         transform: rotateY(0);
-//     //     }
-               
-//     //     &__detalles {
-//     //         padding: 1rem 3rem;
-//     //         position: relative;
-//     //         top: 0%;
-//     //         left: 0;
-//     //         transform: translate(0);
-//     //         width: 100%;
-//     //         margin-top: -7rem;
-            
-//     //         ul{
-//     //             li{
-//     //                 font-size: 2rem;
-
-//     //             }
-//     //         }
-//     //     }  
-
-//     //     &__heading {
-//     //         top:20rem;
-//     //     }
-
-//     // }      
 }
 
 
