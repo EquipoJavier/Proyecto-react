@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import Loading from "../../Recursos/img/loading.gif"
+import Loading from "../Recursos/img/loading.gif"
+import "./_temperatura.scss";
 
 const url= "http://api.openweathermap.org/data/2.5/weather?q=Madrid&appid=" + "12b3d35ed8697e92d8a1b42fc8aac557";
 

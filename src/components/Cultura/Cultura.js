@@ -3,12 +3,8 @@ import Tarjetas from "./Tarjetas/Tarjetas";
 import TitulosSecundarios  from "./TituloSecundario/TitulosSecundarios";
 import ImagenParque from "./ImagenesParques/ImagenesParques";
 import ImagenOtrasVisitas from "./ImagenesOtrasVisitas/ImagenesOtrasVisitas";
-import Reloj from "./Reloj/Reloj";
-import RelojAnalogico from "./Reloj/RelojAnalogico";
-import Video from "./Video/Video";
 import Carrusel from "./Carrusel/Carrusel";
 import PopUp from "./PopUp/PopUp";
-import Temperatura from "./Temperatura/Temperatura";
 import "./sass/main.scss"
 import { useState } from "react";
 
@@ -32,15 +28,7 @@ export default function Cultura() {
 
    return(
      
-    <div style={{position:"relative"}}>
-      
-      <header>
-        <RelojAnalogico/>
-        <Reloj/>
-        <Temperatura/>
-      </header>
-    
-      <aside></aside>
+    <div className="body__cultura">
       
       <main>  
         
@@ -55,7 +43,6 @@ export default function Cultura() {
         </section>
         
         <section className="parques">
-          <Video/>
           <div className="parques--text-box">
             <TitulosSecundarios clase="parques_heading--primary" tituloSecundario="Parques Que Visitar" />
           </div>
@@ -80,7 +67,6 @@ export default function Cultura() {
           <Carrusel/>
         </section>
       </main> 
-      <footer></footer> 
 
     </div>
   )

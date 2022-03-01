@@ -2,108 +2,134 @@
     position: relative;
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
+    padding-left: 15%;
+    
+    &>div{
+        width: 80%;
+        @media(max-width:$thin-tablet){
+            width: 120%;
+            margin-bottom: 2rem;
+            margin-left: -25%;
+        }
 
+    }
+    
     &--imagen {
-        width: 70%;
+        width: 100%;
         box-shadow: 0 1.5rem 4rem rgba($color-black, .4);
         position: relative;
         transition: all .2s;
         outline-offset: 2rem;
-        //opacity: .8;
         border-radius: 2rem;
-    // @include respond(tab-port) {
-    //     width: 90%;
-    // }
-
+        
 
         &--p1 {
             margin-left: -10rem;
             margin-top: -5rem;
             
-    //       @include respond(tab-port) {
-    //       left: -30rem;
-    //        top: -10rem;
-    //     }
+            @media(max-width:$mid-tablet){
+                margin-left: -6rem;
+                margin-top: -4rem;            
+            }
+            @media(max-width:$thin-tablet){
+                margin-left: 0;
+                margin-top: 0;
+            }
         }
 
         &--p2 {
             margin-top: -5rem; 
             margin-left: 20rem;
 
-        // @include respond(tab-port) {
-        //     left: -30rem;
-        //     top: 10rem;
-        // }
+            @media(max-width:$mid-tablet){
+                margin-top: -4rem; 
+                margin-left: 16rem;            
+            }
+            @media(max-width:$thin-tablet){
+                margin-left: 0;
+                margin-top: 0;
+            }
         }
 
         &--p3 {
             margin-left: -12rem;
             margin-top: -5rem;
             
-        // @include respond(tab-land)  {
-        //     max-width: 70%;
-        //     left: -8rem;
-        //     top: 12rem; 
-        // }
-        // @include respond(tab-port) {
-        //     left: -8rem;
-        //     top: -15rem;
-        // }
+            @media(max-width:$mid-tablet){
+                margin-left: -6rem;
+                margin-top: -4rem;           
+            }
+            @media(max-width:$thin-tablet){
+                margin-left: 0;
+                margin-top: 0;
+            }
         }
 
         &--p4 {
             margin-top: -5rem; 
             margin-left: 15rem;
-        // @include respond(tab-port) {
-        //     left: -10rem;
-        //     top: 0rem;
-        // }
+           
+            @media(max-width:$mid-tablet){
+                margin-top: -4rem; 
+                margin-left: 17rem;
+            } 
+            @media(max-width:$thin-tablet){
+                margin-left: 0;
+                margin-top: 0;
+            }           
         }
 
         &--p5 {
             margin-left: -10rem;
             margin-top: 0rem; 
-        // @include respond(tab-port) {
-        //     left: 8rem;
-        //     top: -60rem;
-        // }
+            @media(max-width:$mid-tablet){
+                margin-left: -8rem;
+                margin-top: -2rem; 
+            }
+            @media(max-width:$thin-tablet){
+                margin-left: 0;
+                margin-top: 0;
+            }
         }
 
         &--p6 {
             margin-top: -5rem; 
             margin-left: 22rem;
-         // @include respond(tab-land)  {
-         //     max-width: 80%;
-         //     right: -2rem;
-         //     top: 9rem;
-         //     z-index: 20;
-         // }
-         // @include respond(tab-port) {
-         //     left: 10rem;
-         //     top: -45rem;
-         // }
+            @media(max-width:$mid-tablet){
+                margin-top: -4rem; 
+                margin-left: 14rem;
+            }
+            @media(max-width:$thin-tablet){
+                margin-left: 0;
+                margin-top: 0;
+            }
         }
 
         &--p7 {
             margin-left: -8rem;
             margin-top: -3rem; 
-            // @include respond(tab-port) {
-            //     left: 25rem;
-            //     top: -70rem;
-            // }
+            @media(max-width:$mid-tablet){
+                margin-left: -7rem;
+                margin-top: -1rem; 
+            }
+            @media(max-width:$thin-tablet){
+                margin-left: 0;
+                margin-top: 0;
+            }
         }
 
         &--p8 {
             margin-top: -5rem; 
             margin-left: 20rem;
-            // @include respond(tab-land)  {
-            //     max-width: 90%;
-            //     left: -1rem;  
-            // }
-            // @include respond(tab-port) {
-            //     left: 28rem;
-            //     top: -50rem;
-            // }
+            @media(max-width:$mid-tablet){
+                margin-top: -3rem; 
+                margin-left: 14rem;
+            }
+            @media(max-width:$thin-tablet){
+                margin-left: 0;
+                margin-top: 0;
+            }
         }                  
 
         &:hover {
@@ -123,13 +149,22 @@
             position: absolute;
             margin-top: -20%;
             padding: .5rem;
-            width: 70%;
+            width: 66.5%;
             font-weight: 700;
             color: white;
             background-color: rgba($color-menu, 0.9);
             border-radius: 0;
             transition: none;
-
+            
+            @media(max-width:$thin-tablet){
+                width: 97.5%;            
+            }
+            // @media(max-width:$wide-phone){
+            //     width: 75%;            
+            // }
+            // @media(max-width:$mid-phone){
+            //     width: 87%;
+            // }
     //       @include respond(tab-port) {
     //          width: 90%;
     //       }
