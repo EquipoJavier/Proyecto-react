@@ -8,15 +8,14 @@
 @import "../Carrusel/carrusel";
 @import "../ImagenesParques/composition";
 @import "../PopUp/popUp";
-@import "../../Reloj/reloj";
-@import "../../Reloj/relojAnalogico";
+@import "../Reloj/reloj";
+@import "../Reloj/relojAnalogico";
 @import "../sass/components/loading";
 @import "../Tarjetas/card";
-@import "../../Temperatura/temperatura";
+@import "../Temperatura/temperatura";
+@import "../Video/bg-video";
 
 @import "./pages/cultura";
-@import "./pages/home";
-
 @import "./layout/grid";
 
 @import url("https://fonts.googleapis.com/css?family=Lobster");
