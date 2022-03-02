@@ -328,34 +328,10 @@
   ],
   "visita": [
     {
-      "day": "2022-02-12",
-      "category": "Gastronomia",
-      "option": "Cuevas de Luis Candelas",
-      "id": 3
-    },
-    {
-      "day": "2022-02-12",
+      "day": "2022-03-05",
       "category": "Cultura",
-      "option": "Cuevas de Luis Candelas",
-      "id": 4
-    },
-    {
-      "day": "2022-02-12",
-      "category": "Cultura",
-      "option": "Cuevas de Luis Candelas",
-      "id": 5
-    },
-    {
-      "day": "2022-02-12",
-      "category": "Cultura",
-      "option": "Cuevas de Luis Candelas",
-      "id": 6
-    },
-    {
-      "day": "2022-02-21",
-      "category": "Ocio",
-      "option": "Parque de Atracciones",
-      "id": 7
+      "option": "Museo del Prado",
+      "id": 1
     }
   ]
 }
