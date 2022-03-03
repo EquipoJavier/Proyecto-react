@@ -70,7 +70,7 @@ export default function VisitaTabla(props) {
                                         <td>{row.option}</td>
                                         <td className="visita__content__table--buttons">
                                             <div className='buttonContainer'>
-                                                <button className="visita__content__table--updateButton" onClick={() => {dispatchUpdate(row)}}></button>
+                                                <button className="visita__content__table--updateButton" onClick={() => {dispatchUpdate(row)}}>Modificar</button>
                                                 <button className="visita__content__table--deleteButton" onClick={() => dispatch({
                                                     type: "DELETE",
                                                     payload: {
@@ -79,7 +79,7 @@ export default function VisitaTabla(props) {
                                                         option: row.option,
                                                         id: row.id
                                                     },
-                                                })}></button>
+                                                })}>Eliminar</button>
                                             </div>
                                         </td>
                                     </tr>

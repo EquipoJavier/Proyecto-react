@@ -69,7 +69,7 @@
 
         & .buttonContainer {
             display: flex;
-            height: 100%;
+            min-height: 6rem;
             width: 100%;
         }
         
@@ -80,10 +80,8 @@
             position: relative;
             font-size: 1.8rem;
             cursor: pointer;
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: 3rem;
             transition: background-color 0.3s;
+            padding: 0 1rem;
 
             &:hover {
                 color: rgb(62, 9, 207);
@@ -100,7 +98,6 @@
 
     &--updateButton {
         background-color: rgba(159, 205, 50, 0.3);
-        background-image: url(../../../../public/assets/images/editar.svg);
 
         &:hover {
             background-color: rgba(135, 184, 23, 0.6);
@@ -108,7 +105,6 @@
     }
     &--deleteButton {
         background-color: rgba(223, 32, 18, 0.3);
-        background-image: url(../../../../public/assets/images/borrar.svg);
 
         &:hover {
             background-color: rgba(223, 32, 18, 0.6);
